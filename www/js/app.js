@@ -24,15 +24,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 .config(function($stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider, $ionicConfigProvider) {
 
-        $ionicFilterBarConfigProvider.theme('light');
-        $ionicFilterBarConfigProvider.clear('ion-close');
-        $ionicFilterBarConfigProvider.search('ion-search');
-        $ionicFilterBarConfigProvider.backdrop(true);
-        $ionicFilterBarConfigProvider.transition('vertical');
-        $ionicFilterBarConfigProvider.placeholder('Search...');
+    $ionicFilterBarConfigProvider.theme('light');
+    $ionicFilterBarConfigProvider.clear('ion-close');
+    $ionicFilterBarConfigProvider.search('ion-search');
+    $ionicFilterBarConfigProvider.backdrop(true);
+    $ionicFilterBarConfigProvider.transition('vertical');
+    $ionicFilterBarConfigProvider.placeholder('Search...');
 
-        $ionicConfigProvider.backButton.previousTitleText(false);
-        $ionicConfigProvider.backButton.text('');
+    $ionicConfigProvider.backButton.previousTitleText(false);
+    $ionicConfigProvider.backButton.text('');
 
 
 
@@ -42,6 +42,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
+  })
+
+  // plus
+  .state('tab.plus', {
+    url: '/plus',
+    views: {
+      'tab-plus': {
+        templateUrl: 'templates/tab-plus.html',
+        controller: 'PlusController'
+      }
+    }
   })
 
   // timeline

@@ -36,28 +36,43 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 
 
-    $stateProvider
+  $stateProvider
 
   .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
-  .state('tab.agenda', {
-    url: '/agenda',
+
+  // timeline
+  .state('tab.timeline', {
+    url: '/timeline',
     views: {
-      'tab-agenda': {
-        templateUrl: 'templates/tab-agenda.html',
-        controller: 'AgendaController'
+      'tab-timeline': {
+        templateUrl: 'templates/tab-timeline.html',
+        controller: 'TimelineController'
       }
     }
   })
-  .state('tab.fotos', {
-      url: '/fotos',
+
+  // activity
+  .state('tab.activity', {
+    url: '/activity',
+    views: {
+      'tab-activity': {
+        templateUrl: 'templates/tab-activity.html',
+        controller: 'ActivityController'
+      }
+    }
+  })
+
+  //
+  .state('tab.group', {
+      url: '/group',
       views: {
-        'tab-fotos': {
-          templateUrl: 'templates/tab-fotos.html',
-          controller: 'FotosController'
+        'tab-group': {
+          templateUrl: 'templates/tab-group.html',
+          controller: 'GroupController'
         }
       }
     })
@@ -90,6 +105,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 
   /*Si ninguno de los siguientes estados esta activo reenviar a /tab/agenda */
-  $urlRouterProvider.otherwise('/tab/agenda');
+  $urlRouterProvider.otherwise('/tab/timeline');
 
 });

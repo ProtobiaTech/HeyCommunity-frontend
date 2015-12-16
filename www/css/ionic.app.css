@@ -9397,3 +9397,58 @@ a.button {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center; }
+
+.pull-left {
+  float: left; }
+
+.pull-right {
+  float: right; }
+
+#module-timeline .scroll {
+  padding-top: 10px;
+  background-color: #ecf0f1; }
+
+#module-timeline .list {
+  margin-bottom: 20px; }
+
+#module-timeline .item.item-header {
+  padding: 8px 10px;
+  background-color: #fff; }
+  #module-timeline .item.item-header img {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    vertical-align: middle;
+    margin-right: 10px; }
+  #module-timeline .item.item-header .name {
+    font-size: 14px;
+    line-height: 18px;
+    color: #555; }
+  #module-timeline .item.item-header .date {
+    font-size: 10px;
+    line-height: 12px;
+    color: #999; }
+
+#module-timeline .item.item-body {
+  padding: 0;
+  background-color: #fff; }
+  #module-timeline .item.item-body img {
+    width: 100%;
+    vertical-align: middle; }
+  #module-timeline .item.item-body .content {
+    padding: 5px 10px; }
+
+#module-timeline .item.item-footer {
+  border-top-color: #f6f6f6;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 28px; }
+  #module-timeline .item.item-footer .btns {
+    height: 28px; }
+    #module-timeline .item.item-footer .btns a {
+      display: inline-block;
+      margin: 0 10px 0 15px;
+      font-size: 26px;
+      line-height: 30px; }
+    #module-timeline .item.item-footer .btns .ion-ios-heart {
+      color: #f33; }

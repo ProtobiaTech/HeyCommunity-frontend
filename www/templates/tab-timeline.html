@@ -1,0 +1,34 @@
+<ion-view view-title="{{navTitle}}">
+  <ion-content id="module-timeline" delegate-handle="agendaScrollDelegate">
+
+    <div ng-repeat="item in [1,2,3,4,5]" class="list">
+      <div class="item item-header item-divider" ion-affix>
+          <div class="pull-left">
+              <img ng-src="img/ag4.jpg">
+          </div>
+          <div class="pull-left">
+              <div class="name">Rod</div>
+              <div class="date">12-22 12:20</div>
+          </div>
+      </div>
+
+      <div class="item item-body item-text-wrap">
+          <img src="img/ag4.jpg">
+          <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+      </div>
+
+      <div class="item item-footer">
+          <div class="btns pull-right">
+              <a ng-if="false" class="icon ion-ios-heart"></a>
+              <a ng-if="true" class="icon ion-ios-heart-outline"></a>
+
+              <a class="icon ion-more"></a>
+          </div>
+          <div>
+              12人喜欢
+          </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

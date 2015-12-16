@@ -1,0 +1,9 @@
+{
+  "name": "Demo",
+  "author": "Devin Jett <djett41@gmail.com>",
+  "private": "false",
+  "devDependencies": {},
+  "dependencies": {
+    "ionic": "^1.0.0-rc.0"
+  }
+}

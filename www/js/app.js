@@ -44,6 +44,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     templateUrl: 'templates/tabs.html'
   })
 
+  // deving
+  .state('tab.deving', {
+    url: '/deving',
+    views: {
+      'tab-deving': {
+        templateUrl: 'templates/tab-deving.html',
+      }
+    }
+  })
+
   // plus
   .state('tab.plus', {
     url: '/plus',

@@ -12,13 +12,16 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('TimelineController', function($scope) {
-    $scope.navTitle='<img class="title-image" style="height: 27px;margin-top: 8px;" src="img/logoiclubs.png" />';
-    $scope.navTitle='Hey Ganzhou';
+.controller('TimelineController', function($scope, $http) {
+    $http.get('/api/timeline').then(function(response) {
+        $scope.timelines = response.data;
+    });
 })
 
-.controller('ActivityController', function($scope) {
-    $scope.navTitle='<img class="title-image" style="height: 27px;margin-top: 8px;" src="img/logoiclubs.png" />';
+.controller('ActivityController', function($scope, $http) {
+    $http.get('/api/activity').then(function(response) {
+        $scope.activities = response.data;
+    });
 })
 
 .controller('GroupController', function($scope, Locales,$ionicFilterBar) {

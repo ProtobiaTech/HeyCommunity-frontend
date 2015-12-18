@@ -5,9 +5,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
 
+    /* @mark what doing
     setTimeout(function () {
         navigator.splashscreen.hide();
     }, 2000);
+    */
 
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);

@@ -1,54 +1,12 @@
-<ion-view view-title="活动">
+<ion-view view-title="Activity">
   <ion-content delegate-handle="agendaScrollDelegate">
 
     <div class="list">
       <div class="item item-divider" ion-affix><i class="icon ion-calendar"></i> Miercoles</div>
-      <div class="item item-thumbnail-left item-text-wrap">
-          <img src="img/ag4.jpg">
-          <h2>ERASMUS CARIBBEANS ARAGON</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-    </div>
-    <div class="list">
-      <div class="item item-divider" ion-affix><i class="icon ion-calendar"></i> Jueves</div>
-        <div class="item item-thumbnail-left item-text-wrap">
-            <img src="img/ag1.jpg">
-            <h2>WH COLLEGE</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed et dolore magna aliqua.</p>
-        </div>
-    </div>
-    <div class="list">
-      <div class="item item-divider" ion-affix><i class="icon ion-calendar"></i> Viernes</div>
-        <div class="item item-thumbnail-left item-text-wrap">
-            <img src="img/ag9.jpg">
-            <h2>VIERNES CACHAO</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="item item-thumbnail-left item-text-wrap">
-            <img src="img/ag8.jpg">
-            <h2>FRIDAY RUMBO 144</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-    </div>
-    <div class="list">
-      <div class="item item-divider"  ion-affix><i class="icon ion-calendar"></i> Sabado</div>
-        <div class="item item-thumbnail-left item-text-wrap">
-            <img src="img/ag5.jpg">
-            <h2>DINNER CABARET SHOW</h2>
-            <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div class="item item-thumbnail-left item-text-wrap">
-            <img src="img/ag6.jpg">
-            <h2>SABADOS VESSEL</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-        </div>
-        <div class="item item-thumbnail-left item-text-wrap">
-            <img src="img/ag7.jpg">
-            <h2>I LOVE MIGUE PACHANDA</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-    </div>
-
+      <div ng-repeat="item in activities" class="item item-thumbnail-left item-text-wrap">
+          <img ng-src="{{ item.avatar }}">
+          <h2>{{ item.title }}</h2>
+          <p style="height:72px; line-height:18px; overflow:hidden">{{ item.content }}</p>
       </div>
     </div>
   </ion-content>

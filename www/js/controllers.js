@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('PlusController', function($scope) {
+.controller('PlusCtrl', function($scope) {
     $scope.navTitle='What news';
 
     $scope.addPic = function() {
@@ -10,15 +10,6 @@ angular.module('starter.controllers', [])
     $scope.setPic = function(files) {
         $scope.pic = 'img/ag3.jpg';
     }
-})
-
-.controller('TimelineController', function($scope) {
-    $scope.navTitle='<img class="title-image" style="height: 27px;margin-top: 8px;" src="img/logoiclubs.png" />';
-    $scope.navTitle='Hey Ganzhou';
-})
-
-.controller('ActivityController', function($scope) {
-    $scope.navTitle='<img class="title-image" style="height: 27px;margin-top: 8px;" src="img/logoiclubs.png" />';
 })
 
 .controller('GroupController', function($scope, Locales,$ionicFilterBar) {

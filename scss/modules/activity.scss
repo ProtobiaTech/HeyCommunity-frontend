@@ -1,0 +1,24 @@
+#module-activity {
+    .list {
+        .item-activity {
+            padding-bottom: 0;
+            min-height: 95px !important;
+
+            .avatar {
+                height: auto !important;
+                vertical-align: bottom;
+            }
+
+            .title {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            .content {
+                height: 60px;
+                overflow: hidden;
+            }
+        }
+    }
+}

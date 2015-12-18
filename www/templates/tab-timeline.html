@@ -1,20 +1,20 @@
-<ion-view view-title="{{navTitle}}">
+<ion-view view-title="Hey Community">
   <ion-content id="module-timeline" delegate-handle="agendaScrollDelegate">
 
-    <div ng-repeat="item in [1,2,3,4,5]" class="list">
+    <div ng-repeat="item in timelines" class="list">
       <div class="item item-header item-divider" ion-affix>
           <div class="pull-left">
-              <img ng-src="img/ag4.jpg">
+              <img ng-src="{{ item.attachment }}">
           </div>
           <div class="pull-left">
               <div class="name">Rod</div>
-              <div class="date">12-22 12:20</div>
+              <div class="date">{{ item.created_at }}</div>
           </div>
       </div>
 
       <div class="item item-body item-text-wrap">
-          <img src="img/ag4.jpg">
-          <div class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+          <img ng-src="{{ item.attachment }}">
+          <div class="content">{{ item.content }}</div>
       </div>
 
       <div class="item item-footer">
@@ -25,7 +25,7 @@
               <a class="icon ion-more"></a>
           </div>
           <div>
-              12人喜欢
+              {{ item.id }}人喜欢
           </div>
       </div>
     </div>

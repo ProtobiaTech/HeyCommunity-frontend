@@ -26,6 +26,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 
+// modules
+@import
+"modules/timeline",
+"modules/activity";
+
+
+
+// 
 .pull-left {
     float: left;
 }
@@ -33,83 +41,3 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     float: right;
 }
 
-
-#module-timeline {
-    > .item-header {
-    }
-
-    .scroll {
-        padding-top: 10px;
-        background-color: #ecf0f1;
-    }
-
-    .list {
-        margin-bottom: 20px;
-    }
-
-    .item {
-        // item header
-        &.item-header {
-            padding: 8px 10px;
-            background-color: #fff;
-
-            img {
-                 width: 30px;
-                 height: 30px;
-                 border-radius: 5px;
-                 vertical-align: middle;
-                 margin-right: 10px;
-            }
-
-            .name {
-                 font-size:14px;
-                 line-height: 18px;
-                 color: #555;
-            }
-            .date {
-                font-size: 10px;
-                line-height: 12px;
-                color: #999;
-            }
-        }
-
-        // item body
-        &.item-body {
-            padding: 0;
-            background-color: #fff;
-
-            img {
-                 width: 100%;
-                 vertical-align: middle;
-            }
-
-            .content {
-                padding: 5px 10px;
-            }
-        }
-
-        // item footer
-        &.item-footer {
-            border-top-color: #f6f6f6;
-            padding: 5px 10px;
-
-            font-size: 12px;
-            line-height: 28px;
-
-            .btns {
-                height: 28px;
-
-                a {
-                    display: inline-block;
-                    margin: 0 10px 0 15px;
-                    font-size: 26px;
-                    line-height: 30px;
-                }
-
-                .ion-ios-heart {
-                    color: #f33;
-                }
-            }
-        }
-    }
-}

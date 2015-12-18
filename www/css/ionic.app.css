@@ -9450,6 +9450,20 @@ a.button {
     #module-timeline .item.item-footer .btns .ion-ios-heart {
       color: #f33; }
 
+#module-activity .list .item-activity {
+  padding-bottom: 0;
+  min-height: 95px !important; }
+  #module-activity .list .item-activity .avatar {
+    height: auto !important;
+    vertical-align: bottom; }
+  #module-activity .list .item-activity .title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+  #module-activity .list .item-activity .content {
+    height: 60px;
+    overflow: hidden; }
+
 .pull-left {
   float: left; }
 

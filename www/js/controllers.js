@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('PlusController', function($scope) {
+.controller('PlusCtrl', function($scope) {
     $scope.navTitle='What news';
 
     $scope.addPic = function() {
@@ -10,18 +10,6 @@ angular.module('starter.controllers', [])
     $scope.setPic = function(files) {
         $scope.pic = 'img/ag3.jpg';
     }
-})
-
-.controller('TimelineController', function($scope, $http) {
-    $http.get('/api/timeline').then(function(response) {
-        $scope.timelines = response.data;
-    });
-})
-
-.controller('ActivityController', function($scope, $http) {
-    $http.get('/api/activity').then(function(response) {
-        $scope.activities = response.data;
-    });
 })
 
 .controller('GroupController', function($scope, Locales,$ionicFilterBar) {

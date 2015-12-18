@@ -1,6 +1,13 @@
 /* Autor: Luis Bahamonde */
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix'])
+var HeyCommunity = angular.module('starter', [
+    'ionic',
+    'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
+    'starter.controllers',
+    'starter.controller.timeline',
+    'starter.controller.activity',
+    'starter.services',
+])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -24,7 +31,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicFilterBarConfigProvider, $ionicConfigProvider) {
+.config(function($ionicFilterBarConfigProvider, $ionicConfigProvider) {
 
     $ionicFilterBarConfigProvider.theme('light');
     $ionicFilterBarConfigProvider.clear('ion-close');
@@ -36,98 +43,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     $ionicConfigProvider.backButton.previousTitleText(false);
     $ionicConfigProvider.backButton.text('');
 
-
-
-  $stateProvider
-
-  .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-
-  // deving
-  .state('tab.deving', {
-    url: '/deving',
-    views: {
-      'tab-deving': {
-        templateUrl: 'templates/tab-deving.html',
-      }
-    }
-  })
-
-  // plus
-  .state('tab.plus', {
-    url: '/plus',
-    views: {
-      'tab-plus': {
-        templateUrl: 'templates/tab-plus.html',
-        controller: 'PlusController'
-      }
-    }
-  })
-
-  // timeline
-  .state('tab.timeline', {
-    url: '/timeline',
-    views: {
-      'tab-timeline': {
-        templateUrl: 'templates/tab-timeline.html',
-        controller: 'TimelineController'
-      }
-    }
-  })
-
-  // activity
-  .state('tab.activity', {
-    url: '/activity',
-    views: {
-      'tab-activity': {
-        templateUrl: 'templates/tab-activity.html',
-        controller: 'ActivityController'
-      }
-    }
-  })
-
-  //
-  .state('tab.group', {
-      url: '/group',
-      views: {
-        'tab-group': {
-          templateUrl: 'templates/tab-group.html',
-          controller: 'GroupController'
-        }
-      }
-    })
-    .state('tab.fotos-detail', {
-      url: '/fotos/:fotosId',
-      views: {
-        'tab-fotos': {
-          templateUrl: 'templates/fotos-detail.html',
-          controller: 'AlbunesController'
-        }
-      }
-    })
-    .state('tab.favoritos', {
-        url: '/favoritos',
-        views: {
-            'tab-favoritos': {
-                templateUrl: 'templates/tab-love.html',
-                controller: 'FavoritosController'
-            }
-        }
-    })
-  .state('tab.account', {
-        url: '/account',
-        views: {
-            'tab-account': {
-                templateUrl: 'templates/tab-account.html',
-                controller: 'AjustesController'
-            }
-        }
-  });
-
-  /*Si ninguno de los siguientes estados esta activo reenviar a /tab/agenda */
-  $urlRouterProvider.otherwise('/tab/timeline');
 
 });

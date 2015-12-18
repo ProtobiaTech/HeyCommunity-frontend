@@ -9398,12 +9398,6 @@ a.button {
   -ms-flex-align: center;
   align-items: center; }
 
-.pull-left {
-  float: left; }
-
-.pull-right {
-  float: right; }
-
 #module-timeline .scroll {
   padding-top: 10px;
   background-color: #ecf0f1; }
@@ -9415,6 +9409,7 @@ a.button {
   padding: 8px 10px;
   background-color: #fff; }
   #module-timeline .item.item-header img {
+    background-color: #dfdfdf;
     width: 30px;
     height: 30px;
     border-radius: 5px;
@@ -9433,7 +9428,9 @@ a.button {
   padding: 0;
   background-color: #fff; }
   #module-timeline .item.item-body img {
+    background-color: #dfdfdf;
     width: 100%;
+    min-height: 200px;
     vertical-align: middle; }
   #module-timeline .item.item-body .content {
     padding: 5px 10px; }
@@ -9452,3 +9449,9 @@ a.button {
       line-height: 30px; }
     #module-timeline .item.item-footer .btns .ion-ios-heart {
       color: #f33; }
+
+.pull-left {
+  float: left; }
+
+.pull-right {
+  float: right; }

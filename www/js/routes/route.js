@@ -1,4 +1,6 @@
-HeyCommunity.config(function($stateProvider, $urlRouterProvider) {
+HeyCommunity
+
+.config(function($stateProvider, $urlRouterProvider) {
 
   // default url
   $urlRouterProvider.otherwise('/tab/timeline');

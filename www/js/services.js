@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+HeyCommunity
 
 .factory('Locales', function() {
 

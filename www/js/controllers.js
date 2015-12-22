@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+HeyCommunity
 
 .controller('PlusCtrl', function($scope) {
     $scope.navTitle='What news';

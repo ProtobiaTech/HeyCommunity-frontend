@@ -3,10 +3,6 @@
 var HeyCommunity = angular.module('starter', [
     'ionic',
     'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
-    'starter.controllers',
-    'starter.controller.timeline',
-    'starter.controller.activity',
-    'starter.services',
 ])
 
 .run(function($ionicPlatform) {

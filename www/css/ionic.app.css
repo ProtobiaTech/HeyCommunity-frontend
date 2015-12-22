@@ -9469,3 +9469,10 @@ a.button {
 
 .pull-right {
   float: right; }
+
+body {
+  margin: 0 auto; }
+
+ion-header-bar, ion-tabs {
+  margin: 0 auto;
+  max-width: 500px; }

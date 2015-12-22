@@ -5,26 +5,33 @@ var HeyCommunity = angular.module('starter', [
     'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
 ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, SystemService) {
     $ionicPlatform.ready(function() {
+        /* @mark what doing
+        setTimeout(function () {
+            navigator.splashscreen.hide();
+        }, 2000);
+        */
 
-    /* @mark what doing
-    setTimeout(function () {
-        navigator.splashscreen.hide();
-    }, 2000);
-    */
+        if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            cordova.plugins.Keyboard.disableScroll(true);
 
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-        cordova.plugins.Keyboard.disableScroll(true);
+        }
+        if (window.StatusBar) {
+            //StatusBar.styleDefault();
+            StatusBar.styleLightContent();
+        }
+    });
 
-    }
-    if (window.StatusBar) {
-        //StatusBar.styleDefault();
-        StatusBar.styleLightContent();
-    }
-
-  });
+    // Set TenantInfo
+    $rootScope.appSiteTitle = 'Hey Communify';
+    SystemService.getTenantInfo().then(function(response) {
+        if (typeof response.data === 'object') {
+            $rootScope.appSiteTitle = response.data.site_name;
+            localStorage.tenantInfo = JSON.stringify(response.data);
+        }
+    })
 })
 
 .config(function($ionicFilterBarConfigProvider, $ionicConfigProvider) {

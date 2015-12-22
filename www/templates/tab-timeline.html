@@ -1,5 +1,9 @@
 <ion-view view-title="Hey Community">
     <ion-content id="module-timeline" delegate-handle="agendaScrollDelegate">
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
 
         <div ng-repeat="item in timelines" class="list">
             <div class="item item-header item-divider" ion-affix>
@@ -34,5 +38,10 @@
             No data
         </div>
 
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            immediate-check="false"
+            distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

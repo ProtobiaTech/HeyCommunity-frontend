@@ -2,6 +2,6 @@ HeyCommunity
 
 .service('ActivityService', function($http) {
     this.index = function() {
-        return $http.get('/activity');
+        return $http.get(getApiUrl('/activity'));
     }
 })

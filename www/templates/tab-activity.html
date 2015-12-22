@@ -1,13 +1,17 @@
 <ion-view view-title="Activity">
-  <ion-content id="module-activity" delegate-handle="agendaScrollDelegate">
+    <ion-content id="module-activity" delegate-handle="agendaScrollDelegate">
 
-    <div class="list">
-      <div class="item item-divider" ion-affix><i class="icon ion-calendar"></i> Near</div>
-      <div ng-repeat="item in activities" class="item item-activity item-thumbnail-left item-text-wrap">
-          <img class="avatar" ng-src="{{ item.avatar }}">
-          <h2 class="title">{{ item.title }}</h2>
-          <p class="content">{{ item.content }}</p>
-      </div>
-    </div>
-  </ion-content>
+        <div class="list">
+            <div class="item item-divider" ion-affix><i class="icon ion-calendar"></i> Near</div>
+            <div ng-repeat="item in activities" class="item item-activity item-thumbnail-left item-text-wrap">
+                <img class="avatar" ng-src="{{ item.avatar }}">
+                <h2 class="title">{{ item.title }}</h2>
+                <p class="content">{{ item.content }}</p>
+            </div>
+        </div>
+
+        <div ng-hide="activities.length" class="padding text-center">
+            No data
+        </div>
+      </ion-content>
 </ion-view>

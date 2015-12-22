@@ -55,6 +55,28 @@ HeyCommunity
     }
   })
 
+  // user
+  .state('tab.user', {
+    url: '/user',
+    views: {
+      'tab-user': {
+        templateUrl: 'templates/tab-user.html',
+        // controller: 'UserController'
+      }
+    }
+  })
+
+  // topic
+  .state('tab.topic', {
+    url: '/topic',
+    views: {
+      'tab-topic': {
+        templateUrl: 'templates/tab-topic.html',
+        // controller: 'TopicController'
+      }
+    }
+  })
+
   // group
   .state('tab.group', {
     url: '/group',

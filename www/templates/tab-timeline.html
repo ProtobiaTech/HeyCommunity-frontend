@@ -1,34 +1,38 @@
 <ion-view view-title="Hey Community">
-  <ion-content id="module-timeline" delegate-handle="agendaScrollDelegate">
+    <ion-content id="module-timeline" delegate-handle="agendaScrollDelegate">
 
-    <div ng-repeat="item in timelines" class="list">
-      <div class="item item-header item-divider" ion-affix>
-          <div class="pull-left">
-              <img ng-src="{{ item.attachment }}">
-          </div>
-          <div class="pull-left">
-              <div class="name">Rod</div>
-              <div class="date">{{ item.created_at }}</div>
-          </div>
-      </div>
+        <div ng-repeat="item in timelines" class="list">
+            <div class="item item-header item-divider" ion-affix>
+                <div class="pull-left">
+                    <img ng-src="{{ item.attachment }}">
+                </div>
+                <div class="pull-left">
+                    <div class="name">Rod</div>
+                    <div class="date">{{ item.created_at }}</div>
+                </div>
+            </div>
 
-      <div class="item item-body item-text-wrap">
-          <img ng-src="{{ item.attachment }}">
-          <div class="content">{{ item.content }}</div>
-      </div>
+            <div class="item item-body item-text-wrap">
+                <img ng-src="{{ item.attachment }}">
+                <div class="content">{{ item.content }}</div>
+            </div>
 
-      <div class="item item-footer">
-          <div class="btns pull-right">
-              <a ng-if="false" class="icon ion-ios-heart"></a>
-              <a ng-if="true" class="icon ion-ios-heart-outline"></a>
+            <div class="item item-footer">
+                <div class="btns pull-right">
+                    <a ng-if="false" class="icon ion-ios-heart"></a>
+                    <a ng-if="true" class="icon ion-ios-heart-outline"></a>
 
-              <a class="icon ion-more"></a>
-          </div>
-          <div>
-              {{ item.id }}人喜欢
-          </div>
-      </div>
-    </div>
+                    <a class="icon ion-more"></a>
+                </div>
+                <div>
+                    {{ item.id }}人喜欢
+                </div>
+            </div>
+        </div>
 
-  </ion-content>
+        <div ng-hide="timelines.length" class="padding text-center">
+            No data
+        </div>
+
+    </ion-content>
 </ion-view>

@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div ng-hide="activities.length" class="padding text-center">
+        <div ng-if="activities && activities.length == 0" class="padding text-center">
             No data
         </div>
 

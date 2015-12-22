@@ -8,7 +8,7 @@
         <div ng-repeat="item in timelines" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">
-                    <img ng-src="{{ item.attachment }}">
+                    <img ng-src="{{ item.author.avatar }}">
                 </div>
                 <div class="pull-left">
                     <div class="name">Rod</div>
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div ng-hide="timelines.length" class="padding text-center">
+        <div ng-if="timelines && timelines.length == 0" class="padding text-center">
             No data
         </div>
 

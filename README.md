@@ -1,8 +1,8 @@
 Hey Community
 =====================
 
-live demo: 
-[hey.dev4living.com](http://hey.dev4living.com)   
+Live demo: [demo.hey-community.online](demo.hey-community.online)   
+Official website: [www.hey-community.online](www.hey-community.online)   
 
 
 ## Install

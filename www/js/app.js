@@ -31,7 +31,9 @@ var HeyCommunity = angular.module('starter', [
             $rootScope.appSiteTitle = response.data.site_name;
             localStorage.tenantInfo = JSON.stringify(response.data);
         }
-    })
+    });
+
+    $rootScope.getPicUrl = getPicUrl;
 })
 
 .config(function($ionicFilterBarConfigProvider, $ionicConfigProvider) {

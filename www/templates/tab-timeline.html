@@ -8,20 +8,21 @@
         <div ng-repeat="item in timelines" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">
-                    <img ng-src="{{ item.author.avatar }}">
+                    <img ng-if="false" ng-src="{{ getPicUrl(item.author.avatar) }}">
+                    <img ng-src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
                 </div>
                 <div class="pull-left">
-                    <div class="name">Rod</div>
+                    <div class="name">{{ item.author.nickname }}</div>
                     <div class="date">{{ item.created_at }}</div>
                 </div>
             </div>
 
             <div class="item item-body item-text-wrap">
-                <img ng-src="{{ item.attachment }}">
+                <img ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment) }}">
                 <div class="content">{{ item.content }}</div>
             </div>
 
-            <div class="item item-footer">
+            <div class="item item-footer" style="color:#ddd">
                 <div class="btns pull-right">
                     <a ng-if="false" class="icon ion-ios-heart"></a>
                     <a ng-if="true" class="icon ion-ios-heart-outline"></a>

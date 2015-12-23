@@ -9455,7 +9455,8 @@ a.button {
   min-height: 95px !important; }
   #module-activity .list .item-activity .avatar {
     height: auto !important;
-    vertical-align: bottom; }
+    vertical-align: bottom;
+    min-height: 95px !important; }
   #module-activity .list .item-activity .title {
     white-space: nowrap;
     text-overflow: ellipsis;

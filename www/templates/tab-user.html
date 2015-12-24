@@ -1,10 +1,52 @@
 <ion-view view-title="{{ appSiteTitle }}">
-  <ion-content id="" delegate-handle="agendaScrollDelegate">
+    <ion-content id="module-user" class="page-info">
 
-  <div class="padding text-center">
-      Deving <br>
-      功能正在开发 ...
-  </div>
+        <div class="padding" style="margin-top:40px;">
+            <div class="avatar text-center">
+                <img ng-src="http://lorempixel.com/640/480/?75026">
+            </div>
+            <div class="text-center">
+                Rod
+            </div>
+        </div>
 
-  </ion-content>
+
+        <div class="padding">
+            <p class="h4 text-center">Sign in</p>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input type="text" placeholder="">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="text" placeholder="">
+                </label>
+            </div>
+
+            <div style="margin-top:4px;">
+                <a>Forget password</a>
+                <a class="pull-right">Sign up</a>
+            </div>
+        </div>
+
+        <div class="padding">
+            <p class="h4 text-center">Sign up</p>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input type="text" placeholder="">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="text" placeholder="">
+                </label>
+            </div>
+
+            <div style="margin-top:4px;">
+                <a class="pull-right">Sign in</a>
+            </div>
+        </div>
+
+    </ion-content>
 </ion-view>

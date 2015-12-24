@@ -41,12 +41,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
     float: right;
 }
 
-body {
-    margin: 0 auto;
-}
+@media (min-width: 1025px) {
+    body {
+        margin: 0 auto;
+    }
 
-ion-header-bar, ion-tabs {
-     margin: 0 auto;
-     max-width: 500px;
+    ion-header-bar, ion-tabs {
+         margin: 0 auto;
+         max-width: 500px;
+    }
 }
 

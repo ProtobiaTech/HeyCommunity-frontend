@@ -9465,15 +9465,20 @@ a.button {
     height: 60px;
     overflow: hidden; }
 
+#module-user.page-info .avatar img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; }
+
 .pull-left {
   float: left; }
 
 .pull-right {
   float: right; }
 
-body {
-  margin: 0 auto; }
-
-ion-header-bar, ion-tabs {
-  margin: 0 auto;
-  max-width: 500px; }
+@media (min-width: 1025px) {
+  body {
+    margin: 0 auto; }
+  ion-header-bar, ion-tabs {
+    margin: 0 auto;
+    max-width: 500px; } }

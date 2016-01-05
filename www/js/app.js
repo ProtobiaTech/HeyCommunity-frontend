@@ -25,7 +25,7 @@ var HeyCommunity = angular.module('starter', [
     });
 
     // Set TenantInfo
-    $rootScope.appSiteTitle = 'Hey Communify';
+    $rootScope.appSiteTitle = 'Hey Community';
     SystemService.getTenantInfo().then(function(response) {
         if (typeof response.data === 'object') {
             $rootScope.appSiteTitle = response.data.site_name;

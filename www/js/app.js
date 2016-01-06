@@ -5,7 +5,7 @@ var HeyCommunity = angular.module('starter', [
     'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
 ])
 
-.run(function($ionicPlatform, $rootScope, SystemService) {
+.run(function($ionicPlatform, $rootScope, SystemService, $ionicLoading) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
         setTimeout(function () {
@@ -34,10 +34,19 @@ var HeyCommunity = angular.module('starter', [
         }
     });
 
+    // get pic url
     $rootScope.getPicUrl = getPicUrl;
+
+    // loading state
+    $rootScope.$on('loading:show', function() {
+        $ionicLoading.show({template: 'loading ... '})
+    })
+    $rootScope.$on('loading:hide', function() {
+        $ionicLoading.hide()
+    })
 })
 
-.config(function($ionicFilterBarConfigProvider, $ionicConfigProvider) {
+.config(function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider) {
 
     $ionicFilterBarConfigProvider.theme('light');
     $ionicFilterBarConfigProvider.clear('ion-close');
@@ -50,4 +59,25 @@ var HeyCommunity = angular.module('starter', [
     $ionicConfigProvider.backButton.text('');
 
 
+    // http provider config
+    $httpProvider.interceptors.push(function($rootScope) {
+        return {
+            request: function(config) {
+                $rootScope.$broadcast('loading:show');
+                return config;
+            },
+            response: function(response) {
+                $rootScope.$broadcast('loading:hide');
+                return response;
+            },
+            requestError: function(response) {
+                $rootScope.$broadcast('loading:hide');
+                return response;
+            },
+            responseError: function(response) {
+                $rootScope.$broadcast('loading:hide');
+                return response;
+            }
+        }
+    })
 });

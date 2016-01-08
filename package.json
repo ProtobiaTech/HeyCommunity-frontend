@@ -18,9 +18,11 @@
     "org.apache.cordova.splashscreen",
     "cordova-plugin-statusbar",
     "cordova-plugin-x-socialsharing",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-whitelist"
   ],
   "cordovaPlatforms": [
-    "ios"
+    "ios",
+    "android"
   ]
 }

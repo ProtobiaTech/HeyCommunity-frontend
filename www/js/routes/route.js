@@ -3,17 +3,17 @@ HeyCommunity
 .config(function($stateProvider, $urlRouterProvider) {
 
   // default url
-  $urlRouterProvider.otherwise('/tab/timeline');
+  $urlRouterProvider.otherwise('/timeline');
 
   $stateProvider
-  .state('tab', {
-    url: '/tab',
+  .state('hey', {
+    url: '',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
 
   // deving
-  .state('tab.deving', {
+  .state('hey.deving', {
     url: '/deving',
     views: {
       'tab-deving': {
@@ -23,7 +23,7 @@ HeyCommunity
   })
 
   // plus
-  .state('tab.plus', {
+  .state('hey.plus', {
     url: '/plus',
     views: {
       'tab-plus': {
@@ -34,7 +34,7 @@ HeyCommunity
   })
 
   // timeline
-  .state('tab.timeline', {
+  .state('hey.timeline', {
     url: '/timeline',
     views: {
       'tab-timeline': {
@@ -45,7 +45,7 @@ HeyCommunity
   })
 
   // activity
-  .state('tab.activity', {
+  .state('hey.activity', {
     url: '/activity',
     views: {
       'tab-activity': {
@@ -55,19 +55,80 @@ HeyCommunity
     }
   })
 
+
   // user
-  .state('tab.user', {
+  .state('hey.user', {
     url: '/user',
     views: {
       'tab-user': {
-        templateUrl: 'templates/tab-user.html',
-        // controller: 'UserController'
+        templateUrl: 'templates/user/tab-user.html',
+        controller: 'UserIndexCtrl'
       }
     }
   })
 
+  .state('hey.user-signOut', {
+    url: '/user/signOut',
+    views: {
+      'tab-user': {
+        controller: 'UserSignOutCtrl'
+      }
+    }
+  })
+
+  .state('hey.user-signIn', {
+    url: '/user/signIn',
+    views: {
+      'tab-user': {
+        templateUrl: 'templates/user/tab-user-signIn.html',
+        controller: 'UserSignInCtrl'
+      }
+    }
+  })
+
+  .state('hey.user-signUp', {
+    url: '/user/signUp',
+    views: {
+      'tab-user': {
+        templateUrl: 'templates/user/tab-user-signUp.html',
+        controller: 'UserSignUpCtrl'
+      }
+    }
+  })
+
+  .state('hey.user-info', {
+    url: '/user/user-info',
+    views: {
+      'tab-user': {
+        templateUrl: 'templates/user/tab-user-info.html',
+        controller: 'UserInfoCtrl'
+      }
+    }
+  })
+
+  .state('hey.user-infoEdit', {
+    url: '/user/user-infoEdit',
+    views: {
+      'tab-user': {
+        templateUrl: 'templates/user/tab-user-infoEdit.html',
+        controller: 'UserInfoEditCtrl'
+      }
+    }
+  })
+
+  .state('hey.user-setup', {
+    url: '/user/user-setup',
+    views: {
+      'tab-user': {
+        templateUrl: 'templates/user/tab-user-setup.html',
+        controller: 'UserSetupCtrl'
+      }
+    }
+  })
+
+
   // topic
-  .state('tab.topic', {
+  .state('hey.topic', {
     url: '/topic',
     views: {
       'tab-topic': {
@@ -78,7 +139,7 @@ HeyCommunity
   })
 
   // group
-  .state('tab.group', {
+  .state('hey.group', {
     url: '/group',
     views: {
       'tab-group': {
@@ -92,7 +153,7 @@ HeyCommunity
 
 
   // @mark delete
-  .state('tab.fotos-detail', {
+  .state('hey.fotos-detail', {
     url: '/fotos/:fotosId',
     views: {
       'tab-fotos': {
@@ -101,7 +162,7 @@ HeyCommunity
       }
     }
   })
-  .state('tab.favoritos', {
+  .state('hey.favoritos', {
       url: '/favoritos',
       views: {
           'tab-favoritos': {
@@ -110,7 +171,7 @@ HeyCommunity
           }
       }
   })
-  .state('tab.account', {
+  .state('hey.account', {
         url: '/account',
         views: {
             'tab-account': {

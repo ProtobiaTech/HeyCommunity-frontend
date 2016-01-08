@@ -5,7 +5,7 @@ var HeyCommunity = angular.module('starter', [
     'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
 ])
 
-.run(function($ionicPlatform, $rootScope, SystemService, $ionicLoading) {
+.run(function($ionicPlatform, $rootScope, $state, SystemService, $ionicLoading) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
         setTimeout(function () {
@@ -36,6 +36,16 @@ var HeyCommunity = angular.module('starter', [
 
     // get pic url
     $rootScope.getPicUrl = getPicUrl;
+
+    $rootScope.state = $state;
+
+    $rootScope.isAuth = function() {
+        if (localStorage.user) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     // loading state
     $rootScope.$on('loading:show', function() {

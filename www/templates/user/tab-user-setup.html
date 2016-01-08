@@ -1,0 +1,44 @@
+<ion-view view-title="{{ 'Setup' }}" cache-view="false">
+    <ion-content id="module-user" class="page-info">
+        <div ng-if="isAuth()">
+            <div class="padding"></div>
+
+            <div class="list">
+                <a class="item item-icon-left">
+                    <i class="icon ion-navicon-round"></i>
+                    通用
+                </a>
+                <a class="item item-icon-left" href="#">
+                    <i class="icon ion-locked"></i>
+                    帐号与安全
+                </a>
+                <a class="item item-icon-left">
+                    <i class="icon ion-earth"></i>
+                    隐私
+                </a>
+            </div>
+
+            <div class="padding"></div>
+
+            <div class="list">
+                <a class="item item-icon-left">
+                    <i class="icon ion-chatbox-working"></i>
+                    建议反馈
+                </a>
+                <a class="item item-icon-left">
+                    <i class="icon ion-information-circled"></i>
+                    软件信息
+                </a>
+            </div>
+
+            <div class="padding"></div>
+            <div class="list">
+                <a class="item item-icon-left" ui-sref="hey.user-signOut">
+                    <i class="icon ion-log-out"></i>
+                    退出登录
+                </a>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

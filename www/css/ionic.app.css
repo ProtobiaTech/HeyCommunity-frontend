@@ -9476,6 +9476,11 @@ a.button {
 .pull-right {
   float: right; }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #333; }
+
 @media (min-width: 1025px) {
   body {
     margin: 0 auto; }

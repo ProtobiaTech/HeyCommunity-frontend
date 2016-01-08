@@ -13,4 +13,4 @@ if (location.protocol === 'file:' || location.port === '80') {
     APP_ENV_DEV     =   true;
 }
 
-APP_ENV_DEV     =   false;
+// APP_ENV_DEV     =   false;

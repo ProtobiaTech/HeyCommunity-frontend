@@ -1,0 +1,33 @@
+<ion-view view-title="{{ appSiteTitle }}">
+    <ion-content id="module-user" class="page-info">
+        <div class="padding" style="padding-top:60px;">
+            <div class="avatar text-center">
+                <img ng-src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+            </div>
+        </div>
+
+
+        <div class="padding">
+            <form name="ngForm" ng-submit="signIn()">
+                <p class="h4 text-center">Sign in</p>
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Phone</span>
+                        <input ng-model="user.phone" required ng-minlength="11" type="number" placeholder="">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input ng-model="user.password" required ng-minlength="6" type="password" placeholder="">
+                    </label>
+                </div>
+
+                <button ng-disabled="ngForm.$invalid" class="button button-block">Sign In</button>
+            </form>
+
+            <div style="margin-top:4px;">
+                <a>Forget password</a>
+                <a ui-sref="hey.user-signUp" class="pull-right">Sign Up</a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

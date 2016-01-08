@@ -1,0 +1,58 @@
+<ion-view view-title="{{ appSiteTitle }}" cache-view="false">
+    <ion-content id="module-user" class="page-info">
+        <div class="padding" style="padding-top:60px;">
+            <div class="avatar text-center">
+                <img ng-src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+            </div>
+            <div class="text-center">
+                {{ user.nickname }}
+            </div>
+        </div>
+
+        <div ng-hide="isAuth()" class="padding text-center">
+            <div class="text-center">
+                Please Sign In
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <a class="button button-block" ui-sref="hey.user-signIn">Sign Up</a>
+                </div>
+                <div class="col">
+                    <a class="button button-block button-positive" ui-sref="hey.user-signIn">Sign In</a>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="isAuth()">
+            <div class="padding"></div>
+
+            <div class="list">
+                <a class="item item-icon-left" href="#">
+                    <i class="icon ion-person"></i>
+                    我的信息
+                </a>
+                <a class="item item-icon-left">
+                    <i class="icon ion-heart"></i>
+                    我关注的用户
+                </a>
+                <a class="item item-icon-left">
+                    <i class="icon ion-person-stalker"></i>
+                    关注我的用户
+                </a>
+            </div>
+
+            <div class="padding"></div>
+
+            <div class="list">
+                <a class="item item-icon-left" ui-sref="hey.user-setup">
+                    <i class="icon ion-gear-a"></i>
+                    设置
+                </a>
+            </div>
+
+            <div class="padding"></div>
+        </div>
+
+    </ion-content>
+</ion-view>

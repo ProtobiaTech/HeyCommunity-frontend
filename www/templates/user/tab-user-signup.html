@@ -1,0 +1,57 @@
+<ion-view view-title="{{ appSiteTitle }}">
+    <ion-content id="module-user" class="page-info">
+        <div class="padding" style="padding-top:60px;">
+            <div class="avatar text-center">
+                <img ng-src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+            </div>
+        </div>
+
+        <div class="padding">
+            <!-- step of 1 -->
+            <form ng-show="signUpStep == 1" name="ngFormSignUpVerify" ng-submit="signUpVerify()">
+                <p class="h4 text-center">Sign Up</p>
+
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Phone</span>
+                        <input ng-model="user.phone" name="phone" type="number" required ng-minlength="11">
+                    </label>
+
+                    <label class="item item-input">
+                        <span class="input-label">Captcha</span>
+                        <input ng-model="user.captcha" name="captcha" type="text" required ng-minlength="4">
+
+                        <button type="button" class="button button-small" ng-click="getCaptcha()">Get Captcha</button>
+                    </label>
+                </div>
+
+                <button ng-disabled="ngFormSignUpVerify.$invalid" class="button button-block">Next</button>
+            </form>
+
+
+            <!-- step of 2 -->
+            <form ng-show="signUpStep == 2" name="ngFormSignUp" ng-submit="signUp()">
+                <p class="h4 text-center">Sign Up</p>
+
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Phone</span>
+                        <input name="phone" type="number" required ng-value="user.phone" disabled>
+                    </label>
+
+                    <label class="item item-input">
+                        <span class="input-label">Password</span>
+                        <input ng-model="user.password" name="password" type="text" required type="text" placeholder="">
+                    </label>
+                </div>
+
+                <button ng-disabled="ngFormSignUp.$invalid" class="button button-block">Sign Up</button>
+            </form>
+
+            <div style="margin-top:4px;">
+                <a ng-if="signUpStep == 2" ng-click="setVal('signUpStep', 1)" class="">Prev</a>
+                <a ui-sref="hey.user-signIn" class="pull-right">Sign In</a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

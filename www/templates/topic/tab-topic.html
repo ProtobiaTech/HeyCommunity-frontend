@@ -1,5 +1,10 @@
 <ion-view view-title="{{ 'Topic' }}">
     <ion-content id="module-topic">
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+
         <div class="row">
             <div class="col col-50">
                 <a class="button button-light button-small button-block">
@@ -18,16 +23,20 @@
             </div>
         </div>
 
-        <div class="list hey-list">
-            <a ui-sref="hey.topic-detail" class="item item-avatar item-icon-right" href="#" ng-repeat="item in [1,2,3,4,5,6,7,8,9,10,11,12]">
-                <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-                <h2>Today is nice day</h2>
-                <p>Back off, man. I'm a scientist.</p>
-
-                <i class="icon ion-ios-arrow-right"></i>
-            </a>
+        <div class="list">
+            <div ng-repeat="item in [1,2,3,4,5,6]" class="item item-activity item-thumbnail-left item-text-wrap" style="">
+                <img class="avatar" ng-src="http://lorempixel.com/200/200/?28420" src="http://lorempixel.com/200/200/?28420">
+                <h2 class="title ng-binding">Aut mollitia maiores et ea quia consequatur.</h2>
+                <p class="content ng-binding">
+                    Dignissimos voluptatem autem necessitatibus itaque quia repellendus et. Velit est velit repudiandae a ullam libero. 
+                </p>
+            </div>
         </div>
 
-        <div class="padding"></div>
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            immediate-check="false"
+            distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

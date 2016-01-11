@@ -12,16 +12,6 @@ HeyCommunity
     templateUrl: 'templates/tabs.html'
   })
 
-  // deving
-  .state('hey.deving', {
-    url: '/deving',
-    views: {
-      'tab-deving': {
-        templateUrl: 'templates/tab-deving.html',
-      }
-    }
-  })
-
   // plus
   .state('hey.plus', {
     url: '/plus',
@@ -175,6 +165,29 @@ HeyCommunity
       'tab-topic': {
         templateUrl: 'templates/topic/tab-topic-reply.html',
         // controller: 'TopicController'
+      }
+    }
+  })
+
+
+
+  // talk
+  .state('hey.talk', {
+    url: '/talk',
+    views: {
+      'tab-talk': {
+        templateUrl: 'templates/talk/tab-talk.html',
+        // controller: ''
+      }
+    }
+  })
+
+  .state('hey.talk-ing', {
+    url: '/talk/ing',
+    views: {
+      'tab-talk': {
+        templateUrl: 'templates/talk/tab-talk-ing.html',
+        // controller: ''
       }
     }
   })

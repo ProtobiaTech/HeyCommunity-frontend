@@ -127,16 +127,59 @@ HeyCommunity
   })
 
 
+
   // topic
   .state('hey.topic', {
     url: '/topic',
     views: {
       'tab-topic': {
-        templateUrl: 'templates/tab-topic.html',
+        templateUrl: 'templates/topic/tab-topic.html',
         // controller: 'TopicController'
       }
     }
   })
+
+  .state('hey.topic-new', {
+    url: '/topic-new',
+    views: {
+      'tab-topic': {
+        // templateUrl: 'templates/tab-reply.html',
+        // controller: 'TopicController'
+      }
+    }
+  })
+
+  .state('hey.topic-edit', {
+    url: '/topic-edit',
+    views: {
+      'tab-topic': {
+        // templateUrl: 'templates/tab-reply.html',
+        // controller: 'TopicController'
+      }
+    }
+  })
+
+  .state('hey.topic-detail', {
+    url: '/topic-detail',
+    views: {
+      'tab-topic': {
+        templateUrl: 'templates/topic/tab-topic-detail.html',
+        // controller: 'TopicController'
+      }
+    }
+  })
+
+  .state('hey.topic-reply', {
+    url: '/topic-reply',
+    views: {
+      'tab-topic': {
+        templateUrl: 'templates/topic/tab-topic-reply.html',
+        // controller: 'TopicController'
+      }
+    }
+  })
+
+
 
   // group
   .state('hey.group', {

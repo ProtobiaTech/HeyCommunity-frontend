@@ -1,0 +1,43 @@
+<ion-view view-title="{{ 'Topic Detail' }}">
+    <ion-content id="module-topic">
+        <div class="list card">
+            <div class="item item-avatar">
+                <img src="http://ionicframework.com/img/docs/mcfly.jpg">
+                <h2>Marty McFly</h2>
+                <p>November 05, 1955</p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg">
+                <p>
+                This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
+                the content is from a card-body consisting of an image and paragraph text. The footer
+                consists of tabs, icons aligned left, within the card-footer.
+                </p>
+                <p>
+                    <a href="#" class="subdued">1 Like</a>
+                    <a href="#" class="subdued">5 Reply</a>
+                    <a href="#" class="pull-right subdued">New Reply</a>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="list card" ng-repeat="item in [1,2,3,4,5,6]">
+            <div class="item item-body" style="padding:0;">
+                <div class="row">
+                    <div class="col col-10">
+                        <img style="width:100%; border-radius:50%;" src="http://ionicframework.com/img/docs/blue-album.jpg">
+                    </div>
+                    <div class="col" style="font-size:14px;">
+                        This is a basic Card which contains an item that has wrapping text.
+                        This is a basic Card which contains an item that has wrapping text.
+                        This is a basic Card which contains an item that has wrapping text.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class=""></div>
+    </ion-content>
+</ion-view>

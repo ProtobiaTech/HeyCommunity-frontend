@@ -1,0 +1,33 @@
+<ion-view view-title="{{ 'Topic' }}">
+    <ion-content id="module-topic">
+        <div class="row">
+            <div class="col col-50">
+                <a class="button button-light button-small button-block">
+                    &nbsp;
+                    Select node <i class="ion-arrow-down-b"></i>
+                </a>
+            </div>
+            <div class="col">
+                <a style="white-space:nowrap; overflow:hidden;" class="button button-light button-small button-block">Recent</a>
+            </div>
+            <div class="col">
+                <a style="white-space:nowrap; overflow:hidden;" class="button button-light button-small button-block">Excellent</a>
+            </div>
+            <div class="col">
+                <a style="white-space:nowrap; overflow:hidden;" class="button button-light button-small button-block">Vote</a>
+            </div>
+        </div>
+
+        <div class="list hey-list">
+            <a ui-sref="hey.topic-detail" class="item item-avatar item-icon-right" href="#" ng-repeat="item in [1,2,3,4,5,6,7,8,9,10,11,12]">
+                <img src="http://ionicframework.com/img/docs/mcfly.jpg">
+                <h2>Today is nice day</h2>
+                <p>Back off, man. I'm a scientist.</p>
+
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="padding"></div>
+    </ion-content>
+</ion-view>

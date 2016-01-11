@@ -9398,6 +9398,9 @@ a.button {
   -ms-flex-align: center;
   align-items: center; }
 
+.hey-list .item.item-icon-right .icon.ion-ios-arrow-forward, .hey-list .item.item-icon-right .icon.ion-ios-arrow-right {
+  color: #ddd; }
+
 #module-timeline .scroll {
   padding-top: 10px;
   background-color: #ecf0f1; }
@@ -9465,7 +9468,7 @@ a.button {
     height: 60px;
     overflow: hidden; }
 
-#module-user.page-info .avatar img {
+#module-user.page-user .avatar img {
   width: 120px;
   height: 120px;
   border-radius: 50%; }

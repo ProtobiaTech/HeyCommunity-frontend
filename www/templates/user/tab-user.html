@@ -1,8 +1,9 @@
-<ion-view view-title="{{ appSiteTitle }}" cache-view="false">
-    <ion-content id="module-user" class="page-info">
+<ion-view view-title="{{ 'User Center' }}" cache-view="false">
+    <ion-content id="module-user" class="page-user">
         <div class="padding" style="padding-top:60px;">
             <div class="avatar text-center">
                 <img ng-src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                <img ng-if="false" ng-src="{{ getPicUrl(item.author.avatar) }}">
             </div>
             <div class="text-center">
                 {{ user.nickname }}
@@ -28,7 +29,7 @@
             <div class="padding"></div>
 
             <div class="list">
-                <a class="item item-icon-left" href="#">
+                <a class="item item-icon-left" ui-sref="hey.user-info">
                     <i class="icon ion-person"></i>
                     我的信息
                 </a>

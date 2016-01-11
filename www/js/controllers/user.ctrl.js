@@ -86,6 +86,7 @@ HeyCommunity
 
 // tab.user-info
 .controller('UserInfoCtrl', function($scope, UserService) {
+    $scope.user = JSON.parse(localStorage.user);
 })
 
 

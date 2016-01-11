@@ -28,6 +28,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // modules
 @import
+"components/components",
+
 "modules/timeline",
 "modules/activity",
 "modules/user";

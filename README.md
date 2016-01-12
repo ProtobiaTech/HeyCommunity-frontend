@@ -81,4 +81,4 @@ QQ Group: 242078519
 
 
 ## License
-[GBLv3](http://www.gnu.org/licenses/gpl.html)
+[GPLv3](http://www.gnu.org/licenses/gpl.html)

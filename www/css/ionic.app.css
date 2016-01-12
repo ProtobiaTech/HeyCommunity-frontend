@@ -9468,6 +9468,21 @@ a.button {
     height: 60px;
     overflow: hidden; }
 
+#module-topic .list .item-activity {
+  padding-bottom: 0;
+  min-height: 95px !important; }
+  #module-topic .list .item-activity .avatar {
+    height: auto !important;
+    vertical-align: bottom;
+    min-height: 95px !important; }
+  #module-topic .list .item-activity .title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; }
+  #module-topic .list .item-activity .content {
+    height: 60px;
+    overflow: hidden; }
+
 #module-user .hey-avatar img {
   width: 120px;
   height: 120px;

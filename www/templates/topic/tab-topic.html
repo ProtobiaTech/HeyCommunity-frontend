@@ -24,11 +24,11 @@
         </div>
 
         <div class="list">
-            <div ng-repeat="item in [1,2,3,4,5,6]" class="item item-activity item-thumbnail-left item-text-wrap" style="">
-                <img class="avatar" ng-src="http://lorempixel.com/200/200/?28420" src="http://lorempixel.com/200/200/?28420">
-                <h2 class="title ng-binding">Aut mollitia maiores et ea quia consequatur.</h2>
+            <div ng-repeat="item in topics" class="item item-activity item-thumbnail-left item-text-wrap" style="">
+                <img class="avatar" ng-src="{{ item.avatar }}">
+                <h2 class="title ng-binding">{{ item.title }}</h2>
                 <p class="content ng-binding">
-                    Dignissimos voluptatem autem necessitatibus itaque quia repellendus et. Velit est velit repudiandae a ullam libero. 
+                    {{ item.content }}
                 </p>
             </div>
         </div>

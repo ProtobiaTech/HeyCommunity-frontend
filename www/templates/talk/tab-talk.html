@@ -1,15 +1,15 @@
 <ion-view view-title="{{ 'Talk' }}">
     <ion-content id="module-topic">
         <div class="list hey-list">
-            <a ui-sref="hey.talk-ing" class="item item-avatar" href="#" ng-repeat="item in [1,2,3,4,5,6,7,8,9,10,11,12]">
-                <img src="http://ionicframework.com/img/docs/mcfly.jpg">
+            <a ui-sref="hey.talk-ing" class="item item-avatar" href="#" ng-repeat="item in talks">
+                <img ng-src="{{ item.avatar }}">
                 <h2>
-                    Jack
+                    {{ item.nickname }}
                     <span class="pull-right" style="font-size:12px; color:#666; line-height:19px;">
-                        Today, 12:20
+                        Today, {{ item.created_at.substring(14) }}
                     </span>
                 </h2>
-                <p>I will be back</p>
+                <p>say something ...</p>
             </a>
         </div>
 

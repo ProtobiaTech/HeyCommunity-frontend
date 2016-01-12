@@ -124,7 +124,7 @@ HeyCommunity
     views: {
       'tab-topic': {
         templateUrl: 'templates/topic/tab-topic.html',
-        // controller: 'TopicController'
+        controller: 'TopicCtrl'
       }
     }
   })
@@ -177,7 +177,7 @@ HeyCommunity
     views: {
       'tab-talk': {
         templateUrl: 'templates/talk/tab-talk.html',
-        // controller: ''
+        controller: 'TalkCtrl'
       }
     }
   })
@@ -187,7 +187,7 @@ HeyCommunity
     views: {
       'tab-talk': {
         templateUrl: 'templates/talk/tab-talk-ing.html',
-        // controller: ''
+        controller: 'TalkIngCtrl'
       }
     }
   })

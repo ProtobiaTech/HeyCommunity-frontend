@@ -8,8 +8,7 @@
         <div ng-repeat="item in timelines" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">
-                    <img ng-if="false" ng-src="{{ getPicUrl(item.author.avatar) }}">
-                    <img ng-src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                    <img ng-src="{{ getPicUrl(item.author.avatar) }}">
                 </div>
                 <div class="pull-left">
                     <div class="name">{{ item.author.nickname }}</div>

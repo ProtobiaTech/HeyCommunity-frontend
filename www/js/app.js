@@ -3,6 +3,7 @@
 var HeyCommunity = angular.module('starter', [
     'ionic',
     'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
+    'pascalprecht.translate',
 ])
 
 .run(function($ionicPlatform, $rootScope, $state, SystemService, $ionicLoading) {
@@ -56,7 +57,8 @@ var HeyCommunity = angular.module('starter', [
     })
 })
 
-.config(function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider) {
+.config(function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
+    $translateProvider.preferredLanguage('en');
 
     $ionicFilterBarConfigProvider.theme('light');
     $ionicFilterBarConfigProvider.clear('ion-close');

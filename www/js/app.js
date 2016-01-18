@@ -49,7 +49,7 @@ var HeyCommunity = angular.module('starter', [
 
     // loading state
     $rootScope.$on('loading:show', function() {
-        $ionicLoading.show({template: 'loading ... '})
+        $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})
     })
     $rootScope.$on('loading:hide', function() {
         $ionicLoading.hide()

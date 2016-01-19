@@ -26,10 +26,6 @@ HeyCommunity
 
 // tab.user-signIn
 .controller('UserSignInCtrl', function($scope, UserService) {
-    if (localStorage.user) {
-        $scope.state.go('hey.user');
-    }
-
     $scope.user = {};
     $scope.formError = {};
 
@@ -52,10 +48,6 @@ HeyCommunity
 
 // tab.user-signUp
 .controller('UserSignUpCtrl', function($scope, UserService) {
-    if (localStorage.user) {
-        $scope.state.go('hey.user');
-    }
-
     $scope.user = {};
     $scope.signUpStep = 1;
     $scope.formError = {};

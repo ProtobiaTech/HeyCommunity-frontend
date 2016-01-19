@@ -1,56 +1,75 @@
-<ion-view view-title="{{ appSiteTitle }}">
+<ion-view view-title="{{ 'SIGN_UP' | translate}} | {{ appSiteTitle }}">
     <ion-content id="module-user" class="page-signup">
         <div class="padding" style="padding-top:60px;">
             <div class="hey-avatar text-center">
-                <img ng-src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                <img ng-src="/imgs/userAvatar-default.png">
             </div>
         </div>
 
         <div class="padding">
             <!-- step of 1 -->
-            <form ng-show="signUpStep == 1" name="ngFormSignUpVerify" ng-submit="signUpVerify()">
-                <p class="h4 text-center">Sign Up</p>
+            <form ng-show="signUpStep == 1" name="ngFormSignUpVerify" ng-submit="signUpVerifyCaptcha()">
+                <p class="h4 text-center">{{ 'SIGN_UP' | translate }}</p>
 
                 <div class="list">
                     <label class="item item-input">
-                        <span class="input-label">Phone</span>
-                        <input ng-model="user.phone" name="phone" type="number" required ng-minlength="11">
+                        <span class="input-label">{{ 'PHONE' | translate }}</span>
+                        <input ng-model="user.phone" name="phone" type="number" required ng-maxlength="11" ng-minlength="11">
                     </label>
 
                     <label class="item item-input">
-                        <span class="input-label">Captcha</span>
+                        <span class="input-label">{{ 'CAPTCHA' | translate }}</span>
                         <input ng-model="user.captcha" name="captcha" type="text" required ng-minlength="4">
 
-                        <button type="button" class="button button-small" ng-click="getCaptcha()">Get Captcha</button>
+                        <button type="button" class="button button-small" ng-click="getCaptcha()">{{ 'GET_CAPTCHA' | translate }}</button>
                     </label>
                 </div>
 
-                <button ng-disabled="ngFormSignUpVerify.$invalid" class="button button-block">Next</button>
+                <!-- form error -->
+                <div class="padding-top padding-bottom assertive">
+                    <div ng-repeat="item in formError">
+                        {{ item[0] }}
+                    </div>
+                </div>
+
+                <button ng-disabled="ngFormSignUpVerify.$invalid" class="button button-block">{{ 'NEXT' | translate }}</button>
             </form>
 
 
             <!-- step of 2 -->
             <form ng-show="signUpStep == 2" name="ngFormSignUp" ng-submit="signUp()">
-                <p class="h4 text-center">Sign Up</p>
+                <p class="h4 text-center">{{ 'SIGN_UP' | translate }}</p>
 
                 <div class="list">
                     <label class="item item-input">
-                        <span class="input-label">Phone</span>
+                        <span class="input-label">{{ 'PHONE' | translate }}</span>
                         <input name="phone" type="number" required ng-value="user.phone" disabled>
                     </label>
 
                     <label class="item item-input">
-                        <span class="input-label">Password</span>
-                        <input ng-model="user.password" name="password" type="text" required type="text" placeholder="">
+                        <span class="input-label">{{ 'NICKNAME' | translate }}</span>
+                        <input ng-model="user.nickname" name="nickname" type="text" required ng-minlength="3">
+                    </label>
+
+                    <label class="item item-input">
+                        <span class="input-label">{{ 'PASSWORD' | translate }}</span>
+                        <input ng-model="user.password" ng-minlength="6" name="password" type="text" required type="text" placeholder="">
                     </label>
                 </div>
 
-                <button ng-disabled="ngFormSignUp.$invalid" class="button button-block">Sign Up</button>
+                <!-- form error -->
+                <div class="padding-top padding-bottom assertive">
+                    <div ng-repeat="item in formError">
+                        {{ item[0] }}
+                    </div>
+                </div>
+
+                <button ng-disabled="ngFormSignUp.$invalid" class="button button-block">{{ 'SIGN_UP' | translate }}</button>
             </form>
 
             <div style="margin-top:4px;">
-                <a ng-if="signUpStep == 2" ng-click="setVal('signUpStep', 1)" class="">Prev</a>
-                <a ui-sref="hey.user-signIn" class="pull-right">Sign In</a>
+                <a ng-if="signUpStep == 2" ng-click="setVal('signUpStep', 1)" class="">{{ 'PREV' | translate }}</a>
+                <a ui-sref="hey.user-signIn" class="pull-right">{{ 'SIGN_IN' | translate }}</a>
             </div>
         </div>
     </ion-content>

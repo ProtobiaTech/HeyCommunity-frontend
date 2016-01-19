@@ -1,32 +1,39 @@
-<ion-view view-title="{{ appSiteTitle }}">
+<ion-view view-title="{{ 'SIGN_IN' | translate}} | {{ appSiteTitle }}">
     <ion-content id="module-user" class="page-signin">
         <div class="padding" style="padding-top:60px;">
             <div class="hey-avatar text-center">
-                <img ng-src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                <img ng-src="/imgs/userAvatar-default.png">
             </div>
         </div>
 
 
         <div class="padding">
             <form name="ngForm" ng-submit="signIn()">
-                <p class="h4 text-center">Sign in</p>
+                <p class="h4 text-center">{{ 'SIGN_IN' | translate }}</p>
                 <div class="list">
                     <label class="item item-input">
-                        <span class="input-label">Phone</span>
+                        <span class="input-label">{{ 'PHONE' | translate }}</span>
                         <input ng-model="user.phone" required ng-minlength="11" type="number" placeholder="">
                     </label>
                     <label class="item item-input">
-                        <span class="input-label">Password</span>
+                        <span class="input-label">{{ 'PASSWORD' | translate }}</span>
                         <input ng-model="user.password" required ng-minlength="6" type="password" placeholder="">
                     </label>
                 </div>
 
-                <button ng-disabled="ngForm.$invalid" class="button button-block">Sign In</button>
+                <!-- form error -->
+                <div class="padding-top padding-bottom assertive">
+                    <div ng-repeat="item in formError">
+                        {{ item[0] | translate }}
+                    </div>
+                </div>
+
+                <button ng-disabled="ngForm.$invalid" class="button button-block">{{ 'SIGN_IN' | translate }}</button>
             </form>
 
             <div style="margin-top:4px;">
-                <a>Forget password</a>
-                <a ui-sref="hey.user-signUp" class="pull-right">Sign Up</a>
+                <a>{{ 'FORGET_PASSWORD' | translate }}</a>
+                <a ui-sref="hey.user-signUp" class="pull-right">{{ 'SIGN_UP' | translate }}</a>
             </div>
         </div>
     </ion-content>

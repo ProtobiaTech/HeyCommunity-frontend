@@ -58,7 +58,7 @@ var HeyCommunity = angular.module('starter', [
 })
 
 .config(function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
-    $translateProvider.preferredLanguage('en');
+    $translateProvider.preferredLanguage('cn');
 
     $ionicFilterBarConfigProvider.theme('light');
     $ionicFilterBarConfigProvider.clear('ion-close');

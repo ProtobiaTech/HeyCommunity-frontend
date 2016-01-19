@@ -2,32 +2,42 @@ HeyCommunity
 
 .service('UserService', function($http) {
     // sign up verify
-    this.signUpVerify = function(params) {
-        return $http.post(getApiUrl('/user'), params);
+    this.signUpVerifyCaptcha = function(params) {
+        return $http.post(getApiUrl('/user/sign-up-verify-captcha'), params);
     }
 
     // sign up
     this.signUp = function(params) {
-        return $http.post(getApiUrl('/user'), params);
+        var q = $http.post(getApiUrl('/user/sign-up'), params);
+        q.then(function(response) {
+            if (response.status === 200) {
+                localStorage.user = JSON.stringify(response.data);
+            }
+        });
+        return q;
     }
 
     // sign in
     this.signIn = function(params) {
-        var queryStr = '?phone=' + params.phone + '&password=' + params.password;
-        return $http.get(getApiUrl('/user/sign-in' + queryStr)).then(function(response) {
-            localStorage.user = JSON.stringify(response.data);
-        })
+        var q = $http.post(getApiUrl('/user/sign-in'), params);
+        q.then(function(response) {
+            if (response.status === 200) {
+                localStorage.user = JSON.stringify(response.data);
+            }
+        });
+        return q;
     }
 
     // sign out
     this.signOut = function() {
-        return $http.get(getApiUrl('/timeline')).then(function(response) {
+        var q = $http.get(getApiUrl('/timeline'));
+        q.then(function(response) {
             localStorage.removeItem('user'); // todo remove
 
-            if (response.status) {
+            if (response.status === 200) {
                 localStorage.removeItem('user');
-            } else {
             }
         });
+        return q;
     }
 })

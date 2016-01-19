@@ -23,13 +23,15 @@ HeyCommunity
 })
 
 
+
 // tab.user-signIn
 .controller('UserSignInCtrl', function($scope, UserService) {
     if (localStorage.user) {
         $scope.state.go('hey.user');
     }
 
-    $scope.user = {phone: 17090402884, captcha: 1234, password: 'hey community'}
+    $scope.user = {};
+    $scope.formError = {};
 
     $scope.signIn = function() {
         var params = {
@@ -37,7 +39,11 @@ HeyCommunity
             password: $scope.user.password,
         }
         UserService.signIn(params).then(function(response) {
-            $scope.state.go('hey.user')
+            if (response.status === 200) {
+                $scope.state.go('hey.user')
+            } else {
+                $scope.formError = {1: ['PHONE_OR_PASSWORD_ERROR']};
+            }
         });
     }
 })
@@ -50,9 +56,9 @@ HeyCommunity
         $scope.state.go('hey.user');
     }
 
+    $scope.user = {};
     $scope.signUpStep = 1;
-    $scope.user = {phone: 17090402884, captcha: 1234}
-
+    $scope.formError = {};
 
     $scope.setVal = function(key, val) {
         $scope[key] = val;
@@ -66,19 +72,36 @@ HeyCommunity
     }
 
     // sign up verify
-    $scope.signUpVerify = function() {
+    $scope.signUpVerifyCaptcha = function() {
         params = {
             phone: $scope.user.phone,
             captcha: $scope.user.captcha,
         }
-        UserService.signUpVerify(params).then(function(response) {
-
-            $scope.signUpStep = 2;
+        UserService.signUpVerifyCaptcha(params).then(function(response) {
+            if (response.status === 200) {
+                $scope.signUpStep = 2;
+                $scope.formError = {};
+            } else {
+                $scope.formError = response.data;
+            }
         });
     }
 
     // sign up
     $scope.signUp = function () {
+        console.log($scope.user);
+        var params = {
+            nickname: $scope.user.nickname,
+            phone: $scope.user.phone,
+            password: $scope.user.password,
+        }
+        UserService.signUp(params).then(function(response) {
+            if (response.status === 200) {
+                $scope.state.go('hey.timeline');
+            } else {
+                $scope.formError = response.data;
+            }
+        });
     }
 })
 

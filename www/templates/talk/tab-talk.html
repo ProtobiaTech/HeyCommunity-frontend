@@ -2,7 +2,7 @@
     <ion-content id="module-topic">
         <div class="list hey-list">
             <a ui-sref="hey.talk-ing" class="item item-avatar" href="#" ng-repeat="item in talks">
-                <img ng-src="{{ item.avatar }}">
+                <img ng-src="{{ getPicUrl(item.avatar) }}">
                 <h2>
                     {{ item.nickname }}
                     <span class="pull-right" style="font-size:12px; color:#666; line-height:19px;">

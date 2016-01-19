@@ -4,9 +4,9 @@
 
         <div class="list hey-list">
             <a class="item item-avatar item-icon-right">
-                <img ng-src="/imgs/userAvatar-default.png">
+                <img ng-src="{{ getPicUrl(user.avatar) }}">
                 <h2>{{ user.nickname }}</h2>
-                <p>{{ '' }}</p>
+                <p>{{ 'This is motto' }}</p>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
             <a class="item item-icon-right">

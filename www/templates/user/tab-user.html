@@ -1,16 +1,12 @@
 <ion-view view-title="{{ 'User Center' }}" cache-view="false">
     <ion-content id="module-user" class="page-user">
-        <div class="padding" style="padding-top:60px;">
-            <div class="hey-avatar text-center">
-                <img ng-src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
-                <img ng-if="false" ng-src="{{ getPicUrl(item.author.avatar) }}">
-            </div>
-            <div class="text-center">
-                {{ user.nickname }}
-            </div>
-        </div>
-
         <div ng-hide="isAuth()" class="padding text-center">
+            <div class="" style="padding-top:60px;">
+                <div class="hey-avatar text-center">
+                    <img src="imgs/userAvatar-default.png">
+                </div>
+            </div>
+
             <div class="text-center">
                 {{ 'PLEASE_SIGN_IN' | translate }}
             </div>
@@ -26,6 +22,15 @@
         </div>
 
         <div ng-if="isAuth()">
+            <div class="" style="padding-top:60px;">
+                <div class="hey-avatar text-center">
+                    <img ng-src="{{ getPicUrl(user.avatar) }}">
+                </div>
+                <div class="text-center">
+                    {{ user.nickname }}
+                </div>
+            </div>
+
             <div class="padding"></div>
 
             <div class="list">

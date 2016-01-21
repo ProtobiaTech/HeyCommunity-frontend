@@ -75,7 +75,7 @@ var HeyCommunity = angular.module('starter', [
     $ionicConfigProvider.tabs.style('standard');    // Makes them all look the same across all OS
 
     // http provider config
-    $httpProvider.interceptors.push(function($rootScope) {
+    $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
         return {
             request: function(config) {
                 $rootScope.$broadcast('loading:show');
@@ -94,5 +94,5 @@ var HeyCommunity = angular.module('starter', [
                 return response;
             }
         }
-    })
+    }])
 }]);

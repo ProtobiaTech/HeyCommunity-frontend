@@ -8,7 +8,9 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var uglify = require('gulp-uglify');
 var clean = require('gulp-clean');
-var obfuscate = require('gulp-obfuscate');
+var ngmin = require('gulp-ngmin');
+var useref = require('gulp-useref');
+var gulpif = require('gulp-if');
 
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -53,17 +55,29 @@ gulp.task('git-check', function(done) {
   done();
 });
 
+
 // js minify
 gulp.task('js-minify', ['clear-all-js'], function() {
-  // return gulp.src(['./www/js/*.js', './www/js/*/*.js'])
-  // return gulp.src(['./www/js/app.js', './www/js/controllers/timeline.ctrl.js'])
-  return gulp.src(['./www/js/controllers/timeline.ctrl.js'])
-    .pipe(concat('all.hey-community.js'))
+  return gulp.src([
+      './www/js/*.js',
+      './www/js/*/*.js',
+    ])
+    .pipe(concat('all.hey-community.min.js'))
+    .pipe(ngmin())
+    // .pipe(uglify({mangle: false}))
     .pipe(uglify())
-    // .pipe(obfuscate())
     .pipe(gulp.dest('./www/js'));
 });
 gulp.task('clear-all-js', function() {
-  return gulp.src('./www/js/all.hey-community.js', {read: false})
+  return gulp.src('./www/js/all.hey-community.min.js', {read: false})
     .pipe(clean());
+});
+
+
+// publish index.html
+gulp.task('html', function () {
+  return gulp.src('./www/index.html')
+    .pipe(useref())
+    .pipe(gulpif('*.js', uglify()))
+    .pipe(gulp.dest('www'));
 });

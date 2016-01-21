@@ -6,7 +6,7 @@ var HeyCommunity = angular.module('starter', [
     'pascalprecht.translate',
 ])
 
-.run(function($ionicPlatform, $rootScope, $state, SystemService, $ionicLoading) {
+.run(['$ionicPlatform', '$rootScope', '$state', 'SystemService', '$ionicLoading', function($ionicPlatform, $rootScope, $state, SystemService, $ionicLoading) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
         setTimeout(function () {
@@ -55,9 +55,9 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.$on('loading:hide', function() {
         $ionicLoading.hide()
     })
-})
+}])
 
-.config(function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
+.config(['$ionicFilterBarConfigProvider', '$ionicConfigProvider', '$httpProvider', '$translateProvider', function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
     $translateProvider.preferredLanguage('cn');
 
     $ionicFilterBarConfigProvider.theme('light');
@@ -95,4 +95,4 @@ var HeyCommunity = angular.module('starter', [
             }
         }
     })
-});
+}]);

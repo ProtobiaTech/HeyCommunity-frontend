@@ -1,6 +1,6 @@
 HeyCommunity
 
-.config(function ($translateProvider) {
+.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.translations('en', {
         // User Tab
         PLEASE_SIGN_IN:     'Please Sign In',
@@ -8,4 +8,4 @@ HeyCommunity
         SIGN_IN:            'Sign In',
         MY_INFO:            'My Info',
     });
-});
+}]);

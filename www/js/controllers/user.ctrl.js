@@ -1,7 +1,7 @@
 HeyCommunity
 
 // tab.user
-.controller('UserIndexCtrl', function($scope, $rootScope) {
+.controller('UserIndexCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
     if (!localStorage.user) {
         /** auto jump to signIn page
         setTimeout(function() {
@@ -11,21 +11,21 @@ HeyCommunity
     } else {
         $scope.user = JSON.parse(localStorage.user);
     }
-})
+}])
 
 
 
 // tab.user-signOut
-.controller('UserSignOutCtrl', function($scope, UserService) {
+.controller('UserSignOutCtrl', ['$scope', 'UserService', function($scope, UserService) {
     UserService.signOut().then(function() {
         $scope.state.go('hey.user');
     });
-})
+}])
 
 
 
 // tab.user-signIn
-.controller('UserSignInCtrl', function($scope, UserService) {
+.controller('UserSignInCtrl', ['$scope', 'UserService', function($scope, UserService) {
     $scope.user = {};
     $scope.formError = {};
 
@@ -42,12 +42,12 @@ HeyCommunity
             }
         });
     }
-})
+}])
 
 
 
 // tab.user-signUp
-.controller('UserSignUpCtrl', function($scope, UserService) {
+.controller('UserSignUpCtrl', ['$scope', 'UserService', function($scope, UserService) {
     $scope.user = {};
     $scope.signUpStep = 1;
     $scope.formError = {};
@@ -95,17 +95,17 @@ HeyCommunity
             }
         });
     }
-})
+}])
 
 
 
 // tab.user-info
-.controller('UserInfoCtrl', function($scope, UserService) {
+.controller('UserInfoCtrl', ['$scope', 'UserService', function($scope, UserService) {
     $scope.user = JSON.parse(localStorage.user);
-})
+}])
 
 
 
 // tab.user-setup
-.controller('UserSetupCtrl', function($scope, UserService) {
-})
+.controller('UserSetupCtrl', ['$scope', 'UserService', function($scope, UserService) {
+}])

@@ -1,6 +1,6 @@
 HeyCommunity
 
-.config(function ($translateProvider) {
+.config(['$translateProvider', function ($translateProvider) {
     $translateProvider.translations('cn', {
         //
         // Common
@@ -30,4 +30,4 @@ HeyCommunity
         GET_CAPTCHA:        '获取验证码',
 
     });
-});
+}]);

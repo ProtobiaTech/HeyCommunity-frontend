@@ -1,6 +1,6 @@
 HeyCommunity
 
-.service('UserService', function($http) {
+.service('UserService', ['$http', function($http) {
     // sign up verify
     this.signUpVerifyCaptcha = function(params) {
         return $http.post(getApiUrl('/user/sign-up-verify-captcha'), params);
@@ -40,4 +40,4 @@ HeyCommunity
         });
         return q;
     }
-})
+}])

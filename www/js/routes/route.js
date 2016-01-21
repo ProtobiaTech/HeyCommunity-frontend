@@ -1,6 +1,6 @@
 HeyCommunity
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
   // default url
   $urlRouterProvider.otherwise('/timeline');
@@ -237,4 +237,4 @@ HeyCommunity
         }
   });
 
-});
+}]);

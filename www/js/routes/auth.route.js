@@ -1,6 +1,6 @@
 HeyCommunity
 
-.run(function($rootScope, $state) {
+.run(['$rootScope', '$state', function($rootScope, $state) {
     // Auth of Route
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         var requireNoSignInStates = [
@@ -23,4 +23,4 @@ HeyCommunity
             }
         }
     })
-});
+}]);

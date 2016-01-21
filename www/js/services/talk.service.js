@@ -1,7 +1,7 @@
 HeyCommunity
 
-.service('TalkService', function($http) {
+.service('TalkService', ['$http', function($http) {
     this.index = function() {
         return $http.get(getApiUrl('/talk'));
     }
-})
+}])

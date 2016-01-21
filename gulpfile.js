@@ -6,6 +6,9 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var uglify = require('gulp-uglify');
+var clean = require('gulp-clean');
+var obfuscate = require('gulp-obfuscate');
 
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -48,4 +51,19 @@ gulp.task('git-check', function(done) {
     process.exit(1);
   }
   done();
+});
+
+// js minify
+gulp.task('js-minify', ['clear-all-js'], function() {
+  // return gulp.src(['./www/js/*.js', './www/js/*/*.js'])
+  // return gulp.src(['./www/js/app.js', './www/js/controllers/timeline.ctrl.js'])
+  return gulp.src(['./www/js/controllers/timeline.ctrl.js'])
+    .pipe(concat('all.hey-community.js'))
+    .pipe(uglify())
+    // .pipe(obfuscate())
+    .pipe(gulp.dest('./www/js'));
+});
+gulp.task('clear-all-js', function() {
+  return gulp.src('./www/js/all.hey-community.js', {read: false})
+    .pipe(clean());
 });

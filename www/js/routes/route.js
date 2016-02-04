@@ -46,7 +46,7 @@ HeyCommunity
   })
 
   .state('hey.activity-detail', {
-    url: '/activity-detail',
+    url: '/activity-detail/:id',
     views: {
       'tab-activity': {
         templateUrl: 'templates/activity/tab-activity-detail.html',

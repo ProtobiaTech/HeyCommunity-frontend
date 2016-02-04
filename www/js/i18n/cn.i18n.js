@@ -52,6 +52,8 @@ HeyCommunity
         // ------------------------------
         ACTIVITY:               '活动',
         CREATE_ACTIVITY:        '创建活动',
+        COMMENT:                '评论',
+        ATTEND:                 '报名',
 
     });
 }]);

@@ -13,7 +13,6 @@ HeyCommunity
     $scope.activity = {};
 
     $scope.store = function() {
-        console.group('### ActivityCreateCtrl Store');
         var params = {
             title: $scope.activity.title,
             avatar: 'avatar', // @todo $scope.activity.avatar,
@@ -22,21 +21,75 @@ HeyCommunity
             end_date: $scope.activity.end_date,
         }
 
-        console.debug('## params', params);
+        console.debug('### ActivityService.store params', params);
         ActivityService.store(params).then(function(response) {
-            console.debug('## response', response);
-
+            console.debug('### ActivityService.store response', response);
             if (response.status == 200) {
                 $scope.state.go('hey.activity');
             } else {
                 $scope.formErrors = response.data;
             }
-            console.groupEnd();
         });
     }
 }])
 
 
-// hey.activity
+// hey.activity-detail
 .controller('ActivityDetailCtrl', ['$scope', 'ActivityService', function($scope, ActivityService) {
+    $scope.ActivityComment = {};
+
+    ActivityService.show({id: $scope.stateParams.id}).then(function(response) {
+        console.debug('### ActivityService.show response', response);
+        if (response.status == 200) {
+            $scope.Activity = response.data.Activity;
+            $scope.attends = response.data.attends;
+            $scope.comments = response.data.comments;
+        } else {
+            $scope.state.go('hey.activity');
+        }
+    });
+
+
+    // attend
+    $scope.attend = function() {
+        var params = {id: $scope.stateParams.id};
+        console.debug('### ActivityService.attend params', params);
+
+        ActivityService.attend(params).then(function(response) {
+            console.debug('### ActivityService.attend response', response);
+            if (response.status == 200) {
+                $scope.state.reload();
+            }
+        });
+    }
+
+
+    // like
+    $scope.like = function() {
+        var params = {id: $scope.stateParams.id};
+        console.debug('### ActivityService.like params', params);
+
+        ActivityService.like(params).then(function(response) {
+            console.debug('### ActivityService.like response', response);
+            if (response.status == 200) {
+                $scope.state.reload();
+            }
+        });
+    }
+
+
+    // comment publish
+    $scope.commentPublish = function() {
+        var params = {
+            id: $scope.stateParams.id,
+            content: $scope.ActivityComment.content,
+        }
+        console.debug('### ActivityService.commentPublish params', params);
+        ActivityService.commentPublish(params).then(function(response) {
+            console.debug('### ActivityService.commentPublish response', response);
+            if (response.status == 200) {
+                $scope.state.reload();
+            }
+        });
+    }
 }])

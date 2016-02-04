@@ -6,7 +6,7 @@ var HeyCommunity = angular.module('starter', [
     'pascalprecht.translate',
 ])
 
-.run(['$ionicPlatform', '$rootScope', '$state', 'SystemService', '$ionicLoading', function($ionicPlatform, $rootScope, $state, SystemService, $ionicLoading) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
         setTimeout(function () {
@@ -39,6 +39,7 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.getPicUrl = getPicUrl;
 
     $rootScope.state = $state;
+    $rootScope.stateParams = $stateParams;
 
     $rootScope.isAuth = function() {
         if (localStorage.user) {

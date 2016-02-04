@@ -1,32 +1,66 @@
-<ion-view view-title="Activity">
-    <ion-nav-buttons side="right">
-      <button class="button button-clear button-light icon ion-plus-round" ui-sref="hey.activity-create">
-      </button>
-    </ion-nav-buttons>
-
+<ion-view view-title="{{ 'ACTIVITY' | translate }}" cache-view="false">
     <ion-content id="module-activity" delegate-handle="agendaScrollDelegate">
-        <ion-refresher
-            pulling-text="Pull to refresh..."
-            on-refresh="doRefresh()">
-        </ion-refresher>
+        <div class="list card">
+            <div class="item item-avatar">
+                <img ng-if="Activity" ng-src="{{ getPicUrl(Activity.avatar) }}">
+                <h2>{{ Activity.title }}</h2>
+                <p>{{ Activity.created_at }}</p>
+            </div>
 
-        <div class="list">
-            <div class="item item-divider" ion-affix><i class="icon ion-calendar"></i> Near</div>
-            <div ng-repeat="item in activities" class="item item-activity item-thumbnail-left item-text-wrap">
-                <img class="avatar" ng-src="{{ getPicUrl(item.avatar) }}">
-                <h2 class="title">{{ item.title }}</h2>
-                <p class="content">{{ item.content }}</p>
+            <div class="item item-body">
+                <p style="margin-top:0;">
+                    {{ Activity.content }}
+                </p>
+                <div>
+                    <span class="pull-right">
+                        <a ng-click="like()" class="subdued"><i class="icon ion ion-heart"></i> {{ Activity.like_num }}</a>
+                        <a class="subdued"><i class="icon ion ion-chatboxes"></i> {{ Activity.comment_num }}</a>
+                    </span>
+
+                    <a class="subdued" ng-click="attend()">
+                        {{ 'ATTEND' | translate }}
+                        {{ Activity.attend_num }}
+                    </a>
+                </div>
+
+                <div ng-if="attends.length" style="margin-top:10px;">
+                    <img ng-repeat="item in attends | orderBy: '-created_at'" style="width:30px; margin-right:5px; border-radius:50%;" ng-if="Activity" ng-src="{{ getPicUrl(Activity.avatar) }}">
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Comment -->
+        <div class="list list-inset">
+            <div class="item item-divider">
+                {{ 'COMMENT' | translate }}
+            </div>
+            <form name="ngForm" ng-submit="commentPublish()">
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" ng-model="ActivityComment.content" required placeholder="">
+                    </label>
+                    <button ng-disabled="ngForm.$invalid" type="submit" class="button button-small">
+                        {{ 'PUBLISH' | translate }}
+                    </button>
+                </div>
+            </form>
+        </div>
+
+
+        <!-- Comment Card -->
+        <div class="card" ng-repeat="item in comments | orderBy: '-created_at'" style="margin-top:10px; margin-bottom:10px;">
+            <div class="item item-text-wrap" style="padding:0">
+                <div class="row">
+                    <div class="col col-10">
+                        <img style="width:100%" ng-src="{{ getPicUrl(item.author.avatar) }}">
+                    </div>
+                    <div class="col">
+                        {{ item.content }}
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div ng-if="activities && activities.length == 0" class="padding text-center">
-            No data
-        </div>
-
-        <ion-infinite-scroll
-            on-infinite="loadMore()"
-            immediate-check="false"
-            distance="1%">
-        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

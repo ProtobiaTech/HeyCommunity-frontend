@@ -1,0 +1,32 @@
+<ion-view view-title="Activity">
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-light icon ion-plus-round" ui-sref="hey.activity-create">
+      </button>
+    </ion-nav-buttons>
+
+    <ion-content id="module-activity" delegate-handle="agendaScrollDelegate">
+        <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div class="list">
+            <div class="item item-divider" ion-affix><i class="icon ion-calendar"></i> Near</div>
+            <div ng-repeat="item in activities" class="item item-activity item-thumbnail-left item-text-wrap">
+                <img class="avatar" ng-src="{{ getPicUrl(item.avatar) }}">
+                <h2 class="title">{{ item.title }}</h2>
+                <p class="content">{{ item.content }}</p>
+            </div>
+        </div>
+
+        <div ng-if="activities && activities.length == 0" class="padding text-center">
+            No data
+        </div>
+
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            immediate-check="false"
+            distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view cache-view="false"  view-title="{{ 'CREATE_ACTIVITY' | translate }}">
+    <ion-content id="module-activity">
+        <form name="ngForm" ng-submit="store()">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <span class="input-label">{{ 'TITLE' | translate }}</span>
+                    <input ng-model="activity.title" name="title" type="text" placeholder="{{ 'TITLE' | translate }}" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">{{ 'AVATAR' | translate }}</span>
+                    <i style="font-size:22px" class="stable icon ion-image"></i>
+                    <input class="hide" ng-model="activity.avatar" name="avatar" type="file">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">{{ 'START_DATE' | translate }}</span>
+                    <input ng-model="activity.start_date" name="start_date" type="text" placeholder="{{ 'START_DATE' | translate }}" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">{{ 'END_DATE' | translate }}</span>
+                    <input ng-model="activity.end_date" name="end_date" type="text" placeholder="{{ 'END_DATE' | translate }}" required>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">{{ 'CONTENT' | translate }}</span>
+                    <textarea ng-model="activity.content" rows="5" placeholder="{{ 'CONTENT' | translate }}" required></textarea>
+                </label>
+            </div>
+            <div class="padding">
+                <button ng-disabled="ngForm.$invalid" type="submit" class="button button-positive button-block">{{ 'PUBLISH' | translate }}</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

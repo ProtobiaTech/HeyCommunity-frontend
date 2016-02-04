@@ -13,7 +13,23 @@ HeyCommunity
         NEXT:               '下一步',
         PREV:               '上一步',
 
+        SUBMIT:             '提交',
+        CREATE:             '创建',
+        PUBLISH:            '发布',
+        EDIT:               '编辑',
+        UPDATE:             '更新',
+        DELETE:             '删除',
+        DESTROY:            '销毁',
+
         PHONE_OR_PASSWORD_ERROR:        '手机或密码错误',
+
+        // Form
+        AVATAR:             '头像',
+        TITLE:              '标题',
+        CONTENT:            '内容',
+        START_DATE:         '开始时间',
+        END_DATE:           '结束时间',
+
 
 
 
@@ -28,6 +44,14 @@ HeyCommunity
         PASSWORD:           '密码',
         CAPTCHA:            '验证码',
         GET_CAPTCHA:        '获取验证码',
+
+
+
+        //
+        // Activity tab
+        // ------------------------------
+        ACTIVITY:               '活动',
+        CREATE_ACTIVITY:        '创建活动',
 
     });
 }]);

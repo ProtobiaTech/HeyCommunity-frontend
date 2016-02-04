@@ -12,5 +12,11 @@ if (location.protocol === 'file:' || location.port === '80') {
 } else {
     APP_ENV_DEV     =   true;
 }
-
 // APP_ENV_DEV     =   false;
+
+
+if (!APP_ENV_DEV) {
+    var empty_func = function() {};
+    console.group = console.groupEnd = empty_func;
+    console.debug = empty_func;
+}

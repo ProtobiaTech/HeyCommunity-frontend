@@ -39,8 +39,28 @@ HeyCommunity
     url: '/activity',
     views: {
       'tab-activity': {
-        templateUrl: 'templates/tab-activity.html',
+        templateUrl: 'templates/activity/tab-activity.html',
         controller: 'ActivityCtrl'
+      }
+    }
+  })
+
+  .state('hey.activity-detail', {
+    url: '/activity-detail',
+    views: {
+      'tab-activity': {
+        templateUrl: 'templates/activity/tab-activity-detail.html',
+        controller: 'ActivityDetailCtrl'
+      }
+    }
+  })
+
+  .state('hey.activity-create', {
+    url: '/activity-create',
+    views: {
+      'tab-activity': {
+        templateUrl: 'templates/activity/tab-activity-create.html',
+        controller: 'ActivityCreateCtrl'
       }
     }
   })

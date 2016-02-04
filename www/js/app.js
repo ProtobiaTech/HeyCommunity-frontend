@@ -95,4 +95,5 @@ var HeyCommunity = angular.module('starter', [
             }
         }
     }])
+    $httpProvider.defaults.withCredentials = true;
 }]);

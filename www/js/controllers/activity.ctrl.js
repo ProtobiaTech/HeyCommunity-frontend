@@ -9,23 +9,25 @@ HeyCommunity
 
 
 // hey.activity
-.controller('ActivityCreateCtrl', ['$scope', 'ActivityService', function($scope, ActivityService) {
+.controller('ActivityCreateCtrl', ['$scope', 'ActivityService', 'Upload', function($scope, ActivityService, Upload) {
     $scope.activity = {};
 
     $scope.store = function() {
         var params = {
             title: $scope.activity.title,
-            avatar: 'avatar', // @todo $scope.activity.avatar,
+            avatar: $scope.activity.avatar,
             content: $scope.activity.content,
             start_date: $scope.activity.start_date,
             end_date: $scope.activity.end_date,
         }
 
         console.debug('### ActivityService.store params', params);
-        ActivityService.store(params).then(function(response) {
+        ActivityService.store(Upload, params).then(function(response) {
             console.debug('### ActivityService.store response', response);
             if (response.status == 200) {
-                $scope.state.go('hey.activity');
+                $scope.ionicHistory.clearCache().then(function(){
+                    $scope.state.go('hey.activity', {}, {reload: true});
+                });
             } else {
                 $scope.formErrors = response.data;
             }

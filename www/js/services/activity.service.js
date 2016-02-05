@@ -8,8 +8,11 @@ HeyCommunity
 
 
     // store
-    this.store = function(params) {
-        return $http.post(getApiUrl('/activity/store'), params);
+    this.store = function(http, params) {
+        return http.upload({
+            url: getApiUrl('/activity/store'),
+            data: params,
+        });
     }
 
 

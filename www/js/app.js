@@ -3,10 +3,10 @@
 var HeyCommunity = angular.module('starter', [
     'ionic',
     'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
-    'pascalprecht.translate',
+    'pascalprecht.translate', 'ngFileUpload',
 ])
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
         setTimeout(function () {
@@ -40,6 +40,7 @@ var HeyCommunity = angular.module('starter', [
 
     $rootScope.state = $state;
     $rootScope.stateParams = $stateParams;
+    $rootScope.ionicHistory = $ionicHistory;
 
     $rootScope.isAuth = function() {
         if (localStorage.user) {

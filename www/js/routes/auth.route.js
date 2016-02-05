@@ -9,12 +9,15 @@ HeyCommunity
         ];
 
         var requireSignInStates = [
+            'hey.timeline-create',
+            'hey.activity-create',
         ];
 
         if (!localStorage.user) {
             if (inArray(toState.name, requireSignInStates)) {
                 event.preventDefault();
                 $state.go('hey.user-signIn');
+                $rootScope.jumpRoute = toState.name;
             }
         } else {
             if (inArray(toState.name, requireNoSignInStates)) {

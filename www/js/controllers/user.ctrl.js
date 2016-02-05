@@ -36,7 +36,11 @@ HeyCommunity
         }
         UserService.signIn(params).then(function(response) {
             if (response.status === 200) {
-                $scope.state.go('hey.user')
+                if ($scope.jumpRoute) {
+                    $scope.state.go($scope.jumpRoute);
+                } else {
+                    $scope.state.go('hey.user');
+                }
             } else {
                 $scope.formError = {1: ['PHONE_OR_PASSWORD_ERROR']};
             }

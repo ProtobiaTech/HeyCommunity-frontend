@@ -28,8 +28,19 @@ HeyCommunity
     url: '/timeline',
     views: {
       'tab-timeline': {
-        templateUrl: 'templates/tab-timeline.html',
+        templateUrl: 'templates/timeline/tab-timeline.html',
         controller: 'TimelineCtrl'
+      }
+    }
+  })
+
+  // timeline-create
+  .state('hey.timeline-create', {
+    url: '/timeline-create',
+    views: {
+      'tab-timeline': {
+        templateUrl: 'templates/timeline/tab-timeline-create.html',
+        controller: 'TimelineCreateCtrl'
       }
     }
   })

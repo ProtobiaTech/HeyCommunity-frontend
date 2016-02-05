@@ -1,4 +1,9 @@
 <ion-view view-title="{{ appSiteTitle }}">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-light icon ion-plus-round" ui-sref="hey.timeline-create">
+        </button>
+    </ion-nav-buttons>
+
     <ion-content id="module-timeline" delegate-handle="agendaScrollDelegate">
         <ion-refresher
             pulling-text="Pull to refresh..."
@@ -24,18 +29,18 @@
             <div class="item item-footer" style="color:#ddd">
                 <div class="btns pull-right">
                     <a ng-if="false" class="icon ion-ios-heart"></a>
-                    <a ng-if="true" class="icon ion-ios-heart-outline"></a>
+                    <a ng-if="true" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
                     <a class="icon ion-more"></a>
                 </div>
                 <div>
-                    {{ item.id }}人喜欢
+                    {{ item.like_num }}人喜欢
                 </div>
             </div>
         </div>
 
         <div ng-if="timelines && timelines.length == 0" class="padding text-center">
-            No data
+            {{ 'NO_DATA' | translate }}
         </div>
 
         <ion-infinite-scroll

@@ -3,9 +3,10 @@
  */
 
 
+HOST= window.location.protocol + '//' + window.location.hostname;
 HOST_API        =   'http://api.hey-community.cn';
-HOST_API_DEV    =   'http://api.hey-community.local';
-HOST_API_DEV    =   'http://superods-macbook.local';
+HOST_API        =   HOST;
+HOST_API_DEV    =   HOST;
 
 
 // auto set APP_ENV_DEV

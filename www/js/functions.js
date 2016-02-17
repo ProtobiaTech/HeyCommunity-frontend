@@ -5,9 +5,9 @@
 // Get Api Url
 function getApiUrl(url) {
     if (APP_ENV_DEV) {
-        return HOST_API_DEV + url;
+        return HOST_API_DEV + '/api' + url;
     } else {
-        return HOST_API + url;
+        return HOST_API + '/api' + url;
     }
 }
 

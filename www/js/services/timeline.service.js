@@ -7,8 +7,11 @@ HeyCommunity
 
 
     // store
-    this.store = function(params) {
-        return $http.post(getApiUrl('/timeline/store'), params);
+    this.store = function(http, params) {
+        return http.upload({
+            url: getApiUrl('/timeline/store'),
+            data: params
+        });
     }
 
 

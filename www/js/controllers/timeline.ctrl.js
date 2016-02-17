@@ -28,17 +28,17 @@ HeyCommunity
 
 
 // hey.timeline-create
-.controller('TimelineCreateCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+.controller('TimelineCreateCtrl', ['$scope', 'TimelineService', 'Upload', function($scope, TimelineService, Upload) {
     $scope.Timeline = {};
 
     $scope.store = function() {
         var params = {
-            attachment: 'avatar', // @todo $scope.Timeline.avatar,
+            attachment: $scope.Timeline.avatar,
             content: $scope.Timeline.content,
         }
 
         console.debug('### TimelineService.store params', params);
-        TimelineService.store(params).then(function(response) {
+        TimelineService.store(Upload, params).then(function(response) {
             console.debug('### TimelineService.store response', response);
             if (response.status == 200) {
                 $scope.state.go('hey.timeline');

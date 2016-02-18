@@ -1,8 +1,13 @@
 HeyCommunity
 
 .service('TimelineService', ['$http', function($http) {
-    this.index = function() {
-        return $http.get(getApiUrl('/timeline'));
+    this.index = function(params) {
+        if (typeof(params) == 'object' && 'page' in params) {
+            var url = getApiUrl('/timeline') + '?page=' + params.page;
+        } else {
+            var url = getApiUrl('/timeline');
+        }
+        return $http.get(url);
     }
 
 

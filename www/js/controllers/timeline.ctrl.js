@@ -3,10 +3,13 @@ HeyCommunity
 // hey.timeline
 .controller('TimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
     TimelineService.index().then(function(response) {
-        $scope.timelines = response.data.data;
+        if (response.status == 200) {
+            $scope.timelines = response.data.data;
+            $scope.timelineCurrentPage = response.data.current_page;
+        }
     });
 
-
+    //
     // like
     $scope.like = function(id) {
         var params = {
@@ -23,6 +26,40 @@ HeyCommunity
                 })
             }
         })
+    }
+
+    //
+    // do refresh
+    $scope.doRefresh = function() {
+        $scope.timelines = {};
+
+        TimelineService.index().then(function(response) {
+            console.debug('### TimelineService.doRefresh response', response);
+            if (response.status == 200) {
+                $scope.timelines = response.data.data;
+                $scope.timelineCurrentPage = response.data.current_page;
+            }
+        }).finally(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+    }
+
+    //
+    // load more
+    $scope.loadMore = function() {
+        var params = {
+            page: $scope.timelineCurrentPage + 1,
+        }
+        console.debug('### TimelineService.loadMore params', params);
+        TimelineService.index(params).then(function(response) {
+            console.debug('### TimelineService.loadMore response', response);
+            if (response.status == 200) {
+                $scope.timelines = $scope.timelines.concat(response.data.data);
+                $scope.timelineCurrentPage = response.data.current_page;
+            }
+        }).finally(function() {
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
     }
 }])
 

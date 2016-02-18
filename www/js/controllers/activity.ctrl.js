@@ -3,8 +3,45 @@ HeyCommunity
 // hey.activity
 .controller('ActivityCtrl', ['$scope', 'ActivityService', function($scope, ActivityService) {
     ActivityService.index().then(function(response) {
-        $scope.activities = response.data.data;
+        if (response.status == 200) {
+            $scope.activities = response.data.data;
+            $scope.activityCurrentPage = response.data.current_page;
+        }
     });
+
+    //
+    // do refresh
+    $scope.doRefresh = function() {
+        $scope.activities = {};
+
+        ActivityService.index().then(function(response) {
+            console.debug('### ActivityService.doRefresh response', response);
+            if (response.status == 200) {
+                $scope.activities = response.data.data;
+                $scope.activityCurrentPage = response.data.current_page;
+            }
+        }).finally(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+    }
+
+    //
+    // load more
+    $scope.loadMore = function() {
+        var params = {
+            page: $scope.activityCurrentPage + 1,
+        }
+        console.debug('### ActivityService.loadMore params', params);
+        ActivityService.index(params).then(function(response) {
+            console.debug('### ActivityService.loadMore response', response);
+            if (response.status == 200) {
+                $scope.activities = $scope.activities.concat(response.data.data);
+                $scope.activityCurrentPage = response.data.current_page;
+            }
+        }).finally(function() {
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
+    }
 }])
 
 

@@ -2,8 +2,13 @@ HeyCommunity
 
 .service('ActivityService', ['$http', function($http) {
     // index
-    this.index = function() {
-        return $http.get(getApiUrl('/activity/index'));
+    this.index = function(params) {
+        if (typeof(params) == 'object' && 'page' in params) {
+            var url = getApiUrl('/activity') + '?page=' + params.page;
+        } else {
+            var url = getApiUrl('/activity');
+        }
+        return $http.get(url);
     }
 
 

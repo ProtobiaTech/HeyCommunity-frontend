@@ -1,7 +1,7 @@
 HeyCommunity
 
 // tab.user
-.controller('UserIndexCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+.controller('UserIndexCtrl', ['$scope', '$rootScope', '$translate', function($scope, $rootScope, $translate) {
     if (!localStorage.user) {
         /** auto jump to signIn page
         setTimeout(function() {
@@ -11,6 +11,17 @@ HeyCommunity
     } else {
         $scope.user = JSON.parse(localStorage.user);
     }
+
+    if (!localStorage.user_language) {
+          localStorage.user_language = 'cn';
+          $translate.use('cn');
+    }
+    $scope.user_language = localStorage.user_language;
+    $scope.changeLanguage = function(key) {
+        localStorage.user_language = key;
+        $scope.user_language = key;
+        $translate.use(key);
+    };
 }])
 
 

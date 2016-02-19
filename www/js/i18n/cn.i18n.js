@@ -9,10 +9,11 @@ HeyCommunity
         PLEASE_SIGN_IN:     '请登录',
         SIGN_UP:            '注册',
         SIGN_IN:            '登录',
+        USER_CENTER:        '用户中心',
+
         FORGET_PASSWORD:    '忘记密码',
         NEXT:               '下一步',
         PREV:               '上一步',
-
         SUBMIT:             '提交',
         CREATE:             '创建',
         PUBLISH:            '发布',
@@ -44,7 +45,7 @@ HeyCommunity
         PASSWORD:           '密码',
         CAPTCHA:            '验证码',
         GET_CAPTCHA:        '获取验证码',
-
+        EMAIL:              '邮箱',
 
 
         //
@@ -54,6 +55,34 @@ HeyCommunity
         CREATE_ACTIVITY:        '创建活动',
         COMMENT:                '评论',
         ATTEND:                 '报名',
+
+        //
+        //Timeline Tab
+        //
+        CREATE_TIMELINE:        '创建新事件',
+        //
+        //Set UP Tab
+        //--------------------------------
+        GENERAL:                '通用',
+        ACCOUNT_SECURITY:       '账号与安全',
+        PRIVACY:                '隐私',
+        FEEDBACK:               '建议反馈',
+        SOFT_INFO:              '软件信息',
+        SIGN_OFF:               '退出登录',
+
+        //Topic Tab
+        //--------------------------------
+        TOPIC:                  '主题',
+        SELECT_NODE:            '选择主题',
+        RECENT:                 '最近',
+        EXCELLENT:              '最佳',
+        VOTE:                   '热门',
+
+        //Talk Tab
+        //--------------------------------
+        TALK:                  '聊天',
+   
+
 
     });
 }]);

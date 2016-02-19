@@ -1,12 +1,18 @@
-<ion-view view-title="{{ 'User Center' }}" cache-view="false">
+<ion-view view-title="{{ 'USER_CENTER' | translate }}" cache-view="false">
     <ion-content id="module-user" class="page-user">
         <div ng-hide="isAuth()" class="padding text-center">
+
+            <div class="row">
+                <div class="col text-right">
+                    <button class="button  button-clear" ng-class="{'button-assertive': user_language=='cn'}" ng-click="changeLanguage('cn')">中文</button>
+                    <button class="button  button-clear" ng-class="{'button-assertive': user_language=='en'}" ng-click="changeLanguage('en')">English</button>
+                </div>
+            </div>
             <div class="" style="padding-top:60px;">
                 <div class="hey-avatar text-center">
                     <img src="imgs/userAvatar-default.png">
                 </div>
             </div>
-
             <div class="text-center">
                 {{ 'PLEASE_SIGN_IN' | translate }}
             </div>
@@ -19,6 +25,8 @@
                     <a class="button button-block button-positive" ui-sref="hey.user-signIn">{{ 'SIGN_IN' | translate }}</a>
                 </div>
             </div>
+
+           
         </div>
 
         <div ng-if="isAuth()">

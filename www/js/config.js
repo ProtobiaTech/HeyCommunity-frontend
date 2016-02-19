@@ -3,10 +3,12 @@
  */
 
 
-HOST= window.location.protocol + '//' + window.location.hostname;
-HOST_API        =   'http://api.hey-community.cn';
-HOST_API        =   HOST;
-HOST_API_DEV    =   HOST;
+HOST_API            =   'http://demo.hey-community.cn';
+if (window.location.protocol == 'http:' || window.location.protocol == 'https:') {
+    HOST_API_DEV    =   window.location.protocol + '//' + window.location.hostname;
+} else {
+    HOST_API_DEV    =   'http://superods-macbook.local';
+}
 
 
 // auto set APP_ENV_DEV
@@ -15,11 +17,11 @@ if (getParameterByName('deving') === 'true') {
 } else {
     APP_ENV_DEV     =   false;
 }
-// APP_ENV_DEV     =   false;
+// APP_ENV_DEV     =   true;
 
 
 if (!APP_ENV_DEV) {
-    var empty_func = function() {};
-    console.group = console.groupEnd = empty_func;
+    var empty_func = function() {
+    };
     console.debug = empty_func;
 }

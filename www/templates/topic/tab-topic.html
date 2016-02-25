@@ -5,6 +5,10 @@
             on-refresh="doRefresh()">
         </ion-refresher>
 
+        <div ng-hide="topics" class="padding text-center">
+            <ion-spinner></ion-spinner>
+        </div>
+
         <div class="row">
             <div class="col col-50">
                 <a class="button button-light button-small button-block">

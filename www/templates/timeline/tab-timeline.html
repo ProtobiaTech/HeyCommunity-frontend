@@ -10,6 +10,10 @@
             on-refresh="doRefresh()">
         </ion-refresher>
 
+        <div ng-hide="timelines" class="padding text-center">
+            <ion-spinner></ion-spinner>
+        </div>
+
         <div ng-repeat="item in timelines" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">

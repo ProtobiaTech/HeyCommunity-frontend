@@ -1,5 +1,10 @@
 <ion-view view-title="{{  'TALK' | translate }} ">
     <ion-content id="module-topic">
+
+        <div ng-hide="talks" class="padding text-center">
+            <ion-spinner></ion-spinner>
+        </div>
+
         <div class="list hey-list">
             <a ui-sref="hey.talk-ing" class="item item-avatar" href="#" ng-repeat="item in talks">
                 <img ng-src="{{ getPicUrl(item.avatar) }}">

@@ -50,7 +50,6 @@ var HeyCommunity = angular.module('starter', [
         }
     }
 
-    /**
     // loading state
     $rootScope.$on('loading:show', function() {
         $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})
@@ -58,7 +57,6 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.$on('loading:hide', function() {
         $ionicLoading.hide()
     })
-    */
 }])
 
 .config(['$ionicFilterBarConfigProvider', '$ionicConfigProvider', '$httpProvider', '$translateProvider', function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
@@ -89,13 +87,14 @@ var HeyCommunity = angular.module('starter', [
     $ionicConfigProvider.tabs.style('standard');    // Makes them all look the same across all OS
 
     // http provider config
-    /**
     $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
         return {
+            /*
             request: function(config) {
                 $rootScope.$broadcast('loading:show');
                 return config;
             },
+            */
             response: function(response) {
                 $rootScope.$broadcast('loading:hide');
                 return response;
@@ -110,5 +109,4 @@ var HeyCommunity = angular.module('starter', [
             }
         }
     }])
-    */
 }]);

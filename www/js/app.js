@@ -6,7 +6,7 @@ var HeyCommunity = angular.module('starter', [
     'pascalprecht.translate', 'ngFileUpload',
 ])
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
         setTimeout(function () {
@@ -42,6 +42,7 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.stateParams = $stateParams;
     $rootScope.ionicHistory = $ionicHistory;
 
+    UserService.userInfo();
     $rootScope.isAuth = function() {
         if (localStorage.user) {
             return true;

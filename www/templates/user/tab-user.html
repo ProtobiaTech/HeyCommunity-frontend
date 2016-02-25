@@ -1,6 +1,6 @@
 <ion-view view-title="{{ 'USER_CENTER' | translate }}" cache-view="false">
     <ion-content id="module-user" class="page-user">
-        <div ng-hide="isAuth()" class="padding text-center">
+        <div ng-if="!isAuth()" class="padding text-center">
             <div class="" style="padding-top:60px;">
                 <div class="hey-avatar text-center">
                     <img src="imgs/userAvatar-default.png">

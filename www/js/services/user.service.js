@@ -30,11 +30,22 @@ HeyCommunity
 
     // sign out
     this.signOut = function() {
-        var q = $http.get(getApiUrl('/timeline'));
+        var q = $http.get(getApiUrl('/user/sign-out'));
         q.then(function(response) {
-            localStorage.removeItem('user'); // todo remove
-
             if (response.status === 200) {
+                localStorage.removeItem('user');
+            }
+        });
+        return q;
+    }
+
+    // user info
+    this.userInfo = function() {
+        var q = $http.get(getApiUrl('/user/user-info'));
+        q.then(function(response) {
+            if (response.status === 200 && typeof(response.data) === 'object') {
+                localStorage.user = JSON.stringify(response.data);
+            } else {
                 localStorage.removeItem('user');
             }
         });

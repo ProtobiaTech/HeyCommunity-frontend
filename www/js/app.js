@@ -60,7 +60,17 @@ var HeyCommunity = angular.module('starter', [
 }])
 
 .config(['$ionicFilterBarConfigProvider', '$ionicConfigProvider', '$httpProvider', '$translateProvider', function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
-    $translateProvider.preferredLanguage('cn');
+    if (!localStorage.appLanguage) {
+        if (navigator.language) {
+            $translateProvider.preferredLanguage(navigator.language);
+            localStorage.appLanguage = navigator.language;
+        } else {
+            $translateProvider.preferredLanguage('zh-cn');
+            localStorage.appLanguage = 'zh-cn';
+        }
+    } else {
+        $translateProvider.preferredLanguage(localStorage.appLanguage);
+    }
 
     $ionicFilterBarConfigProvider.theme('light');
     $ionicFilterBarConfigProvider.clear('ion-close');

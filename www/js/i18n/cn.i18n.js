@@ -1,7 +1,7 @@
 HeyCommunity
 
 .config(['$translateProvider', function ($translateProvider) {
-    $translateProvider.translations('cn', {
+    $translateProvider.translations('zh-cn', {
         //
         // Common
         // ------------------------------
@@ -10,6 +10,8 @@ HeyCommunity
         SIGN_UP:            '注册',
         SIGN_IN:            '登录',
         USER_CENTER:        '用户中心',
+
+        LANGUAGE:           '语言',
 
         FORGET_PASSWORD:    '忘记密码',
         NEXT:               '下一步',
@@ -47,6 +49,9 @@ HeyCommunity
         GET_CAPTCHA:        '获取验证码',
         EMAIL:              '邮箱',
 
+        SETUP_GENERAL_LANGUAGE:         '语言设置',
+        SETUP_GENERAL:                  '通用设置',
+
 
         //
         // Activity tab
@@ -81,7 +86,7 @@ HeyCommunity
         //Talk Tab
         //--------------------------------
         TALK:                  '聊天',
-   
+
 
 
     });

@@ -147,6 +147,26 @@ HeyCommunity
     }
   })
 
+  .state('hey.user-setup-general', {
+    url: '/user/user-setup-general',
+    views: {
+      'tab-user': {
+        templateUrl: 'templates/user/tab-user-setup-general.html',
+        // controller: 'UserSetupGeneralCtrl'
+      }
+    }
+  })
+
+  .state('hey.user-setup-general-language', {
+    url: '/user/user-setup-general-language',
+    views: {
+      'tab-user': {
+        templateUrl: 'templates/user/tab-user-setup-general-language.html',
+        controller: 'UserSetupGeneralLanguageCtrl'
+      }
+    }
+  })
+
 
 
   // topic

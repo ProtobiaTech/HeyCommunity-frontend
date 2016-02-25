@@ -1,12 +1,14 @@
 HeyCommunity
 
 .config(['$translateProvider', function ($translateProvider) {
-    $translateProvider.translations('en', {
-        // User Taab      
+    $translateProvider.translations('en-us', {
+        // User Taab
         PLEASE_SIGN_IN:     'Please Sign In',
         SIGN_UP:            'Sign Up',
         SIGN_IN:            'Sign In',
         USER_CENTER:        'User Center',
+
+        LANGUAGE:           'Language',
 
         FORGET_PASSWORD:    'Forget Password',
         NEXT:               'Next Step',
@@ -44,6 +46,8 @@ HeyCommunity
         GET_CAPTCHA:        'Get SecCode',
         EMAIL:              'Email',
 
+        SETUP_GENERAL_LANGUAGE:         'Language Settings',
+        SETUP_GENERAL:                  'General Settings',
 
 
         //

@@ -11,17 +11,6 @@ HeyCommunity
     } else {
         $scope.user = JSON.parse(localStorage.user);
     }
-
-    if (!localStorage.user_language) {
-          localStorage.user_language = 'cn';
-          $translate.use('cn');
-    }
-    $scope.user_language = localStorage.user_language;
-    $scope.changeLanguage = function(key) {
-        localStorage.user_language = key;
-        $scope.user_language = key;
-        $translate.use(key);
-    };
 }])
 
 
@@ -123,4 +112,15 @@ HeyCommunity
 
 // tab.user-setup
 .controller('UserSetupCtrl', ['$scope', 'UserService', function($scope, UserService) {
+}])
+
+
+// tab.user-setup-general-language
+.controller('UserSetupGeneralLanguageCtrl', ['$scope', 'UserService', '$translate', function($scope, UserService, $translate) {
+    $scope.language = localStorage.appLanguage;
+
+    $scope.changeLanguage = function(language) {
+        localStorage.appLanguage = language;
+        $translate.use(language);
+    }
 }])

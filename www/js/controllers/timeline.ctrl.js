@@ -21,7 +21,7 @@ HeyCommunity
             if (response.status == 200) {
                 angular.forEach($scope.timelines, function(v) {
                     if (id == v.id) {
-                        v.like_num += 1;
+                        v.like_num = parseInt(v.like_num) + 1;
                     }
                 })
             }

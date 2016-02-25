@@ -62,6 +62,7 @@ var HeyCommunity = angular.module('starter', [
 
 .config(['$ionicFilterBarConfigProvider', '$ionicConfigProvider', '$httpProvider', '$translateProvider', function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
     if (!localStorage.appLanguage) {
+        /* default language
         if (navigator.language) {
             $translateProvider.preferredLanguage(navigator.language);
             localStorage.appLanguage = navigator.language;
@@ -69,6 +70,9 @@ var HeyCommunity = angular.module('starter', [
             $translateProvider.preferredLanguage('zh-cn');
             localStorage.appLanguage = 'zh-cn';
         }
+        */
+        $translateProvider.preferredLanguage('zh-cn');
+        localStorage.appLanguage = 'zh-cn';
     } else {
         $translateProvider.preferredLanguage(localStorage.appLanguage);
     }

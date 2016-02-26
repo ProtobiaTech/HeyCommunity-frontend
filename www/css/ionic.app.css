@@ -9455,7 +9455,8 @@ a.button {
 
 #module-activity .list .item-activity {
   padding-bottom: 0;
-  min-height: 95px !important; }
+  min-height: 95px !important;
+  overflow: hidden; }
   #module-activity .list .item-activity .avatar {
     height: auto !important;
     vertical-align: bottom;

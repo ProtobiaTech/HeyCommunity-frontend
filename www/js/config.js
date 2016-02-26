@@ -3,11 +3,13 @@
  */
 
 
-HOST_API            =   'http://demo.hey-community.cn';
 if (window.location.protocol == 'http:' || window.location.protocol == 'https:') {
-    HOST_API_DEV    =   window.location.protocol + '//' + window.location.hostname;
+    HOST_API        =   window.location.protocol + '//' + window.location.hostname;
+    HOST_API_DEV    =   'http://api.hey-community.cn';
 } else {
-    HOST_API_DEV    =   'http://superods-macbook.local';
+    HOST_API        =   'http://api.hey-community.cn';
+    // HOST_API_DEV    =   'http://superods-macbook.local';
+    HOST_API_DEV    =   'http://api.hey-community.cn';
 }
 
 

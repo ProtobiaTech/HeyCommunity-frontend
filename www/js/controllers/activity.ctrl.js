@@ -64,9 +64,7 @@ HeyCommunity
         ActivityService.store(Upload, params).then(function(response) {
             console.debug('### ActivityService.store response', response);
             if (response.status == 200) {
-                $scope.ionicHistory.clearCache().then(function(){
-                    $scope.state.go('hey.activity', {}, {reload: true});
-                });
+                $scope.state.go('hey.activity', {}, {reload: true});
             } else {
                 $scope.formErrors = response.data;
             }

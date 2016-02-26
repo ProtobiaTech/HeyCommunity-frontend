@@ -1,4 +1,9 @@
 <ion-view view-title="{{ 'TOPIC' | translate}}">
+    <div class="padding text-center" style="color:#fff; position:absolute; padding-top:220px; top:0px; width:100%; height:100%; background-color:rgba(100,100,100,0.3);">
+        Deving ... <br>
+        功能正在开发 ...
+    </div>
+
     <ion-content id="module-topic">
         <ion-refresher
             pulling-text="Pull to refresh..."
@@ -36,11 +41,5 @@
                 </p>
             </div>
         </div>
-
-        <ion-infinite-scroll
-            on-infinite="loadMore()"
-            immediate-check="false"
-            distance="1%">
-        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

@@ -50,6 +50,8 @@ HeyCommunity
     $scope.activity = {};
 
     $scope.store = function() {
+        $scope.$root.$broadcast('loading:show');
+
         var params = {
             title: $scope.activity.title,
             avatar: $scope.activity.avatar,
@@ -91,6 +93,8 @@ HeyCommunity
 
     // attend
     $scope.attend = function() {
+        $scope.$root.$broadcast('loading:show');
+
         var params = {id: $scope.stateParams.id};
         console.debug('### ActivityService.attend params', params);
 
@@ -105,6 +109,8 @@ HeyCommunity
 
     // like
     $scope.like = function() {
+        $scope.$root.$broadcast('loading:show');
+
         var params = {id: $scope.stateParams.id};
         console.debug('### ActivityService.like params', params);
 
@@ -119,6 +125,8 @@ HeyCommunity
 
     // comment publish
     $scope.commentPublish = function() {
+        $scope.$root.$broadcast('loading:show');
+
         var params = {
             id: $scope.stateParams.id,
             content: $scope.ActivityComment.content,

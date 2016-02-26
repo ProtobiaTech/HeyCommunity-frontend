@@ -69,6 +69,8 @@ HeyCommunity
     $scope.Timeline = {};
 
     $scope.store = function() {
+        $scope.$root.$broadcast('loading:show');
+
         var params = {
             attachment: $scope.Timeline.avatar,
             content: $scope.Timeline.content,

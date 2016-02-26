@@ -48,6 +48,7 @@ HeyCommunity
         CAPTCHA:            '验证码',
         GET_CAPTCHA:        '获取验证码',
         EMAIL:              '邮箱',
+        NICKNAME:           '昵称',
 
         SETUP_GENERAL_LANGUAGE:         '语言设置',
         SETUP_GENERAL:                  '通用设置',

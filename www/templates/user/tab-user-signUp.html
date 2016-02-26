@@ -8,7 +8,7 @@
 
         <div class="padding">
             <!-- step of 1 -->
-            <form ng-show="signUpStep == 1" name="ngFormSignUpVerify" ng-submit="signUpVerifyCaptcha()">
+            <form ng-if="signUpStep == 1" name="ngFormSignUpVerify" ng-submit="signUpVerifyCaptcha()">
                 <p class="h4 text-center">{{ 'SIGN_UP' | translate }}</p>
 
                 <div class="list">
@@ -17,9 +17,9 @@
                         <input ng-model="user.phone" name="phone" type="number" required ng-maxlength="11" ng-minlength="11">
                     </label>
 
-                    <label class="item item-input">
+                    <label class="item item-input hide">
                         <span class="input-label">{{ 'CAPTCHA' | translate }}</span>
-                        <input ng-model="user.captcha" name="captcha" type="text" required ng-minlength="4">
+                        <input ng-model="user.captcha" ng-init="user.captcha = '1234'" name="captcha" type="text" todo-required todo-ng-minlength="4">
 
                         <button type="button" class="button button-small" ng-click="getCaptcha()">{{ 'GET_CAPTCHA' | translate }}</button>
                     </label>
@@ -37,13 +37,18 @@
 
 
             <!-- step of 2 -->
-            <form ng-show="signUpStep == 2" name="ngFormSignUp" ng-submit="signUp()">
+            <form ng-if="signUpStep == 2" name="ngFormSignUp" ng-submit="signUp()">
                 <p class="h4 text-center">{{ 'SIGN_UP' | translate }}</p>
 
                 <div class="list">
                     <label class="item item-input">
                         <span class="input-label">{{ 'PHONE' | translate }}</span>
                         <input name="phone" type="number" required ng-value="user.phone" disabled>
+                        <style>
+                        input[disabled] {
+                            background: transparent;
+                        }
+                        </style>
                     </label>
 
                     <label class="item item-input">

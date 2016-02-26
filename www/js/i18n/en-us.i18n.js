@@ -45,6 +45,7 @@ HeyCommunity
         CAPTCHA:            'Security code',
         GET_CAPTCHA:        'Get SecCode',
         EMAIL:              'Email',
+        NICKNAME:           'Nickname',
 
         SETUP_GENERAL_LANGUAGE:         'Language Settings',
         SETUP_GENERAL:                  'General Settings',

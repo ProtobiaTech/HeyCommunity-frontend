@@ -60,11 +60,14 @@ HeyCommunity
         CREATE_ACTIVITY:        '创建活动',
         COMMENT:                '评论',
         ATTEND:                 '报名',
+        INITIATING_AN_ACTIVITY: '暂无活动，你来发起一个活动吧',
 
         //
         //Timeline Tab
         //
         CREATE_TIMELINE:        '创建新事件',
+        WHAT_IS_NEW:            '有什么新鲜事儿，与大家分享一下吧',
+
         //
         //Set UP Tab
         //--------------------------------

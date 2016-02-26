@@ -14,17 +14,17 @@
             <ion-spinner></ion-spinner>
         </div>
 
-        <div class="list">
+        <div ng-if="activities && activities.length == 0" class="padding text-center">
+            {{ 'INITIATING_AN_ACTIVITY' | translate }}
+        </div>
+
+        <div ng-if="activities && activities.length > 0" class="list">
             <div class="item item-divider" ion-affix><i class="icon ion-calendar"></i> Near</div>
             <div ui-sref="hey.activity-detail({id: item.id})" ng-repeat="item in activities" class="item item-activity item-thumbnail-left item-text-wrap">
                 <img class="avatar" ng-src="{{ getPicUrl(item.avatar) }}">
                 <h2 class="title">{{ item.title }}</h2>
                 <p class="content">{{ item.content }}</p>
             </div>
-        </div>
-
-        <div ng-if="activities && activities.length == 0" class="padding text-center">
-            No data
         </div>
 
         <ion-infinite-scroll

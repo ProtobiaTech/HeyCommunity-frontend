@@ -57,11 +57,13 @@ HeyCommunity
         CREATE_ACTIVITY:        'Create Activity',
         COMMENT:                'Comment',
         ATTEND:                 'Attend',
+        INITIATING_AN_ACTIVITY: 'Buddy, you initiate an activity',
 
         //
         //Timeline Tab
         //
         CREATE_TIMELINE:        'Create Timeline',
+        WHAT_IS_NEW:            'What\'s new?',
 
         //
         //Set UP Tab

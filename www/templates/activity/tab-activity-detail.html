@@ -2,7 +2,7 @@
     <ion-content id="module-activity" delegate-handle="agendaScrollDelegate">
         <div class="list card">
             <div class="item item-avatar">
-                <img ng-if="Activity" ng-src="{{ getPicUrl(Activity.avatar) }}" style="border-radius:2px;">
+                <img ng-if="Activity" ng-src="{{ getPicUrl(Activity.avatar + '?imageView/2/w/80') }}" style="border-radius:2px;">
                 <h2>{{ Activity.title }}</h2>
                 <p>{{ Activity.created_at }}</p>
             </div>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div ng-if="attends.length" style="margin-top:10px;">
-                    <img ng-repeat="item in attends | orderBy: '-created_at'" style="width:30px; height:30px; margin-right:5px; border-radius:50%;" ng-src="{{ getPicUrl(item.author.avatar) }}">
+                    <img ng-repeat="item in attends | orderBy: '-created_at'" style="width:30px; height:30px; margin-right:5px; border-radius:50%;" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
             <div class="item item-text-wrap" style="padding:0">
                 <div class="row">
                     <div class="col col-10">
-                        <img style="width:100%" ng-src="{{ getPicUrl(item.author.avatar) }}">
+                        <img style="width:100%" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                     </div>
                     <div class="col">
                         {{ item.content }}

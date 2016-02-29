@@ -17,7 +17,7 @@
         <div ng-repeat="item in timelines" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">
-                    <img ng-src="{{ getPicUrl(item.author.avatar) }}">
+                    <img ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                 </div>
                 <div class="pull-left">
                     <div class="name">{{ item.author.nickname }}</div>
@@ -26,7 +26,7 @@
             </div>
 
             <div class="item item-body item-text-wrap">
-                <img ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment) }}">
+                <img ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment + '?imageView/2/w/500') }}">
                 <div class="content">{{ item.content }}</div>
             </div>
 

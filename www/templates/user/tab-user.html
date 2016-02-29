@@ -23,7 +23,7 @@
         <div ng-if="isAuth()">
             <div class="" style="padding-top:60px;">
                 <div class="hey-avatar text-center">
-                    <img ng-src="{{ getPicUrl(user.avatar) }}">
+                    <img ng-src="{{ getPicUrl(user.avatar + '?imageView/2/w/180') }}">
                 </div>
                 <div class="text-center">
                     {{ user.nickname }}

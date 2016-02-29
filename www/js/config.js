@@ -2,28 +2,36 @@
  * Config
  */
 
+CDN_DOMAIN          =   'http://public.hey-community.cn';
 
-if (window.location.protocol == 'http:' || window.location.protocol == 'https:') {
-    HOST_API        =   window.location.protocol + '//' + window.location.hostname;
-    HOST_API_DEV    =   'http://api.hey-community.cn';
+API_PRODUCT         =   'http://api.hey-community.cn';
+API_DEVING          =   'http://api.hey-community.local';
+
+
+
+
+
+
+
+
+
+// auto set API
+if (getParameterByName('env') === 'deving') {
+    API         =   API_DEVING;
+    CDN_DOMAIN  =   API_DEVING;
+} else if (getParameterByName('env') === 'testing') {
+    API     =   API_PRODUCT;
 } else {
-    HOST_API        =   'http://api.hey-community.cn';
-    // HOST_API_DEV    =   'http://superods-macbook.local';
-    HOST_API_DEV    =   'http://api.hey-community.cn';
+    if (window.location.protocol == 'http:' || window.location.protocol == 'https:') {
+        API     =   window.location.protocol + '//' + window.location.hostname;
+    } else {
+        API     =   API_PRODUCT;
+    }
 }
 
-
-// auto set APP_ENV_DEV
-if (getParameterByName('deving') === 'true') {
-    APP_ENV_DEV     =   true;
-} else {
-    APP_ENV_DEV     =   false;
+if (getParameterByName('api')) {
+    API = 'http://' + getParameterByName('api');
 }
-// APP_ENV_DEV     =   true;
 
-
-if (!APP_ENV_DEV) {
-    var empty_func = function() {
-    };
-    console.debug = empty_func;
-}
+console.debug('the API is: ' + API);
+console.debug('the CDN_DOMAIN is: ' + CDN_DOMAIN);

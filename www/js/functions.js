@@ -4,11 +4,7 @@
 
 // Get Api Url
 function getApiUrl(url) {
-    if (APP_ENV_DEV) {
-        return HOST_API_DEV + '/api' + url;
-    } else {
-        return HOST_API + '/api' + url;
-    }
+    return API + '/api' + url;
 }
 
 
@@ -17,11 +13,7 @@ function getPicUrl(url) {
     if (url.substring(0, 4) == 'http') {
         return url;
     } else {
-        if (APP_ENV_DEV) {
-            return HOST_API_DEV + url;
-        } else {
-            return HOST_API + url;
-        }
+        return CDN_DOMAIN + url;
     }
 }
 

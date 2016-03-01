@@ -31,8 +31,6 @@ HeyCommunity
     //
     // do refresh
     $scope.doRefresh = function() {
-        $scope.timelines = {};
-
         TimelineService.index().then(function(response) {
             console.debug('### TimelineService.doRefresh response', response);
             if (response.status == 200) {

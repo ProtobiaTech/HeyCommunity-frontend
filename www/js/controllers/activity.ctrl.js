@@ -12,8 +12,6 @@ HeyCommunity
     //
     // do refresh
     $scope.doRefresh = function() {
-        $scope.activities = {};
-
         ActivityService.index().then(function(response) {
             console.debug('### ActivityService.doRefresh response', response);
             if (response.status == 200) {

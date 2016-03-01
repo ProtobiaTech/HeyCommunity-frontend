@@ -73,6 +73,7 @@ HeyCommunity
 
 // hey.activity-detail
 .controller('ActivityDetailCtrl', ['$scope', 'ActivityService', function($scope, ActivityService) {
+    $scope.$root.$broadcast('loading:show');
     $scope.ActivityComment = {};
 
     ActivityService.show({id: $scope.stateParams.id}).then(function(response) {

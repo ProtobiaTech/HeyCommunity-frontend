@@ -17,6 +17,8 @@ HeyCommunity
 
 // tab.user-signOut
 .controller('UserSignOutCtrl', ['$scope', 'UserService', function($scope, UserService) {
+    $scope.$root.$broadcast('loading:show');
+
     UserService.signOut().then(function() {
         $scope.state.go('hey.user');
     });
@@ -30,6 +32,8 @@ HeyCommunity
     $scope.formError = {};
 
     $scope.signIn = function() {
+        $scope.$root.$broadcast('loading:show');
+
         var params = {
             phone: $scope.user.phone,
             password: $scope.user.password,
@@ -85,7 +89,8 @@ HeyCommunity
 
     // sign up
     $scope.signUp = function () {
-        console.log($scope.user);
+        $scope.$root.$broadcast('loading:show');
+
         var params = {
             nickname: $scope.user.nickname,
             phone: $scope.user.phone,

@@ -35,6 +35,12 @@ HeyCommunity
 
 
 
+        //
+        // Common
+        // ------------------------------
+        PULL_TO_REFRESH:    '下拉刷新 ...',
+
+
 
         //
         // User tab

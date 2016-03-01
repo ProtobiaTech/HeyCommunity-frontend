@@ -32,6 +32,11 @@ HeyCommunity
         END_DATE:           'End Date',
 
 
+        //
+        // Common
+        // ------------------------------
+        PULL_TO_REFRESH:    'Pull to refresh ...',
+
 
         //
         // User tab

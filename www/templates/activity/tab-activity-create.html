@@ -9,7 +9,7 @@
                 <label class="item item-input">
                     <span class="input-label">{{ 'AVATAR' | translate }}</span>
                     <i style="font-size:22px" class="hide stable icon ion-image"></i>
-                    <input style="line-height:19px; color:#444;" type="file" ngf-select ng-model="activity.avatar" name="avatar" ngf-accept="'image/*'" required ngf-max-size="20MB">
+                    <input style="line-height:19px; color:#444;" type="file" ngf-select ng-model="activity.avatar" name="avatar" ngf-accept="'image/*'" ngf-resize="{width: 1000}" required ngf-max-size="20MB">
                 </label>
                 <label class="item item-input">
                     <span class="input-label">{{ 'START_DATE' | translate }}</span>

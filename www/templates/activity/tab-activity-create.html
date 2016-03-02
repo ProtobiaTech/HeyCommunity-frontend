@@ -1,4 +1,13 @@
 <ion-view cache-view="false"  view-title="{{ 'CREATE_ACTIVITY' | translate }}">
+    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container" nav-bar-direction="swap">
+        <ion-nav-buttons side="left">
+          <button ui-sref="hey.activity" class="button back-button buttons  button-clear header-item" style="">
+              <i class="icon ion-ios-arrow-back"></i> 
+              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
+          </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
     <ion-content id="module-activity">
         <form name="ngForm" ng-submit="store()">
             <div class="list list-inset">

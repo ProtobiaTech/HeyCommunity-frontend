@@ -8,8 +8,7 @@
             </div>
 
             <div class="item item-body">
-                <p style="margin-top:0;">
-                    {{ Activity.content }}
+                <p style="margin-top:0;" ng-bind-html="Activity.content | nl2br">
                 </p>
                 <div>
                     <span class="pull-right">
@@ -56,8 +55,7 @@
                     <div class="col col-10">
                         <img style="width:100%" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                     </div>
-                    <div class="col">
-                        {{ item.content }}
+                    <div class="col" ng-bind-html="item.content | nl2br">
                     </div>
                 </div>
             </div>

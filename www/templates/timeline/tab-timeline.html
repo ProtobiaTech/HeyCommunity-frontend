@@ -27,7 +27,7 @@
 
             <div class="item item-body item-text-wrap">
                 <img ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment + '?imageView/2/w/500') }}">
-                <div class="content">{{ item.content }}</div>
+                <div class="content" ng-bind-html="item.content | nl2br"></div>
             </div>
 
             <div class="item item-footer" style="color:#ddd">

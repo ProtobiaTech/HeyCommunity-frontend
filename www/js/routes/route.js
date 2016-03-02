@@ -34,17 +34,6 @@ HeyCommunity
     }
   })
 
-  // timeline-create
-  .state('hey.timeline-create', {
-    url: '/timeline-create',
-    views: {
-      'tab-timeline': {
-        templateUrl: 'templates/timeline/tab-timeline-create.html',
-        controller: 'TimelineCreateCtrl'
-      }
-    }
-  })
-
   // activity
   .state('hey.activity', {
     url: '/activity',
@@ -52,26 +41,6 @@ HeyCommunity
       'tab-activity': {
         templateUrl: 'templates/activity/tab-activity.html',
         controller: 'ActivityCtrl'
-      }
-    }
-  })
-
-  .state('hey.activity-detail', {
-    url: '/activity-detail/:id',
-    views: {
-      'tab-activity': {
-        templateUrl: 'templates/activity/tab-activity-detail.html',
-        controller: 'ActivityDetailCtrl'
-      }
-    }
-  })
-
-  .state('hey.activity-create', {
-    url: '/activity-create',
-    views: {
-      'tab-activity': {
-        templateUrl: 'templates/activity/tab-activity-create.html',
-        controller: 'ActivityCreateCtrl'
       }
     }
   })
@@ -288,4 +257,46 @@ HeyCommunity
         }
   });
 
+
+
+    //
+    // Activity create
+    // -------------------------------
+    $stateProvider
+        .state('hey-timeline-create', {
+        url: '/timeline-create',
+        templateUrl: 'templates/timeline/tab-timeline-create.html',
+        controller: 'TimelineCreateCtrl'
+    })
+
+
+
+    //
+    // Activity detail
+    // -------------------------------
+    $stateProvider
+    .state('hey-activity-detail', {
+        url: '/activity-detail/:id',
+        templateUrl: 'templates/activity/tab-activity-detail.html',
+        controller: 'ActivityDetailCtrl'
+    })
+
+    // Activity create
+    .state('hey-activity-create', {
+        url: '/activity-create',
+        templateUrl: 'templates/activity/tab-activity-create.html',
+        controller: 'ActivityCreateCtrl'
+    })
+
+
+
+    //
+    // Other hey-deving
+    // -------------------------------
+    $stateProvider
+    .state('hey-deving', {
+        url: '/deving',
+        templateUrl: 'templates/single/deving.html',
+        controller: 'SingleDevingCtrl',
+    });
 }]);

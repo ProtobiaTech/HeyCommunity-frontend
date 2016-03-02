@@ -288,4 +288,13 @@ HeyCommunity
         }
   });
 
+
+
+
+    $stateProvider
+    .state('deving', {
+        url: '/deving',
+        templateUrl: 'templates/single/deving.html',
+        controller: 'SingleDevingCtrl',
+    });
 }]);

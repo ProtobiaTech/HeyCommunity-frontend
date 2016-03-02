@@ -1,0 +1,23 @@
+<ion-view view-title="Deving">
+    <ion-nav-buttons side="left">
+      <button ui-sref="hey.timeline" class="button back-button buttons  button-clear header-item" style="">
+          <i class="icon ion-ios-arrow-back"></i> 
+          <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
+      </button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="row">
+            <div class="col"><button ng-click="show_localStorage = !show_localStorage" ng-init="show_localStorage = false" class="button">Toggle localStorage</button></div>
+            <div class="col"><button ng-click="destroyLocalStorage()" class="button">Destroy localStorage</button></div>
+            <div class="col"></div>
+        </div>
+
+        <div class="padding" ng-if="show_localStorage">
+            <div ng-repeat="(key, value) in localStorage">
+                <code style="color:red">{{ key }}: </code>
+                <code>{{ value }}</code>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

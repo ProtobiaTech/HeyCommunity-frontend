@@ -25,6 +25,7 @@ HeyCommunity
         DESTROY:            '销毁',
 
         PHONE_OR_PASSWORD_ERROR:        '手机或密码错误',
+        PULL_TO_REFRESH:    '下拉刷新 ...',
 
         // Form
         AVATAR:             '头像',
@@ -32,13 +33,6 @@ HeyCommunity
         CONTENT:            '内容',
         START_DATE:         '开始时间',
         END_DATE:           '结束时间',
-
-
-
-        //
-        // Common
-        // ------------------------------
-        PULL_TO_REFRESH:    '下拉刷新 ...',
 
 
 
@@ -60,6 +54,7 @@ HeyCommunity
         SETUP_GENERAL:                  '通用设置',
 
 
+
         //
         // Activity tab
         // ------------------------------
@@ -69,15 +64,20 @@ HeyCommunity
         ATTEND:                 '报名',
         INITIATING_AN_ACTIVITY: '暂无活动，你来发起一个活动吧',
 
-        //
-        //Timeline Tab
-        //
-        CREATE_TIMELINE:        '创建新事件',
-        WHAT_IS_NEW:            '有什么新鲜事儿，与大家分享一下吧',
+
 
         //
-        //Set UP Tab
-        //--------------------------------
+        // Timeline Tab
+        // -------------------------------
+        CREATE_TIMELINE:        '分享新鲜事',
+        WHAT_IS_NEW:            '有什么新鲜事儿，与大家分享一下吧',
+        PICTURE:                '图片',
+
+
+
+        //
+        // Set UP Tab
+        // --------------------------------
         GENERAL:                '通用',
         ACCOUNT_SECURITY:       '账号与安全',
         PRIVACY:                '隐私',
@@ -85,19 +85,22 @@ HeyCommunity
         SOFT_INFO:              '软件信息',
         SIGN_OFF:               '退出登录',
 
-        //Topic Tab
-        //--------------------------------
+
+
+        //
+        // Topic Tab
+        // --------------------------------
         TOPIC:                  '主题',
         SELECT_NODE:            '选择主题',
         RECENT:                 '最近',
         EXCELLENT:              '最佳',
         VOTE:                   '热门',
 
-        //Talk Tab
-        //--------------------------------
+
+
+        //
+        // Talk Tab
+        // --------------------------------
         TALK:                  '聊天',
-
-
-
     });
 }]);

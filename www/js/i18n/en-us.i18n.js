@@ -2,7 +2,10 @@ HeyCommunity
 
 .config(['$translateProvider', function ($translateProvider) {
     $translateProvider.translations('en-us', {
-        // User Taab
+        //
+        // Common
+        // ------------------------------
+        SETUP:              'SetUp',
         PLEASE_SIGN_IN:     'Please Sign In',
         SIGN_UP:            'Sign Up',
         SIGN_IN:            'Sign In',
@@ -20,9 +23,9 @@ HeyCommunity
         UPDATE:             'Update',
         DELETE:             'Delete',
         DESTROY:            'Destroy',
-        SETUP:              'SetUp',
 
         PHONE_OR_PASSWORD_ERROR:        'Phone number or Password is incorrect',
+        PULL_TO_REFRESH:    'Pull to refresh ...',
 
         // Form
         AVATAR:             'Avatar',
@@ -31,11 +34,6 @@ HeyCommunity
         START_DATE:         'Start Date',
         END_DATE:           'End Date',
 
-
-        //
-        // Common
-        // ------------------------------
-        PULL_TO_REFRESH:    'Pull to refresh ...',
 
 
         //
@@ -56,6 +54,7 @@ HeyCommunity
         SETUP_GENERAL:                  'General Settings',
 
 
+
         //
         // Activity tab
         // ------------------------------
@@ -65,34 +64,43 @@ HeyCommunity
         ATTEND:                 'Attend',
         INITIATING_AN_ACTIVITY: 'Buddy, you initiate an activity',
 
-        //
-        //Timeline Tab
-        //
-        CREATE_TIMELINE:        'Create Timeline',
-        WHAT_IS_NEW:            'What\'s new?',
+
 
         //
-        //Set UP Tab
-        //--------------------------------
+        // Timeline Tab
+        // ------------------------------
+        CREATE_TIMELINE:        'What\'s new',
+        WHAT_IS_NEW:            'What\'s new?',
+        PICTURE:                'Picture',
+
+
+
+        //
+        // Set UP Tab
+        // --------------------------------
         GENERAL:                'General',
         ACCOUNT_SECURITY:       'Account & Security',
         PRIVACY:                'Privacy',
         FEEDBACK:               'Feedback',
-        SOFT_INFO:              'More Infomation',
+        SOFT_INFO:              'More Information',
         SIGN_OFF:               'Sign off',
 
-        //Topic Tab
-        //--------------------------------
+
+
+        //
+        // Topic Tab
+        // -------------------------------
         TOPIC:                  'Topic',
         SELECT_NODE:            'Select Node',
-        RECENT:       			'Recent',
+        RECENT:                 'Recent',
         EXCELLENT:              'Excellent',
-        VOTE:               	'Vote',
+        VOTE:                   'Vote',
 
-        //Talk Tab
-        //--------------------------------
+
+
+        //
+        // Talk Tab
+        // --------------------------------
         TALK:                    'Talk',
-
-
     });
 }]);

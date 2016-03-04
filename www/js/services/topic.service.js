@@ -16,4 +16,10 @@ HeyCommunity
     this.show = function(params) {
         return $http.get(getApiUrl('/topic/show/' + params.id));
     }
+
+
+    // comment
+    this.commentPublish = function(params) {
+        return $http.post(getApiUrl('/topic/comment-publish'),  params);
+    }
 }])

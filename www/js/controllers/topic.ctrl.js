@@ -43,10 +43,28 @@ HeyCommunity
 
 }])
 
+
+
 // tab.topic-detail
 .controller('TopicDetailCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
     $scope.$root.$broadcast('loading:show');
     TopicService.show({id: $scope.stateParams.id}).then(function(response) {
         $scope.Topic = response.data;
     });
+
+    $scope.commentPublish = function() {
+        $scope.$root.$broadcast('loading:show');
+
+        var params = {
+            id: $scope.stateParams.id,
+            content: $scope.TopicComment.content,
+        }
+        console.debug('### TopicService.commentPublish params', params);
+        TopicService.commentPublish(params).then(function(response) {
+            console.debug('### TopicService.commentPublish response', response);
+            if (response.status == 200) {
+                $scope.state.reload();
+            }
+        });
+    }
 }]);

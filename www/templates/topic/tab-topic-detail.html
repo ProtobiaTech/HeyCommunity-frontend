@@ -18,10 +18,8 @@
 
             <div class="item item-body">
                 <img ng-if="Topic" class="full-image" ng-src="{{ getPicUrl(Topic.avatar + '?imageView/2/w/500') }}">
-                <p>
-                    {{ Topic.content | nl2br }}
-                </p>
-                <p>
+                <p ng-bind-html="Topic.content | nl2br"></p>
+                <p class="hide">
                     <a ng-click="like()" class="subdued"><i class="icon ion ion-heart"></i> {{ Topic.like_num }}</a>
                     <a class="subdued"><i class="icon ion ion-chatboxes"></i> {{ Topic.comment_num }}</a>
                 </p>
@@ -43,7 +41,7 @@
                             <span>{{ item.created_at }}</span>
                             <span>{{ item.created_at }}</span>
                         </div>
-                        {{ item.content | nl2br }}
+                        <div ng-bind-html="item.content | nl2br"></div>
                     </div>
                 </div>
             </div>

@@ -91,6 +91,7 @@ HeyCommunity
         // Topic Tab
         // -------------------------------
         TOPIC:                  'Topic',
+        CREATE_TOPIC:           'New Topic',
         SAY_SOMETHING:          'Say something',
 
 

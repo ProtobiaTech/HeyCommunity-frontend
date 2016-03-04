@@ -28,7 +28,7 @@ HeyCommunity
         PULL_TO_REFRESH:    '下拉刷新 ...',
 
         // Form
-        AVATAR:             '头像',
+        AVATAR:             '封面',
         TITLE:              '标题',
         CONTENT:            '内容',
         START_DATE:         '开始时间',
@@ -91,6 +91,7 @@ HeyCommunity
         // Topic Tab
         // --------------------------------
         TOPIC:                  '话题',
+        CREATE_TOPIC:           '新话题',
         SAY_SOMETHING:          '说点什么',
 
 

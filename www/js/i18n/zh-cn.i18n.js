@@ -90,11 +90,8 @@ HeyCommunity
         //
         // Topic Tab
         // --------------------------------
-        TOPIC:                  '主题',
-        SELECT_NODE:            '选择主题',
-        RECENT:                 '最近',
-        EXCELLENT:              '最佳',
-        VOTE:                   '热门',
+        TOPIC:                  '话题',
+        SAY_SOMETHING:          '说点什么',
 
 
 

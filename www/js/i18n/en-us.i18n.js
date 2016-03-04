@@ -91,10 +91,7 @@ HeyCommunity
         // Topic Tab
         // -------------------------------
         TOPIC:                  'Topic',
-        SELECT_NODE:            'Select Node',
-        RECENT:                 'Recent',
-        EXCELLENT:              'Excellent',
-        VOTE:                   'Vote',
+        SAY_SOMETHING:          'Say something'
 
 
 

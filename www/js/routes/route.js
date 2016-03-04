@@ -169,16 +169,6 @@ HeyCommunity
     }
   })
 
-  .state('hey.topic-detail', {
-    url: '/topic-detail',
-    views: {
-      'tab-topic': {
-        templateUrl: 'templates/topic/tab-topic-detail.html',
-        // controller: 'TopicController'
-      }
-    }
-  })
-
   .state('hey.topic-reply', {
     url: '/topic-reply',
     views: {
@@ -263,10 +253,22 @@ HeyCommunity
     // Activity create
     // -------------------------------
     $stateProvider
-        .state('hey-timeline-create', {
+    .state('hey-timeline-create', {
         url: '/timeline-create',
         templateUrl: 'templates/timeline/tab-timeline-create.html',
         controller: 'TimelineCreateCtrl'
+    })
+
+
+
+    //
+    // Topic detail
+    // -------------------------------
+    $stateProvider
+    .state('hey-topic-detail', {
+        url: '/topic-detail/:id',
+        templateUrl: 'templates/topic/tab-topic-detail.html',
+        controller: 'TopicDetailCtrl'
     })
 
 

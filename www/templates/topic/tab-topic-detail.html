@@ -1,43 +1,63 @@
-<ion-view view-title="{{ 'Topic Detail' }}">
+<ion-view view-title="{{ Topic.title }}">
+    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container" nav-bar-direction="swap">
+        <ion-nav-buttons side="left">
+          <button ui-sref="hey.topic" class="button back-button buttons  button-clear header-item" style="">
+              <i class="icon ion-ios-arrow-back"></i> 
+              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
+          </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
     <ion-content id="module-topic">
         <div class="list card">
             <div class="item item-avatar">
-                <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-                <h2>Marty McFly</h2>
-                <p>November 05, 1955</p>
+                <img ng-if="Topic" ng-src="{{ getPicUrl(Topic.author.avatar + '?imageView/2/w/80') }}">
+                <h2>{{ Topic.title }}</h2>
+                <p>{{ Topic.created_at }}</p>
             </div>
 
             <div class="item item-body">
-                <img class="full-image" src="http://ionicframework.com/img/docs/delorean.jpg">
+                <img ng-if="Topic" class="full-image" ng-src="{{ getPicUrl(Topic.avatar + '?imageView/2/w/500') }}">
                 <p>
-                This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-                the content is from a card-body consisting of an image and paragraph text. The footer
-                consists of tabs, icons aligned left, within the card-footer.
+                    {{ Topic.content | nl2br }}
                 </p>
                 <p>
-                    <a href="#" class="subdued">1 Like</a>
-                    <a href="#" class="subdued">5 Reply</a>
-                    <a href="#" class="pull-right subdued">New Reply</a>
+                    <a ng-click="like()" class="subdued"><i class="icon ion ion-heart"></i> {{ Topic.like_num }}</a>
+                    <a class="subdued"><i class="icon ion ion-chatboxes"></i> {{ Topic.comment_num }}</a>
                 </p>
             </div>
 
         </div>
 
-        <div class="list card" ng-repeat="item in [1,2,3,4,5,6]">
+        <div class="list card" ng-repeat="item in Topic.comments">
             <div class="item item-body" style="padding:0;">
                 <div class="row">
                     <div class="col col-10">
-                        <img style="width:100%; border-radius:50%;" src="http://ionicframework.com/img/docs/blue-album.jpg">
+                        <img style="width:100%; border-radius:50%;" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                     </div>
                     <div class="col" style="font-size:14px;">
-                        This is a basic Card which contains an item that has wrapping text.
-                        This is a basic Card which contains an item that has wrapping text.
-                        This is a basic Card which contains an item that has wrapping text.
+                        <div class="subedue" style="font-size:14px; line-height:1.5em; white-space:nowrap; overflow:hidden;">
+                            <span>{{ item.author.nickname }}</span>
+                            &nbsp;&nbsp;
+                            <span>{{ item.created_at }}</span>
+                            <span>{{ item.created_at }}</span>
+                            <span>{{ item.created_at }}</span>
+                        </div>
+                        {{ item.content | nl2br }}
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class=""></div>
+        <div class="" style="height:30px;"></div>
     </ion-content>
+
+    <div class="list" style="position:absolute; bottom:0px; width:100%">
+        <div style="positon:absoluted;" class="item item-input-inset">
+            <label class="item-input-wrapper">
+                <input type="text" placeholder="{{ 'SAY_SOMETHING' | translate }}">
+            </label>
+            <button ng-disabled="true" class="button button-small">{{ 'COMMENT' | translate }}</button>
+        </div>
+    </div>
 </ion-view>

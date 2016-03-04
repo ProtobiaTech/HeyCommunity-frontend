@@ -1,17 +1,26 @@
 <ion-view view-title="{{'SETUP'| translate }}" cache-view="false">
+    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container" nav-bar-direction="swap">
+        <ion-nav-buttons side="left">
+          <button ui-sref="hey.user" class="button back-button buttons  button-clear header-item" style="">
+              <i class="icon ion-ios-arrow-back"></i> 
+              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
+          </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
     <ion-content id="module-user" class="page-user-setup">
         <div class="padding"></div>
 
         <div class="list">
-            <a class="item item-icon-left" ui-sref="hey.user-setup-general">
+            <a class="item item-icon-left" ui-sref="hey-user-setup-general">
                 <i class="icon ion-navicon-round"></i>
                 {{ 'GENERAL' | translate }}
             </a>
-            <a class="item item-icon-left" href="#">
+            <a class="item item-icon-left" style="color:#999;">
                 <i class="icon ion-locked"></i>
                 {{ 'ACCOUNT_SECURITY' | translate }}
             </a>
-            <a class="item item-icon-left">
+            <a class="item item-icon-left" style="color:#999;">
                 <i class="icon ion-earth"></i>
                 {{ 'PRIVACY' | translate }}
             </a>
@@ -20,11 +29,11 @@
         <div class="padding"></div>
 
         <div class="list">
-            <a class="item item-icon-left">
+            <a class="item item-icon-left" style="color:#999;">
                 <i class="icon ion-chatbox-working"></i>
                 {{ 'FEEDBACK' | translate }}
             </a>
-            <a class="item item-icon-left">
+            <a class="item item-icon-left" style="color:#999;">
                 <i class="icon ion-information-circled"></i>
                 {{ 'SOFT_INFO' | translate }}
             </a>
@@ -32,7 +41,7 @@
 
         <div class="padding"></div>
         <div class="list">
-            <a class="item item-icon-left" ui-sref="hey.user-signOut">
+            <a class="item item-icon-left" ui-sref="hey-user-signOut">
                 <i class="icon ion-log-out"></i>
                {{ 'SIGN_OFF' | translate }}
             </a>

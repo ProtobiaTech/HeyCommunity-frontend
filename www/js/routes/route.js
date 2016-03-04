@@ -57,86 +57,6 @@ HeyCommunity
     }
   })
 
-  .state('hey.user-signOut', {
-    url: '/user/signOut',
-    views: {
-      'tab-user': {
-        controller: 'UserSignOutCtrl'
-      }
-    }
-  })
-
-  .state('hey.user-signIn', {
-    url: '/user/signIn',
-    views: {
-      'tab-user': {
-        templateUrl: 'templates/user/tab-user-signIn.html',
-        controller: 'UserSignInCtrl'
-      }
-    }
-  })
-
-  .state('hey.user-signUp', {
-    url: '/user/signUp',
-    views: {
-      'tab-user': {
-        templateUrl: 'templates/user/tab-user-signUp.html',
-        controller: 'UserSignUpCtrl'
-      }
-    }
-  })
-
-  .state('hey.user-info', {
-    url: '/user/user-info',
-    views: {
-      'tab-user': {
-        templateUrl: 'templates/user/tab-user-info.html',
-        controller: 'UserInfoCtrl'
-      }
-    }
-  })
-
-  .state('hey.user-infoEdit', {
-    url: '/user/user-infoEdit',
-    views: {
-      'tab-user': {
-        templateUrl: 'templates/user/tab-user-infoEdit.html',
-        controller: 'UserInfoEditCtrl'
-      }
-    }
-  })
-
-  .state('hey.user-setup', {
-    url: '/user/user-setup',
-    views: {
-      'tab-user': {
-        templateUrl: 'templates/user/tab-user-setup.html',
-        controller: 'UserSetupCtrl'
-      }
-    }
-  })
-
-  .state('hey.user-setup-general', {
-    url: '/user/user-setup-general',
-    views: {
-      'tab-user': {
-        templateUrl: 'templates/user/tab-user-setup-general.html',
-        // controller: 'UserSetupGeneralCtrl'
-      }
-    }
-  })
-
-  .state('hey.user-setup-general-language', {
-    url: '/user/user-setup-general-language',
-    views: {
-      'tab-user': {
-        templateUrl: 'templates/user/tab-user-setup-general-language.html',
-        controller: 'UserSetupGeneralLanguageCtrl'
-      }
-    }
-  })
-
-
 
   // topic
   .state('hey.topic', {
@@ -239,8 +159,69 @@ HeyCommunity
 
 
 
+
     //
-    // Activity create
+    // User signIn
+    // -------------------------------
+    $stateProvider
+    .state('hey-user-signIn', {
+        url: '/user/signIn',
+        templateUrl: 'templates/user/user-signIn.html',
+        controller: 'UserSignInCtrl'
+    })
+
+    // user signUp
+    .state('hey-user-signUp', {
+        url: '/user/signUp',
+        templateUrl: 'templates/user/user-signUp.html',
+        controller: 'UserSignUpCtrl'
+    })
+
+    // user signOut
+    .state('hey-user-signOut', {
+        url: '/user/signOut',
+        controller: 'UserSignOutCtrl'
+    })
+
+    // user info
+    .state('hey-user-info', {
+        url: '/user/user-info',
+        templateUrl: 'templates/user/user-info.html',
+        controller: 'UserInfoCtrl'
+    })
+
+    // user infoEdit
+    .state('hey-user-infoEdit', {
+        url: '/user/user-infoEdit',
+        templateUrl: 'templates/user/user-infoEdit.html',
+        controller: 'UserInfoEditCtrl'
+    })
+
+    // user setup
+    .state('hey-user-setup', {
+        url: '/user/user-setup',
+        templateUrl: 'templates/user/user-setup.html',
+        controller: 'UserSetupCtrl'
+    })
+
+    // user setup general
+    .state('hey-user-setup-general', {
+        url: '/user/user-setup-general',
+        templateUrl: 'templates/user/user-setup-general.html',
+        // controller: 'UserSetupGeneralCtrl'
+    })
+
+    // user setup general language
+    .state('hey-user-setup-general-language', {
+        url: '/user/user-setup-general-language',
+        templateUrl: 'templates/user/user-setup-general-language.html',
+        controller: 'UserSetupGeneralLanguageCtrl'
+    })
+
+
+
+    //
+    // Timeline create
     // -------------------------------
     $stateProvider
     .state('hey-timeline-create', {

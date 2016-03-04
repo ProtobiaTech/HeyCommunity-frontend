@@ -169,16 +169,6 @@ HeyCommunity
     }
   })
 
-  .state('hey.topic-reply', {
-    url: '/topic-reply',
-    views: {
-      'tab-topic': {
-        templateUrl: 'templates/topic/tab-topic-reply.html',
-        // controller: 'TopicController'
-      }
-    }
-  })
-
 
 
   // talk
@@ -269,6 +259,13 @@ HeyCommunity
         url: '/topic-detail/:id',
         templateUrl: 'templates/topic/tab-topic-detail.html',
         controller: 'TopicDetailCtrl'
+    })
+
+    // Topic create
+    .state('hey-topic-create', {
+        url: '/topic-create',
+        templateUrl: 'templates/topic/topic-create.html',
+        controller: 'TopicCreateCtrl'
     })
 
 

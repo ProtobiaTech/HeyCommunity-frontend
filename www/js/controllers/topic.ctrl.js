@@ -67,4 +67,31 @@ HeyCommunity
             }
         });
     }
-}]);
+}])
+
+
+
+// tab.topic-create
+.controller('TopicCreateCtrl', ['$scope', 'TopicService', 'Upload', function($scope, TopicService, Upload) {
+    $scope.topic = {};
+
+    $scope.store = function() {
+        $scope.$root.$broadcast('loading:show');
+
+        var params = {
+            title: $scope.topic.title,
+            avatar: $scope.topic.avatar,
+            content: $scope.topic.content,
+        }
+
+        console.debug('### TopicService.store params', params);
+        TopicService.store(Upload, params).then(function(response) {
+            console.debug('### TopicService.store response', response);
+            if (response.status == 200) {
+                $scope.state.go('hey.topic', {}, {reload: true});
+            } else {
+                $scope.formErrors = response.data;
+            }
+        });
+    }
+}])

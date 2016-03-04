@@ -34,10 +34,8 @@ HeyCommunity
         TimelineService.index().then(function(response) {
             console.debug('### TimelineService.doRefresh response', response);
             if (response.status == 200) {
-                $scope.$apply(function() {
                     $scope.timelines = response.data.data;
                     $scope.timelineCurrentPage = response.data.current_page;
-                });
             }
         }).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');

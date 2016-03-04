@@ -1,12 +1,7 @@
 <ion-view view-title="{{ 'TOPIC' | translate}}">
-    <div class="text-center" style="z-index:99999; color:#fff; position:absolute; padding-top:220px; top:0px; width:100%; height:100%; background-color:rgba(100,100,100,0.6);">
-        Deving ... <br>
-        功能正在开发 ...
-    </div>
-
-    <ion-content id="module-topic">
+    <ion-content id="module-topic" delegate-handle="contentScrollDelegate">
         <ion-refresher
-            pulling-text="Pull to refresh..."
+            pulling-text="{{ 'PULL_TO_REFRESH' | translate }}"
             on-refresh="doRefresh()">
         </ion-refresher>
 
@@ -14,32 +9,20 @@
             <ion-spinner></ion-spinner>
         </div>
 
-        <div class="row">
-            <div class="col col-50">
-                <a class="button button-light button-small button-block">
-                    &nbsp;
-                    {{ 'SELECT_NODE' | translate }} <i class="ion-arrow-down-b"></i>
-                </a>
-            </div>
-            <div class="col">
-                <a style="white-space:nowrap; overflow:hidden;" class="button button-light button-small button-block">{{ 'RECENT' | translate }}</a>
-            </div>
-            <div class="col">
-                <a style="white-space:nowrap; overflow:hidden;" class="button button-light button-small button-block">{{ 'EXCELLENT' | translate }}</a>
-            </div>
-            <div class="col">
-                <a style="white-space:nowrap; overflow:hidden;" class="button button-light button-small button-block">{{ 'VOTE' | translate }}</a>
-            </div>
-        </div>
-
         <div class="list">
-            <div ng-repeat="item in topics" class="item item-activity item-thumbnail-left item-text-wrap" style="">
-                <img class="avatar" ng-src="{{ item.avatar }}">
+            <a ng-repeat="item in topics" class="item item-activity item-thumbnail-left item-text-wrap" href="#/topic-detail/{{ item.id }}">
+                <img class="avatar" ng-src="{{ getPicUrl(item.avatar + '?imageView/2/w/200') }}">
                 <h2 class="title ng-binding">{{ item.title }}</h2>
                 <p class="content ng-binding">
                     {{ item.content }}
                 </p>
-            </div>
+            </a>
         </div>
+
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            immediate-check="false"
+            distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

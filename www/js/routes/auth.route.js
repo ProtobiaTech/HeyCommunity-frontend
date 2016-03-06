@@ -4,8 +4,8 @@ HeyCommunity
     // Auth of Route
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
         var requireNoSignInStates = [
-            'hey.user-signIn',
-            'hey.user-signUp',
+            'hey-user-signIn',
+            'hey-user-signUp',
         ];
 
         var requireSignInStates = [
@@ -17,7 +17,7 @@ HeyCommunity
         if (!localStorage.user) {
             if (inArray(toState.name, requireSignInStates)) {
                 event.preventDefault();
-                $state.go('hey.user-signIn');
+                $state.go('hey-user-signIn');
                 $rootScope.jumpRoute = toState.name;
             }
         } else {

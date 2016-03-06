@@ -5,7 +5,7 @@ HeyCommunity
     if (!localStorage.user) {
         /** auto jump to signIn page
         setTimeout(function() {
-            $scope.state.go('hey.user-signIn');
+            $scope.state.go('hey-user-signIn');
         }, 800);
         */
     } else {

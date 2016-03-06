@@ -35,8 +35,10 @@ var HeyCommunity = angular.module('starter', [
         }
     });
 
-    // get pic url
+    // functions
     $rootScope.getPicUrl = getPicUrl;
+    $rootScope.getApiUrl = getApiUrl;
+    $rootScope.getMomentDate = getMomentDate;
 
     $rootScope.state = $state;
     $rootScope.stateParams = $stateParams;

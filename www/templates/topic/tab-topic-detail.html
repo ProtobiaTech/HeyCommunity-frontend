@@ -13,7 +13,7 @@
             <div class="item item-avatar">
                 <img ng-if="Topic" ng-src="{{ getPicUrl(Topic.author.avatar + '?imageView/2/w/80') }}">
                 <h2>{{ Topic.title }}</h2>
-                <p>{{ Topic.created_at }}</p>
+                <p>{{ getMomentDate(Topic.created_at) | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</p>
             </div>
 
             <div class="item item-body">
@@ -37,7 +37,7 @@
                         <div class="subedue" style="font-size:14px; line-height:1.5em; white-space:nowrap; overflow:hidden;">
                             <span>{{ item.author.nickname }}</span>
                             &nbsp;&nbsp;
-                            <span>{{ item.created_at }}</span>
+                            <span>{{ getMomentDate(item.created_at) | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</span>
                         </div>
                         <div ng-bind-html="item.content | nl2br"></div>
                     </div>

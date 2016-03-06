@@ -20,7 +20,7 @@
                 </div>
                 <div class="pull-left">
                     <div class="name">{{ item.author.nickname }}</div>
-                    <div class="date">{{ item.created_at }}</div>
+                    <div class="date">{{ getMomentDate(item.created_at) | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</div>
                 </div>
             </div>
 

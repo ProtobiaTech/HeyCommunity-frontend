@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "jquery": "~2.1.4",
-    "ng-file-upload": "~11.2.3"
+    "ng-file-upload": "~11.2.3",
+    "moment": "~2.11.2"
   }
 }

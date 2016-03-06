@@ -13,7 +13,7 @@
             <div class="item item-avatar">
                 <img ng-if="Activity" ng-src="{{ getPicUrl(Activity.avatar + '?imageView/2/w/80') }}" style="border-radius:2px;">
                 <h2>{{ Activity.title }}</h2>
-                <p>{{ Activity.created_at }}</p>
+                <p>{{ getMomentDate(Activity.created_at) | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</p>
             </div>
 
             <div class="item item-body">

@@ -39,3 +39,9 @@ function getParameterByName(name) {
         results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+
+
+// Get Time
+function getMomentDate(date) {
+    return moment.utc(date).format();
+}

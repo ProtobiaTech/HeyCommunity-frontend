@@ -48,6 +48,9 @@ HeyCommunity
 // tab.topic-detail
 .controller('TopicDetailCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
     $scope.$root.$broadcast('loading:show');
+
+    $scope.TopicComment = {};
+
     TopicService.show({id: $scope.stateParams.id}).then(function(response) {
         $scope.Topic = response.data;
     });

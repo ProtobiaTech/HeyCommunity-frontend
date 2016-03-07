@@ -2,161 +2,81 @@ HeyCommunity
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-  // default url
-  $urlRouterProvider.otherwise('/timeline');
+    // default url
+    $urlRouterProvider.otherwise('/timeline');
 
-  $stateProvider
-  .state('hey', {
-    url: '',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
+    // Hey
+    $stateProvider
+    .state('hey', {
+        url: '',
+        abstract: true,
+        templateUrl: 'templates/tabs.html'
+    })
 
-  // plus
-  .state('hey.plus', {
-    url: '/plus',
-    views: {
-      'tab-plus': {
-        templateUrl: 'templates/tab-plus.html',
-        controller: 'PlusCtrl'
-      }
-    }
-  })
-
-  // timeline
-  .state('hey.timeline', {
-    url: '/timeline',
-    views: {
-      'tab-timeline': {
-        templateUrl: 'templates/timeline/tab-timeline.html',
-        controller: 'TimelineCtrl'
-      }
-    }
-  })
-
-  // activity
-  .state('hey.activity', {
-    url: '/activity',
-    views: {
-      'tab-activity': {
-        templateUrl: 'templates/activity/tab-activity.html',
-        controller: 'ActivityCtrl'
-      }
-    }
-  })
-
-
-  // user
-  .state('hey.user', {
-    url: '/user',
-    views: {
-      'tab-user': {
-        templateUrl: 'templates/user/tab-user.html',
-        controller: 'UserIndexCtrl'
-      }
-    }
-  })
-
-
-  // topic
-  .state('hey.topic', {
-    url: '/topic',
-    views: {
-      'tab-topic': {
-        templateUrl: 'templates/topic/tab-topic.html',
-        controller: 'TopicCtrl'
-      }
-    }
-  })
-
-  .state('hey.topic-new', {
-    url: '/topic-new',
-    views: {
-      'tab-topic': {
-        // templateUrl: 'templates/tab-reply.html',
-        // controller: 'TopicController'
-      }
-    }
-  })
-
-  .state('hey.topic-edit', {
-    url: '/topic-edit',
-    views: {
-      'tab-topic': {
-        // templateUrl: 'templates/tab-reply.html',
-        // controller: 'TopicController'
-      }
-    }
-  })
-
-
-
-  // talk
-  .state('hey.talk', {
-    url: '/talk',
-    views: {
-      'tab-talk': {
-        templateUrl: 'templates/talk/tab-talk.html',
-        controller: 'TalkCtrl'
-      }
-    }
-  })
-
-  .state('hey.talk-ing', {
-    url: '/talk/ing',
-    views: {
-      'tab-talk': {
-        templateUrl: 'templates/talk/tab-talk-ing.html',
-        controller: 'TalkIngCtrl'
-      }
-    }
-  })
-
-
-
-  // group
-  .state('hey.group', {
-    url: '/group',
-    views: {
-      'tab-group': {
-        templateUrl: 'templates/tab-group.html',
-        controller: 'GroupController'
-      }
-    }
-  })
-
-
-
-
-  // @mark delete
-  .state('hey.fotos-detail', {
-    url: '/fotos/:fotosId',
-    views: {
-      'tab-fotos': {
-        templateUrl: 'templates/fotos-detail.html',
-        controller: 'AlbunesController'
-      }
-    }
-  })
-  .state('hey.favoritos', {
-      url: '/favoritos',
-      views: {
-          'tab-favoritos': {
-              templateUrl: 'templates/tab-love.html',
-              controller: 'FavoritosController'
-          }
-      }
-  })
-  .state('hey.account', {
-        url: '/account',
+    // timeline
+    .state('hey.timeline', {
+        url: '/timeline',
         views: {
-            'tab-account': {
-                templateUrl: 'templates/tab-account.html',
-                controller: 'AjustesController'
+            'tab-timeline': {
+                templateUrl: 'templates/timeline/tab-timeline.html',
+                controller: 'TimelineCtrl'
             }
         }
-  });
+    })
 
+    // activity
+    .state('hey.activity', {
+        url: '/activity',
+        views: {
+            'tab-activity': {
+                templateUrl: 'templates/activity/tab-activity.html',
+                controller: 'ActivityCtrl'
+            }
+        }
+    })
+
+    // user
+    .state('hey.user', {
+        url: '/user',
+        views: {
+            'tab-user': {
+                templateUrl: 'templates/user/tab-user.html',
+                controller: 'UserIndexCtrl'
+            }
+        }
+    })
+
+    // topic
+    .state('hey.topic', {
+    url: '/topic',
+    views: {
+    'tab-topic': {
+    templateUrl: 'templates/topic/tab-topic.html',
+    controller: 'TopicCtrl'
+    }
+    }
+    })
+
+    // talk
+    .state('hey.talk', {
+        url: '/talk',
+        views: {
+            'tab-talk': {
+                templateUrl: 'templates/talk/tab-talk.html',
+                controller: 'TalkCtrl'
+            }
+        }
+    })
+
+    .state('hey.talk-ing', {
+        url: '/talk/ing',
+        views: {
+            'tab-talk': {
+                templateUrl: 'templates/talk/tab-talk-ing.html',
+                controller: 'TalkIngCtrl'
+            }
+        }
+    })
 
 
 
@@ -226,7 +146,7 @@ HeyCommunity
     $stateProvider
     .state('hey-timeline-create', {
         url: '/timeline-create',
-        templateUrl: 'templates/timeline/tab-timeline-create.html',
+        templateUrl: 'templates/timeline/timeline-create.html',
         controller: 'TimelineCreateCtrl'
     })
 
@@ -238,7 +158,7 @@ HeyCommunity
     $stateProvider
     .state('hey-topic-detail', {
         url: '/topic-detail/:id',
-        templateUrl: 'templates/topic/tab-topic-detail.html',
+        templateUrl: 'templates/topic/topic-detail.html',
         controller: 'TopicDetailCtrl'
     })
 
@@ -257,14 +177,14 @@ HeyCommunity
     $stateProvider
     .state('hey-activity-detail', {
         url: '/activity-detail/:id',
-        templateUrl: 'templates/activity/tab-activity-detail.html',
+        templateUrl: 'templates/activity/activity-detail.html',
         controller: 'ActivityDetailCtrl'
     })
 
     // Activity create
     .state('hey-activity-create', {
         url: '/activity-create',
-        templateUrl: 'templates/activity/tab-activity-create.html',
+        templateUrl: 'templates/activity/activity-create.html',
         controller: 'ActivityCreateCtrl'
     })
 

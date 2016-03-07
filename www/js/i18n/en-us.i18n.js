@@ -12,6 +12,7 @@ HeyCommunity
         USER_CENTER:        'User Center',
 
         LANGUAGE:           'Language',
+        PLEASE_SIGN_IN:     'Please Sign-in',
 
         FORGET_PASSWORD:    'Forget Password',
         NEXT:               'Next Step',

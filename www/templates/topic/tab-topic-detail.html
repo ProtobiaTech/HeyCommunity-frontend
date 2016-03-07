@@ -11,13 +11,13 @@
     <ion-content id="module-topic">
         <div class="list card">
             <div class="item item-avatar">
-                <img ng-if="Topic" ng-src="{{ getPicUrl(Topic.author.avatar + '?imageView/2/w/80') }}">
+                <img ng-if="Topic" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(Topic.author.avatar + '?imageView/2/w/80') }}">
                 <h2>{{ Topic.title }}</h2>
                 <p>{{ getMomentDate(Topic.created_at) | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</p>
             </div>
 
             <div class="item item-body">
-                <img ng-if="Topic" class="full-image" ng-src="{{ getPicUrl(Topic.avatar + '?imageView/2/w/500') }}">
+                <img ng-if="Topic" style="background-color:#dfdfdf;" class="full-image" ng-src="{{ getPicUrl(Topic.avatar + '?imageView/2/w/500') }}">
                 <p ng-bind-html="Topic.content | nl2br"></p>
                 <p class="hide">
                     <a ng-click="like()" class="subdued"><i class="icon ion ion-heart"></i> {{ Topic.like_num }}</a>
@@ -31,7 +31,7 @@
             <div class="item item-body" style="padding:0;">
                 <div class="row">
                     <div class="col col-10">
-                        <img style="width:100%; border-radius:50%;" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
+                        <img style="width:100%; border-radius:50%; background-color:#dfdfdf" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                     </div>
                     <div class="col" style="font-size:14px;">
                         <div class="subedue" style="font-size:14px; line-height:1.5em; white-space:nowrap; overflow:hidden;">
@@ -52,7 +52,8 @@
         <form name="ngForm" ng-submit="commentPublish()">
             <div style="positon:absoluted;" class="item item-input-inset">
                 <label class="item-input-wrapper">
-                    <input ng-model="TopicComment.content" required ng-minlength="3" type="text" placeholder="{{ 'SAY_SOMETHING' | translate }}">
+                    <input ng-if="isAuth()" ng-model="TopicComment.content" required ng-minlength="3" type="text" style="width:100%" placeholder="{{ 'SAY_SOMETHING' | translate }}">
+                    <input ng-if="!isAuth()" ng-model="TopicComment.content" required ng-minlength="3" type="text" style="width:100%" disabled placeholder="{{ 'PLEASE_SIGN_IN' | translate }}">
                 </label>
                 <button type="submit" ng-disabled="ngForm.$invalid" class="button button-small">{{ 'COMMENT' | translate }}</button>
             </div>

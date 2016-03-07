@@ -12,6 +12,7 @@ HeyCommunity
         USER_CENTER:        '用户中心',
 
         LANGUAGE:           '语言',
+        PLEASE_SIGN_IN:     '请先登录',
 
         FORGET_PASSWORD:    '忘记密码',
         NEXT:               '下一步',

@@ -58,9 +58,17 @@ gulp.task('git-check', function(done) {
 
 // js minify
 gulp.task('js-minify', ['clear-all-js'], function() {
-  return gulp.src([
+    return gulp.src([
       './www/js/*.js',
       './www/js/*/*.js',
+      './www/lib/monment/monment.js',
+      './www/lib/ios9patch/script.js',
+      './www/lib/ionicfilterbar/dist/ionic.filter.bar.js',
+      './www/lib/ionicgallery/dist/ion-gallery.js',
+      './www/lib/ionic-scroll-sista/dist/ionic.scroll.sista.js',
+      './www/lib/ion-affix-master/ion-affix.js',
+      './www/lib/angular-translate/angular-translate.min.js',
+      './www/lib/ng-file-upload/ng-file-upload.min.js',
     ])
     .pipe(concat('all.hey-community.min.js'))
     .pipe(ngmin())
@@ -69,14 +77,14 @@ gulp.task('js-minify', ['clear-all-js'], function() {
     .pipe(gulp.dest('./www/js'));
 });
 gulp.task('clear-all-js', function() {
-  return gulp.src('./www/js/all.hey-community.min.js', {read: false})
+    return gulp.src('./www/js/all.hey-community.min.js', {read: false})
     .pipe(clean());
 });
 
 
 // publish index.html
 gulp.task('html', function () {
-  return gulp.src('./www/index.html')
+    return gulp.src('./www/index.html')
     .pipe(useref())
     .pipe(gulpif('*.js', uglify()))
     .pipe(gulp.dest('www'));

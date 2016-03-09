@@ -37,7 +37,7 @@
                         <div class="subedue" style="font-size:14px; line-height:1.5em; white-space:nowrap; overflow:hidden;">
                             <span>{{ item.author.nickname }}</span>
                             &nbsp;&nbsp;
-                            <span>{{ getMomentDate(item.created_at) | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</span>
+                            <span>{{ item.created_at | momentDate | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</span>
                         </div>
                         <div ng-bind-html="item.content | nl2br"></div>
                     </div>

@@ -6,6 +6,7 @@ var HeyCommunity = angular.module('starter', [
     'pascalprecht.translate', 'ngFileUpload',
 ])
 
+
 .run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
@@ -61,6 +62,7 @@ var HeyCommunity = angular.module('starter', [
         $ionicLoading.hide()
     })
 }])
+
 
 .config(['$ionicFilterBarConfigProvider', '$ionicConfigProvider', '$httpProvider', '$translateProvider', function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
     if (!localStorage.appLanguage) {
@@ -118,9 +120,16 @@ var HeyCommunity = angular.module('starter', [
     }])
 }])
 
+
 .filter('nl2br', ['$sce', function ($sce) {
     return function (text) {
         text = text ? text.replace(/\n/g, '<br>') : '';
         return $sce.trustAsHtml(text);
+    };
+}])
+
+.filter('momentDate', ['$sce', function ($sce) {
+    return function (date) {
+        return moment.utc(date).format();
     };
 }]);

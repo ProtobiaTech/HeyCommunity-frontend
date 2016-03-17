@@ -2,11 +2,17 @@
   "name": "HeyCommunity",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.2.0"
+    "ionic": "driftyco/ionic-bower#1.1.1"
   },
   "dependencies": {
     "jquery": "~2.1.4",
     "ng-file-upload": "~11.2.3",
-    "moment": "~2.11.2"
+    "moment": "~2.11.2",
+    "ionic-scroll-sista": "~1.0.7",
+    "ionic-filter-bar": "~1.1.1",
+    "angular-ios9-uiwebview-patch": "~1.1.1",
+    "angular-translate": "~2.10.0",
+    "ion-affix": "~1.0.1",
+    "ion-gallery": "~0.1.13"
   }
 }

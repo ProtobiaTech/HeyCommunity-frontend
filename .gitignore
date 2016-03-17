@@ -8,3 +8,4 @@ plugins/
 .DS_Store
 .swp
 www/js/all.hey-community.min.js
+www/lib

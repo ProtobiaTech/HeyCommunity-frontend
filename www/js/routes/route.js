@@ -99,6 +99,7 @@ HeyCommunity
 
     // user signOut
     .state('hey-user-signOut', {
+        cache: false,
         url: '/user/signOut',
         controller: 'UserSignOutCtrl'
     })

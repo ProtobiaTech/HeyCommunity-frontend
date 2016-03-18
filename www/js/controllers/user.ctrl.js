@@ -19,8 +19,12 @@ HeyCommunity
 .controller('UserSignOutCtrl', ['$scope', 'UserService', function($scope, UserService) {
     $scope.$root.$broadcast('loading:show');
 
-    UserService.signOut().then(function() {
-        $scope.state.go('hey.user');
+    UserService.signOut().then(function(response) {
+        if (response.status === 200) {
+            $scope.state.go('hey.user');
+        } else {
+            $scope.state.go('hey-user-setup');
+        }
     });
 }])
 

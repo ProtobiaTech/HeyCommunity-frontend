@@ -99,3 +99,8 @@ HeyCommunity
         });
     }
 }])
+
+
+// hey.timeline-detail
+.controller('TimelineDetailCtrl', ['$scope', 'TimelineService', 'Upload', function($scope, TimelineService, Upload) {
+}])

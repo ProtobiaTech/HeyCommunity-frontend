@@ -34,6 +34,12 @@ HeyCommunity
         controller: 'TimelineCreateCtrl'
     })
 
+    .state('hey-timeline-detail', {
+        url: '/timeline-detail/:id',
+        templateUrl: 'templates/timeline/timeline-detail.html',
+        controller: 'TimelineDetailCtrl'
+    })
+
 
 
     //

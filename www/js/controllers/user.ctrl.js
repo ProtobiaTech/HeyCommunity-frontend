@@ -1,14 +1,8 @@
 HeyCommunity
 
 // tab.user
-.controller('UserIndexCtrl', ['$scope', '$rootScope', '$translate', function($scope, $rootScope, $translate) {
-    if (!localStorage.user) {
-        /** auto jump to signIn page
-        setTimeout(function() {
-            $scope.state.go('hey-user-signIn');
-        }, 800);
-        */
-    } else {
+.controller('UserIndexCtrl', ['$scope', function($scope) {
+    if (localStorage.user) {
         $scope.user = JSON.parse(localStorage.user);
     }
 }])

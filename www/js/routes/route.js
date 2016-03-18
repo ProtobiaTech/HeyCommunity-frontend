@@ -28,7 +28,6 @@ HeyCommunity
         }
     })
 
-    $stateProvider
     .state('hey-timeline-create', {
         url: '/timeline-create',
         templateUrl: 'templates/timeline/timeline-create.html',
@@ -50,7 +49,6 @@ HeyCommunity
         }
     })
 
-    $stateProvider
     .state('hey-activity-detail', {
         url: '/activity-detail/:id',
         templateUrl: 'templates/activity/activity-detail.html',
@@ -78,7 +76,6 @@ HeyCommunity
         }
     })
 
-    $stateProvider
     .state('hey-user-signIn', {
         url: '/user/signIn',
         templateUrl: 'templates/user/user-signIn.html',
@@ -142,7 +139,6 @@ HeyCommunity
         }
     })
 
-    $stateProvider
     .state('hey-topic-detail', {
         url: '/topic-detail/:id',
         templateUrl: 'templates/topic/topic-detail.html',
@@ -185,7 +181,6 @@ HeyCommunity
     //
     // Other
     // -------------------------------
-    $stateProvider
     .state('hey-deving', {
         url: '/deving',
         templateUrl: 'templates/single/deving.html',

@@ -13,7 +13,11 @@ HeyCommunity
         templateUrl: 'templates/tabs.html'
     })
 
-    // timeline
+
+
+    //
+    // Timeline
+    // -------------------------------
     .state('hey.timeline', {
         url: '/timeline',
         views: {
@@ -24,7 +28,18 @@ HeyCommunity
         }
     })
 
-    // activity
+    $stateProvider
+    .state('hey-timeline-create', {
+        url: '/timeline-create',
+        templateUrl: 'templates/timeline/timeline-create.html',
+        controller: 'TimelineCreateCtrl'
+    })
+
+
+
+    //
+    // Activity
+    // --------------------------------
     .state('hey.activity', {
         url: '/activity',
         views: {
@@ -35,7 +50,24 @@ HeyCommunity
         }
     })
 
-    // user
+    $stateProvider
+    .state('hey-activity-detail', {
+        url: '/activity-detail/:id',
+        templateUrl: 'templates/activity/activity-detail.html',
+        controller: 'ActivityDetailCtrl'
+    })
+
+    .state('hey-activity-create', {
+        url: '/activity-create',
+        templateUrl: 'templates/activity/activity-create.html',
+        controller: 'ActivityCreateCtrl'
+    })
+
+
+
+    //
+    // User
+    // -------------------------------
     .state('hey.user', {
         url: '/user',
         views: {
@@ -46,18 +78,88 @@ HeyCommunity
         }
     })
 
-    // topic
-    .state('hey.topic', {
-    url: '/topic',
-    views: {
-    'tab-topic': {
-    templateUrl: 'templates/topic/tab-topic.html',
-    controller: 'TopicCtrl'
-    }
-    }
+    $stateProvider
+    .state('hey-user-signIn', {
+        url: '/user/signIn',
+        templateUrl: 'templates/user/user-signIn.html',
+        controller: 'UserSignInCtrl'
     })
 
-    // talk
+    .state('hey-user-signUp', {
+        url: '/user/signUp',
+        templateUrl: 'templates/user/user-signUp.html',
+        controller: 'UserSignUpCtrl'
+    })
+
+    .state('hey-user-signOut', {
+        cache: false,
+        url: '/user/signOut',
+        controller: 'UserSignOutCtrl'
+    })
+
+    .state('hey-user-info', {
+        url: '/user/user-info',
+        templateUrl: 'templates/user/user-info.html',
+        controller: 'UserInfoCtrl'
+    })
+
+    .state('hey-user-infoEdit', {
+        url: '/user/user-infoEdit',
+        templateUrl: 'templates/user/user-infoEdit.html',
+        controller: 'UserInfoEditCtrl'
+    })
+
+    .state('hey-user-setup', {
+        url: '/user/user-setup',
+        templateUrl: 'templates/user/user-setup.html',
+        controller: 'UserSetupCtrl'
+    })
+
+    .state('hey-user-setup-general', {
+        url: '/user/user-setup-general',
+        templateUrl: 'templates/user/user-setup-general.html',
+        // controller: 'UserSetupGeneralCtrl'
+    })
+
+    .state('hey-user-setup-general-language', {
+        url: '/user/user-setup-general-language',
+        templateUrl: 'templates/user/user-setup-general-language.html',
+        controller: 'UserSetupGeneralLanguageCtrl'
+    })
+
+
+
+    //
+    // Topic
+    // -------------------------------
+    .state('hey.topic', {
+        url: '/topic',
+        views: {
+            'tab-topic': {
+                templateUrl: 'templates/topic/tab-topic.html',
+                controller: 'TopicCtrl'
+            }
+        }
+    })
+
+    $stateProvider
+    .state('hey-topic-detail', {
+        url: '/topic-detail/:id',
+        templateUrl: 'templates/topic/topic-detail.html',
+        controller: 'TopicDetailCtrl'
+    })
+
+    .state('hey-topic-create', {
+        url: '/topic-create',
+        templateUrl: 'templates/topic/topic-create.html',
+        controller: 'TopicCreateCtrl'
+    })
+
+
+
+    //
+    // Talk
+    // -------------------------------
     .state('hey.talk', {
         url: '/talk',
         views: {
@@ -81,118 +183,7 @@ HeyCommunity
 
 
     //
-    // User signIn
-    // -------------------------------
-    $stateProvider
-    .state('hey-user-signIn', {
-        url: '/user/signIn',
-        templateUrl: 'templates/user/user-signIn.html',
-        controller: 'UserSignInCtrl'
-    })
-
-    // user signUp
-    .state('hey-user-signUp', {
-        url: '/user/signUp',
-        templateUrl: 'templates/user/user-signUp.html',
-        controller: 'UserSignUpCtrl'
-    })
-
-    // user signOut
-    .state('hey-user-signOut', {
-        cache: false,
-        url: '/user/signOut',
-        controller: 'UserSignOutCtrl'
-    })
-
-    // user info
-    .state('hey-user-info', {
-        url: '/user/user-info',
-        templateUrl: 'templates/user/user-info.html',
-        controller: 'UserInfoCtrl'
-    })
-
-    // user infoEdit
-    .state('hey-user-infoEdit', {
-        url: '/user/user-infoEdit',
-        templateUrl: 'templates/user/user-infoEdit.html',
-        controller: 'UserInfoEditCtrl'
-    })
-
-    // user setup
-    .state('hey-user-setup', {
-        url: '/user/user-setup',
-        templateUrl: 'templates/user/user-setup.html',
-        controller: 'UserSetupCtrl'
-    })
-
-    // user setup general
-    .state('hey-user-setup-general', {
-        url: '/user/user-setup-general',
-        templateUrl: 'templates/user/user-setup-general.html',
-        // controller: 'UserSetupGeneralCtrl'
-    })
-
-    // user setup general language
-    .state('hey-user-setup-general-language', {
-        url: '/user/user-setup-general-language',
-        templateUrl: 'templates/user/user-setup-general-language.html',
-        controller: 'UserSetupGeneralLanguageCtrl'
-    })
-
-
-
-    //
-    // Timeline create
-    // -------------------------------
-    $stateProvider
-    .state('hey-timeline-create', {
-        url: '/timeline-create',
-        templateUrl: 'templates/timeline/timeline-create.html',
-        controller: 'TimelineCreateCtrl'
-    })
-
-
-
-    //
-    // Topic detail
-    // -------------------------------
-    $stateProvider
-    .state('hey-topic-detail', {
-        url: '/topic-detail/:id',
-        templateUrl: 'templates/topic/topic-detail.html',
-        controller: 'TopicDetailCtrl'
-    })
-
-    // Topic create
-    .state('hey-topic-create', {
-        url: '/topic-create',
-        templateUrl: 'templates/topic/topic-create.html',
-        controller: 'TopicCreateCtrl'
-    })
-
-
-
-    //
-    // Activity detail
-    // -------------------------------
-    $stateProvider
-    .state('hey-activity-detail', {
-        url: '/activity-detail/:id',
-        templateUrl: 'templates/activity/activity-detail.html',
-        controller: 'ActivityDetailCtrl'
-    })
-
-    // Activity create
-    .state('hey-activity-create', {
-        url: '/activity-create',
-        templateUrl: 'templates/activity/activity-create.html',
-        controller: 'ActivityCreateCtrl'
-    })
-
-
-
-    //
-    // Other hey-deving
+    // Other
     // -------------------------------
     $stateProvider
     .state('hey-deving', {

@@ -4,10 +4,18 @@ HeyCommunity
 .controller('TimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
     TimelineService.index().then(function(response) {
         if (response.status == 200) {
-            $scope.timelines = response.data.data;
-            $scope.timelineCurrentPage = response.data.current_page;
+            $scope.timelines = response.data.timelines.data;
+            $scope.timelineCurrentPage = response.data.timelines.current_page;
+
+            $scope.timelineLikes = response.data.likes;
         }
     });
+
+    //
+    // is Like
+    $scope.isLike = function(id) {
+        return inArray(id, $scope.timelineLikes);
+    }
 
     //
     // like
@@ -21,7 +29,13 @@ HeyCommunity
             if (response.status == 200) {
                 angular.forEach($scope.timelines, function(v) {
                     if (id == v.id) {
-                        v.like_num = parseInt(v.like_num) + 1;
+                        if (v.like_num > response.data.like_num) {
+                            var i = $scope.timelineLikes.indexOf(response.data.id);
+                            $scope.timelineLikes.splice(i, 1);
+                        } else {
+                            $scope.timelineLikes.push(response.data.id);
+                        }
+                        v.like_num = response.data.like_num;
                     }
                 })
             }

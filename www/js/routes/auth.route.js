@@ -17,7 +17,7 @@ HeyCommunity
         if (!localStorage.user) {
             if (inArray(toState.name, requireSignInStates)) {
                 event.preventDefault();
-                $state.go('hey-user-signIn');
+                $state.go('hey.user');
                 $rootScope.jumpRoute = toState.name;
             }
         } else {

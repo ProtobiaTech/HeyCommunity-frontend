@@ -29,10 +29,11 @@
                 <div class="content" ng-bind-html="item.content | nl2br"></div>
             </div>
 
-            <div class="item item-footer" style="color:#ddd">
+            <div class="item item-footer">
                 <div class="btns pull-right">
-                    <a ng-if="false" class="icon ion-ios-heart"></a>
-                    <a ng-if="true" ng-click="like(item.id)" class="icon ion-ios-heart-outline" style="color:#ddd"></a>
+                    <a ng-if="!isAuth()" class="icon ion-ios-heart-outline"></a>
+                    <a ng-if="isAuth() && isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart"></a>
+                    <a ng-if="isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
                     <a class="icon ion-more" style="color:#ddd"></a>
                 </div>

@@ -75,9 +75,11 @@ var HeyCommunity = angular.module('starter', [
             localStorage.appLanguage = 'zh-cn';
         }
         */
+        $translateProvider.useSanitizeValueStrategy(null);
         $translateProvider.preferredLanguage('zh-cn');
         localStorage.appLanguage = 'zh-cn';
     } else {
+        $translateProvider.useSanitizeValueStrategy(null);
         $translateProvider.preferredLanguage(localStorage.appLanguage);
     }
 

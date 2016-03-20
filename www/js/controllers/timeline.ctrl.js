@@ -49,7 +49,6 @@ HeyCommunity
             console.debug('### TimelineService.doRefresh response', response);
             if (response.status == 200) {
                 angular.merge($scope.timelines, response.data.timelines.data);
-                // $scope.timelineCurrentPage = response.data.current_page;
             }
         }).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
@@ -67,7 +66,7 @@ HeyCommunity
             console.debug('### TimelineService.loadMore response', response);
             if (response.status == 200) {
                 $scope.timelines = $scope.timelines.concat(response.data.timelines.data);
-                $scope.timelineCurrentPage = response.data.current_page;
+                $scope.timelineCurrentPage = response.data.timelines.current_page;
             }
         }).finally(function() {
             $scope.$broadcast('scroll.infiniteScrollComplete');

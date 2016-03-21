@@ -11,14 +11,13 @@
     <ion-content id="module-topic">
         <div class="list card">
             <div class="item item-avatar">
-                <img ng-if="Topic" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(Topic.author.avatar + '?imageView/2/w/80') }}">
+                <img ng-if="Topic" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(Topic.avatar + '?imageView/2/w/80') }}">
                 <h2>{{ Topic.title }}</h2>
                 <p>{{ getMomentDate(Topic.created_at) | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</p>
             </div>
 
             <div class="item item-body">
-                <img ng-if="Topic" style="background-color:#dfdfdf;" class="full-image" ng-src="{{ getPicUrl(Topic.avatar + '?imageView/2/w/500') }}">
-                <p ng-bind-html="Topic.content | nl2br"></p>
+                <div ng-bind-html="Topic.content | nl2br"></div>
                 <p class="hide">
                     <a ng-click="like()" class="subdued"><i class="icon ion ion-heart"></i> {{ Topic.like_num }}</a>
                     <a class="subdued"><i class="icon ion ion-chatboxes"></i> {{ Topic.comment_num }}</a>

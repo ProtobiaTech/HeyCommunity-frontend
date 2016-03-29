@@ -10,11 +10,12 @@ HeyCommunity
 
 
 // tab.user-signOut
-.controller('UserSignOutCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('UserSignOutCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
     $scope.$root.$broadcast('loading:show');
 
     UserService.signOut().then(function(response) {
         if (response.status === 200) {
+            $ionicHistory.clearCache();
             $scope.state.go('hey.user');
         } else {
             $scope.state.go('hey-user-setup');
@@ -25,7 +26,7 @@ HeyCommunity
 
 
 // tab.user-signIn
-.controller('UserSignInCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('UserSignInCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
     $scope.user = {};
     $scope.formError = {};
 
@@ -38,6 +39,7 @@ HeyCommunity
         }
         UserService.signIn(params).then(function(response) {
             if (response.status === 200) {
+                $ionicHistory.clearCache();
                 if ($scope.jumpRoute) {
                     $scope.state.go($scope.jumpRoute);
                 } else {

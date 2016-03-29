@@ -29,7 +29,9 @@ HeyCommunity
 .controller('UserSignInCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
     $scope.user = {};
     $scope.formError = {};
-    $scope.tenantInfo = JSON.parse(localStorage.tenantInfo);
+    if (localStorage.tenantInfo) {
+        $scope.tenantInfo = JSON.parse(localStorage.tenantInfo);
+    }
 
     $scope.signIn = function() {
         $scope.$root.$broadcast('loading:show');
@@ -62,7 +64,9 @@ HeyCommunity
     $scope.getCaptchaBtnDefaultText = 'GET_CAPTCHA';
     $scope.getCaptchaBtnText = 'GET_CAPTCHA';
     $scope.getCaptchaValid = true;
-    $scope.tenantInfo = JSON.parse(localStorage.tenantInfo);
+    if (localStorage.tenantInfo) {
+        $scope.tenantInfo = JSON.parse(localStorage.tenantInfo);
+    }
 
     $scope.setVal = function(key, val) {
         $scope[key] = val;
@@ -78,6 +82,9 @@ HeyCommunity
                 if (response.status === 200) {
                     $scope.getCaptchaValid = false;
                     getCaptchaTimeout(60);
+                } else {
+                    var content = typeof response.data === 'string' ? response.data : response.data.phone[0];
+                    $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
                 }
             });
         }
@@ -106,7 +113,9 @@ HeyCommunity
                 $scope.signUpStep = 2;
                 $scope.formError = {};
             } else {
-                $scope.formError = response.data;
+                var content = typeof response.data === 'string' ? response.data : response.data.phone[0];
+                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                $scope.user.captcha = '';
             }
         });
     }
@@ -124,7 +133,10 @@ HeyCommunity
             if (response.status === 200) {
                 $scope.state.go('hey.timeline');
             } else {
-                $scope.formError = response.data;
+                for (item in response.data) {
+                    var content = response.data[item][0];
+                }
+                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
             }
         });
     }

@@ -28,11 +28,6 @@
                     </label>
                 </div>
 
-                <!-- form error -->
-                <div class="padding-top padding-bottom assertive">
-                    <div>{{ formError }}</div>
-                </div>
-
                 <button ng-disabled="ngFormSignUpVerify.$invalid" class="button button-block">{{ 'NEXT' | translate }}</button>
             </form>
 
@@ -59,13 +54,6 @@
                         <span class="input-label">{{ 'PASSWORD' | translate }}</span>
                         <input ng-model="user.password" ng-minlength="6" name="password" type="text" required type="text" placeholder="">
                     </label>
-                </div>
-
-                <!-- form error -->
-                <div class="padding-top padding-bottom assertive">
-                    <div ng-repeat="item in formError">
-                        {{ item[0] }}
-                    </div>
                 </div>
 
                 <button ng-disabled="ngFormSignUp.$invalid" class="button button-block">{{ 'SIGN_UP' | translate }}</button>

@@ -7,7 +7,8 @@ var HeyCommunity = angular.module('starter', [
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter',
+    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
         setTimeout(function () {
@@ -42,9 +43,50 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.getMomentDate = getMomentDate;
 
     $rootScope.state = $state;
+    $rootScope.filter = $filter;
     $rootScope.stateParams = $stateParams;
     $rootScope.ionicHistory = $ionicHistory;
 
+
+    // An alert dialog
+    $rootScope.showAlert = function(data) {
+        if (!data) {
+            data = {
+                title: $filter('translate')('ALERT'),
+                template: ''
+            }
+        }
+        var alertPopup = $ionicPopup.alert({
+            title: data.title,
+            template: data.content,
+        });
+
+        alertPopup.then(function(res) {
+        });
+    }
+
+    // A confirm dialog
+    $rootScope.showConfirm = function(data) {
+        if (!data) {
+            data = {
+                title: $filter('translate')('ALERT'),
+                template: ''
+            }
+        }
+        var confirmPopup = $ionicPopup.confirm({
+            title: data.title,
+            template: data.content,
+        });
+
+        confirmPopup.then(function(res) {
+            if(res) {
+            } else {
+            }
+        });
+    }
+
+
+    // user
     UserService.userInfo();
     $rootScope.isAuth = function() {
         if (localStorage.user) {
@@ -100,12 +142,10 @@ var HeyCommunity = angular.module('starter', [
     // http provider config
     $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
         return {
-            /*
             request: function(config) {
                 $rootScope.$broadcast('loading:show');
                 return config;
             },
-            */
             response: function(response) {
                 $rootScope.$broadcast('loading:hide');
                 return response;

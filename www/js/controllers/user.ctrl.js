@@ -29,6 +29,7 @@ HeyCommunity
 .controller('UserSignInCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
     $scope.user = {};
     $scope.formError = {};
+    $scope.tenantInfo = JSON.parse(localStorage.tenantInfo);
 
     $scope.signIn = function() {
         $scope.$root.$broadcast('loading:show');
@@ -55,10 +56,13 @@ HeyCommunity
 
 
 // tab.user-signUp
-.controller('UserSignUpCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('UserSignUpCtrl', ['$scope', 'UserService', '$timeout', function($scope, UserService, $timeout) {
     $scope.user = {};
     $scope.signUpStep = 1;
-    $scope.formError = {};
+    $scope.getCaptchaBtnDefaultText = 'GET_CAPTCHA';
+    $scope.getCaptchaBtnText = 'GET_CAPTCHA';
+    $scope.getCaptchaValid = true;
+    $scope.tenantInfo = JSON.parse(localStorage.tenantInfo);
 
     $scope.setVal = function(key, val) {
         $scope[key] = val;
@@ -66,9 +70,29 @@ HeyCommunity
 
     // get captcha
     $scope.getCaptcha = function() {
-        // check phone is exists
-        // seed code
-        alert('next');
+        if ($scope.getCaptchaValid) {
+            var params = {
+                phone: $scope.user.phone,
+            }
+            UserService.signUpGetCaptcha(params).then(function(response) {
+                if (response.status === 200) {
+                    $scope.getCaptchaValid = false;
+                    getCaptchaTimeout(60);
+                }
+            });
+        }
+    }
+
+    var getCaptchaTimeout = function(second) {
+        if (second > 0) {
+            $scope.getCaptchaBtnText = second + 's';
+            $timeout(function() {
+                getCaptchaTimeout(second - 1)
+            }, 1000);
+        } else {
+            $scope.getCaptchaBtnText = $scope.getCaptchaBtnDefaultText;
+            $scope.getCaptchaValid = true;
+        }
     }
 
     // sign up verify

@@ -9,36 +9,28 @@
     </ion-nav-bar>
 
     <ion-content id="module-user" class="page-signup">
-        <div class="padding" style="padding-top:60px;">
-            <div class="hey-avatar text-center">
-                <img ng-src="imgs/userAvatar-default.png">
-            </div>
-        </div>
-
         <div class="padding">
+            <p class="h5">{{ 'WELCOME_COME_TO' | translate }}{{ tenantInfo.site_name }}</p>
+
             <!-- step of 1 -->
             <form ng-if="signUpStep == 1" name="ngFormSignUpVerify" ng-submit="signUpVerifyCaptcha()">
-                <p class="h4 text-center">{{ 'SIGN_UP' | translate }}</p>
-
                 <div class="list">
                     <label class="item item-input">
                         <span class="input-label">{{ 'PHONE' | translate }}</span>
                         <input ng-model="user.phone" name="phone" type="number" required ng-maxlength="11" ng-minlength="11">
                     </label>
 
-                    <label class="item item-input hide">
-                        <span class="input-label">{{ 'CAPTCHA' | translate }}</span>
-                        <input ng-model="user.captcha" ng-init="user.captcha = '1234'" name="captcha" type="text" todo-required todo-ng-minlength="4">
 
-                        <button type="button" class="button button-small" ng-click="getCaptcha()">{{ 'GET_CAPTCHA' | translate }}</button>
+                    <label class="item item-input">
+                        <span class="input-label">{{ 'CAPTCHA' | translate }}</span>
+                        <button type="button" ng-disabled="ngFormSignUpVerify.phone.$invalid" style="position:absolute; right:10px;" class="button button-small" ng-click="getCaptcha()">{{ getCaptchaBtnText | translate }}</button>
+                        <input ng-model="user.captcha" name="captcha" type="text" required ng-minlength="6">
                     </label>
                 </div>
 
                 <!-- form error -->
                 <div class="padding-top padding-bottom assertive">
-                    <div ng-repeat="item in formError">
-                        {{ item[0] }}
-                    </div>
+                    <div>{{ formError }}</div>
                 </div>
 
                 <button ng-disabled="ngFormSignUpVerify.$invalid" class="button button-block">{{ 'NEXT' | translate }}</button>
@@ -47,8 +39,6 @@
 
             <!-- step of 2 -->
             <form ng-if="signUpStep == 2" name="ngFormSignUp" ng-submit="signUp()">
-                <p class="h4 text-center">{{ 'SIGN_UP' | translate }}</p>
-
                 <div class="list">
                     <label class="item item-input">
                         <span class="input-label">{{ 'PHONE' | translate }}</span>

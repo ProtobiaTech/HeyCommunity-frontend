@@ -6,6 +6,12 @@ HeyCommunity
         return $http.post(getApiUrl('/user/sign-up-verify-captcha'), params);
     }
 
+    //
+    this.signUpGetCaptcha = function(params) {
+        var q = $http.post(getApiUrl('/user/get-captcha'), params);
+        return q;
+    }
+
     // sign up
     this.signUp = function(params) {
         var q = $http.post(getApiUrl('/user/sign-up'), params);

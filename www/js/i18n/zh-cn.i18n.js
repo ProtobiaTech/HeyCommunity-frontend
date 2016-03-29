@@ -53,6 +53,8 @@ HeyCommunity
 
         SETUP_GENERAL_LANGUAGE:         '语言设置',
         SETUP_GENERAL:                  '通用设置',
+        WELCOME_COME_TO:                '欢迎来到',
+        WELCOME_COME_BACK:              '欢迎回到',
 
 
 

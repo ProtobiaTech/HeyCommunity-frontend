@@ -10,11 +10,12 @@ HeyCommunity
 
 
 // tab.user-signOut
-.controller('UserSignOutCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('UserSignOutCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
     $scope.$root.$broadcast('loading:show');
 
     UserService.signOut().then(function(response) {
         if (response.status === 200) {
+            $ionicHistory.clearCache();
             $scope.state.go('hey.user');
         } else {
             $scope.state.go('hey-user-setup');
@@ -25,9 +26,12 @@ HeyCommunity
 
 
 // tab.user-signIn
-.controller('UserSignInCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('UserSignInCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
     $scope.user = {};
     $scope.formError = {};
+    if (localStorage.tenantInfo) {
+        $scope.tenantInfo = JSON.parse(localStorage.tenantInfo);
+    }
 
     $scope.signIn = function() {
         $scope.$root.$broadcast('loading:show');
@@ -38,6 +42,7 @@ HeyCommunity
         }
         UserService.signIn(params).then(function(response) {
             if (response.status === 200) {
+                $ionicHistory.clearCache();
                 if ($scope.jumpRoute) {
                     $scope.state.go($scope.jumpRoute);
                 } else {
@@ -53,10 +58,15 @@ HeyCommunity
 
 
 // tab.user-signUp
-.controller('UserSignUpCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('UserSignUpCtrl', ['$scope', 'UserService', '$timeout', function($scope, UserService, $timeout) {
     $scope.user = {};
     $scope.signUpStep = 1;
-    $scope.formError = {};
+    $scope.getCaptchaBtnDefaultText = 'GET_CAPTCHA';
+    $scope.getCaptchaBtnText = 'GET_CAPTCHA';
+    $scope.getCaptchaValid = true;
+    if (localStorage.tenantInfo) {
+        $scope.tenantInfo = JSON.parse(localStorage.tenantInfo);
+    }
 
     $scope.setVal = function(key, val) {
         $scope[key] = val;
@@ -64,9 +74,32 @@ HeyCommunity
 
     // get captcha
     $scope.getCaptcha = function() {
-        // check phone is exists
-        // seed code
-        alert('next');
+        if ($scope.getCaptchaValid) {
+            var params = {
+                phone: $scope.user.phone,
+            }
+            UserService.signUpGetCaptcha(params).then(function(response) {
+                if (response.status === 200) {
+                    $scope.getCaptchaValid = false;
+                    getCaptchaTimeout(60);
+                } else {
+                    var content = typeof response.data === 'string' ? response.data : response.data.phone[0];
+                    $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                }
+            });
+        }
+    }
+
+    var getCaptchaTimeout = function(second) {
+        if (second > 0) {
+            $scope.getCaptchaBtnText = second + 's';
+            $timeout(function() {
+                getCaptchaTimeout(second - 1)
+            }, 1000);
+        } else {
+            $scope.getCaptchaBtnText = $scope.getCaptchaBtnDefaultText;
+            $scope.getCaptchaValid = true;
+        }
     }
 
     // sign up verify
@@ -80,7 +113,9 @@ HeyCommunity
                 $scope.signUpStep = 2;
                 $scope.formError = {};
             } else {
-                $scope.formError = response.data;
+                var content = typeof response.data === 'string' ? response.data : response.data.phone[0];
+                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                $scope.user.captcha = '';
             }
         });
     }
@@ -98,7 +133,10 @@ HeyCommunity
             if (response.status === 200) {
                 $scope.state.go('hey.timeline');
             } else {
-                $scope.formError = response.data;
+                for (item in response.data) {
+                    var content = response.data[item][0];
+                }
+                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
             }
         });
     }

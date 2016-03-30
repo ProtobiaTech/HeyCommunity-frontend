@@ -69,6 +69,7 @@ gulp.task('js-minify', ['clear-all-js'], function() {
       './www/lib/ion-affix-master/ion-affix.js',
       './www/lib/angular-translate/angular-translate.min.js',
       './www/lib/ng-file-upload/ng-file-upload.min.js',
+      './www/lib/ng-img-crop/ng-img-crop.js',
     ])
     .pipe(concat('all.hey-community.min.js'))
     .pipe(ngmin())

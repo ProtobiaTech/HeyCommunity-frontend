@@ -13,6 +13,7 @@
     "angular-ios9-uiwebview-patch": "~1.1.1",
     "angular-translate": "~2.10.0",
     "ion-affix": "~1.0.1",
-    "ion-gallery": "~0.1.13"
+    "ion-gallery": "~0.1.13",
+    "ng-img-crop": "ngImgCrop#~0.3.2"
   }
 }

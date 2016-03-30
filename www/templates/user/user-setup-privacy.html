@@ -1,4 +1,4 @@
-<ion-view view-title="{{'SETUP_GENERAL'| translate }}" cache-view="false">
+<ion-view view-title="{{'PRIVACY'| translate }}" cache-view="false">
     <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
         <ion-nav-buttons side="left">
           <button ui-sref="hey-user-setup" class="button back-button buttons  button-clear header-item" style="">
@@ -8,16 +8,15 @@
         </ion-nav-buttons>
     </ion-nav-bar>
 
-    <ion-content id="module-user" class="page-user-setup">
-        <div class="padding"></div>
+    <ion-content id="module-user" class="page-user-setup-softInfo">
+        <div class="padding">
+            <div class="h4">
+                HeyCommunity <small>DEV</small><br>
+            </div>
 
-        <div class="list">
-            <a class="item item-icon-left" ui-sref="hey-user-setup-general-language" nav-direction="enter">
-                <i class="icon ion-earth"></i>
-                {{ 'LANGUAGE' | translate }}
-                <span class="item-note">
-                </span>
-            </a>
+            <p>
+                We actively protect user data and information in this platform, ease of use.
+            </p>
         </div>
     </ion-content>
 </ion-view>

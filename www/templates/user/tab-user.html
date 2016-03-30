@@ -23,10 +23,10 @@
         <div ng-if="isAuth()">
             <div class="" style="padding-top:60px;">
                 <div class="hey-avatar text-center">
-                    <img ng-src="{{ getPicUrl(user.avatar + '?imageView/2/w/180') }}">
+                    <img ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/180') }}">
                 </div>
                 <div class="text-center">
-                    {{ user.nickname }}
+                    {{ userInfo.nickname }}
                 </div>
             </div>
 
@@ -37,11 +37,15 @@
                     <i class="icon ion-person"></i>
                     {{ 'MY_INFO' | translate }}
                 </a>
-                <a class="item item-icon-left" style="color:#999;">
+                <a class="item item-icon-left" ui-sref="hey-user-home">
+                    <i class="icon ion-ios-flower"></i>
+                    {{ 'MY_HOME' | translate }}
+                </a>
+                <a class="hide item item-icon-left" style="color:#999;">
                     <i class="icon ion-heart"></i>
                     {{ 'MY_ME_FOLLOW' | translate }}
                 </a>
-                <a class="item item-icon-left" style="color:#999;">
+                <a class="hide item item-icon-left" style="color:#999;">
                     <i class="icon ion-person-stalker"></i>
                     {{ 'MY_FOLLOW_ME' | translate }}
                 </a>

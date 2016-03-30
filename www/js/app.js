@@ -3,7 +3,7 @@
 var HeyCommunity = angular.module('starter', [
     'ionic',
     'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
-    'pascalprecht.translate', 'ngFileUpload',
+    'pascalprecht.translate', 'ngFileUpload', 'ngImgCrop',
 ])
 
 
@@ -46,6 +46,7 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.filter = $filter;
     $rootScope.stateParams = $stateParams;
     $rootScope.ionicHistory = $ionicHistory;
+    $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
 
 
     // An alert dialog
@@ -87,7 +88,11 @@ var HeyCommunity = angular.module('starter', [
 
 
     // user
-    UserService.userInfo();
+    UserService.userInfo().then(function(response) {
+        if (response.status === 200) {
+            $rootScope.userInfo = response.data;
+        }
+    });
     $rootScope.isAuth = function() {
         if (localStorage.user) {
             return true;

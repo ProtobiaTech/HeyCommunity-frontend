@@ -1,5 +1,5 @@
 <ion-view view-title="{{ 'MY_INFO' | translate }}" cache-view="false">
-    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container" nav-bar-direction="swap">
+    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
         <ion-nav-buttons side="left">
           <button ui-sref="hey.user" class="button back-button buttons  button-clear header-item" style="">
               <i class="icon ion-ios-arrow-back"></i> 
@@ -12,26 +12,24 @@
         <div class="padding"></div>
 
         <div class="list hey-list">
-            <a class="item item-avatar item-icon-right">
-                <img ng-src="{{ getPicUrl(user.avatar + '?imageView/2/w/80') }}">
-                <h2>{{ user.nickname }}</h2>
-                <p>{{ 'This is motto' }}</p>
+            <a class="item item-avatar item-icon-right" ui-sref="hey-user-info-avatar">
+                <img ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
+                <h2>{{ userInfo.nickname }}</h2>
+                <p>UID: {{ userInfo.id}}</p>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
-            <a class="item item-icon-right">
+            <div class="item todo-item-icon-right">
                 {{ 'PHONE' | translate }}
                 <span class="item-note">
-                    {{ user.phone }}
+                    {{ userInfo.phone }}
                 </span>
-                <i class="icon ion-ios-arrow-right"></i>
-            </a>
-            <a class="item item-icon-right">
+            </div>
+            <div class="item todo-item-icon-right">
                 {{ 'EMAIL' | translate }}
                 <span class="item-note">
-                    {{ user.email }}
+                    {{ userInfo.email }}
                 </span>
-                <i class="icon ion-ios-arrow-right"></i>
-            </a>
+            </div>
         </div>
 
         <div class="padding"></div>

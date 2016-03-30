@@ -96,7 +96,7 @@ HeyCommunity
         console.debug('### TimelineService.store params', params);
         TimelineService.store(Upload, params).then(function(response) {
             console.debug('### TimelineService.store response', response);
-            if (response.status == 200) {
+            if (response.status === 200) {
                 $scope.state.go('hey.timeline');
             } else {
                 $scope.formErrors = response.data;
@@ -107,5 +107,10 @@ HeyCommunity
 
 
 // hey.timeline-detail
-.controller('TimelineDetailCtrl', ['$scope', 'TimelineService', 'Upload', function($scope, TimelineService, Upload) {
+.controller('TimelineDetailCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+    TimelineService.show({id: $scope.stateParams.id}).then(function(response) {
+        if (response.status === 200) {
+            $scope.Timeline = response.data;
+        }
+    });
 }])

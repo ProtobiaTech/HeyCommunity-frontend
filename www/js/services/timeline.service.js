@@ -11,6 +11,12 @@ HeyCommunity
     }
 
 
+    // show
+    this.show = function(params) {
+        return $http.get(getApiUrl('/timeline/show/' + params.id));
+    }
+
+
     // store
     this.store = function(http, params) {
         return http.upload({

@@ -10,15 +10,23 @@
 
     <ion-content id="module-timeline">
         <div class="padding">
-            <div>
-                <a>Rod</a> 等人喜欢
+            <div class="">
+                <img style="position:absolute; width:30px; height:30px; border-radius:50%;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <div class="" style="border-bottom:1px solid #fff; margin-left:40px; padding-right:40px; padding-bottom:10px; width:100%; min-height:40px;">{{ Timeline.content }}</div>
             </div>
-
             <br>
-            <div>
-                Rod: this is amazing
-            </div>
         </div>
-        <br> <br> <br> <br> <br> <br>
     </ion-content>
+
+    <div class="list" style="position:absolute; bottom:0px; width:100%">
+        <form name="ngForm" ng-submit="commentPublish()">
+            <div style="positon:absoluted;" class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input ng-if="isAuth()" ng-model="TopicComment.content" required ng-minlength="3" type="text" style="width:100%" placeholder="{{ 'SAY_SOMETHING' | translate }}">
+                    <input ng-if="!isAuth()" ng-model="TopicComment.content" required ng-minlength="3" type="text" style="width:100%" disabled placeholder="{{ 'PLEASE_SIGN_IN' | translate }}">
+                </label>
+                <button type="submit" ng-disabled="ngForm.$invalid" class="button button-small">{{ 'COMMENT' | translate }}</button>
+            </div>
+        </form>
+    </div>
 </ion-view>

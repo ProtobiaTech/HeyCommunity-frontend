@@ -145,6 +145,7 @@ var HeyCommunity = angular.module('starter', [
     $ionicConfigProvider.tabs.style('standard');    // Makes them all look the same across all OS
 
     // http provider config
+    $httpProvider.defaults.headers.common.domain = API;
     $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
         return {
             request: function(config) {

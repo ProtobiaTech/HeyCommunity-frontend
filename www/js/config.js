@@ -4,8 +4,8 @@
 
 CDN_DOMAIN          =   'http://public.hey-community.cn';
 
-API_PRODUCT         =   'http://api.hey-community.cn';
-API_DEVING          =   'http://api.hey-community.local';
+API_PRODUCT         =   'http://demo.hey-community.cn';
+API_DEVING          =   'http://demo.hey-community.local';
 
 
 

@@ -118,6 +118,26 @@ HeyCommunity
         controller: 'UserSetupCtrl'
     })
 
+    .state('hey-user-setup-accountSecurity', {
+        url: '/user/user-setup-accountSecurity',
+        templateUrl: 'templates/user/user-setup-accountSecurity.html',
+    })
+
+    .state('hey-user-setup-privacy', {
+        url: '/user/user-setup-privacy',
+        templateUrl: 'templates/user/user-setup-privacy.html',
+    })
+
+    .state('hey-user-setup-feedback', {
+        url: '/user/user-setup-feedback',
+        templateUrl: 'templates/user/user-setup-feedback.html',
+    })
+
+    .state('hey-user-setup-softInfo', {
+        url: '/user/user-setup-softInfo',
+        templateUrl: 'templates/user/user-setup-softInfo.html',
+    })
+
     .state('hey-user-setup-general', {
         url: '/user/user-setup-general',
         templateUrl: 'templates/user/user-setup-general.html',

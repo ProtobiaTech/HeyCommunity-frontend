@@ -13,6 +13,7 @@ HeyCommunity
 
         LANGUAGE:           'Language',
         PLEASE_SIGN_IN:     'Please Sign-in',
+        ERROR:              'Error',
 
         FORGET_PASSWORD:    'Forget Password',
         NEXT:               'Next Step',

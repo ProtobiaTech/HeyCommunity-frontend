@@ -106,6 +106,12 @@ HeyCommunity
         controller: 'UserInfoCtrl'
     })
 
+    .state('hey-user-info-avatar', {
+        url: '/user/user-info-avatar',
+        templateUrl: 'templates/user/user-info-avatar.html',
+        controller: 'UserInfoAvatarCtrl'
+    })
+
     .state('hey-user-infoEdit', {
         url: '/user/user-infoEdit',
         templateUrl: 'templates/user/user-infoEdit.html',

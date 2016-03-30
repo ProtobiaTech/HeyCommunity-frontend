@@ -151,6 +151,13 @@ HeyCommunity
 
 
 
+// tab.user-info-avatar
+.controller('UserInfoAvatarCtrl', ['$scope', 'UserService', function($scope, UserService) {
+    $scope.user = JSON.parse(localStorage.user);
+}])
+
+
+
 // tab.user-setup
 .controller('UserSetupCtrl', ['$scope', 'UserService', function($scope, UserService) {
 }])

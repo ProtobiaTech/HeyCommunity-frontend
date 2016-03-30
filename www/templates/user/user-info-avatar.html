@@ -1,0 +1,18 @@
+<ion-view view-title="{{ 'AVATAR' | translate }}" cache-view="false">
+    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
+        <ion-nav-buttons side="left">
+          <button ui-sref="hey-user-info" class="button back-button buttons  button-clear header-item" style="">
+              <i class="icon ion-ios-arrow-back"></i> 
+              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
+          </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content id="module-user" class="page-user-info-avatar">
+        <div class="padding">
+            <div class="text-center" style="margin-top:20px;">
+                <img style="max-width:60%; max-height:200px;" ng-src="{{ getPicUrl(user.avatar + '?imageView/2/w/80') }}">
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

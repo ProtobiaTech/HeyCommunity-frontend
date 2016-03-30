@@ -27,8 +27,13 @@ HeyCommunity
         DESTROY:            'Destroy',
         SELECT:             'Select',
 
+        DETAIL:             'Detail',
+        COMMENTS:           'Comments',
+
+
         PHONE_OR_PASSWORD_ERROR:        'Phone number or Password is incorrect',
-        PULL_TO_REFRESH:    'Pull to refresh ...',
+        PULL_TO_REFRESH:                'Pull to refresh ...',
+        PLEASE_LOGIN_FIRST:             'Please login first',
 
         // Form
         AVATAR:             'Avatar',

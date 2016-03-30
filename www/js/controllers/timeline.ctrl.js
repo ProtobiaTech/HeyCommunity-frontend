@@ -2,6 +2,7 @@ HeyCommunity
 
 // hey.timeline
 .controller('TimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+
     TimelineService.index().then(function(response) {
         if (response.status == 200) {
             $scope.timelines = response.data.timelines.data;
@@ -20,26 +21,33 @@ HeyCommunity
     //
     // like
     $scope.like = function(id) {
-        var params = {
-            id: id,
-        }
-        console.debug('### TimelineService.like params', params);
-        TimelineService.like(params).then(function(response) {
-            console.debug('### TimelineService.like response', response);
-            if (response.status == 200) {
-                angular.forEach($scope.timelines, function(v) {
-                    if (id == v.id) {
-                        if (v.like_num > response.data.like_num) {
-                            var i = $scope.timelineLikes.indexOf(response.data.id);
-                            $scope.timelineLikes.splice(i, 1);
-                        } else {
-                            $scope.timelineLikes.push(response.data.id);
-                        }
-                        v.like_num = response.data.like_num;
-                    }
-                })
+        if (!$scope.isAuth()) {
+            $scope.$root.$broadcast('notice:show', $scope.filter('translate')('PLEASE_LOGIN_FIRST'));
+            $scope.timeout(function() {
+                $scope.$root.$broadcast('notice:hide');
+            }, 1288);
+        } else {
+            var params = {
+                id: id,
             }
-        })
+            console.debug('### TimelineService.like params', params);
+            TimelineService.like(params).then(function(response) {
+                console.debug('### TimelineService.like response', response);
+                if (response.status == 200) {
+                    angular.forEach($scope.timelines, function(v) {
+                        if (id == v.id) {
+                            if (v.like_num > response.data.like_num) {
+                                var i = $scope.timelineLikes.indexOf(response.data.id);
+                                $scope.timelineLikes.splice(i, 1);
+                            } else {
+                                $scope.timelineLikes.push(response.data.id);
+                            }
+                            v.like_num = response.data.like_num;
+                        }
+                    })
+                }
+            })
+        }
     }
 
     //
@@ -80,8 +88,6 @@ HeyCommunity
     $scope.Timeline = {};
 
     $scope.store = function() {
-        $scope.$root.$broadcast('loading:show');
-
         var params = {
             attachment: $scope.Timeline.avatar,
             content: $scope.Timeline.content,
@@ -90,7 +96,7 @@ HeyCommunity
         console.debug('### TimelineService.store params', params);
         TimelineService.store(Upload, params).then(function(response) {
             console.debug('### TimelineService.store response', response);
-            if (response.status == 200) {
+            if (response.status === 200) {
                 $scope.state.go('hey.timeline');
             } else {
                 $scope.formErrors = response.data;
@@ -101,5 +107,10 @@ HeyCommunity
 
 
 // hey.timeline-detail
-.controller('TimelineDetailCtrl', ['$scope', 'TimelineService', 'Upload', function($scope, TimelineService, Upload) {
+.controller('TimelineDetailCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+    TimelineService.show({id: $scope.stateParams.id}).then(function(response) {
+        if (response.status === 200) {
+            $scope.Timeline = response.data;
+        }
+    });
 }])

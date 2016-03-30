@@ -25,27 +25,27 @@
             </div>
 
             <div class="item item-body item-text-wrap">
-                <img ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment + '?imageView/2/w/800') }}">
-                <div class="content" ng-bind-html="item.content | nl2br"></div>
+                <img on-double-tap="like(item.id)" ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment + '?imageView/2/w/800') }}">
             </div>
 
             <div class="item item-footer">
                 <div>
                     <div class="btns pull-right">
-                        <a ng-if="!isAuth()" class="icon ion-ios-heart-outline"></a>
+                        <a ng-if="!isAuth()" ng-click="like(item.id)" class="icon ion-ios-heart-outline" style="color:#ddd"></a>
                         <a ng-if="isAuth() && isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart"></a>
                         <a ng-if="isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
-                        <a class="icon ion-more" style="color:#ddd;" todo-ui-sref="hey-timeline-detail({id: item.id})"></a>
+                        <a class="icon ion-more" style="color:#ddd;" ui-sref="hey-timeline-detail({id: item.id})"></a>
                     </div>
                     <div>
                         {{ item.like_num }}人喜欢
                     </div>
                 </div>
-                <div ng-if="item.author_like.length" style="line-height:1.5em">
-                    <div ng-repeat="item in item.author_like">
-                        {{ item.author.nickname }}: like it
-                    </div>
+            </div>
+            <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff" ui-sref="hey-timeline-detail({id: item.id})">
+                <div style="margin-bottom:5px;">
+                    <a style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
+                    <span class="content" ng-bind-html="item.content | nl2br"></span>
                 </div>
             </div>
         </div>

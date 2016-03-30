@@ -2,9 +2,6 @@ HeyCommunity
 
 // tab.user
 .controller('UserIndexCtrl', ['$scope', function($scope) {
-    if (localStorage.user) {
-        $scope.user = JSON.parse(localStorage.user);
-    }
 }])
 
 
@@ -146,14 +143,39 @@ HeyCommunity
 
 // tab.user-info
 .controller('UserInfoCtrl', ['$scope', 'UserService', function($scope, UserService) {
-    $scope.user = JSON.parse(localStorage.user);
 }])
 
 
 
 // tab.user-info-avatar
-.controller('UserInfoAvatarCtrl', ['$scope', 'UserService', function($scope, UserService) {
-    $scope.user = JSON.parse(localStorage.user);
+.controller('UserInfoAvatarCtrl', ['$scope', 'UserService', '$ionicActionSheet', 'Upload', '$ionicHistory', function($scope, UserService, $ionicActionSheet, Upload, $ionicHistory) {
+    $scope.userInfo.newAvatar = false;
+
+    //
+    $scope.selectAvatar = function() {
+        angular.element('form input').click();
+    }
+
+    //
+    $scope.submitAvatar = function() {
+        var params = {
+            avatar: $scope.userInfo.newAvatar,
+        }
+
+        console.debug('### UserService.updateAvatar params', params);
+        UserService.updateAvatar(Upload, params).then(function(response) {
+            console.debug('### UserService.updateAvatar response', response);
+            if (response.status == 200) {
+                $scope.$root.userInfo = response.data;
+                localStorage.userInfo = JSON.stringify(response.data);
+                $ionicHistory.clearCache();
+                $scope.state.go('hey-user-info');
+            } else {
+                $scope.formErrors = response.data;
+                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
+            }
+        });
+    }
 }])
 
 

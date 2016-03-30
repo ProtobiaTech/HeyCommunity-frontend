@@ -25,12 +25,13 @@ HeyCommunity
         UPDATE:             '更新',
         DELETE:             '删除',
         DESTROY:            '销毁',
+        SELECT:             '选择',
 
         PHONE_OR_PASSWORD_ERROR:        '手机或密码错误',
         PULL_TO_REFRESH:    '下拉刷新 ...',
 
         // Form
-        AVATAR:             '封面',
+        AVATAR:             '头像',
         TITLE:              '标题',
         CONTENT:            '内容',
         START_DATE:         '开始时间',
@@ -42,6 +43,7 @@ HeyCommunity
         // User tab
         // ------------------------------
         MY_INFO:            '我的信息',
+        MY_HOME:            '我的主页',
         MY_ME_FOLLOW:       '我关注的用户',
         MY_FOLLOW_ME:       '关注我的用户',
 
@@ -51,6 +53,8 @@ HeyCommunity
         GET_CAPTCHA:        '获取验证码',
         EMAIL:              '邮箱',
         NICKNAME:           '昵称',
+
+        SELECT_NEW_AVATAR:      '选择新头像',
 
         SETUP_GENERAL_LANGUAGE:         '语言设置',
         SETUP_GENERAL:                  '通用设置',

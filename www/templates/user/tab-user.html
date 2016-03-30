@@ -23,10 +23,10 @@
         <div ng-if="isAuth()">
             <div class="" style="padding-top:60px;">
                 <div class="hey-avatar text-center">
-                    <img ng-src="{{ getPicUrl(user.avatar + '?imageView/2/w/180') }}">
+                    <img ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/180') }}">
                 </div>
                 <div class="text-center">
-                    {{ user.nickname }}
+                    {{ userInfo.nickname }}
                 </div>
             </div>
 

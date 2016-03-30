@@ -25,6 +25,7 @@ HeyCommunity
         UPDATE:             'Update',
         DELETE:             'Delete',
         DESTROY:            'Destroy',
+        SELECT:             'Select',
 
         PHONE_OR_PASSWORD_ERROR:        'Phone number or Password is incorrect',
         PULL_TO_REFRESH:    'Pull to refresh ...',
@@ -42,15 +43,18 @@ HeyCommunity
         // User tab
         // ------------------------------
         MY_INFO:            'Personal Information',
-        MY_ME_FOLLOW:       'My following',
-        MY_FOLLOW_ME:       'My follower',
+        MY_HOME:            'My Home',
+        MY_ME_FOLLOW:       'My Following',
+        MY_FOLLOW_ME:       'My Follower',
 
         PHONE:              'Phone',
         PASSWORD:           'Password',
-        CAPTCHA:            'Security code',
+        CAPTCHA:            'Security Code',
         GET_CAPTCHA:        'Get SecCode',
         EMAIL:              'Email',
         NICKNAME:           'Nickname',
+
+        SELECT_NEW_AVATAR:      'Select New Avatar',
 
         SETUP_GENERAL_LANGUAGE:         'Language Settings',
         SETUP_GENERAL:                  'General Settings',
@@ -87,7 +91,7 @@ HeyCommunity
         PRIVACY:                'Privacy',
         FEEDBACK:               'Feedback',
         SOFT_INFO:              'More Information',
-        SIGN_OFF:               'Sign off',
+        SIGN_OFF:               'Sign Off',
 
 
 
@@ -96,7 +100,7 @@ HeyCommunity
         // -------------------------------
         TOPIC:                  'Topic',
         CREATE_TOPIC:           'New Topic',
-        SAY_SOMETHING:          'Say something',
+        SAY_SOMETHING:          'Say Something',
 
 
 

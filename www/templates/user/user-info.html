@@ -13,21 +13,21 @@
 
         <div class="list hey-list">
             <a class="item item-avatar item-icon-right" ui-sref="hey-user-info-avatar">
-                <img ng-src="{{ getPicUrl(user.avatar + '?imageView/2/w/80') }}">
-                <h2>{{ user.nickname }}</h2>
-                <p>UID: {{ user.id}}</p>
+                <img ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
+                <h2>{{ userInfo.nickname }}</h2>
+                <p>UID: {{ userInfo.id}}</p>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
             <div class="item todo-item-icon-right">
                 {{ 'PHONE' | translate }}
                 <span class="item-note">
-                    {{ user.phone }}
+                    {{ userInfo.phone }}
                 </span>
             </div>
             <div class="item todo-item-icon-right">
                 {{ 'EMAIL' | translate }}
                 <span class="item-note">
-                    {{ user.email }}
+                    {{ userInfo.email }}
                 </span>
             </div>
         </div>

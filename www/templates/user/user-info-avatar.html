@@ -2,17 +2,28 @@
     <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
         <ion-nav-buttons side="left">
           <button ui-sref="hey-user-info" class="button back-button buttons  button-clear header-item" style="">
-              <i class="icon ion-ios-arrow-back"></i> 
+              <i class="icon ion-ios-arrow-back"></i>
               <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
           </button>
         </ion-nav-buttons>
+
     </ion-nav-bar>
 
     <ion-content id="module-user" class="page-user-info-avatar">
         <div class="padding">
             <div class="text-center" style="margin-top:20px;">
-                <img style="max-width:60%; max-height:200px;" ng-src="{{ getPicUrl(user.avatar + '?imageView/2/w/80') }}">
+                <img ng-if="!userInfo.newAvatar" style="max-width:60%; max-height:200px;" ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
+                <img ng-if="userInfo.newAvatar" style="max-width:60%; max-height:200px;" ng-src="{{ userInfo.newAvatar | ngfDataUrl }}">
+            </div>
+
+            <div style="margin:30px 10%">
+                <button ng-if="!userInfo.newAvatar" ng-click="selectAvatar()" class="button button-block">{{ 'SELECT_NEW_AVATAR' | translate }}</button>
+                <button ng-if="userInfo.newAvatar" ng-click="submitAvatar()" class="button button-block">{{ 'UPDATE' | translate }}</button>
             </div>
         </div>
+
+        <form ng-submit="submitAvatar()" class="hide">
+            <input type="file" ngf-select ng-model="userInfo.newAvatar" name="avatar" ngf-change="avatarChanged($files)" ngf-accept="'image/*'" ngf-resize="{width: 200, height: 200, ratio: '1:1', centerCrop: true,}" required ngf-max-size="20MB" ngf-min-height="100" ngf-min-width="100">
+        </form>
     </ion-content>
 </ion-view>

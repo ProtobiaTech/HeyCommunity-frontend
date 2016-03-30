@@ -57,4 +57,14 @@ HeyCommunity
         });
         return q;
     }
+
+
+    // update avatar
+    this.updateAvatar = function(http, params) {
+        console.log(params)
+        return http.upload({
+            url: getApiUrl('/user/update-avatar'),
+            data: params,
+        })
+    }
 }])

@@ -7,8 +7,8 @@ var HeyCommunity = angular.module('starter', [
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter',
-    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout',
+    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
         setTimeout(function () {
@@ -44,6 +44,7 @@ var HeyCommunity = angular.module('starter', [
 
     $rootScope.state = $state;
     $rootScope.filter = $filter;
+    $rootScope.timeout = $timeout;
     $rootScope.stateParams = $stateParams;
     $rootScope.ionicHistory = $ionicHistory;
     $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
@@ -106,6 +107,13 @@ var HeyCommunity = angular.module('starter', [
         $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})
     })
     $rootScope.$on('loading:hide', function() {
+        $ionicLoading.hide()
+    })
+    $rootScope.$on('notice:show', function(event, text) {
+        console.log(text)
+        $ionicLoading.show({template: text})
+    })
+    $rootScope.$on('notice:hide', function() {
         $ionicLoading.hide()
     })
 }])

@@ -27,8 +27,12 @@ HeyCommunity
         DESTROY:            '销毁',
         SELECT:             '选择',
 
+        DETAIL:             '详情',
+        COMMENTS:           '评论',
+
         PHONE_OR_PASSWORD_ERROR:        '手机或密码错误',
-        PULL_TO_REFRESH:    '下拉刷新 ...',
+        PULL_TO_REFRESH:                '下拉刷新 ...',
+        PLEASE_LOGIN_FIRST:             '请先登录',
 
         // Form
         AVATAR:             '头像',

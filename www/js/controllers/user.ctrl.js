@@ -40,6 +40,8 @@ HeyCommunity
         UserService.signIn(params).then(function(response) {
             if (response.status === 200) {
                 $ionicHistory.clearCache();
+                $scope.$root.userInfo = response.data;
+
                 if ($scope.jumpRoute) {
                     $scope.state.go($scope.jumpRoute);
                 } else {

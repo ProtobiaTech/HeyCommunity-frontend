@@ -2,7 +2,6 @@ HeyCommunity
 
 // hey.timeline
 .controller('TimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
-
     $scope.$root.loadingShowDisabled = true;
     TimelineService.index().then(function(response) {
         if (response.status == 200) {
@@ -70,7 +69,7 @@ HeyCommunity
                         if (value.id === params.id) {
                             delete $scope.timelines[key];
 
-                            $scope.$root.$broadcast('notice:show', $scope.filter('translate')('SUCCESS'));
+                            $scope.showNoticeSuccess();
                             $scope.timeout(function() {
                                 $scope.$root.$broadcast('notice:hide');
                             }, 1288);

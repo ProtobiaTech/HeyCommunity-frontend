@@ -122,6 +122,22 @@ var HeyCommunity = angular.module('starter', [
         }
     }
 
+    $rootScope.showNoticeSuccess = function() {
+        $rootScope.$broadcast('notice:show', $filter('translate')('SUCCESS'));
+        $timeout(function() {
+            $rootScope.$broadcast('notice:hide');
+        }, 1288);
+        return true;
+    }
+
+    $rootScope.showNoticeFail = function() {
+        $rootScope.$broadcast('notice:show', $filter('translate')('FAIL'));
+        $timeout(function() {
+            $rootScope.$broadcast('notice:hide');
+        }, 1288);
+        return false;
+    }
+
     // loading state
     $rootScope.$on('loading:show', function() {
         $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})

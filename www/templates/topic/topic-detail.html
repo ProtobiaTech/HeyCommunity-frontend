@@ -15,45 +15,47 @@
     </ion-nav-bar>
 
     <ion-content id="module-topic">
-        <div class="list card">
-            <div class="item item-avatar">
-                <img ng-if="Topic" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(Topic.avatar + '?imageView/2/w/80') }}">
-                <h2>{{ Topic.title }}</h2>
-                <p>{{ getMomentDate(Topic.created_at) | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</p>
+        <div ng-if="Topic">
+            <div class="list card">
+                <div class="item item-avatar">
+                    <img ng-if="Topic" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(Topic.author.avatar + '?imageView/2/w/80') }}">
+                    <h2>{{ Topic.title }}</h2>
+                    <p>{{ Topic.author.nickname }} &nbsp; {{ getMomentDate(Topic.created_at) | date: "yyyy-MM-dd" : "+0800"}}</p>
+                </div>
+
+                <div class="item item-body">
+                    <div ng-bind-html="Topic.content | nl2br"></div>
+                    <p class="hide">
+                        <a ng-click="like()" class="subdued"><i class="icon ion ion-heart"></i> {{ Topic.like_num }}</a>
+                        <a class="subdued"><i class="icon ion ion-chatboxes"></i> {{ Topic.comment_num }}</a>
+                    </p>
+                </div>
+
             </div>
 
-            <div class="item item-body">
-                <div ng-bind-html="Topic.content | nl2br"></div>
-                <p class="hide">
-                    <a ng-click="like()" class="subdued"><i class="icon ion ion-heart"></i> {{ Topic.like_num }}</a>
-                    <a class="subdued"><i class="icon ion ion-chatboxes"></i> {{ Topic.comment_num }}</a>
-                </p>
-            </div>
-
-        </div>
-
-        <div class="list card" ng-repeat="item in Topic.comments | orderBy: '-created_at'">
-            <div class="item item-body" style="padding:0;">
-                <div class="row">
-                    <div class="col col-10">
-                        <img style="width:100%; border-radius:50%; background-color:#dfdfdf" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
-                    </div>
-                    <div class="col" style="font-size:14px;">
-                        <div class="subedue" style="font-size:14px; line-height:1.5em; white-space:nowrap; overflow:hidden;">
-                            <span>{{ item.author.nickname }}</span>
-                            &nbsp;&nbsp;
-                            <span>{{ item.created_at | momentDate | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</span>
+            <div class="list card" ng-repeat="item in Topic.comments | orderBy: '-created_at'">
+                <div class="item item-body" style="padding:0;">
+                    <div class="row">
+                        <div class="col col-10">
+                            <img style="width:100%; border-radius:50%; background-color:#dfdfdf" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                         </div>
-                        <div ng-bind-html="item.content | nl2br"></div>
+                        <div class="col" style="font-size:14px;">
+                            <div class="subedue" style="font-size:14px; line-height:1.5em; white-space:nowrap; overflow:hidden;">
+                                <span>{{ item.author.nickname }}</span>
+                                &nbsp;&nbsp;
+                                <span>{{ item.created_at | momentDate | date: "yyyy-MM-dd" : "+0800"}}</span>
+                            </div>
+                            <div ng-bind-html="item.content | nl2br"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="" style="height:30px;"></div>
+            <div class="" style="height:30px;"></div>
+        </div>
     </ion-content>
 
-    <div class="list" style="position:absolute; bottom:0px; width:100%">
+    <div ng-if="Topic" class="list" style="position:absolute; bottom:0px; width:100%">
         <form name="ngForm" ng-submit="commentPublish()">
             <div style="positon:absoluted;" class="item item-input-inset">
                 <label class="item-input-wrapper">

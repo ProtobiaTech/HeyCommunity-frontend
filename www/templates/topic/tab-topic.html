@@ -16,7 +16,7 @@
 
         <div class="list">
             <a ng-repeat="item in topics" class="item item-activity item-thumbnail-left item-text-wrap" href="#/topic-detail/{{ item.id }}">
-                <img class="avatar" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(item.avatar + '?imageView/2/w/200') }}">
+                <img class="avatar" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/200') }}">
                 <h2 class="title ng-binding">{{ item.title }}</h2>
                 <p class="content" ng-bind-html="item.content | nl2br">
                 </p>

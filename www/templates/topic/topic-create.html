@@ -15,10 +15,10 @@
                     <span class="input-label">{{ 'TITLE' | translate }}</span>
                     <input ng-model="topic.title" name="title" type="text" placeholder="{{ 'TITLE' | translate }}" required>
                 </label>
-                <label class="item item-input">
+                <label class="item item-input hide">
                     <span class="input-label">{{ 'AVATAR' | translate }}</span>
                     <i style="font-size:22px" class="hide stable icon ion-image"></i>
-                    <input style="line-height:19px; color:#444;" type="file" ngf-select ng-model="topic.avatar" name="avatar" ngf-accept="'image/*'" ngf-resize="{width: 1000}" required ngf-max-size="20MB">
+                    <input style="line-height:19px; color:#444;" type="file" ngf-select ng-model="topic.avatar" name="avatar" ngf-accept="'image/*'" ngf-resize="{width: 1000}" todo-required ngf-max-size="20MB">
                 </label>
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">{{ 'CONTENT' | translate }}</span>

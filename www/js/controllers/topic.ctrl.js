@@ -117,7 +117,7 @@ HeyCommunity
     $scope.store = function() {
         var params = {
             title: $scope.topic.title,
-            avatar: $scope.topic.avatar,
+            // avatar: $scope.topic.avatar,
             content: $scope.topic.content,
         }
 

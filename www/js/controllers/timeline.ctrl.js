@@ -144,6 +144,12 @@ HeyCommunity
 
 // hey.timeline-detail
 .controller('TimelineDetailCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+    angular.forEach($scope.timelines, function(value, key) {
+        if (value.id = $scope.stateParams.id) {
+            $scope.Timeline = value;
+        }
+    });
+
     TimelineService.show({id: $scope.stateParams.id}).then(function(response) {
         if (response.status === 200) {
             $scope.Timeline = response.data;

@@ -11,9 +11,25 @@
     <ion-content id="module-timeline">
         <div class="padding">
             <div class="">
-                <img style="position:absolute; width:30px; height:30px; border-radius:50%;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
-                <div class="" style="border-bottom:1px solid #fff; margin-left:40px; padding-right:40px; padding-bottom:10px; width:100%; min-height:40px;">{{ Timeline.content }}</div>
+                <img style="position:absolute; width:30px; height:30px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <div class="" style="margin-left:40px; padding-right:40px; padding-bottom:10px; width:100%; min-height:40px;">
+                    <a style="color:rgb(54, 74, 142)">{{ Timeline.author.nickname }}</a>
+                    <small class="pull-right">{{ Timeline.created_at | momentDate: 'fromNow' }}</small>
+                    <br>
+                    {{ Timeline.content }}
+                </div>
             </div>
+
+            <div class="" ng-repeat="item in Timeline.comments | orderBy: '-created_at'">
+                <img style="position:absolute; width:30px; height:30px; border-radius:50%; background-color:#ddd; margin-top:10px;" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
+                <div class="" style="border-top:1px solid #fff; margin-left:40px; padding:10px 40px 10px 0; width:100%; min-height:40px;">
+                    <a style="color:rgb(54, 74, 142)">{{ item.author.nickname }}</a>
+                    <small class="pull-right">{{ item.created_at | momentDate: 'fromNow' }}</small>
+                    <br>
+                    {{ item.content }}
+                </div>
+            </div>
+
             <br>
         </div>
     </ion-content>

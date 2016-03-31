@@ -3,6 +3,7 @@ HeyCommunity
 // hey.timeline
 .controller('TimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
 
+    $scope.$root.loadingShowDisabled = true;
     TimelineService.index().then(function(response) {
         if (response.status == 200) {
             $scope.timelines = response.data.timelines.data;
@@ -21,6 +22,7 @@ HeyCommunity
     //
     // like
     $scope.like = function(id, isDoubleTap) {
+        $scope.$root.loadingShowDisabled = true;
         if (isDoubleTap) {
             if ($scope.isLike(id)) {
                 return true;
@@ -83,6 +85,8 @@ HeyCommunity
     //
     // do refresh
     $scope.doRefresh = function() {
+        $scope.$root.loadingShowDisabled = true;
+
         TimelineService.index().then(function(response) {
             console.debug('### TimelineService.doRefresh response', response);
             if (response.status == 200) {
@@ -96,6 +100,8 @@ HeyCommunity
     //
     // load more
     $scope.loadMore = function() {
+        $scope.$root.loadingShowDisabled = true;
+
         var params = {
             page: $scope.timelineCurrentPage + 1,
         }

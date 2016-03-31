@@ -177,7 +177,11 @@ var HeyCommunity = angular.module('starter', [
     $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
         return {
             request: function(config) {
-                $rootScope.$broadcast('loading:show');
+                if ($rootScope.loadingShowDisabled) {
+                    $rootScope.loadingShowDisabled = false;
+                } else {
+                    $rootScope.$broadcast('loading:show');
+                }
                 return config;
             },
             response: function(response) {

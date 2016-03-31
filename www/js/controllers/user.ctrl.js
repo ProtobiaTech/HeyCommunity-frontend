@@ -8,8 +8,6 @@ HeyCommunity
 
 // tab.user-signOut
 .controller('UserSignOutCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
-    $scope.$root.$broadcast('loading:show');
-
     UserService.signOut().then(function(response) {
         if (response.status === 200) {
             $ionicHistory.clearCache();
@@ -31,8 +29,6 @@ HeyCommunity
     }
 
     $scope.signIn = function() {
-        $scope.$root.$broadcast('loading:show');
-
         var params = {
             phone: $scope.user.phone,
             password: $scope.user.password,
@@ -121,8 +117,6 @@ HeyCommunity
 
     // sign up
     $scope.signUp = function () {
-        $scope.$root.$broadcast('loading:show');
-
         var params = {
             nickname: $scope.user.nickname,
             phone: $scope.user.phone,

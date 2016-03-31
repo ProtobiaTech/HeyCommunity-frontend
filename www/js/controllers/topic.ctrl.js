@@ -2,7 +2,6 @@ HeyCommunity
 
 // tab.topic
 .controller('TopicCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
-    $scope.$root.loadingShowDisabled = true;
     TopicService.index().then(function(response) {
         if (response.status == 200) {
             $scope.topics = response.data.data;
@@ -13,8 +12,6 @@ HeyCommunity
     //
     // do refresh
     $scope.doRefresh = function() {
-        $scope.$root.loadingShowDisabled = true;
-
         TopicService.index().then(function(response) {
             console.debug('### TopicService.doRefresh response', response);
             if (response.status == 200) {
@@ -29,8 +26,6 @@ HeyCommunity
     //
     // load more
     $scope.loadMore = function() {
-        $scope.$root.loadingShowDisabled = true;
-
         var params = {
             page: $scope.currentPage + 1,
         }
@@ -52,8 +47,6 @@ HeyCommunity
 
 // tab.topic-detail
 .controller('TopicDetailCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
-    $scope.$root.$broadcast('loading:show');
-
     $scope.TopicComment = {};
 
     TopicService.show({id: $scope.stateParams.id}).then(function(response) {
@@ -61,8 +54,6 @@ HeyCommunity
     });
 
     $scope.commentPublish = function() {
-        $scope.$root.$broadcast('loading:show');
-
         var params = {
             id: $scope.stateParams.id,
             content: $scope.TopicComment.content,
@@ -84,8 +75,6 @@ HeyCommunity
     $scope.topic = {};
 
     $scope.store = function() {
-        $scope.$root.$broadcast('loading:show');
-
         var params = {
             title: $scope.topic.title,
             avatar: $scope.topic.avatar,

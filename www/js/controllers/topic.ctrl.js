@@ -2,6 +2,7 @@ HeyCommunity
 
 // tab.topic
 .controller('TopicCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
+    $scope.$root.loadingShowDisabled = true;
     TopicService.index().then(function(response) {
         if (response.status == 200) {
             $scope.topics = response.data.data;
@@ -12,6 +13,8 @@ HeyCommunity
     //
     // do refresh
     $scope.doRefresh = function() {
+        $scope.$root.loadingShowDisabled = true;
+
         TopicService.index().then(function(response) {
             console.debug('### TopicService.doRefresh response', response);
             if (response.status == 200) {
@@ -26,6 +29,8 @@ HeyCommunity
     //
     // load more
     $scope.loadMore = function() {
+        $scope.$root.loadingShowDisabled = true;
+
         var params = {
             page: $scope.currentPage + 1,
         }

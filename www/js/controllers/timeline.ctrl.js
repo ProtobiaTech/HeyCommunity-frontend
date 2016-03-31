@@ -2,7 +2,6 @@ HeyCommunity
 
 // hey.timeline
 .controller('TimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
-
     $scope.$root.loadingShowDisabled = true;
     TimelineService.index().then(function(response) {
         if (response.status == 200) {

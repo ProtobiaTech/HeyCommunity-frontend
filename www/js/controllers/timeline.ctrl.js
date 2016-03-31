@@ -69,7 +69,7 @@ HeyCommunity
                         if (value.id === params.id) {
                             delete $scope.timelines[key];
 
-                            $scope.$root.$broadcast('notice:show', $scope.filter('translate')('SUCCESS'));
+                            $scope.showNoticeSuccess();
                             $scope.timeout(function() {
                                 $scope.$root.$broadcast('notice:hide');
                             }, 1288);

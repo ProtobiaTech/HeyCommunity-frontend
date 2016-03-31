@@ -33,7 +33,9 @@ HeyCommunity
         PHONE_OR_PASSWORD_ERROR:        '手机或密码错误',
         PULL_TO_REFRESH:                '下拉刷新 ...',
         PLEASE_LOGIN_FIRST:             '请先登录',
-        ARE_YOU_SURE_DESTROY_IT:       '你确定要删除?',
+        ARE_YOU_SURE_DESTROY_IT:        '你确定要删除?',
+        MANAGEMENT_OPERATIONS:          '管理操作',
+        CANCEL:                         '取消',
 
         // Form
         AVATAR:             '头像',

@@ -35,6 +35,8 @@ HeyCommunity
         PULL_TO_REFRESH:                'Pull to refresh ...',
         PLEASE_LOGIN_FIRST:             'Please login first',
         ARE_YOU_SURE_DESTROY_IT:        'Are you sure destroy it?',
+        MANAGEMENT_OPERATIONS:          'Management Operations',
+        CANCEL:                         'Cancel',
 
         // Form
         AVATAR:             'Avatar',

@@ -21,6 +21,13 @@ HeyCommunity
     }
 
 
+    //
+    // destory
+    this.destroy = function(params) {
+        return $http.post(getApiUrl('/topic/destroy'), params);
+    }
+
+
     // show
     this.show = function(params) {
         return $http.get(getApiUrl('/topic/show/' + params.id));

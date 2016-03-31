@@ -17,9 +17,9 @@
     <ion-content id="module-topic">
         <div class="list card">
             <div class="item item-avatar">
-                <img ng-if="Topic" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(Topic.avatar + '?imageView/2/w/80') }}">
+                <img ng-if="Topic" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(Topic.author.avatar + '?imageView/2/w/80') }}">
                 <h2>{{ Topic.title }}</h2>
-                <p>{{ getMomentDate(Topic.created_at) | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</p>
+                <p>{{ Topic.author.nickname }} &nbsp; {{ getMomentDate(Topic.created_at) | date: "yyyy-MM-dd" : "+0800"}}</p>
             </div>
 
             <div class="item item-body">
@@ -42,7 +42,7 @@
                         <div class="subedue" style="font-size:14px; line-height:1.5em; white-space:nowrap; overflow:hidden;">
                             <span>{{ item.author.nickname }}</span>
                             &nbsp;&nbsp;
-                            <span>{{ item.created_at | momentDate | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</span>
+                            <span>{{ item.created_at | momentDate | date: "yyyy-MM-dd" : "+0800"}}</span>
                         </div>
                         <div ng-bind-html="item.content | nl2br"></div>
                     </div>

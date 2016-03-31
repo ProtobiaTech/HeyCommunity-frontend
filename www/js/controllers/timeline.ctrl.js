@@ -3,6 +3,7 @@ HeyCommunity
 // hey.timeline
 .controller('TimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
 
+    $scope.$root.loadingShowDisabled = true;
     TimelineService.index().then(function(response) {
         if (response.status == 200) {
             $scope.timelines = response.data.timelines.data;
@@ -20,13 +21,14 @@ HeyCommunity
 
     //
     // like
-    $scope.like = function(id) {
-        if (!$scope.isAuth()) {
-            $scope.$root.$broadcast('notice:show', $scope.filter('translate')('PLEASE_LOGIN_FIRST'));
-            $scope.timeout(function() {
-                $scope.$root.$broadcast('notice:hide');
-            }, 1288);
-        } else {
+    $scope.like = function(id, isDoubleTap) {
+        $scope.$root.loadingShowDisabled = true;
+        if (isDoubleTap) {
+            if ($scope.isLike(id)) {
+                return true;
+            }
+        }
+        if (!$scope.please_login_first()) {
             var params = {
                 id: id,
             }
@@ -51,8 +53,40 @@ HeyCommunity
     }
 
     //
+    // destroy
+    $scope.destroy = function(id) {
+        var data = {
+            title: $scope.filter('translate')('ALERT'),
+            content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
+        }
+
+        $scope.showConfirm(data, function() {
+            var params = {
+                id: id,
+            }
+            TimelineService.destroy(params).then(function(response) {
+                if (response.status === 200) {
+                    angular.forEach($scope.timelines, function(value, key) {
+                        if (value.id === params.id) {
+                            delete $scope.timelines[key];
+
+                            $scope.$root.$broadcast('notice:show', $scope.filter('translate')('SUCCESS'));
+                            $scope.timeout(function() {
+                                $scope.$root.$broadcast('notice:hide');
+                            }, 1288);
+                        }
+                    });
+                }
+            })
+        }, function() {
+        });
+    }
+
+    //
     // do refresh
     $scope.doRefresh = function() {
+        $scope.$root.loadingShowDisabled = true;
+
         TimelineService.index().then(function(response) {
             console.debug('### TimelineService.doRefresh response', response);
             if (response.status == 200) {
@@ -66,6 +100,8 @@ HeyCommunity
     //
     // load more
     $scope.loadMore = function() {
+        $scope.$root.loadingShowDisabled = true;
+
         var params = {
             page: $scope.timelineCurrentPage + 1,
         }
@@ -108,9 +144,33 @@ HeyCommunity
 
 // hey.timeline-detail
 .controller('TimelineDetailCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+    $scope.TimelineComment = {};
+
+    angular.forEach($scope.timelines, function(value, key) {
+        if (value.id = $scope.stateParams.id) {
+            $scope.Timeline = value;
+        }
+    });
+
+    //
     TimelineService.show({id: $scope.stateParams.id}).then(function(response) {
         if (response.status === 200) {
             $scope.Timeline = response.data;
         }
     });
+
+    //
+    $scope.commentPublish = function() {
+        var params = {
+            id: $scope.stateParams.id,
+            content: $scope.TimelineComment.content,
+        }
+        console.debug('### TimelineService.commentPublish params', params);
+        TimelineService.commentPublish(params).then(function(response) {
+            console.debug('### TimelineService.commentPublish response', response);
+            if (response.status == 200) {
+                $scope.state.reload();
+            }
+        });
+    }
 }])

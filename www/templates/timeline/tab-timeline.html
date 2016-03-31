@@ -20,12 +20,12 @@
                 </div>
                 <div class="pull-left">
                     <div class="name">{{ item.author.nickname }}</div>
-                    <div class="date">{{ item.created_at | momentDate | date: "yyyy-MM-dd HH:mm:ss" : "+0800"}}</div>
+                    <div class="date">{{ item.created_at | momentDate: 'fromNow' }}</div>
                 </div>
             </div>
 
             <div class="item item-body item-text-wrap">
-                <img on-double-tap="like(item.id)" ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment + '?imageView/2/w/800') }}">
+                <img on-double-tap="like(item.id, true)" ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment + '?imageView/2/w/800') }}">
             </div>
 
             <div class="item item-footer">
@@ -35,7 +35,8 @@
                         <a ng-if="isAuth() && isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart"></a>
                         <a ng-if="isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
-                        <a class="icon ion-more" style="color:#ddd;" ui-sref="hey-timeline-detail({id: item.id})"></a>
+                        <a class="icon ion-more" ui-sref="hey-timeline-detail({id: item.id})"></a>
+                        <a ng-if="isAdmin()" ng-click="destroy(item.id)" class="icon ion-trash-b"></a>
                     </div>
                     <div>
                         {{ item.like_num }}人喜欢
@@ -43,7 +44,12 @@
                 </div>
             </div>
             <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff" ui-sref="hey-timeline-detail({id: item.id})">
-                <div style="margin-bottom:5px;">
+                <div style="">
+                    <a style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
+                    <span class="content" ng-bind-html="item.content | nl2br"></span>
+                </div>
+
+                <div style="margin-top:5px;" ng-repeat="(index, item) in item.comments | orderBy: '-created_at'">
                     <a style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
                     <span class="content" ng-bind-html="item.content | nl2br"></span>
                 </div>

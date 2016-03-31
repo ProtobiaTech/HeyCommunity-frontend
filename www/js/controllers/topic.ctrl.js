@@ -47,8 +47,6 @@ HeyCommunity
 
 // tab.topic-detail
 .controller('TopicDetailCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
-    $scope.$root.$broadcast('loading:show');
-
     $scope.TopicComment = {};
 
     TopicService.show({id: $scope.stateParams.id}).then(function(response) {
@@ -56,8 +54,6 @@ HeyCommunity
     });
 
     $scope.commentPublish = function() {
-        $scope.$root.$broadcast('loading:show');
-
         var params = {
             id: $scope.stateParams.id,
             content: $scope.TopicComment.content,
@@ -79,8 +75,6 @@ HeyCommunity
     $scope.topic = {};
 
     $scope.store = function() {
-        $scope.$root.$broadcast('loading:show');
-
         var params = {
             title: $scope.topic.title,
             avatar: $scope.topic.avatar,

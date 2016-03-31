@@ -17,9 +17,8 @@ var HeyCommunity = angular.module('starter', [
         */
 
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            cordova.plugins.Keyboard.disableScroll(true);
-
+            // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            // cordova.plugins.Keyboard.disableScroll(true);
         }
         if (window.StatusBar) {
             //StatusBar.styleDefault();
@@ -68,11 +67,11 @@ var HeyCommunity = angular.module('starter', [
     }
 
     // A confirm dialog
-    $rootScope.showConfirm = function(data) {
-        if (!data) {
+    $rootScope.showConfirm = function(data, doSuccess, doFail) {
+        if (data === undefined) {
             data = {
                 title: $filter('translate')('ALERT'),
-                template: ''
+                content: ''
             }
         }
         var confirmPopup = $ionicPopup.confirm({
@@ -81,8 +80,10 @@ var HeyCommunity = angular.module('starter', [
         });
 
         confirmPopup.then(function(res) {
-            if(res) {
+            if (res) {
+                doSuccess();
             } else {
+                doFail();
             }
         });
     }
@@ -101,6 +102,25 @@ var HeyCommunity = angular.module('starter', [
             return false;
         }
     }
+    $rootScope.isAdmin = function() {
+        if ($rootScope.userInfo.id <= 4) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    $rootScope.please_login_first = function() {
+        if (!$rootScope.isAuth()) {
+            $rootScope.$broadcast('notice:show', $filter('translate')('PLEASE_LOGIN_FIRST'));
+            $timeout(function() {
+                $rootScope.$broadcast('notice:hide');
+            }, 1288);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     // loading state
     $rootScope.$on('loading:show', function() {
@@ -110,7 +130,6 @@ var HeyCommunity = angular.module('starter', [
         $ionicLoading.hide()
     })
     $rootScope.$on('notice:show', function(event, text) {
-        console.log(text)
         $ionicLoading.show({template: text})
     })
     $rootScope.$on('notice:hide', function() {
@@ -157,7 +176,11 @@ var HeyCommunity = angular.module('starter', [
     $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
         return {
             request: function(config) {
-                $rootScope.$broadcast('loading:show');
+                if ($rootScope.loadingShowDisabled) {
+                    $rootScope.loadingShowDisabled = false;
+                } else {
+                    $rootScope.$broadcast('loading:show');
+                }
                 return config;
             },
             response: function(response) {

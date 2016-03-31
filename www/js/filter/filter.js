@@ -9,7 +9,11 @@ HeyCommunity
 }])
 
 .filter('momentDate', ['$sce', function ($sce) {
-    return function (date) {
-        return moment.utc(date).format();
+    return function (date, format) {
+        if (format === 'fromNow') {
+            return moment.utc(date).fromNow();
+        } else {
+            return moment.utc(date).format();
+        }
     };
 }]);

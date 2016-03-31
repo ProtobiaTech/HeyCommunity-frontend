@@ -34,6 +34,7 @@ HeyCommunity
         PHONE_OR_PASSWORD_ERROR:        'Phone number or Password is incorrect',
         PULL_TO_REFRESH:                'Pull to refresh ...',
         PLEASE_LOGIN_FIRST:             'Please login first',
+        ARE_YOU_SURE_DESTROY_IT:        'Are you sure destroy it?',
 
         // Form
         AVATAR:             'Avatar',
@@ -41,6 +42,12 @@ HeyCommunity
         CONTENT:            'Content',
         START_DATE:         'Start Date',
         END_DATE:           'End Date',
+
+
+        ALERT:              'Alert',
+        ERROR:              'Error',
+        SUCCESS:            'Success',
+        FAIL:               'Fail',
 
 
 

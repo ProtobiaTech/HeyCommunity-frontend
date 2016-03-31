@@ -144,15 +144,33 @@ HeyCommunity
 
 // hey.timeline-detail
 .controller('TimelineDetailCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+    $scope.TimelineComment = {};
+
     angular.forEach($scope.timelines, function(value, key) {
         if (value.id = $scope.stateParams.id) {
             $scope.Timeline = value;
         }
     });
 
+    //
     TimelineService.show({id: $scope.stateParams.id}).then(function(response) {
         if (response.status === 200) {
             $scope.Timeline = response.data;
         }
     });
+
+    //
+    $scope.commentPublish = function() {
+        var params = {
+            id: $scope.stateParams.id,
+            content: $scope.TimelineComment.content,
+        }
+        console.debug('### TimelineService.commentPublish params', params);
+        TimelineService.commentPublish(params).then(function(response) {
+            console.debug('### TimelineService.commentPublish response', response);
+            if (response.status == 200) {
+                $scope.state.reload();
+            }
+        });
+    }
 }])

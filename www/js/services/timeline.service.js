@@ -37,4 +37,10 @@ HeyCommunity
     this.like = function(params) {
         return $http.post(getApiUrl('/timeline/like'), params);
     }
+
+
+    // comment
+    this.commentPublish = function(params) {
+        return $http.post(getApiUrl('/timeline/comment-publish'),  params);
+    }
 }])

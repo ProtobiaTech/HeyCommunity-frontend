@@ -57,7 +57,6 @@ HeyCommunity
             title: $scope.filter('translate')('ALERT'),
             content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
         }
-        console.log(data, 'ddd')
 
         $scope.showConfirm(data, function() {
             var params = {
@@ -65,9 +64,9 @@ HeyCommunity
             }
             TimelineService.destroy(params).then(function(response) {
                 if (response.status === 200) {
-                    angular.forEach($scope.timelines, function(item) {
-                        if (item.id === params.id) {
-                            $scope.timelines.splice(item, 1);
+                    angular.forEach($scope.timelines, function(value, key) {
+                        if (value.id === params.id) {
+                            delete $scope.timelines[key];
 
                             $scope.$root.$broadcast('notice:show', $scope.filter('translate')('SUCCESS'));
                             $scope.timeout(function() {

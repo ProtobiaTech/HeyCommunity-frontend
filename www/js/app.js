@@ -131,7 +131,6 @@ var HeyCommunity = angular.module('starter', [
         $ionicLoading.hide()
     })
     $rootScope.$on('notice:show', function(event, text) {
-        console.log(text)
         $ionicLoading.show({template: text})
     })
     $rootScope.$on('notice:hide', function() {

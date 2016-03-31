@@ -51,6 +51,37 @@ HeyCommunity
     }
 
     //
+    // destroy
+    $scope.destroy = function(id) {
+        var data = {
+            title: $scope.filter('translate')('ALERT'),
+            content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
+        }
+        console.log(data, 'ddd')
+
+        $scope.showConfirm(data, function() {
+            var params = {
+                id: id,
+            }
+            TimelineService.destroy(params).then(function(response) {
+                if (response.status === 200) {
+                    angular.forEach($scope.timelines, function(item) {
+                        if (item.id === params.id) {
+                            $scope.timelines.splice(item, 1);
+
+                            $scope.$root.$broadcast('notice:show', $scope.filter('translate')('SUCCESS'));
+                            $scope.timeout(function() {
+                                $scope.$root.$broadcast('notice:hide');
+                            }, 1288);
+                        }
+                    });
+                }
+            })
+        }, function() {
+        });
+    }
+
+    //
     // do refresh
     $scope.doRefresh = function() {
         TimelineService.index().then(function(response) {

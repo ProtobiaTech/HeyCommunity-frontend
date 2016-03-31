@@ -26,6 +26,13 @@ HeyCommunity
     }
 
 
+    //
+    // destory
+    this.destroy = function(params) {
+        return $http.post(getApiUrl('/timeline/destroy'), params);
+    }
+
+
     // like
     this.like = function(params) {
         return $http.post(getApiUrl('/timeline/like'), params);

@@ -33,6 +33,7 @@ HeyCommunity
         PHONE_OR_PASSWORD_ERROR:        '手机或密码错误',
         PULL_TO_REFRESH:                '下拉刷新 ...',
         PLEASE_LOGIN_FIRST:             '请先登录',
+        ARE_YOU_SURE_DESTROY_IT:       '你确定要删除?',
 
         // Form
         AVATAR:             '头像',
@@ -40,6 +41,11 @@ HeyCommunity
         CONTENT:            '内容',
         START_DATE:         '开始时间',
         END_DATE:           '结束时间',
+
+        ALERT:              '注意',
+        ERROR:              '错误',
+        SUCCESS:            '成功',
+        FAIL:               '失败',
 
 
 

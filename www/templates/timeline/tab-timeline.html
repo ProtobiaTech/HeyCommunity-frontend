@@ -36,6 +36,7 @@
                         <a ng-if="isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
                         <a class="icon ion-more" ui-sref="hey-timeline-detail({id: item.id})"></a>
+                        <a ng-if="isAdmin()" ng-click="destroy(item.id)" class="icon ion-trash-b"></a>
                     </div>
                     <div>
                         {{ item.like_num }}人喜欢

@@ -68,11 +68,11 @@ var HeyCommunity = angular.module('starter', [
     }
 
     // A confirm dialog
-    $rootScope.showConfirm = function(data) {
-        if (!data) {
+    $rootScope.showConfirm = function(data, doSuccess, doFail) {
+        if (data === undefined) {
             data = {
                 title: $filter('translate')('ALERT'),
-                template: ''
+                content: ''
             }
         }
         var confirmPopup = $ionicPopup.confirm({
@@ -81,8 +81,10 @@ var HeyCommunity = angular.module('starter', [
         });
 
         confirmPopup.then(function(res) {
-            if(res) {
+            if (res) {
+                doSuccess();
             } else {
+                doFail();
             }
         });
     }
@@ -96,6 +98,13 @@ var HeyCommunity = angular.module('starter', [
     });
     $rootScope.isAuth = function() {
         if (localStorage.user) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    $rootScope.isAdmin = function() {
+        if ($rootScope.userInfo.id < 4) {
             return true;
         } else {
             return false;

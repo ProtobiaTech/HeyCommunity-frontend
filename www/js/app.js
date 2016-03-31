@@ -104,7 +104,7 @@ var HeyCommunity = angular.module('starter', [
         }
     }
     $rootScope.isAdmin = function() {
-        if ($rootScope.userInfo.id < 4) {
+        if ($rootScope.userInfo.id <= 4) {
             return true;
         } else {
             return false;

@@ -25,7 +25,7 @@
             </div>
 
             <div class="item item-body item-text-wrap">
-                <img on-double-tap="like(item.id)" ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment + '?imageView/2/w/800') }}">
+                <img on-double-tap="like(item.id, true)" ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment + '?imageView/2/w/800') }}">
             </div>
 
             <div class="item item-footer">

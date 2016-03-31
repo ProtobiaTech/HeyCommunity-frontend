@@ -102,6 +102,18 @@ var HeyCommunity = angular.module('starter', [
         }
     }
 
+    $rootScope.please_login_first = function() {
+        if (!$rootScope.isAuth()) {
+            $rootScope.$broadcast('notice:show', $filter('translate')('PLEASE_LOGIN_FIRST'));
+            $timeout(function() {
+                $rootScope.$broadcast('notice:hide');
+            }, 1288);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // loading state
     $rootScope.$on('loading:show', function() {
         $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})

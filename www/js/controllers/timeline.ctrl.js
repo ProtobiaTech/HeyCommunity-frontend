@@ -20,13 +20,13 @@ HeyCommunity
 
     //
     // like
-    $scope.like = function(id) {
-        if (!$scope.isAuth()) {
-            $scope.$root.$broadcast('notice:show', $scope.filter('translate')('PLEASE_LOGIN_FIRST'));
-            $scope.timeout(function() {
-                $scope.$root.$broadcast('notice:hide');
-            }, 1288);
-        } else {
+    $scope.like = function(id, isDoubleTap) {
+        if (isDoubleTap) {
+            if ($scope.isLike(id)) {
+                return true;
+            }
+        }
+        if (!$scope.please_login_first()) {
             var params = {
                 id: id,
             }

@@ -131,7 +131,7 @@ HeyCommunity
 
     $scope.store = function() {
         var params = {
-            attachment: $scope.Timeline.avatar,
+            attachment: $scope.Timeline.pic,
             content: $scope.Timeline.content,
         }
 
@@ -144,6 +144,18 @@ HeyCommunity
                 $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }
         });
+    }
+
+    //
+    //
+    $scope.selectPic = function() {
+        angular.element('form input').click();
+    }
+
+    //
+    //
+    $scope.picChanged = function() {
+        angular.element('form textarea').focus();
     }
 }])
 

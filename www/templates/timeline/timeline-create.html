@@ -13,7 +13,7 @@
             <div class="list list-inset">
                 <label class="item item-input hide">
                     <span class="input-label">{{ 'PICTURE' | translate }}</span>
-                    <input style="line-height:19px; color:#444;" type="file" ngf-select ng-model="Timeline.pic" name="avatar" ngf-accept="'image/*'" ngf-change="picChanged()" ngf-resize="{width: 1000}" required ngf-max-size="20MB">
+                    <input style="line-height:19px; color:#444;" type="file" ngf-select ng-model="Timeline.pic" name="avatar" ngf-accept="'image/*'" ng-change="picValueChanged()" ngf-change="picChanged()" ngf-resize="{width: 1000}" required ngf-max-size="20MB">
                 </label>
 
                 <div class="item">

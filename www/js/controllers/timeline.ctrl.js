@@ -126,7 +126,7 @@ HeyCommunity
 
 
 // hey.timeline-create
-.controller('TimelineCreateCtrl', ['$scope', 'TimelineService', 'Upload', function($scope, TimelineService, Upload) {
+.controller('TimelineCreateCtrl', ['$scope', 'TimelineService', 'Upload', '$ionicScrollDelegate', function($scope, TimelineService, Upload, $ionicScrollDelegate) {
     $scope.Timeline = {};
 
     $scope.store = function() {
@@ -154,8 +154,22 @@ HeyCommunity
 
     //
     //
+    $scope.picValueChanged = function() {
+        $scope.showNoticeText('loading...', 1888);
+    }
+
+    //
+    //
     $scope.picChanged = function() {
         angular.element('form textarea').focus();
+
+        $scope.timeout(function() {
+            $ionicScrollDelegate.scrollBottom();
+            if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.show();
+                $scope.disableNotice();
+            }
+        }, 100)
     }
 }])
 

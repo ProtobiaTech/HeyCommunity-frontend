@@ -9,6 +9,7 @@ HeyCommunity
             $scope.timelineCurrentPage = response.data.timelines.current_page;
 
             $scope.timelineLikes = response.data.likes;
+                    console.log($scope.timelineLikes)
         }
     });
 
@@ -37,7 +38,8 @@ HeyCommunity
                 if (response.status == 200) {
                     angular.forEach($scope.timelines, function(v) {
                         if (id == v.id) {
-                            if (v.like_num > response.data.like_num) {
+                            // if (v.like_num > response.data.like_num) {
+                            if ($scope.isLike(id)) {
                                 var i = $scope.timelineLikes.indexOf(response.data.id);
                                 $scope.timelineLikes.splice(i, 1);
                             } else {
@@ -46,6 +48,7 @@ HeyCommunity
                             v.like_num = response.data.like_num;
                         }
                     })
+                    console.log($scope.timelineLikes)
                 }
             })
         }

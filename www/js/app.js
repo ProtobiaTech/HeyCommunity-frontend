@@ -122,6 +122,18 @@ var HeyCommunity = angular.module('starter', [
         }
     }
 
+    $rootScope.disableNotice = function(text, time) {
+        $rootScope.$broadcast('notice:hide');
+    }
+
+    $rootScope.showNoticeText = function(text, time) {
+        $rootScope.$broadcast('notice:show', $filter('translate')(text));
+        $timeout(function() {
+            $rootScope.$broadcast('notice:hide');
+        }, time);
+        return true;
+    }
+
     $rootScope.showNoticeSuccess = function() {
         $rootScope.$broadcast('notice:show', $filter('translate')('SUCCESS'));
         $timeout(function() {

@@ -111,8 +111,12 @@ HeyCommunity
         TimelineService.index(params).then(function(response) {
             console.debug('### TimelineService.loadMore response', response);
             if (response.status == 200) {
-                $scope.timelines = $scope.timelines.concat(response.data.timelines.data);
-                $scope.timelineCurrentPage = response.data.timelines.current_page;
+                if (typeof response.data.timelines.data !== 'undefined' && response.data.timelines.data.length > 0) {
+                    $scope.timelines = $scope.timelines.concat(response.data.timelines.data);
+                    $scope.timelineCurrentPage = response.data.timelines.current_page;
+                } else {
+                    $scope.loadMoreDisabled = true;
+                }
             }
         }).finally(function() {
             $scope.$broadcast('scroll.infiniteScrollComplete');

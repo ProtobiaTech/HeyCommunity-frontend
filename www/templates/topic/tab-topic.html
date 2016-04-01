@@ -25,6 +25,7 @@
 
         <ion-infinite-scroll
             on-infinite="loadMore()"
+            ng-if="!loadMoreDisabled"
             immediate-check="false"
             distance="1%">
         </ion-infinite-scroll>

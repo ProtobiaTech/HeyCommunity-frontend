@@ -24,13 +24,6 @@
                     </label>
                 </div>
 
-                <!-- form error -->
-                <div class="padding-top padding-bottom assertive">
-                    <div ng-repeat="item in formError">
-                        {{ item[0] | translate }}
-                    </div>
-                </div>
-
                 <button ng-disabled="ngForm.$invalid" class="button button-block">{{ 'SIGN_IN' | translate }}</button>
             </form>
 

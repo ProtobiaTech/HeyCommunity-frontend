@@ -23,7 +23,6 @@ HeyCommunity
 // tab.user-signIn
 .controller('UserSignInCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
     $scope.user = {};
-    $scope.formError = {};
     if (localStorage.tenantInfo) {
         $scope.tenantInfo = JSON.parse(localStorage.tenantInfo);
     }
@@ -44,7 +43,8 @@ HeyCommunity
                     $scope.state.go('hey.user');
                 }
             } else {
-                $scope.formError = {1: ['PHONE_OR_PASSWORD_ERROR']};
+                var content = $scope.filter('translate')('PHONE_OR_PASSWORD_ERROR');
+                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
             }
         });
     }
@@ -106,7 +106,6 @@ HeyCommunity
         UserService.signUpVerifyCaptcha(params).then(function(response) {
             if (response.status === 200) {
                 $scope.signUpStep = 2;
-                $scope.formError = {};
             } else {
                 var content = typeof response.data === 'string' ? response.data : response.data.phone[0];
                 $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
@@ -167,7 +166,6 @@ HeyCommunity
                 $ionicHistory.clearCache();
                 $scope.state.go('hey-user-info');
             } else {
-                $scope.formErrors = response.data;
                 $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }
         });

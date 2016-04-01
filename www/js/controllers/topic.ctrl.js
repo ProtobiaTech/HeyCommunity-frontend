@@ -38,8 +38,12 @@ HeyCommunity
         TopicService.index(params).then(function(response) {
             console.debug('### TopicService.loadMore response', response);
             if (response.status == 200) {
-                $scope.topics = $scope.topics.concat(response.data.data);
-                $scope.currentPage = response.data.current_page;
+                if (typeof response.data.data !== 'undefined' && response.data.data.length > 0) {
+                    $scope.topics = $scope.topics.concat(response.data.data);
+                    $scope.currentPage = response.data.current_page;
+                } else {
+                    $scope.loadMoreDisabled = true;
+                }
             }
         }).finally(function() {
             $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -127,7 +131,7 @@ HeyCommunity
             if (response.status == 200) {
                 $scope.state.go('hey.topic', {}, {reload: true});
             } else {
-                $scope.formErrors = response.data;
+                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }
         });
     }

@@ -9,6 +9,7 @@ HeyCommunity
             $scope.timelineCurrentPage = response.data.timelines.current_page;
 
             $scope.timelineLikes = response.data.likes;
+                    console.log($scope.timelineLikes)
         }
     });
 
@@ -37,7 +38,8 @@ HeyCommunity
                 if (response.status == 200) {
                     angular.forEach($scope.timelines, function(v) {
                         if (id == v.id) {
-                            if (v.like_num > response.data.like_num) {
+                            // if (v.like_num > response.data.like_num) {
+                            if ($scope.isLike(id)) {
                                 var i = $scope.timelineLikes.indexOf(response.data.id);
                                 $scope.timelineLikes.splice(i, 1);
                             } else {
@@ -46,6 +48,7 @@ HeyCommunity
                             v.like_num = response.data.like_num;
                         }
                     })
+                    console.log($scope.timelineLikes)
                 }
             })
         }
@@ -108,8 +111,12 @@ HeyCommunity
         TimelineService.index(params).then(function(response) {
             console.debug('### TimelineService.loadMore response', response);
             if (response.status == 200) {
-                $scope.timelines = $scope.timelines.concat(response.data.timelines.data);
-                $scope.timelineCurrentPage = response.data.timelines.current_page;
+                if (typeof response.data.timelines.data !== 'undefined' && response.data.timelines.data.length > 0) {
+                    $scope.timelines = $scope.timelines.concat(response.data.timelines.data);
+                    $scope.timelineCurrentPage = response.data.timelines.current_page;
+                } else {
+                    $scope.loadMoreDisabled = true;
+                }
             }
         }).finally(function() {
             $scope.$broadcast('scroll.infiniteScrollComplete');
@@ -124,7 +131,7 @@ HeyCommunity
 
     $scope.store = function() {
         var params = {
-            attachment: $scope.Timeline.avatar,
+            attachment: $scope.Timeline.pic,
             content: $scope.Timeline.content,
         }
 
@@ -134,9 +141,21 @@ HeyCommunity
             if (response.status === 200) {
                 $scope.state.go('hey.timeline');
             } else {
-                $scope.formErrors = response.data;
+                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }
         });
+    }
+
+    //
+    //
+    $scope.selectPic = function() {
+        angular.element('form input').click();
+    }
+
+    //
+    //
+    $scope.picChanged = function() {
+        angular.element('form textarea').focus();
     }
 }])
 

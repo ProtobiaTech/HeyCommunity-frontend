@@ -62,7 +62,7 @@ HeyCommunity
             if (response.status == 200) {
                 $scope.state.go('hey.activity', {}, {reload: true});
             } else {
-                $scope.formErrors = response.data;
+                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }
         });
     }

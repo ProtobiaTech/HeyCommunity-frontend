@@ -11,20 +11,24 @@
     <ion-content id="module-timeline">
         <form name="ngForm" ng-submit="store()">
             <div class="list list-inset">
-                <label class="item item-input">
+                <label class="item item-input hide">
                     <span class="input-label">{{ 'PICTURE' | translate }}</span>
-                    <input style="line-height:19px; color:#444;" type="file" ngf-select ng-model="Timeline.avatar" name="avatar" ngf-accept="'image/*'" ngf-resize="{width: 1000}" required ngf-max-size="20MB">
+                    <input style="line-height:19px; color:#444;" type="file" ngf-select ng-model="Timeline.pic" name="avatar" ngf-accept="'image/*'" ngf-change="picChanged()" ngf-resize="{width: 1000}" required ngf-max-size="20MB">
                 </label>
+
+                <div class="item">
+                    <img ng-click="selectPic()" ng-if="Timeline.pic" style="background-color:#ddd; width:100%; min-height:90px;" ng-src="{{ Timeline.pic | ngfDataUrl }}">
+
+                    <img ng-click="selectPic()" ng-if="!Timeline.pic" style="background-color:#ddd; width:100%; min-height:90px;">
+                    <div ng-click="selectPic()" ng-if="!Timeline.pic" style="position:absolute; top:45px; width:100%; text-align:center; padding-right:32px;">
+                        <i class="icon ion-image" style="font-size:30px;"></i>
+                    </div>
+                </div>
+
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">{{ 'CONTENT' | translate }}</span>
                     <textarea ng-model="Timeline.content" rows="5" placeholder="{{ 'CONTENT' | translate }}" required></textarea>
                 </label>
-            </div>
-
-            <div class="padding" style="margin-top:-20px;">
-                <div class="assertive" ng-repeat="item in formErrors">
-                    {{ item[0] }}
-                </div>
             </div>
 
             <div class="padding">

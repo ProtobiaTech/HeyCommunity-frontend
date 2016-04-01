@@ -7,8 +7,8 @@
           </button>
         </ion-nav-buttons>
 
-        <ion-nav-buttons ng-if="isAdmin()" side="right">
-          <button ng-click="showActionSheet()" class="button back-button buttons button-clear header-item" style="">
+        <ion-nav-buttons side="right">
+          <button ng-if="isAdmin()" ng-click="showActionSheet()" class="button back-button buttons button-clear header-item" style="">
               <i class="icon ion-navicon"></i>
           </button>
         </ion-nav-buttons>

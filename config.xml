@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.heycommunity.demo" version="0.3.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.heycommunity.demo" version="0.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>HeyCommunity</name>
   <description>WebApp and IOS App and Android App of Community</description>
   <author email="supgeek.rod@gmail.com" href="http://dev4living.com/">

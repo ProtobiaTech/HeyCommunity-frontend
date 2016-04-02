@@ -15,11 +15,20 @@
         </div>
 
         <div class="list">
-            <a ng-repeat="item in topics" class="item item-activity item-thumbnail-left item-text-wrap" href="#/topic-detail/{{ item.id }}">
-                <img class="avatar" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/200') }}">
+            <a ng-repeat="item in topics" class="item item-text-wrap" href="#/topic-detail/{{ item.id }}">
                 <h2 class="title ng-binding">{{ item.title }}</h2>
-                <p class="content" ng-bind-html="item.content | nl2br">
-                </p>
+                <div style="max-height:60px; overflow:hidden;">
+                    <p class="content">
+                        <span style="color:#333;">{{ item.author.nickname }}:</span>
+                        <span ng-bind-html="item.content | nl2br"></span>
+                    </p>
+                </div>
+                <div class="hide" style="font-size:14px; color:#666;">
+                    &nbsp;
+                    <span class="pull-right">
+                        {{ item.created_at | momentDate: 'fromNow' }}
+                    </span>
+                </div>
             </a>
         </div>
 

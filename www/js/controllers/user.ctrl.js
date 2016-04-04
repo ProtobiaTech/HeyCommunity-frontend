@@ -37,7 +37,10 @@ HeyCommunity
 
 //
 .controller('UserTopicCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
-    TopicService.index().then(function(response) {
+    var params = {
+        user_id: $scope.stateParams.user_id,
+    }
+    TopicService.index(params).then(function(response) {
         if (response.status == 200) {
             $scope.topics = response.data.data;
             $scope.currentPage = response.data.current_page;

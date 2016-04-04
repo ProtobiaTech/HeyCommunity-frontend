@@ -124,6 +124,12 @@ HeyCommunity
         controller: 'UserInfoCtrl'
     })
 
+    .state('hey-uhome', {
+        url: '/user-uhome/:id',
+        templateUrl: 'templates/user/tab-user.html',
+        controller: 'UserIndexCtrl'
+    })
+
     .state('hey-user-info-avatar', {
         url: '/user/user-info-avatar',
         templateUrl: 'templates/user/user-info-avatar.html',
@@ -229,11 +235,11 @@ HeyCommunity
 
 
     //
-    // Other
+    // Single
     // -------------------------------
     .state('hey-deving', {
         url: '/deving',
         templateUrl: 'templates/single/deving.html',
         controller: 'SingleDevingCtrl',
-    });
+    })
 }]);

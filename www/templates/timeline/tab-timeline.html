@@ -16,10 +16,10 @@
         <div ng-repeat="item in timelines" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">
-                    <img ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
+                    <img ui-sref="hey-uhome({id: item.author.id})" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                 </div>
                 <div class="pull-left">
-                    <div class="name">{{ item.author.nickname }}</div>
+                    <div ui-sref="hey-uhome({id: item.author.id})" class="name">{{ item.author.nickname }}</div>
                     <div class="date">{{ item.created_at | momentDate: 'fromNow' }}</div>
                 </div>
             </div>

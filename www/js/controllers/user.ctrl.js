@@ -1,7 +1,19 @@
 HeyCommunity
 
 // tab.user
-.controller('UserIndexCtrl', ['$scope', function($scope) {
+.controller('UserIndexCtrl', ['$scope', 'UserService', function($scope, UserService) {
+    if ($scope.stateParams.id) {
+        $scope.goBackState = 'hey.user';
+        /*
+        UserService.userInfo().then(function(response) {
+            console.log(response)
+            if (response.status === 200) {
+                $scope.userInfo = response.data;
+            }
+        });
+        */
+    } else {
+    }
 }])
 
 

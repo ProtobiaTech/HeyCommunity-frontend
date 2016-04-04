@@ -1,4 +1,13 @@
 <ion-view view-title="{{ 'USER_CENTER' | translate }}" cache-view="false">
+    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
+        <ion-nav-buttons side="left">
+          <button ng-if="goBackState" ui-sref="{{ goBackState }}" class="button back-button buttons  button-clear header-item" style="">
+              <i class="icon ion-ios-arrow-back"></i> 
+              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
+          </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
     <ion-content id="module-user" class="page-user">
         <div ng-if="!isAuth()" class="padding">
 
@@ -29,7 +38,7 @@
             <div class="padding"></div>
 
             <div class="list">
-                <a class="item item-icon-left" todo-ui-sref="hey-user-setup">
+                <a ng-if="!goBackState" class="item item-icon-left" todo-ui-sref="hey-user-setup">
                     <i class="icon ion-ios-bell"></i>
                     {{ 'NOTICE' | translate }}
                 </a>
@@ -55,7 +64,7 @@
             <div class="padding"></div>
 
             <div class="list">
-                <a class="item item-icon-left" ui-sref="hey-user-setup">
+                <a ng-if="!goBackState" class="item item-icon-left" ui-sref="hey-user-setup">
                     <i class="icon ion-gear-a"></i>
                     {{ 'SETUP' | translate }}
                 </a>

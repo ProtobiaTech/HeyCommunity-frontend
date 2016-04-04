@@ -3,7 +3,7 @@ HeyCommunity
 // tab.user
 .controller('UserIndexCtrl', ['$scope', 'UserService', function($scope, UserService) {
     if ($scope.stateParams.id) {
-        $scope.goBackState = 'hey.user';
+        $scope.isOwnInfo = false;
         /*
         UserService.userInfo().then(function(response) {
             console.log(response)
@@ -13,6 +13,7 @@ HeyCommunity
         });
         */
     } else {
+        $scope.isOwnInfo = true;
     }
 }])
 

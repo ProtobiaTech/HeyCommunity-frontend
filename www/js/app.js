@@ -48,6 +48,10 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.ionicHistory = $ionicHistory;
     $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
 
+    $rootScope.goBack = function() {
+        $ionicHistory.goBack();
+    }
+
 
     // An alert dialog
     $rootScope.showAlert = function(data) {

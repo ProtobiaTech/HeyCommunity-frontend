@@ -20,6 +20,18 @@ HeyCommunity
 
 
 
+//
+.controller('UserTopicCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
+    TopicService.index().then(function(response) {
+        if (response.status == 200) {
+            $scope.topics = response.data.data;
+            $scope.currentPage = response.data.current_page;
+        }
+    });
+}])
+
+
+
 // tab.user-signOut
 .controller('UserSignOutCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
     UserService.signOut().then(function(response) {

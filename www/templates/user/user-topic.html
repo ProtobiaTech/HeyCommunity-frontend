@@ -1,0 +1,46 @@
+<ion-view view-title="{{ 'TOPIC' | translate}}">
+    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
+        <ion-nav-buttons side="left">
+          <button ui-sref="hey.user" class="button back-button buttons  button-clear header-item" style="">
+              <i class="icon ion-ios-arrow-back"></i> 
+              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
+          </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content id="module-topic" delegate-handle="contentScrollDelegate">
+        <ion-refresher
+            pulling-text="{{ 'PULL_TO_REFRESH' | translate }}"
+            on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div ng-hide="topics" class="padding text-center">
+            <ion-spinner></ion-spinner>
+        </div>
+
+        <div class="list">
+            <a ng-repeat="item in topics" class="item item-text-wrap" href="#/topic-detail/{{ item.id }}">
+                <h2 class="title ng-binding">{{ item.title }}</h2>
+                <div style="max-height:60px; overflow:hidden;">
+                    <p class="content">
+                        <span style="color:#333;">{{ item.author.nickname }}:</span>
+                        <span ng-bind-html="item.content | nl2br"></span>
+                    </p>
+                </div>
+                <div class="hide" style="font-size:14px; color:#666;">
+                    &nbsp;
+                    <span class="pull-right">
+                        {{ item.created_at | momentDate: 'fromNow' }}
+                    </span>
+                </div>
+            </a>
+        </div>
+
+        <ion-infinite-scroll
+            on-infinite="loadMore()"
+            ng-if="!loadMoreDisabled"
+            immediate-check="false"
+            distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

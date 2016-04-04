@@ -82,10 +82,22 @@ HeyCommunity
         }
     })
 
+    .state('hey-user-notice', {
+        url: '/user/notice',
+        templateUrl: 'templates/user/user-notice.html',
+        controller: 'UserNoticeCtrl'
+    })
+
     .state('hey-user-timeline', {
         url: '/user/timeline',
         templateUrl: 'templates/user/user-timeline.html',
         controller: 'UserTimelineCtrl'
+    })
+
+    .state('hey-user-topic', {
+        url: '/user/topic',
+        templateUrl: 'templates/user/user-topic.html',
+        controller: 'UserTopicCtrl'
     })
 
     .state('hey-user-signIn', {

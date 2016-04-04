@@ -220,7 +220,7 @@ HeyCommunity
                 $scope.$root.userInfo = response.data;
                 localStorage.userInfo = JSON.stringify(response.data);
                 $ionicHistory.clearCache();
-                $scope.state.go('hey-user-info');
+                $scope.$root.goBack();
             } else {
                 $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }

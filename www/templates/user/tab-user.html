@@ -1,23 +1,17 @@
 <ion-view view-title="{{ 'USER_CENTER' | translate }}" cache-view="false">
     <ion-content id="module-user" class="page-user">
-        <div ng-if="!isAuth()" class="padding text-center">
-            <div class="" style="padding-top:60px;">
-                <div class="hey-avatar text-center">
-                    <img src="imgs/userAvatar-default.png">
-                </div>
-            </div>
-            <div class="text-center">
-                {{ 'PLEASE_SIGN_IN' | translate }}
-            </div>
+        <div ng-if="!isAuth()" class="padding">
 
-            <div class="" style="margin-top:60px;">
-                <div class="">
-                    <a class="button button-block" ui-sref="hey-user-signIn">{{ 'SIGN_IN' | translate }}</a>
-                </div>
-                <div class="">
-                    <a class="button button-block" ui-sref="hey-user-signUp">{{ 'SIGN_UP' | translate }}</a>
-                </div>
-            </div>
+            <div class="text-center h4">{{ appSiteTitle }}</div>
+
+            <p></p>
+            <p>
+                Welcome to {{ appSiteTitle }},
+                Here you can share the good things you find,
+                initiate a topic to discuss with you.
+            </p>
+
+            <p>Best wishes your life more fun.</p>
         </div>
 
         <div ng-if="isAuth()">
@@ -69,6 +63,14 @@
 
             <div class="padding"></div>
         </div>
-
     </ion-content>
+
+    <div ng-if="!isAuth()" style="position:absolute; bottom:40px; width:100%" class="padding">
+        <div class="">
+            <a class="button button-block" ui-sref="hey-user-signIn">{{ 'SIGN_IN' | translate }}</a>
+        </div>
+        <div class="">
+            <a class="button button-block" ui-sref="hey-user-signUp">{{ 'SIGN_UP' | translate }}</a>
+        </div>
+    </div>
 </ion-view>

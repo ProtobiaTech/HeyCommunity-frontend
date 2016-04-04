@@ -244,3 +244,14 @@ HeyCommunity
         $translate.use(language);
     }
 }])
+
+
+
+//
+.controller('UserNoticeCtrl', ['$scope', 'NoticeService', function($scope, NoticeService) {
+    NoticeService.index().then(function(response) {
+        if (response.status === 200) {
+            $scope.notices = response.data.data;
+        }
+    });
+}])

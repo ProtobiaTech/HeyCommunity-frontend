@@ -1,0 +1,27 @@
+<ion-view view-title="{{ 'NOTICE' | translate }}" cache-view="false">
+    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
+        <ion-nav-buttons side="left">
+          <button ui-sref="hey.user" class="button back-button buttons  button-clear header-item" style="">
+              <i class="icon ion-ios-arrow-back"></i> 
+              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
+          </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content id="module-user" class="page-user-notice">
+        <div class="list" ng-repeat="item in notices">
+            <div class="item">
+                {{ item.author.nickname }}
+                <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'topic_like'">like your</span>
+                <span ng-if="item.type.name == 'timeline_comment' || item.type.name == 'topic_comment'">comment your</span>
+
+                <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'timeline_comment'">{{ 'TIMELINE' | translate }} - {{ item.entity_id }}</span>
+                <span ng-if="item.type.name == 'topic_like' || item.type.name == 'topic_comment'">{{ 'TOPIC' | translate }} - {{ item.entity_id }}</span>
+
+                <span class="item-note hide">
+                    {{ item.created_at | momentDate: 'fromNow' }}
+                </span>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

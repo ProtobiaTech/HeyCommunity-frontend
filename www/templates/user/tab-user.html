@@ -38,17 +38,22 @@
             <div class="padding"></div>
 
             <div class="list">
-                <a ng-if="isOwnInfo" class="item item-icon-left" todo-ui-sref="hey-user-setup">
+                <a ng-if="isOwnInfo" class="item item-icon-left" ui-sref="hey-user-notice">
                     <i class="icon ion-ios-bell"></i>
                     {{ 'NOTICE' | translate }}
+                    <span class="badge badge-assertive">0</span>
                 </a>
                 <a class="item item-icon-left" ui-sref="hey-user-timeline({user_id: userInfo.id})">
                     <i class="icon ion-aperture"></i>
                     {{ 'TIMELINE' | translate }}
+                    <span class="item-note">
+                    </span>
                 </a>
                 <a class="item item-icon-left" ui-sref="hey-user-topic({user_id: userInfo.id})">
                     <i class="icon ion-quote"></i>
                     {{ 'TOPIC' | translate }}
+                    <span class="item-note">
+                    </span>
                 </a>
 
                 <a class="hide item item-icon-left" style="color:#999;">

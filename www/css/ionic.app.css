@@ -9086,10 +9086,10 @@ a.button {
   transition-duration: 0s; }
 
 .filter-bar-backdrop {
-  -webkit-transition: opacity 250ms ease-in-out;
-  transition: opacity 250ms ease-in-out;
+  -webkit-transition: opacity 150ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
   opacity: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
   top: 0;
   left: 0;
@@ -9310,11 +9310,22 @@ a.button {
   transform: translate3d(0, 0, 0);
   opacity: 1; }
 
+.filter-bar-modal .item.item-input {
+  padding-right: 16px; }
+
+.filter-bar-modal .list-right-editing .item.item-input {
+  opacity: .5; }
+
+.filter-bar-modal .button.button-icon.ion-ios-checkmark-empty:before {
+  font-size: 42px; }
+
+.filter-bar-hide {
+  display: none; }
+
 .gallery-view .image-container {
   position: relative;
   overflow: hidden;
-  border: 1px solid #fff;
-  background-size: 50%; }
+  border: 2px solid white; }
   .gallery-view .image-container img {
     position: absolute;
     top: -9999px;
@@ -9327,18 +9338,19 @@ a.button {
   top: 0px !important; }
 
 .imageView .close-btn {
-  border: 1px solid;
+  font-weight: 900;
+  border: 2px solid;
   position: absolute;
   right: 5px;
-  border-radius: 3px; }
+  border-radius: 5px; }
 
 .imageView .headerView {
-  background-image: none; }
+  background-image: none;
+  background-color: black; }
 
 .imageView .gallery-slide-view {
   width: 98%;
-  background-color: transparent;
-  border: 0px solid transparent !important; }
+  background-color: transparent; }
 
 .imageView .image-subtitle {
   color: white;
@@ -9352,7 +9364,7 @@ a.button {
 .imageView .listContainer {
   width: 100%;
   height: 100%;
-  background-color: #000; }
+  background-color: black; }
 
 .imageView .hideAll {
   display: none; }
@@ -9451,7 +9463,7 @@ a.button {
       font-size: 26px;
       line-height: 30px; }
     #module-timeline .item.item-footer .btns .ion-ios-heart {
-      color: #f33; }
+      color: rgba(140, 10, 10, 0.7); }
 
 #module-activity .list .item-activity {
   padding-bottom: 0;

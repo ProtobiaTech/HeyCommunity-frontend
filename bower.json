@@ -2,7 +2,7 @@
   "name": "HeyCommunity",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.1.1"
+    "ionic": "dev4living/ionic-bower#1.1.2"
   },
   "dependencies": {
     "jquery": "~2.1.4",

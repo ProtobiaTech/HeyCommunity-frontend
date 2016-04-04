@@ -20,7 +20,10 @@ HeyCommunity
 
 //
 .controller('UserTimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
-    TimelineService.index().then(function(response) {
+    var params = {
+        user_id: $scope.stateParams.user_id,
+    }
+    TimelineService.index(params).then(function(response) {
         if (response.status == 200) {
             $scope.timelines = response.data.timelines.data;
             $scope.timelineCurrentPage = response.data.timelines.current_page;

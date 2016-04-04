@@ -89,13 +89,13 @@ HeyCommunity
     })
 
     .state('hey-user-timeline', {
-        url: '/user/timeline',
+        url: '/user/timeline/:user_id',
         templateUrl: 'templates/user/user-timeline.html',
         controller: 'UserTimelineCtrl'
     })
 
     .state('hey-user-topic', {
-        url: '/user/topic',
+        url: '/user/topic/:user_id',
         templateUrl: 'templates/user/user-topic.html',
         controller: 'UserTopicCtrl'
     })

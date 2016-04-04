@@ -89,6 +89,7 @@ HeyCommunity
         //
         // Timeline Tab
         // -------------------------------
+        TIMELINE:               '时间线',
         CREATE_TIMELINE:        '分享新鲜事',
         WHAT_IS_NEW:            '有什么新鲜事儿，与大家分享一下吧',
         PICTURE:                '图片',
@@ -120,5 +121,12 @@ HeyCommunity
         // Talk Tab
         // --------------------------------
         TALK:                  '聊天',
+
+
+
+        //
+        // Notice
+        // --------------------------------
+        NOTICE:                 '通知',
     });
 }]);

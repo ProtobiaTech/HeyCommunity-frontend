@@ -21,26 +21,33 @@
         </div>
 
         <div ng-if="isAuth()">
-            <div class="" style="padding-top:60px;">
-                <div class="hey-avatar text-center">
-                    <img ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/180') }}">
-                </div>
-                <div class="text-center">
-                    {{ userInfo.nickname }}
-                </div>
+            <div class="padding"></div>
+
+            <div class="list hey-list">
+                <a class="item item-avatar item-icon-right" ui-sref="hey-user-info">
+                    <img ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
+                    <h2>{{ userInfo.nickname }}</h2>
+                    <p>UID: {{ userInfo.id}}</p>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </a>
             </div>
 
             <div class="padding"></div>
 
             <div class="list">
-                <a class="item item-icon-left" ui-sref="hey-user-info">
-                    <i class="icon ion-person"></i>
-                    {{ 'MY_INFO' | translate }}
+                <a class="item item-icon-left" todo-ui-sref="hey-user-setup">
+                    <i class="icon ion-ios-bell"></i>
+                    {{ 'NOTICE' | translate }}
                 </a>
-                <a class="hide item item-icon-left" ui-sref="hey-user-home">
-                    <i class="icon ion-ios-flower"></i>
-                    {{ 'MY_HOME' | translate }}
+                <a class="item item-icon-left" todo-ui-sref="hey-user-setup">
+                    <i class="icon ion-aperture"></i>
+                    {{ 'TIMELINE' | translate }}
                 </a>
+                <a class="item item-icon-left" todo-ui-sref="hey-user-setup">
+                    <i class="icon ion-quote"></i>
+                    {{ 'TOPIC' | translate }}
+                </a>
+
                 <a class="hide item item-icon-left" style="color:#999;">
                     <i class="icon ion-heart"></i>
                     {{ 'MY_ME_FOLLOW' | translate }}

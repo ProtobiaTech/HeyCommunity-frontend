@@ -91,6 +91,7 @@ HeyCommunity
         //
         // Timeline Tab
         // ------------------------------
+        TIMELINE:               'Timeline',
         CREATE_TIMELINE:        'What\'s new',
         WHAT_IS_NEW:            'What\'s new?',
         PICTURE:                'Picture',
@@ -122,5 +123,12 @@ HeyCommunity
         // Talk Tab
         // --------------------------------
         TALK:                    'Talk',
+
+
+
+        //
+        // Notice
+        // --------------------------------
+        NOTICE:                 'Notice',
     });
 }]);

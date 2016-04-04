@@ -9,7 +9,6 @@ HeyCommunity
             $scope.timelineCurrentPage = response.data.timelines.current_page;
 
             $scope.timelineLikes = response.data.likes;
-                    console.log($scope.timelineLikes)
         }
     });
 

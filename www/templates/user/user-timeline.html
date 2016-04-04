@@ -1,0 +1,64 @@
+<ion-view view-title="{{ 'TIMELINE' | translate }}">
+    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
+        <ion-nav-buttons side="left">
+          <button ui-sref="hey.user" class="button back-button buttons  button-clear header-item" style="">
+              <i class="icon ion-ios-arrow-back"></i> 
+              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
+          </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-content id="module-timeline" delegate-handle="contentScrollDelegate">
+        <div ng-hide="timelines" class="padding text-center">
+            <ion-spinner></ion-spinner>
+        </div>
+
+        <div ng-repeat="item in timelines" class="list">
+            <div class="item item-header item-divider" ion-affix>
+                <div class="pull-left">
+                    <img ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
+                </div>
+                <div class="pull-left">
+                    <div class="name">{{ item.author.nickname }}</div>
+                    <div class="date">{{ item.created_at | momentDate: 'fromNow' }}</div>
+                </div>
+            </div>
+
+            <div class="item item-body item-text-wrap">
+                <img on-double-tap="like(item.id, true)" ng-if="item.attachment" ng-src="{{ getPicUrl(item.attachment + '?imageView/2/w/800') }}">
+            </div>
+
+            <div class="item item-footer">
+                <div>
+                    <div class="btns pull-right">
+                        <a ng-if="!isAuth()" ng-click="like(item.id)" class="icon ion-ios-heart-outline" style="color:#ddd"></a>
+                        <a ng-if="isAuth() && isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart"></a>
+                        <a ng-if="isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
+
+                        <a class="icon ion-more" ui-sref="hey-timeline-detail({id: item.id})"></a>
+                        <a ng-if="isAdmin()" ng-click="destroy(item.id)" class="icon ion-trash-b"></a>
+                    </div>
+                    <div>
+                        {{ item.like_num }}人喜欢
+                    </div>
+                </div>
+            </div>
+            <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff" ui-sref="hey-timeline-detail({id: item.id})">
+                <div style="">
+                    <a style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
+                    <span class="content" ng-bind-html="item.content | nl2br"></span>
+                </div>
+
+                <div style="margin-top:5px;" ng-repeat="(index, item) in item.comments | orderBy: '-created_at'">
+                    <a style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
+                    <span class="content" ng-bind-html="item.content | nl2br"></span>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="timelines && timelines.length == 0" class="padding text-center">
+            {{ 'WHAT_IS_NEW' | translate }}
+        </div>
+    </ion-content>
+</ion-view>
+

@@ -6,6 +6,20 @@ HeyCommunity
 
 
 
+//
+.controller('UserTimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+    TimelineService.index().then(function(response) {
+        if (response.status == 200) {
+            $scope.timelines = response.data.timelines.data;
+            $scope.timelineCurrentPage = response.data.timelines.current_page;
+
+            $scope.timelineLikes = response.data.likes;
+        }
+    });
+}])
+
+
+
 // tab.user-signOut
 .controller('UserSignOutCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
     UserService.signOut().then(function(response) {

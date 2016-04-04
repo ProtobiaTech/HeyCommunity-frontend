@@ -46,8 +46,12 @@ HeyCommunity
     }
 
     // user info
-    this.userInfo = function() {
-        var q = $http.get(getApiUrl('/user/user-info'));
+    this.userInfo = function(id) {
+        if (id) {
+            var q = $http.get(getApiUrl('/user/user-info/' + id));
+        } else {
+            var q = $http.get(getApiUrl('/user/user-info'));
+        }
         q.then(function(response) {
             if (response.status === 200 && typeof(response.data) === 'object') {
                 localStorage.user = JSON.stringify(response.data);
@@ -61,7 +65,6 @@ HeyCommunity
 
     // update avatar
     this.updateAvatar = function(http, params) {
-        console.log(params)
         return http.upload({
             url: getApiUrl('/user/update-avatar'),
             data: params,

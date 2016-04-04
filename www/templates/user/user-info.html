@@ -1,7 +1,7 @@
 <ion-view view-title="{{ 'MY_INFO' | translate }}" cache-view="false">
     <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
         <ion-nav-buttons side="left">
-          <button ui-sref="hey.user" class="button back-button buttons  button-clear header-item" style="">
+          <button ng-click="goBack()" class="button back-button buttons  button-clear header-item" style="">
               <i class="icon ion-ios-arrow-back"></i> 
               <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
           </button>
@@ -12,12 +12,18 @@
         <div class="padding"></div>
 
         <div class="list hey-list">
-            <a class="item item-avatar item-icon-right" ui-sref="hey-user-info-avatar">
+            <a ng-if="isOwnInfo" class="item item-avatar item-icon-right" ui-sref="hey-user-info-avatar">
                 <img ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
                 <h2>{{ userInfo.nickname }}</h2>
                 <p>UID: {{ userInfo.id}}</p>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
+            <span ng-if="!isOwnInfo" class="item item-avatar item-icon-right">
+                <img ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
+                <h2>{{ userInfo.nickname }}</h2>
+                <p>UID: {{ userInfo.id}}</p>
+            </span>
+
             <div class="item todo-item-icon-right">
                 {{ 'PHONE' | translate }}
                 <span class="item-note">

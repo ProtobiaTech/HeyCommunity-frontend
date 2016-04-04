@@ -3,15 +3,14 @@ HeyCommunity
 // tab.user
 .controller('UserIndexCtrl', ['$scope', 'UserService', function($scope, UserService) {
     if ($scope.stateParams.id) {
+        $scope.userInfo = {};
         $scope.isOwnInfo = false;
-        /*
-        UserService.userInfo().then(function(response) {
-            console.log(response)
+
+        UserService.userInfo($scope.stateParams.id).then(function(response) {
             if (response.status === 200) {
                 $scope.userInfo = response.data;
             }
         });
-        */
     } else {
         $scope.isOwnInfo = true;
     }
@@ -177,6 +176,18 @@ HeyCommunity
 
 // tab.user-info
 .controller('UserInfoCtrl', ['$scope', 'UserService', function($scope, UserService) {
+    if ($scope.stateParams.id != $scope.$root.userInfo.id) {
+        $scope.userInfo = {};
+        $scope.isOwnInfo = false;
+
+        UserService.userInfo($scope.stateParams.id).then(function(response) {
+            if (response.status === 200) {
+                $scope.userInfo = response.data;
+            }
+        });
+    } else {
+        $scope.isOwnInfo = true;
+    }
 }])
 
 

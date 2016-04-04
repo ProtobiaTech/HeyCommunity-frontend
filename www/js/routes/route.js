@@ -119,7 +119,7 @@ HeyCommunity
     })
 
     .state('hey-user-info', {
-        url: '/user/user-info',
+        url: '/user/user-info/:id',
         templateUrl: 'templates/user/user-info.html',
         controller: 'UserInfoCtrl'
     })

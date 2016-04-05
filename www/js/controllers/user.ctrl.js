@@ -248,10 +248,38 @@ HeyCommunity
 
 
 //
-.controller('UserNoticeCtrl', ['$scope', 'NoticeService', function($scope, NoticeService) {
+.controller('UserNoticeCtrl', ['$scope', 'NoticeService', '$ionicActionSheet', function($scope, NoticeService, $ionicActionSheet) {
+    $scope.shouldShowDelete = false;
+    $scope.shouldShowReorder = false;
+    $scope.listCanSwipe = true
+
     NoticeService.index().then(function(response) {
         if (response.status === 200) {
             $scope.notices = response.data.data;
         }
     });
+
+    //
+    $scope.showActionSheet = function() {
+        var hideSheet = $ionicActionSheet.show({
+            destructiveText: $scope.filter('translate')('DESTROY_ALL'),
+            titleText: $scope.filter('translate')('MANAGEMENT_OPERATIONS'),
+            cancelText: $scope.filter('translate')('CANCEL'),
+            buttons: [
+                {text: $scope.filter('translate')('CHECK_ALL')},
+            ],
+            cancel: function() {
+            },
+            buttonClicked: function(index) {
+                return true;
+            },
+            destructiveButtonClicked: function(index) {
+                $scope.destroy();
+            },
+        });
+
+        $scope.timeout(function() {
+            hideSheet();
+        }, 2000);
+    };
 }])

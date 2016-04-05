@@ -1,15 +1,15 @@
 /* Autor: Luis Bahamonde */
 
 var HeyCommunity = angular.module('starter', [
-    'ionic',
+    'ionic', 'ngCordova',
     'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
     'pascalprecht.translate', 'ngFileUpload', 'ngImgCrop',
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout',
-    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout) {
-    $ionicPlatform.ready(function() {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge',
+    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge) {
+    $ionicPlatform.ready(function($rootScope) {
         /* @mark what doing
         setTimeout(function () {
             navigator.splashscreen.hide();
@@ -24,7 +24,23 @@ var HeyCommunity = angular.module('starter', [
             //StatusBar.styleDefault();
             StatusBar.styleLightContent();
         }
+
+        //
+        cordova.plugins.notification.local.registerPermission();
     });
+
+    //
+    $rootScope.setBadgeNum = function(badgeNum) {
+        $cordovaBadge.hasPermission().then(function(yes) {
+            $cordovaBadge.set(badgeNum).then(function() {
+                // $rootScope.showNoticeText('show badge ' + badgeNum);
+            }, function(err) {
+                $rootScope.showNoticeText('show badge error');
+            });
+        }, function(no) {
+            $rootScope.showNoticeText(no);
+        });
+    }
 
     // Set TenantInfo
     $rootScope.appSiteTitle = 'Hey Community';
@@ -131,6 +147,9 @@ var HeyCommunity = angular.module('starter', [
     }
 
     $rootScope.showNoticeText = function(text, time) {
+        if (time === undefined) {
+            time = 1288;
+        }
         $rootScope.$broadcast('notice:show', $filter('translate')(text));
         $timeout(function() {
             $rootScope.$broadcast('notice:hide');

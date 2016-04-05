@@ -17,14 +17,14 @@
     <ion-content id="module-user" class="page-user-notice">
         <ion-list ng-repeat="($index, item) in notices" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
             <ion-item class="item">
-                <img ui-sref="hey-uhome({id: item.author.id})" style="background-color:#ddd; border-radius:20%; height:41px; position:absolute;" ng-src="{{ getPicUrl(item.author.avatar) }}">
-                <div style="padding-left:51px;">
+                <img ui-sref="hey-uhome({id: item.initiator.id})" style="background-color:#ddd; border-radius:20%; height:41px; position:absolute;" ng-src="{{ getPicUrl(item.initiator.avatar) }}">
+                <div style="padding-left:51px; margin-right:-33px !important;">
                     <div>
-                        <a ui-sref="hey-uhome({id: item.author.id})">{{ item.author.nickname }}</a>
+                        <a ui-sref="hey-uhome({id: item.initiator.id})">{{ item.initiator.nickname }}</a>
                         <small class="stable">
                             {{ item.created_at | momentDate: 'fromNow' }}
                         </small>
-                        <small ng-if="item.is_checked" class="balanced pull-right">
+                        <small ng-if="item.is_checked == 1" class="stable pull-right">
                             {{ 'READED' | translate }}
                         </small>
                     </div>
@@ -38,7 +38,7 @@
                         <span>&nbsp;</span>
                     </div>
 
-                    <ion-option-button ng-if="!item.is_checked" class="button-positive" ng-click="check(item, $index)">
+                    <ion-option-button ng-if="item.is_checked == 0" class="button-positive" ng-click="check(item, $index)">
                         {{ 'MARK_CHECKED' | translate }}
                     </ion-option-button>
                     <ion-option-button class="button-assertive" ng-click="destroy(item, $index)">

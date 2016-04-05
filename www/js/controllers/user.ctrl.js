@@ -266,7 +266,7 @@ HeyCommunity
             titleText: $scope.filter('translate')('MANAGEMENT_OPERATIONS'),
             cancelText: $scope.filter('translate')('CANCEL'),
             buttons: [
-                {text: $scope.filter('translate')('CHECK_ALL')},
+                {text: $scope.filter('translate')('MARK_CHECKED_ALL')},
             ],
             cancel: function() {
             },

@@ -43,15 +43,15 @@
                     </div>
                 </div>
             </div>
-            <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff" ui-sref="hey-timeline-detail({id: item.id})">
+            <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff">
                 <div style="">
-                    <a style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
-                    <span class="content" ng-bind-html="item.content | nl2br"></span>
+                    <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
+                    <span ui-sref="hey-timeline-detail({id: item.id})" class="content" ng-bind-html="item.content | nl2br"></span>
                 </div>
 
                 <div style="margin-top:5px;" ng-repeat="(index, item) in item.comments | orderBy: '-created_at'">
-                    <a style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
-                    <span class="content" ng-bind-html="item.content | nl2br"></span>
+                    <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
+                    <span ui-sref="hey-timeline-detail({id: item.timeline_id})" class="content" ng-bind-html="item.content | nl2br"></span>
                 </div>
             </div>
         </div>

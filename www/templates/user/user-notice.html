@@ -24,7 +24,7 @@
                         <small class="stable">
                             {{ item.created_at | momentDate: 'fromNow' }}
                         </small>
-                        <small ng-if="item.is_checked" class="balanced pull-right">
+                        <small ng-if="item.is_checked == 1" class="balanced pull-right">
                             {{ 'READED' | translate }}
                         </small>
                     </div>

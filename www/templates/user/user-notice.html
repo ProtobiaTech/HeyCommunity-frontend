@@ -6,22 +6,46 @@
               <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
           </button>
         </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+          <button ng-click="showActionSheet()" class="button back-button buttons button-clear header-item" style="">
+              <i class="icon ion-navicon"></i>
+          </button>
+        </ion-nav-buttons>
     </ion-nav-bar>
 
     <ion-content id="module-user" class="page-user-notice">
-        <div class="list" ng-repeat="item in notices">
-            <div class="item">
-                {{ item.author.nickname }}
-                <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'topic_like'">like your</span>
-                <span ng-if="item.type.name == 'timeline_comment' || item.type.name == 'topic_comment'">comment your</span>
+        <ion-list ng-repeat="($index, item) in notices" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+            <ion-item class="item">
+                <img ui-sref="hey-uhome({id: item.author.id})" style="background-color:#ddd; border-radius:20%; height:41px; position:absolute;" ng-src="{{ getPicUrl(item.author.avatar) }}">
+                <div style="padding-left:51px;">
+                    <div>
+                        <a ui-sref="hey-uhome({id: item.author.id})">{{ item.author.nickname }}</a>
+                        <small class="stable">
+                            {{ item.created_at | momentDate: 'fromNow' }}
+                        </small>
+                        <small ng-if="item.is_checked" class="balanced pull-right">
+                            {{ 'READED' | translate }}
+                        </small>
+                    </div>
 
-                <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'timeline_comment'">{{ 'TIMELINE' | translate }} - {{ item.entity_id }}</span>
-                <span ng-if="item.type.name == 'topic_like' || item.type.name == 'topic_comment'">{{ 'TOPIC' | translate }} - {{ item.entity_id }}</span>
+                    <div style="color:#777;">
+                        <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'topic_like'">like your</span>
+                        <span ng-if="item.type.name == 'timeline_comment' || item.type.name == 'topic_comment'">comment your</span>
 
-                <span class="item-note hide">
-                    {{ item.created_at | momentDate: 'fromNow' }}
-                </span>
-            </div>
-        </div>
+                        <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'timeline_comment'">{{ 'TIMELINE' | translate }} - {{ item.entity_id }}</span>
+                        <span ng-if="item.type.name == 'topic_like' || item.type.name == 'topic_comment'">{{ 'TOPIC' | translate }} - {{ item.entity_id }}</span>
+                        <span>&nbsp;</span>
+                    </div>
+
+                    <ion-option-button ng-if="!item.is_checked" class="button-positive" ng-click="check(item, $index)">
+                        {{ 'MARK_CHECKED' | translate }}
+                    </ion-option-button>
+                    <ion-option-button class="button-assertive" ng-click="destroy(item, $index)">
+                        {{ 'DELETE' | translate }}
+                    </ion-option-button>
+                </div>
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>

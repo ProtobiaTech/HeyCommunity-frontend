@@ -24,8 +24,12 @@ HeyCommunity
         EDIT:               '编辑',
         UPDATE:             '更新',
         DELETE:             '删除',
-        DESTROY:            '销毁',
+        DESTROY:            '删除',
+        DESTROY_ALL:        '删除全部',
+        MARK_CHECKED_ALL:   '全部标为已读',
+        MARK_CHECKED:       '标为已读',
         SELECT:             '选择',
+        READED:             '已读',
 
         DETAIL:             '详情',
         COMMENTS:           '评论',

@@ -26,10 +26,13 @@ HeyCommunity
         DELETE:             'Delete',
         DESTROY:            'Destroy',
         SELECT:             'Select',
+        MARK_CHECKED_ALL:   'All Mark Checked',
+        MARK_CHECKED:       'Mark Checked',
+        SELECT:             'Select',
+        READED:             'Readed',
 
         DETAIL:             'Detail',
         COMMENTS:           'Comments',
-
 
         PHONE_OR_PASSWORD_ERROR:        'Phone number or Password is incorrect',
         PULL_TO_REFRESH:                'Pull to refresh ...',
@@ -44,7 +47,6 @@ HeyCommunity
         CONTENT:            'Content',
         START_DATE:         'Start Date',
         END_DATE:           'End Date',
-
 
         ALERT:              'Alert',
         ERROR:              'Error',

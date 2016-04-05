@@ -248,10 +248,76 @@ HeyCommunity
 
 
 //
-.controller('UserNoticeCtrl', ['$scope', 'NoticeService', function($scope, NoticeService) {
+.controller('UserNoticeCtrl', ['$scope', 'NoticeService', '$ionicActionSheet', '$ionicListDelegate', function($scope, NoticeService, $ionicActionSheet, $ionicListDelegate) {
+    $scope.shouldShowDelete = false;
+    $scope.shouldShowReorder = false;
+    $scope.listCanSwipe = true
+
     NoticeService.index().then(function(response) {
         if (response.status === 200) {
             $scope.notices = response.data.data;
         }
     });
+
+    //
+    $scope.showActionSheet = function() {
+        var hideSheet = $ionicActionSheet.show({
+            destructiveText: $scope.filter('translate')('DESTROY_ALL'),
+            titleText: $scope.filter('translate')('MANAGEMENT_OPERATIONS'),
+            cancelText: $scope.filter('translate')('CANCEL'),
+            buttons: [
+                {text: $scope.filter('translate')('MARK_CHECKED_ALL')},
+            ],
+            cancel: function() {
+            },
+            buttonClicked: function(index) {
+                if (index === 0) {
+                    angular.forEach($scope.notices, function(item, $index) {
+                        if (item.is_checked != 1) {
+                            $scope.check(item, $index);
+                        }
+                    })
+                }
+            },
+            destructiveButtonClicked: function(index) {
+                angular.forEach($scope.notices, function(item, $index) {
+                    $scope.destroy(item, $index);
+                })
+            },
+        });
+
+        $scope.timeout(function() {
+            hideSheet();
+        }, 2000);
+    };
+
+    //
+    $scope.check = function(item, $index) {
+        var params = {
+            id: item.id,
+        }
+        NoticeService.check(params).then(function(response) {
+            if (response.status === 200) {
+                $scope.notices[$index].is_checked = true;
+            } else {
+                $scope.showNoticeFail();
+            }
+        })
+        $ionicListDelegate.closeOptionButtons();
+    }
+
+    //
+    $scope.destroy = function(item, $index) {
+        var params = {
+            id: item.id,
+        }
+        NoticeService.destroy(params).then(function(response) {
+            if (response.status === 200) {
+                $scope.notices.splice($index, 1);
+            } else {
+                $scope.showNoticeFail();
+            }
+        })
+        $ionicListDelegate.closeOptionButtons();
+    }
 }])

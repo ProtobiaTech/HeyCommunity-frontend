@@ -1,14 +1,14 @@
 /* Autor: Luis Bahamonde */
 
 var HeyCommunity = angular.module('starter', [
-    'ionic',
+    'ionic', 'ngCordova',
     'jett.ionic.filter.bar', 'ion-gallery', 'jett.ionic.scroll.sista', 'ngIOS9UIWebViewPatch', 'ion-affix',
     'pascalprecht.translate', 'ngFileUpload', 'ngImgCrop',
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout',
-    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge',
+    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge) {
     $ionicPlatform.ready(function() {
         /* @mark what doing
         setTimeout(function () {
@@ -24,6 +24,8 @@ var HeyCommunity = angular.module('starter', [
             //StatusBar.styleDefault();
             StatusBar.styleLightContent();
         }
+
+        cordova.plugins.notification.local.registerPermission();
     });
 
     // Set TenantInfo
@@ -131,6 +133,9 @@ var HeyCommunity = angular.module('starter', [
     }
 
     $rootScope.showNoticeText = function(text, time) {
+        if (time === undefined) {
+            time = 1288;
+        }
         $rootScope.$broadcast('notice:show', $filter('translate')(text));
         $timeout(function() {
             $rootScope.$broadcast('notice:hide');

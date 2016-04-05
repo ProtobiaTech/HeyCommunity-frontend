@@ -2,7 +2,7 @@
   "name": "HeyCommunity",
   "private": "true",
   "devDependencies": {
-    "ionic": "dev4living/ionic-bower#1.1.2"
+    "ionic": "dev4living/ionic-bower#v1.1.1-iclub"
   },
   "dependencies": {
     "jquery": "~2.1.4",
@@ -14,6 +14,7 @@
     "angular-translate": "~2.10.0",
     "ion-affix": "~1.0.1",
     "ion-gallery": "~0.1.13",
-    "ng-img-crop": "ngImgCrop#~0.3.2"
+    "ng-img-crop": "ngImgCrop#~0.3.2",
+    "ngCordova": "^0.1.24-alpha"
   }
 }

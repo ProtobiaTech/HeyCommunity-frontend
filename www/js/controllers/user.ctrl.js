@@ -248,7 +248,7 @@ HeyCommunity
 
 
 //
-.controller('UserNoticeCtrl', ['$scope', 'NoticeService', '$ionicActionSheet', '$ionicListDelegate', function($scope, NoticeService, $ionicActionSheet, $ionicListDelegate) {
+.controller('UserNoticeCtrl', ['$scope', 'NoticeService', '$ionicActionSheet', '$ionicListDelegate', '$cordovaBadge', function($scope, NoticeService, $ionicActionSheet, $ionicListDelegate, $cordovaBadge) {
     $scope.shouldShowDelete = false;
     $scope.shouldShowReorder = false;
     $scope.listCanSwipe = true
@@ -256,6 +256,22 @@ HeyCommunity
     NoticeService.index().then(function(response) {
         if (response.status === 200) {
             $scope.notices = response.data.data;
+            angular.forEach(response.data.data, function(item, $index) {
+                var badgeNum = 0;
+                if (item.is_checked != 1) {
+                    badgeNum += 1;
+                }
+
+                $cordovaBadge.hasPermission().then(function(yes) {
+                    $cordovaBadge.set(badgeNum).then(function() {
+                        $scope.showNoticeText('show badge success');
+                    }, function(err) {
+                        $scope.showNoticeText('show badge error');
+                    });
+                }, function(no) {
+                    $scope.showNoticeText(no);
+                });
+            })
         }
     });
 

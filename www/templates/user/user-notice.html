@@ -18,7 +18,7 @@
         <ion-list ng-repeat="($index, item) in notices" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
             <ion-item class="item">
                 <img ui-sref="hey-uhome({id: item.author.id})" style="background-color:#ddd; border-radius:20%; height:41px; position:absolute;" ng-src="{{ getPicUrl(item.author.avatar) }}">
-                <div style="padding-left:51px;">
+                <div style="padding-left:51px; margin-right:-33px !important;">
                     <div>
                         <a ui-sref="hey-uhome({id: item.author.id})">{{ item.author.nickname }}</a>
                         <small class="stable">

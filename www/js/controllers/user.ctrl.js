@@ -263,16 +263,7 @@ HeyCommunity
                     badgeNum += 1;
                 }
             });
-
-            $cordovaBadge.hasPermission().then(function(yes) {
-                $cordovaBadge.set(badgeNum).then(function() {
-                    $scope.showNoticeText('show badge ' + badgeNum);
-                }, function(err) {
-                    $scope.showNoticeText('show badge error');
-                });
-            }, function(no) {
-                $scope.showNoticeText(no);
-            });
+            $scope.$root.setBadgeNum(badgeNum);
         }
     });
 

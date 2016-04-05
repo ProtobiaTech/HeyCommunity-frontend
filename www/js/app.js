@@ -9,7 +9,7 @@ var HeyCommunity = angular.module('starter', [
 
 .run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge',
     function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge) {
-    $ionicPlatform.ready(function() {
+    $ionicPlatform.ready(function($rootScope) {
         /* @mark what doing
         setTimeout(function () {
             navigator.splashscreen.hide();
@@ -25,8 +25,22 @@ var HeyCommunity = angular.module('starter', [
             StatusBar.styleLightContent();
         }
 
+        //
         cordova.plugins.notification.local.registerPermission();
     });
+
+    //
+    $rootScope.setBadgeNum = function(badgeNum) {
+        $cordovaBadge.hasPermission().then(function(yes) {
+            $cordovaBadge.set(badgeNum).then(function() {
+                // $rootScope.showNoticeText('show badge ' + badgeNum);
+            }, function(err) {
+                $rootScope.showNoticeText('show badge error');
+            });
+        }, function(no) {
+            $rootScope.showNoticeText(no);
+        });
+    }
 
     // Set TenantInfo
     $rootScope.appSiteTitle = 'Hey Community';

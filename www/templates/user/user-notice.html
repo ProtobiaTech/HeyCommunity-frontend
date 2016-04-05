@@ -24,7 +24,7 @@
                         <small class="stable">
                             {{ item.created_at | momentDate: 'fromNow' }}
                         </small>
-                        <small ng-if="item.is_checked == 1" class="balanced pull-right">
+                        <small ng-if="item.is_checked == 1" class="stable pull-right">
                             {{ 'READED' | translate }}
                         </small>
                     </div>
@@ -38,7 +38,7 @@
                         <span>&nbsp;</span>
                     </div>
 
-                    <ion-option-button ng-if="!item.is_checked" class="button-positive" ng-click="check(item, $index)">
+                    <ion-option-button ng-if="item.is_checked == 0" class="button-positive" ng-click="check(item, $index)">
                         {{ 'MARK_CHECKED' | translate }}
                     </ion-option-button>
                     <ion-option-button class="button-assertive" ng-click="destroy(item, $index)">

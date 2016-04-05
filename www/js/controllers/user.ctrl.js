@@ -248,7 +248,7 @@ HeyCommunity
 
 
 //
-.controller('UserNoticeCtrl', ['$scope', 'NoticeService', '$ionicActionSheet', function($scope, NoticeService, $ionicActionSheet) {
+.controller('UserNoticeCtrl', ['$scope', 'NoticeService', '$ionicActionSheet', '$ionicListDelegate', function($scope, NoticeService, $ionicActionSheet, $ionicListDelegate) {
     $scope.shouldShowDelete = false;
     $scope.shouldShowReorder = false;
     $scope.listCanSwipe = true
@@ -271,10 +271,18 @@ HeyCommunity
             cancel: function() {
             },
             buttonClicked: function(index) {
-                return true;
+                if (index === 0) {
+                    angular.forEach($scope.notices, function(item, $index) {
+                        if (item.is_checked != 1) {
+                            $scope.check(item, $index);
+                        }
+                    })
+                }
             },
             destructiveButtonClicked: function(index) {
-                $scope.destroy();
+                angular.forEach($scope.notices, function(item, $index) {
+                    $scope.destroy(item, $index);
+                })
             },
         });
 
@@ -282,4 +290,34 @@ HeyCommunity
             hideSheet();
         }, 2000);
     };
+
+    //
+    $scope.check = function(item, $index) {
+        var params = {
+            id: item.id,
+        }
+        NoticeService.check(params).then(function(response) {
+            if (response.status === 200) {
+                $scope.notices[$index].is_checked = true;
+            } else {
+                $scope.showNoticeFail();
+            }
+        })
+        $ionicListDelegate.closeOptionButtons();
+    }
+
+    //
+    $scope.destroy = function(item, $index) {
+        var params = {
+            id: item.id,
+        }
+        NoticeService.destroy(params).then(function(response) {
+            if (response.status === 200) {
+                $scope.notices.splice($index, 1);
+            } else {
+                $scope.showNoticeFail();
+            }
+        })
+        $ionicListDelegate.closeOptionButtons();
+    }
 }])

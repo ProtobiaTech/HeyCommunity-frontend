@@ -373,6 +373,7 @@ HeyCommunity
                     badgeNum += 1;
                 }
             });
+            $scope.$root.badgeNum = badgeNum;
             $scope.$root.setBadgeNum(badgeNum);
         }
     });

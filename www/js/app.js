@@ -28,15 +28,19 @@ var HeyCommunity = angular.module('starter', [
 
     //
     $rootScope.setBadgeNum = function(badgeNum) {
-        $cordovaBadge.hasPermission().then(function(yes) {
-            $cordovaBadge.set(badgeNum).then(function() {
-                // $rootScope.showNoticeText('show badge ' + badgeNum);
-            }, function(err) {
-                $rootScope.showNoticeText('show badge error');
+        if (window.cordova) {
+            $cordovaBadge.hasPermission().then(function(yes) {
+                $cordovaBadge.set($rootScope.badgeNum).then(function() {
+                    // $rootScope.showNoticeText('show badge ' + badgeNum);
+                }, function(err) {
+                    $rootScope.showNoticeText('show badge error');
+                });
+            }, function(no) {
+                $rootScope.showNoticeText(no);
             });
-        }, function(no) {
-            $rootScope.showNoticeText(no);
-        });
+        } else {
+             return false;
+        }
     }
 
     // Set TenantInfo
@@ -60,6 +64,7 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.stateParams = $stateParams;
     $rootScope.ionicHistory = $ionicHistory;
     $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
+    $rootScope.badgeNum = 0;
 
     $rootScope.goBack = function(state) {
         if ($ionicHistory.backView() === null) {

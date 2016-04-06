@@ -24,9 +24,6 @@ var HeyCommunity = angular.module('starter', [
             //StatusBar.styleDefault();
             StatusBar.styleLightContent();
         }
-
-        //
-        cordova.plugins.notification.local.registerPermission();
     });
 
     //

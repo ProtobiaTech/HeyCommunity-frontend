@@ -1,7 +1,12 @@
 <ion-view view-title="{{ 'TOPIC' | translate}}">
     <ion-nav-buttons side="right">
-        <a class="button button-clear button-light icon ion-plus-round" ui-sref="hey-topic-create">
+        <a class="button button-clear button-light icon ion-ios-compose-outline" ui-sref="hey-topic-create">
         </a>
+        <style>
+        .ion-ios-compose-outline:before {
+            font-size: 28px !important;
+        }
+        </style>
     </ion-nav-buttons>
 
     <ion-content id="module-topic" delegate-handle="contentScrollDelegate">

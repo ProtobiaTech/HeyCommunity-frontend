@@ -40,6 +40,7 @@ HeyCommunity
         ARE_YOU_SURE_DESTROY_IT:        '你确定要删除?',
         MANAGEMENT_OPERATIONS:          '管理操作',
         CANCEL:                         '取消',
+        COMING_SOON:                    '敬请期待',
 
         // Form
         AVATAR:             '头像',
@@ -95,8 +96,10 @@ HeyCommunity
         // -------------------------------
         TIMELINE:               '时间线',
         CREATE_TIMELINE:        '分享新鲜事',
-        WHAT_IS_NEW:            '有什么新鲜事儿，与大家分享一下吧',
+        WHAT_IS_NEW:            '有什么新鲜事儿',
         PICTURE:                '图片',
+        NEW_PHOTO:              '照片',
+        NEW_VIDEO:              '小视频',
 
 
 

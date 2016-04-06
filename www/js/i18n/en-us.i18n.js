@@ -40,6 +40,7 @@ HeyCommunity
         ARE_YOU_SURE_DESTROY_IT:        'Are you sure destroy it?',
         MANAGEMENT_OPERATIONS:          'Management Operations',
         CANCEL:                         'Cancel',
+        COMING_SOON:                    'Coming soon',
 
         // Form
         AVATAR:             'Avatar',
@@ -97,6 +98,8 @@ HeyCommunity
         CREATE_TIMELINE:        'What\'s new',
         WHAT_IS_NEW:            'What\'s new?',
         PICTURE:                'Picture',
+        NEW_PHOTO:              'New Photo',
+        NEW_VIDEO:              'New Video',
 
 
 

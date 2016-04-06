@@ -61,8 +61,12 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.ionicHistory = $ionicHistory;
     $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
 
-    $rootScope.goBack = function() {
-        $ionicHistory.goBack();
+    $rootScope.goBack = function(state) {
+        if ($ionicHistory.backView() === null) {
+            $rootScope.state.go(state)
+        } else {
+            $ionicHistory.goBack();
+        }
     }
 
 

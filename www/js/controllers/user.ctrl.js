@@ -31,6 +31,116 @@ HeyCommunity
             $scope.timelineLikes = response.data.likes;
         }
     });
+
+    //
+    // is Like
+    $scope.isLike = function(id) {
+        return inArray(id, $scope.timelineLikes);
+    }
+
+    //
+    // like
+    $scope.like = function(id, isDoubleTap) {
+        $scope.$root.loadingShowDisabled = true;
+        if (isDoubleTap) {
+            if ($scope.isLike(id)) {
+                return true;
+            }
+        }
+        if (!$scope.please_login_first()) {
+            var params = {
+                id: id,
+            }
+            console.debug('### TimelineService.like params', params);
+            TimelineService.like(params).then(function(response) {
+                console.debug('### TimelineService.like response', response);
+                if (response.status == 200) {
+                    angular.forEach($scope.timelines, function(v) {
+                        if (id == v.id) {
+                            // if (v.like_num > response.data.like_num) {
+                            if ($scope.isLike(id)) {
+                                var i = $scope.timelineLikes.indexOf(response.data.id);
+                                $scope.timelineLikes.splice(i, 1);
+                            } else {
+                                $scope.timelineLikes.push(response.data.id);
+                            }
+                            v.like_num = response.data.like_num;
+                        }
+                    })
+                    console.log($scope.timelineLikes)
+                }
+            })
+        }
+    }
+
+    //
+    // destroy
+    $scope.destroy = function(id) {
+        var data = {
+            title: $scope.filter('translate')('ALERT'),
+            content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
+        }
+
+        $scope.showConfirm(data, function() {
+            var params = {
+                id: id,
+            }
+            TimelineService.destroy(params).then(function(response) {
+                if (response.status === 200) {
+                    angular.forEach($scope.timelines, function(value, key) {
+                        if (value.id === params.id) {
+                            delete $scope.timelines[key];
+
+                            $scope.showNoticeSuccess();
+                            $scope.timeout(function() {
+                                $scope.$root.$broadcast('notice:hide');
+                            }, 1288);
+                        }
+                    });
+                }
+            })
+        }, function() {
+        });
+    }
+
+    //
+    // do refresh
+    $scope.doRefresh = function() {
+        $scope.$root.loadingShowDisabled = true;
+
+        TimelineService.index().then(function(response) {
+            console.debug('### TimelineService.doRefresh response', response);
+            if (response.status == 200) {
+                angular.merge($scope.timelines, response.data.timelines.data);
+            }
+        }).finally(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+    }
+
+    //
+    // load more
+    $scope.loadMore = function() {
+        $scope.$root.loadingShowDisabled = true;
+
+        var params = {
+            page: $scope.timelineCurrentPage + 1,
+        }
+        console.debug('### TimelineService.loadMore params', params);
+        TimelineService.index(params).then(function(response) {
+            console.debug('### TimelineService.loadMore response', response);
+            if (response.status == 200) {
+                if (typeof response.data.timelines.data !== 'undefined' && response.data.timelines.data.length > 0) {
+                    $scope.timelines = $scope.timelines.concat(response.data.timelines.data);
+                    $scope.timelineCurrentPage = response.data.timelines.current_page;
+                } else {
+                    $scope.loadMoreDisabled = true;
+                }
+            }
+        }).finally(function() {
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
+    }
 }])
 
 
@@ -263,6 +373,7 @@ HeyCommunity
                     badgeNum += 1;
                 }
             });
+            $scope.$root.badgeNum = badgeNum;
             $scope.$root.setBadgeNum(badgeNum);
         }
     });
@@ -327,5 +438,14 @@ HeyCommunity
             }
         })
         $ionicListDelegate.closeOptionButtons();
+    }
+
+    //
+    $scope.goState = function(item) {
+        if (item.type.name === 'timeline_like' || item.type.name === 'timeline_comment') {
+            $scope.state.go('hey-timeline-detail', {id: item.entity_id})
+        } else if (item.type.name === 'topic_like' || item.type.name === 'topic_comment') {
+            $scope.state.go('hey-topic-detail', {id: item.entity_id})
+        }
     }
 }])

@@ -95,8 +95,10 @@ HeyCommunity
         // -------------------------------
         TIMELINE:               '时间线',
         CREATE_TIMELINE:        '分享新鲜事',
-        WHAT_IS_NEW:            '有什么新鲜事儿，与大家分享一下吧',
+        WHAT_IS_NEW:            '有什么新鲜事儿',
         PICTURE:                '图片',
+        NEW_PHOTO:              '照片',
+        NEW_VIDEO:              '小视频',
 
 
 

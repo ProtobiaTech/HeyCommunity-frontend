@@ -97,6 +97,8 @@ HeyCommunity
         CREATE_TIMELINE:        'What\'s new',
         WHAT_IS_NEW:            'What\'s new?',
         PICTURE:                'Picture',
+        NEW_PHOTO:              'New Photo',
+        NEW_VIDEO:              'New Video',
 
 
 

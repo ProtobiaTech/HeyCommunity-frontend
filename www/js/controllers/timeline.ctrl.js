@@ -1,7 +1,7 @@
 HeyCommunity
 
 // hey.timeline
-.controller('TimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+.controller('TimelineCtrl', ['$scope', 'TimelineService', '$ionicActionSheet', function($scope, TimelineService, $ionicActionSheet) {
     $scope.$root.loadingShowDisabled = true;
     TimelineService.index().then(function(response) {
         if (response.status == 200) {
@@ -121,6 +121,34 @@ HeyCommunity
             $scope.$broadcast('scroll.infiniteScrollComplete');
         });
     }
+
+    //
+    $scope.showActionSheet = function() {
+        var hideSheet = $ionicActionSheet.show({
+            titleText: $scope.filter('translate')('WHAT_IS_NEW'),
+            buttons: [
+                {text: $scope.filter('translate')('NEW_PHOTO')},
+                {text: $scope.filter('translate')('NEW_VIDEO')},
+            ],
+            cancelText: $scope.filter('translate')('CANCEL'),
+            cancel: function() {
+            },
+            buttonClicked: function(index) {
+                if (index === 0) {
+                    $scope.state.go('hey-timeline-create');
+                } else if (index === 1) {
+                     $scope.showNoticeText('COMING_SOON');
+                }
+            },
+            destructiveButtonClicked: function(index) {
+                $scope.destroy();
+            },
+        });
+
+        $scope.timeout(function() {
+            hideSheet();
+        }, 2000);
+    };
 }])
 
 

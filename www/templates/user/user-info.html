@@ -24,7 +24,7 @@
                 <p>UID: {{ userInfo.id}}</p>
             </span>
 
-            <div class="item todo-item-icon-right">
+            <div ng-if="isOwnInfo" class="item todo-item-icon-right">
                 {{ 'PHONE' | translate }}
                 <span class="item-note">
                     {{ userInfo.phone }}

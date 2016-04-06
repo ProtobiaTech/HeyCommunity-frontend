@@ -128,7 +128,7 @@ HeyCommunity
             titleText: $scope.filter('translate')('WHAT_IS_NEW'),
             buttons: [
                 {text: $scope.filter('translate')('NEW_PHOTO')},
-                {text: $scope.filter('translate')('NEW_VIDEO')},
+                // {text: $scope.filter('translate')('NEW_VIDEO')},
             ],
             cancelText: $scope.filter('translate')('CANCEL'),
             cancel: function() {

@@ -40,6 +40,7 @@ HeyCommunity
         ARE_YOU_SURE_DESTROY_IT:        'Are you sure destroy it?',
         MANAGEMENT_OPERATIONS:          'Management Operations',
         CANCEL:                         'Cancel',
+        COMING_SOON:                    'Coming soon',
 
         // Form
         AVATAR:             'Avatar',

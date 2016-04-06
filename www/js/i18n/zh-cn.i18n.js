@@ -40,6 +40,7 @@ HeyCommunity
         ARE_YOU_SURE_DESTROY_IT:        '你确定要删除?',
         MANAGEMENT_OPERATIONS:          '管理操作',
         CANCEL:                         '取消',
+        COMING_SOON:                    '敬请期待',
 
         // Form
         AVATAR:             '头像',

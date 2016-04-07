@@ -167,7 +167,7 @@ HeyCommunity
             $ionicHistory.clearCache();
             $scope.state.go('hey.user');
         } else {
-            $scope.state.go('hey-user-setup');
+            $scope.state.go('hey.user-setup');
         }
     });
 }])

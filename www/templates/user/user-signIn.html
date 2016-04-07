@@ -1,13 +1,4 @@
 <ion-view view-title="{{ 'SIGN_IN' | translate}}">
-    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
-        <ion-nav-buttons side="left">
-          <button ui-sref="hey.user" class="button back-button buttons  button-clear header-item" style="">
-              <i class="icon ion-ios-arrow-back"></i> 
-              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
-          </button>
-        </ion-nav-buttons>
-    </ion-nav-bar>
-
     <ion-content id="module-user" class="page-signin">
         <div class="padding">
             <p class="h5">{{ 'WELCOME_COME_BACK' | translate }}{{ tenantInfo.site_name }}</p>
@@ -29,7 +20,7 @@
 
             <div style="margin-top:4px;">
                 <a style="color:#ddd">{{ 'FORGET_PASSWORD' | translate }}</a>
-                <a ui-sref="hey-user-signUp" class="pull-right">{{ 'SIGN_UP' | translate }}</a>
+                <a ui-sref="hey.user-signUp" class="pull-right">{{ 'SIGN_UP' | translate }}</a>
             </div>
         </div>
     </ion-content>

@@ -17,7 +17,7 @@
             <div class="padding"></div>
 
             <div class="list hey-list">
-                <a class="item item-avatar item-icon-right" ui-sref="hey-user-info({id: userInfo.id})">
+                <a class="item item-avatar item-icon-right" ui-sref="hey.user-info({id: userInfo.id})">
                     <img style="background-color:#ddd;" ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
                     <h2>{{ userInfo.nickname }}</h2>
                     <p>UID: {{ userInfo.id}}</p>
@@ -28,19 +28,19 @@
             <div class="padding"></div>
 
             <div class="list">
-                <a class="item item-icon-left" ui-sref="hey-user-notice">
+                <a class="item item-icon-left" ui-sref="hey.user-notice">
                     <i class="icon ion-ios-bell"></i>
                     {{ 'NOTICE' | translate }}
                     <span ng-if="badgeNum > 0" class="badge badge-assertive">{{ badgeNum }}</span>
                     <span ng-if="false && badgeNum === 0" class="badge badge-stable">{{ badgeNum }}</span>
                 </a>
-                <a class="item item-icon-left" ui-sref="hey-user-timeline({user_id: userInfo.id})">
+                <a class="item item-icon-left" ui-sref="hey.user-timeline({user_id: userInfo.id})">
                     <i class="icon ion-aperture"></i>
                     {{ 'TIMELINE' | translate }}
                     <span class="item-note">
                     </span>
                 </a>
-                <a class="item item-icon-left" ui-sref="hey-user-topic({user_id: userInfo.id})">
+                <a class="item item-icon-left" ui-sref="hey.user-topic({user_id: userInfo.id})">
                     <i class="icon ion-quote"></i>
                     {{ 'TOPIC' | translate }}
                     <span class="item-note">
@@ -60,7 +60,7 @@
             <div class="padding"></div>
 
             <div class="list">
-                <a class="item item-icon-left" ui-sref="hey-user-setup">
+                <a class="item item-icon-left" ui-sref="hey.user-setup">
                     <i class="icon ion-gear-a"></i>
                     {{ 'SETUP' | translate }}
                 </a>
@@ -72,10 +72,10 @@
 
     <div ng-if="!isAuth()" style="position:absolute; bottom:40px; width:100%" class="padding">
         <div class="">
-            <a class="button button-block" ui-sref="hey-user-signIn">{{ 'SIGN_IN' | translate }}</a>
+            <a class="button button-block" ui-sref="hey.user-signIn">{{ 'SIGN_IN' | translate }}</a>
         </div>
         <div class="">
-            <a class="button button-block" ui-sref="hey-user-signUp">{{ 'SIGN_UP' | translate }}</a>
+            <a class="button button-block" ui-sref="hey.user-signUp">{{ 'SIGN_UP' | translate }}</a>
         </div>
     </div>
 </ion-view>

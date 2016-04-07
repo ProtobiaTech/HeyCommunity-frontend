@@ -1,18 +1,9 @@
 <ion-view view-title="{{ 'NOTICE' | translate }}" cache-view="false">
-    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
-        <ion-nav-buttons side="left">
-          <button ui-sref="hey.user" class="button back-button buttons  button-clear header-item" style="">
-              <i class="icon ion-ios-arrow-back"></i> 
-              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
-          </button>
-        </ion-nav-buttons>
-
-        <ion-nav-buttons side="right">
-          <button ng-click="showActionSheet()" class="button back-button buttons button-clear header-item" style="">
-              <i class="icon ion-navicon"></i>
-          </button>
-        </ion-nav-buttons>
-    </ion-nav-bar>
+    <ion-nav-buttons side="right">
+        <button ng-click="showActionSheet()" class="button back-button buttons button-clear header-item" style="">
+            <i class="icon ion-navicon"></i>
+        </button>
+    </ion-nav-buttons>
 
     <ion-content id="module-user" class="page-user-notice">
         <ion-list ng-repeat="($index, item) in notices" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">

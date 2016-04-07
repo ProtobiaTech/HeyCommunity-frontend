@@ -98,102 +98,169 @@ HeyCommunity
         }
     })
 
-    .state('hey-user-notice', {
+    .state('hey.user-notice', {
         url: '/user/notice',
-        templateUrl: 'templates/user/user-notice.html',
-        controller: 'UserNoticeCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-notice.html',
+                controller: 'UserNoticeCtrl'
+            }
+        }
     })
 
-    .state('hey-user-timeline', {
+    .state('hey.user-timeline', {
         url: '/user/timeline/:user_id',
-        templateUrl: 'templates/user/user-timeline.html',
-        controller: 'UserTimelineCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-timeline.html',
+                controller: 'UserTimelineCtrl'
+            }
+        }
     })
 
-    .state('hey-user-topic', {
+    .state('hey.user-topic', {
         url: '/user/topic/:user_id',
-        templateUrl: 'templates/user/user-topic.html',
-        controller: 'UserTopicCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-topic.html',
+                controller: 'UserTopicCtrl'
+            }
+        }
     })
 
-    .state('hey-user-signIn', {
+    .state('hey.user-signIn', {
         url: '/user/signIn',
-        templateUrl: 'templates/user/user-signIn.html',
-        controller: 'UserSignInCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-signIn.html',
+                controller: 'UserSignInCtrl'
+            }
+        }
     })
 
-    .state('hey-user-signUp', {
+    .state('hey.user-signUp', {
         url: '/user/signUp',
-        templateUrl: 'templates/user/user-signUp.html',
-        controller: 'UserSignUpCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-signUp.html',
+                controller: 'UserSignUpCtrl'
+            }
+        }
     })
 
-    .state('hey-user-signOut', {
+    .state('hey.user-signOut', {
         cache: false,
         url: '/user/signOut',
-        controller: 'UserSignOutCtrl'
+        views: {
+            'menuContent': {
+                controller: 'UserSignOutCtrl'
+            }
+        }
     })
 
-    .state('hey-user-info', {
+    .state('hey.user-info', {
         url: '/user/user-info/:id',
-        templateUrl: 'templates/user/user-info.html',
-        controller: 'UserInfoCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-info.html',
+                controller: 'UserInfoCtrl'
+            }
+        }
     })
 
     .state('hey-uhome', {
         url: '/uhome/:id',
-        templateUrl: 'templates/user/user-uhome.html',
-        controller: 'UserIndexCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-uhome.html',
+                controller: 'UserIndexCtrl'
+            }
+        }
     })
 
-    .state('hey-user-info-avatar', {
+    .state('hey.user-info-avatar', {
         url: '/user/user-info-avatar',
-        templateUrl: 'templates/user/user-info-avatar.html',
-        controller: 'UserInfoAvatarCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-info-avatar.html',
+                controller: 'UserInfoAvatarCtrl'
+            }
+        }
     })
 
-    .state('hey-user-infoEdit', {
+    .state('hey.user-infoEdit', {
         url: '/user/user-infoEdit',
-        templateUrl: 'templates/user/user-infoEdit.html',
-        controller: 'UserInfoEditCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-infoEdit.html',
+                controller: 'UserInfoEditCtrl'
+            }
+        }
     })
 
-    .state('hey-user-setup', {
+    .state('hey.user-setup', {
         url: '/user/user-setup',
-        templateUrl: 'templates/user/user-setup.html',
-        controller: 'UserSetupCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-setup.html',
+                controller: 'UserSetupCtrl'
+            }
+        }
     })
 
-    .state('hey-user-setup-accountSecurity', {
+    .state('hey.user-setup-accountSecurity', {
         url: '/user/user-setup-accountSecurity',
-        templateUrl: 'templates/user/user-setup-accountSecurity.html',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-setup-accountSecurity.html',
+            }
+        }
     })
 
-    .state('hey-user-setup-privacy', {
+    .state('hey.user-setup-privacy', {
         url: '/user/user-setup-privacy',
-        templateUrl: 'templates/user/user-setup-privacy.html',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-setup-privacy.html',
+            }
+        }
     })
 
-    .state('hey-user-setup-feedback', {
+    .state('hey.user-setup-feedback', {
         url: '/user/user-setup-feedback',
-        templateUrl: 'templates/user/user-setup-feedback.html',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-setup-feedback.html',
+            }
+        }
     })
 
-    .state('hey-user-setup-softInfo', {
+    .state('hey.user-setup-softInfo', {
         url: '/user/user-setup-softInfo',
-        templateUrl: 'templates/user/user-setup-softInfo.html',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-setup-softInfo.html',
+            }
+        }
     })
 
-    .state('hey-user-setup-general', {
+    .state('hey.user-setup-general', {
         url: '/user/user-setup-general',
-        templateUrl: 'templates/user/user-setup-general.html',
-        // controller: 'UserSetupGeneralCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-setup-general.html',
+            }
+        }
     })
 
-    .state('hey-user-setup-general-language', {
+    .state('hey.user-setup-general-language', {
         url: '/user/user-setup-general-language',
-        templateUrl: 'templates/user/user-setup-general-language.html',
-        controller: 'UserSetupGeneralLanguageCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/user/user-setup-general-language.html',
+                controller: 'UserSetupGeneralLanguageCtrl'
+            }
+        }
     })
 
 

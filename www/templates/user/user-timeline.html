@@ -35,7 +35,7 @@
                         <a ng-if="isAuth() && isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart"></a>
                         <a ng-if="isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
-                        <a class="icon ion-more" ui-sref="hey-timeline-detail({id: item.id})"></a>
+                        <a class="icon ion-more" ui-sref="hey.timeline-detail({id: item.id})"></a>
                         <a ng-if="isAdmin()" ng-click="destroy(item.id)" class="icon ion-trash-b"></a>
                     </div>
                     <div>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff" ui-sref="hey-timeline-detail({id: item.id})">
+            <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff" ui-sref="hey.timeline-detail({id: item.id})">
                 <div style="">
                     <a style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
                     <span class="content" ng-bind-html="item.content | nl2br"></span>

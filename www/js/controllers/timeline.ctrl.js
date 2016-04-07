@@ -160,7 +160,7 @@ HeyCommunity
             },
             buttonClicked: function(index) {
                 if (index === 0) {
-                    $scope.state.go('hey-timeline-create');
+                    $scope.state.go('hey.timeline-create');
                 } else if (index === 1) {
                      $scope.showNoticeText('COMING_SOON');
                 }

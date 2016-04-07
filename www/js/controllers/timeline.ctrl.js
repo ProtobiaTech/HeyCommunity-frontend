@@ -17,8 +17,10 @@ HeyCommunity
     $scope.getInteractionUsers = function(timeline) {
         var str = '';
         if (timeline.like_num > 0) {
-            timeline.author_like.forEach(function(author_like) {
-                str = str + author_like.author.nickname + ', ';
+            timeline.author_like.forEach(function(author_like, $index) {
+                if ($index < 4) {
+                    str = str + author_like.author.nickname + ', ';
+                }
             })
             str = str.substring(0, str.length - 2);
         } else {

@@ -1,14 +1,58 @@
 <ion-view cache-view="false"  view-title="{{ 'COMMENTS' | translate }}">
     <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
         <ion-nav-buttons side="left">
-          <button ng-click="goBack()" class="button back-button buttons  button-clear header-item" style="">
+          <button ng-click="goBack('hey.timeline')" class="button back-button buttons  button-clear header-item" style="">
               <i class="icon ion-ios-arrow-back"></i> 
               <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
           </button>
         </ion-nav-buttons>
     </ion-nav-bar>
 
-    <ion-content id="module-timeline">
+    <ion-content id="module-timeline" style="margin-bottom:53px;">
+        <div>
+        <img style="min-height:60px; width:100%; margin-top:-10px; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.attachment + '?imageView/2/w/800') }}">
+        </div>
+        <div class="padding" ng-if="Timeline" style="background-color:#fff;">
+            <div class="" style="order-bottom:1px solid #fff; line-height:24px;">
+                <span style="padding-left:3px; display:inline-block; width:44px; height:24x;">
+                    <i class="icon ion-heart" style="color:#f00; font-size:16px;"></i>
+                    <span class="assertive">{{ Timeline.like_num }}</span>
+                </span>
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+                <img ui-sref="hey-uhome({id: Timeline.author.id})" style="vertical-align:top; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">
+            </div>
+        </div>
+
         <div class="padding" ng-if="Timeline">
             <div class="">
                 <img ui-sref="hey-uhome({id: Timeline.author.id})" style="position:absolute; width:30px; height:30px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.author.avatar + '?imageView/2/w/80') }}">

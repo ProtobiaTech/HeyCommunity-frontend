@@ -1,14 +1,9 @@
-<ion-view cache-view="false"  view-title="{{ 'COMMENTS' | translate }}" hide-back-button="true">
-    <ion-nav-buttons side="left">
-        <button ng-click="goBack('hey.timeline')" class="button back-button buttons  button-clear header-item" style="">
-            <i class="icon ion-ios-arrow-back"></i> 
-        </button>
-    </ion-nav-buttons>
-
+<ion-view cache-view="false"  view-title="{{ 'COMMENTS' | translate }}" hide-tabs>
     <ion-content id="module-timeline" style="margin-bottom:53px;">
         <div>
-        <img style="min-height:60px; width:100%; margin-top:-10px; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.attachment + '?imageView/2/w/800') }}">
+            <img style="min-height:60px; width:100%; margin-top:-10px; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.attachment + '?imageView/2/w/800') }}">
         </div>
+
         <div class="padding" ng-if="Timeline" style="background-color:#fff;">
             <div class="" style="order-bottom:1px solid #fff; line-height:24px;">
                 <span style="padding-left:3px; display:inline-block; width:44px; line-height:24px; height:24x;">
@@ -39,8 +34,6 @@
                     {{ item.content }}
                 </div>
             </div>
-
-            <br>
         </div>
     </ion-content>
 

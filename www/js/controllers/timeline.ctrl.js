@@ -29,9 +29,10 @@ HeyCommunity
 
     //
     //
-    $scope.getInteractionNum = function(timeline) {
+    $scope.getInteractionNum = function(timeline, text) {
         var num = timeline.like_num + timeline.comment_num;
-        return num ? num : 1;
+        num = num ? num : 1;
+        return $scope.filter('translate')(text, {num: num})
     }
 
     //

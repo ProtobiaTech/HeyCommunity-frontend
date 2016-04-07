@@ -41,8 +41,9 @@
                     <div style="line-height:1em;">
                         <i class="icon ion-person-stalker"></i>
                         <small>
-                            {{ item.author.nickname }} <br>
-                            和其它 {{ item.like_num + item.comment_num }} 个用户喜欢和评论
+                            {{ getInteractionUsers(item) }}
+                            <br>
+                            等 {{ getInteractionNum(item) }} 个用户喜欢或评论
                         </small>
                     </div>
                 </div>

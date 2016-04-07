@@ -13,6 +13,28 @@ HeyCommunity
     });
 
     //
+    //
+    $scope.getInteractionUsers = function(timeline) {
+        var str = '';
+        if (timeline.like_num > 0) {
+            timeline.author_like.forEach(function(author_like) {
+                str = str + author_like.author.nickname + ', ';
+            })
+            str = str.substring(0, str.length - 2);
+        } else {
+            str += timeline.author.nickname;
+        }
+        return str;
+    }
+
+    //
+    //
+    $scope.getInteractionNum = function(timeline) {
+        var num = timeline.like_num + timeline.comment_num;
+        return num ? num : 1;
+    }
+
+    //
     // is Like
     $scope.isLike = function(id) {
         return inArray(id, $scope.timelineLikes);

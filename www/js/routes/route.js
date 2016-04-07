@@ -126,7 +126,7 @@ HeyCommunity
 
     .state('hey-uhome', {
         url: '/uhome/:id',
-        templateUrl: 'templates/user/tab-user.html',
+        templateUrl: 'templates/user/user-uhome.html',
         controller: 'UserIndexCtrl'
     })
 

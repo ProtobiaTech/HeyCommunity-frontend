@@ -1,16 +1,6 @@
 <ion-view view-title="{{ 'USER_CENTER' | translate }}" cache-view="false">
-    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
-        <ion-nav-buttons side="left">
-          <button ng-if="!isOwnInfo" ng-click="goBack()" class="button back-button buttons  button-clear header-item" style="">
-              <i class="icon ion-ios-arrow-back"></i> 
-              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
-          </button>
-        </ion-nav-buttons>
-    </ion-nav-bar>
-
     <ion-content id="module-user" class="page-user">
         <div ng-if="!isAuth()" class="padding">
-
             <div class="text-center h4">{{ appSiteTitle }}</div>
 
             <p></p>
@@ -28,7 +18,7 @@
 
             <div class="list hey-list">
                 <a class="item item-avatar item-icon-right" ui-sref="hey-user-info({id: userInfo.id})">
-                    <img ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
+                    <img style="background-color:#ddd;" ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
                     <h2>{{ userInfo.nickname }}</h2>
                     <p>UID: {{ userInfo.id}}</p>
                     <i class="icon ion-ios-arrow-right"></i>
@@ -38,7 +28,7 @@
             <div class="padding"></div>
 
             <div class="list">
-                <a ng-if="isOwnInfo" class="item item-icon-left" ui-sref="hey-user-notice">
+                <a class="item item-icon-left" ui-sref="hey-user-notice">
                     <i class="icon ion-ios-bell"></i>
                     {{ 'NOTICE' | translate }}
                     <span ng-if="badgeNum > 0" class="badge badge-assertive">{{ badgeNum }}</span>
@@ -70,7 +60,7 @@
             <div class="padding"></div>
 
             <div class="list">
-                <a ng-if="isOwnInfo" class="item item-icon-left" ui-sref="hey-user-setup">
+                <a class="item item-icon-left" ui-sref="hey-user-setup">
                     <i class="icon ion-gear-a"></i>
                     {{ 'SETUP' | translate }}
                 </a>

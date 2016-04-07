@@ -68,7 +68,11 @@ var HeyCommunity = angular.module('starter', [
 
     $rootScope.goBack = function(state) {
         if ($ionicHistory.backView() === null) {
-            $rootScope.state.go(state)
+            if (state === undefined) {
+                $rootScope.state.go('hey.timeline')
+            } else {
+                $rootScope.state.go(state)
+            }
         } else {
             $ionicHistory.goBack();
         }

@@ -211,7 +211,7 @@ HeyCommunity
         }
     })
 
-    .state('hey-topic-detail', {
+    .state('hey.topic-detail', {
         url: '/topic-detail/:id',
         views: {
             'menuContent': {
@@ -221,7 +221,7 @@ HeyCommunity
         }
     })
 
-    .state('hey-topic-create', {
+    .state('hey.topic-create', {
         url: '/topic-create',
         views: {
             'menuContent': {

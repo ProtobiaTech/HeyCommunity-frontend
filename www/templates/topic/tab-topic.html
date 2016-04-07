@@ -1,6 +1,6 @@
 <ion-view class="has-tabs" view-title="{{ 'TOPIC' | translate}}" hide-back-button="true">
     <ion-nav-buttons side="right">
-        <a class="button button-clear button-light icon ion-ios-compose-outline" ui-sref="hey-topic-create">
+        <a class="button button-clear button-light icon ion-ios-compose-outline" ui-sref="hey.topic-create">
         </a>
         <style>
         .ion-ios-compose-outline:before {
@@ -20,7 +20,7 @@
         </div>
 
         <div class="list">
-            <a ng-repeat="item in topics" class="item item-text-wrap" ui-sref="hey-topic-detail({id: item.id})" nav-direction="forward">
+            <a ng-repeat="item in topics" class="item item-text-wrap" ui-sref="hey.topic-detail({id: item.id})" nav-direction="forward">
                 <h2 class="title ng-binding">{{ item.title }}</h2>
                 <div style="max-height:60px; overflow:hidden;">
                     <p class="content">

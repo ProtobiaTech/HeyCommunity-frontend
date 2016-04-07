@@ -445,7 +445,7 @@ HeyCommunity
         if (item.type.name === 'timeline_like' || item.type.name === 'timeline_comment') {
             $scope.state.go('hey.timeline-detail', {id: item.entity_id})
         } else if (item.type.name === 'topic_like' || item.type.name === 'topic_comment') {
-            $scope.state.go('hey-topic-detail', {id: item.entity_id})
+            $scope.state.go('hey.topic-detail', {id: item.entity_id})
         }
     }
 }])

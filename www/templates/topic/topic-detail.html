@@ -1,10 +1,4 @@
 <ion-view view-title="{{ 'TOPIC' | translate }}" cache-view="false">
-    <ion-nav-buttons side="left">
-        <button ng-click="goBack()" nav-direction="back" class="button back-button buttons  button-clear header-item" style="">
-            <i class="icon ion-ios-arrow-back"></i>
-        </button>
-    </ion-nav-buttons>
-
     <ion-nav-buttons side="right">
         <button ng-if="isAdmin()" ng-click="showActionSheet()" class="button back-button buttons button-clear header-item" style="">
             <i class="icon ion-navicon"></i>

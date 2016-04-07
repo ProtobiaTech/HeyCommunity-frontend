@@ -10,7 +10,7 @@ HeyCommunity
 
         var requireSignInStates = [
             'hey.timeline-create',
-            'hey-topic-create',
+            'hey.topic-create',
             'hey-activity-create',
         ];
 

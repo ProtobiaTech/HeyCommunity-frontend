@@ -21,7 +21,7 @@ HeyCommunity
     .state('hey.timeline', {
         url: '/timeline',
         views: {
-            'tab-timeline': {
+            'menuContent': {
                 templateUrl: 'templates/timeline/tab-timeline.html',
                 controller: 'TimelineCtrl'
             }
@@ -31,7 +31,7 @@ HeyCommunity
     .state('hey.timeline-create', {
         url: '/timeline-create',
         views: {
-            'tab-timeline': {
+            'menuContent': {
                 templateUrl: 'templates/timeline/timeline-create.html',
                 controller: 'TimelineCreateCtrl'
             }
@@ -41,7 +41,7 @@ HeyCommunity
     .state('hey.timeline-detail', {
         url: '/timeline-detail/:id',
         views: {
-            'tab-timeline': {
+            'menuContent': {
                 templateUrl: 'templates/timeline/timeline-detail.html',
                 controller: 'TimelineDetailCtrl'
             }
@@ -56,7 +56,7 @@ HeyCommunity
     .state('hey.activity', {
         url: '/activity',
         views: {
-            'tab-activity': {
+            'menuContent': {
                 templateUrl: 'templates/activity/tab-activity.html',
                 controller: 'ActivityCtrl'
             }
@@ -65,14 +65,22 @@ HeyCommunity
 
     .state('hey-activity-detail', {
         url: '/activity-detail/:id',
-        templateUrl: 'templates/activity/activity-detail.html',
-        controller: 'ActivityDetailCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/activity/activity-detail.html',
+                controller: 'ActivityDetailCtrl'
+            }
+        }
     })
 
     .state('hey-activity-create', {
         url: '/activity-create',
-        templateUrl: 'templates/activity/activity-create.html',
-        controller: 'ActivityCreateCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/activity/activity-create.html',
+                controller: 'ActivityCreateCtrl'
+            }
+        }
     })
 
 
@@ -83,7 +91,7 @@ HeyCommunity
     .state('hey.user', {
         url: '/user',
         views: {
-            'tab-user': {
+            'menuContent': {
                 templateUrl: 'templates/user/tab-user.html',
                 controller: 'UserIndexCtrl'
             }
@@ -196,7 +204,7 @@ HeyCommunity
     .state('hey.topic', {
         url: '/topic',
         views: {
-            'tab-topic': {
+            'menuContent': {
                 templateUrl: 'templates/topic/tab-topic.html',
                 controller: 'TopicCtrl'
             }
@@ -205,14 +213,22 @@ HeyCommunity
 
     .state('hey-topic-detail', {
         url: '/topic-detail/:id',
-        templateUrl: 'templates/topic/topic-detail.html',
-        controller: 'TopicDetailCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/topic/topic-detail.html',
+                controller: 'TopicDetailCtrl'
+            }
+        }
     })
 
     .state('hey-topic-create', {
         url: '/topic-create',
-        templateUrl: 'templates/topic/topic-create.html',
-        controller: 'TopicCreateCtrl'
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/topic/topic-create.html',
+                controller: 'TopicCreateCtrl'
+            }
+        }
     })
 
 
@@ -223,7 +239,7 @@ HeyCommunity
     .state('hey.talk', {
         url: '/talk',
         views: {
-            'tab-talk': {
+            'menuContent': {
                 templateUrl: 'templates/talk/tab-talk.html',
                 controller: 'TalkCtrl'
             }
@@ -233,7 +249,7 @@ HeyCommunity
     .state('hey.talk-ing', {
         url: '/talk/ing',
         views: {
-            'tab-talk': {
+            'menuContent': {
                 templateUrl: 'templates/talk/tab-talk-ing.html',
                 controller: 'TalkIngCtrl'
             }
@@ -247,7 +263,11 @@ HeyCommunity
     // -------------------------------
     .state('hey-deving', {
         url: '/deving',
-        templateUrl: 'templates/single/deving.html',
-        controller: 'SingleDevingCtrl',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/single/deving.html',
+                controller: 'SingleDevingCtrl',
+            }
+        }
     })
 }]);

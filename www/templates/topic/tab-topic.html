@@ -1,4 +1,4 @@
-<ion-view view-title="{{ 'TOPIC' | translate}}">
+<ion-view class="has-tabs" view-title="{{ 'TOPIC' | translate}}" hide-back-button="true">
     <ion-nav-buttons side="right">
         <a class="button button-clear button-light icon ion-ios-compose-outline" ui-sref="hey-topic-create">
         </a>
@@ -45,3 +45,5 @@
         </ion-infinite-scroll>
     </ion-content>
 </ion-view>
+
+<div ng-include="'templates/tab-nav.html'"></div>

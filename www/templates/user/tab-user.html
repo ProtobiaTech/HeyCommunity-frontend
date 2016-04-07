@@ -1,4 +1,4 @@
-<ion-view view-title="{{ 'USER_CENTER' | translate }}" cache-view="false">
+<ion-view class="has-tabs" view-title="{{ 'USER_CENTER' | translate }}" cache-view="false" hide-back-button="true">
     <ion-content id="module-user" class="page-user">
         <div ng-if="!isAuth()" class="padding">
             <div class="text-center h4">{{ appSiteTitle }}</div>
@@ -79,3 +79,5 @@
         </div>
     </div>
 </ion-view>
+
+<div ng-include="'templates/tab-nav.html'"></div>

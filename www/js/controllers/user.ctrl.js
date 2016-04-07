@@ -3,7 +3,7 @@ HeyCommunity
 // tab.user
 .controller('UserIndexCtrl', ['$scope', 'UserService', function($scope, UserService) {
     if ($scope.stateParams.id) {
-        $scope.userInfo = {};
+        $scope.userInfo = false;
         $scope.isOwnInfo = false;
 
         UserService.userInfo($scope.stateParams.id).then(function(response) {

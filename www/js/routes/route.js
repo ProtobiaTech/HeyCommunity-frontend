@@ -28,16 +28,24 @@ HeyCommunity
         }
     })
 
-    .state('hey-timeline-create', {
+    .state('hey.timeline-create', {
         url: '/timeline-create',
-        templateUrl: 'templates/timeline/timeline-create.html',
-        controller: 'TimelineCreateCtrl'
+        views: {
+            'tab-timeline': {
+                templateUrl: 'templates/timeline/timeline-create.html',
+                controller: 'TimelineCreateCtrl'
+            }
+        }
     })
 
-    .state('hey-timeline-detail', {
+    .state('hey.timeline-detail', {
         url: '/timeline-detail/:id',
-        templateUrl: 'templates/timeline/timeline-detail.html',
-        controller: 'TimelineDetailCtrl'
+        views: {
+            'tab-timeline': {
+                templateUrl: 'templates/timeline/timeline-detail.html',
+                controller: 'TimelineDetailCtrl'
+            }
+        }
     })
 
 
@@ -126,7 +134,7 @@ HeyCommunity
 
     .state('hey-uhome', {
         url: '/uhome/:id',
-        templateUrl: 'templates/user/tab-user.html',
+        templateUrl: 'templates/user/user-uhome.html',
         controller: 'UserIndexCtrl'
     })
 

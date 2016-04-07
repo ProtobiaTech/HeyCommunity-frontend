@@ -16,4 +16,4 @@ HeyCommunity
             return moment.utc(date).format();
         }
     };
-}]);
+}])

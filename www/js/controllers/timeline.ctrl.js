@@ -13,6 +13,31 @@ HeyCommunity
     });
 
     //
+    //
+    $scope.getInteractionUsers = function(timeline) {
+        var str = '';
+        if (timeline.like_num > 0) {
+            timeline.author_like.forEach(function(author_like, $index) {
+                if ($index < 4) {
+                    str = str + author_like.author.nickname + ', ';
+                }
+            })
+            str = str.substring(0, str.length - 2);
+        } else {
+            str += timeline.author.nickname;
+        }
+        return str;
+    }
+
+    //
+    //
+    $scope.getInteractionNum = function(timeline, text) {
+        var num = timeline.like_num + timeline.comment_num;
+        num = num ? num : 1;
+        return $scope.filter('translate')(text, {num: num})
+    }
+
+    //
     // is Like
     $scope.isLike = function(id) {
         return inArray(id, $scope.timelineLikes);
@@ -135,7 +160,7 @@ HeyCommunity
             },
             buttonClicked: function(index) {
                 if (index === 0) {
-                    $scope.state.go('hey-timeline-create');
+                    $scope.state.go('hey.timeline-create');
                 } else if (index === 1) {
                      $scope.showNoticeText('COMING_SOON');
                 }

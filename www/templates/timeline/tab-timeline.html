@@ -1,6 +1,6 @@
-<ion-view view-title="{{ appSiteTitle }}">
+<ion-view view-title="{{ appSiteTitle }}" hide-back-button="true">
     <ion-nav-buttons side="right">
-        <a class="button button-clear button-light icon ion-ios-camera-outline" ng-click="showActionSheet()" todo-ui-sref="hey-timeline-create"></a>
+        <a class="button button-clear button-light icon ion-ios-camera-outline" ng-click="showActionSheet()" todo-ui-sref="hey.timeline-create"></a>
     </ion-nav-buttons>
 
     <ion-content id="module-timeline" delegate-handle="contentScrollDelegate">
@@ -35,23 +35,31 @@
                         <a ng-if="isAuth() && isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart"></a>
                         <a ng-if="isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
-                        <a class="icon ion-more" ui-sref="hey-timeline-detail({id: item.id})"></a>
+                        <a class="icon ion-more" ui-sref="hey.timeline-detail({id: item.id})"></a>
                         <a ng-if="isAdmin()" ng-click="destroy(item.id)" class="icon ion-trash-b"></a>
                     </div>
-                    <div>
-                        {{ item.like_num }}人喜欢
+                    <div style="line-height:1em;">
+                        <i class="icon ion-person-stalker"></i>
+                        <small>
+                            {{ getInteractionUsers(item) }}
+                            <br>
+                            {{ getInteractionNum(item, 'LIKE_OR_COMMENT') }}
+                        </small>
                     </div>
                 </div>
             </div>
-            <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff">
-                <div style="">
-                    <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
-                    <span ui-sref="hey-timeline-detail({id: item.id})" class="content" ng-bind-html="item.content | nl2br"></span>
-                </div>
+            <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff;">
+                <div style="position:relative;">
+                    <div ui-sref="hey.timeline-detail({id: item.id})" style="position:absolute; width:100%; height:100%;"></div>
+                    <div style="">
+                        <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142); position:relative">{{ item.author.nickname }}: </a>
+                        <span ui-sref="hey.timeline-detail({id: item.id})" class="content" ng-bind-html="item.content | nl2br"></span>
+                    </div>
 
-                <div style="margin-top:5px;" ng-repeat="(index, item) in item.comments | orderBy: '-created_at'">
-                    <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142)">{{ item.author.nickname }}: </a>
-                    <span ui-sref="hey-timeline-detail({id: item.timeline_id})" class="content" ng-bind-html="item.content | nl2br"></span>
+                    <div style="margin-top:5px;" ng-repeat="(index, item) in item.comments | orderBy: '-created_at'">
+                        <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142); position:relative">{{ item.author.nickname }}: </a>
+                        <span ui-sref="hey.timeline-detail({id: item.timeline_id})" class="content" ng-bind-html="item.content | nl2br"></span>
+                    </div>
                 </div>
             </div>
         </div>

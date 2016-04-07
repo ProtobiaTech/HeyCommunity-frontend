@@ -100,6 +100,7 @@ HeyCommunity
         PICTURE:                '图片',
         NEW_PHOTO:              '照片',
         NEW_VIDEO:              '小视频',
+        LIKE_OR_COMMENT:        '等 {{ num }} 个用户喜欢或评论',
 
 
 

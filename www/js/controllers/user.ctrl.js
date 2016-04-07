@@ -3,7 +3,7 @@ HeyCommunity
 // tab.user
 .controller('UserIndexCtrl', ['$scope', 'UserService', function($scope, UserService) {
     if ($scope.stateParams.id) {
-        $scope.userInfo = {};
+        $scope.userInfo = false;
         $scope.isOwnInfo = false;
 
         UserService.userInfo($scope.stateParams.id).then(function(response) {
@@ -443,7 +443,7 @@ HeyCommunity
     //
     $scope.goState = function(item) {
         if (item.type.name === 'timeline_like' || item.type.name === 'timeline_comment') {
-            $scope.state.go('hey-timeline-detail', {id: item.entity_id})
+            $scope.state.go('hey.timeline-detail', {id: item.entity_id})
         } else if (item.type.name === 'topic_like' || item.type.name === 'topic_comment') {
             $scope.state.go('hey-topic-detail', {id: item.entity_id})
         }

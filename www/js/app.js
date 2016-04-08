@@ -53,6 +53,12 @@ var HeyCommunity = angular.module('starter', [
         }
     });
 
+    $rootScope.tabActive = function(tabName) {
+        var stateName = 'hey.' + tabName;
+        console.log(stateName);
+        return $state.includes(stateName);
+    }
+
     // functions
     $rootScope.getPicUrl = getPicUrl;
     $rootScope.getApiUrl = getApiUrl;

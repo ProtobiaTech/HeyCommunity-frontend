@@ -1,0 +1,16 @@
+<div class="tabs tab-nav tabs-icon tabs-background-positive tabs-color-light" style="background-color: rgba(41, 128, 185, 0.88)";>
+    <a class="tab-item" ng-class="{'tab-item-active': tabActive('timeline')}" ui-sref="hey.timeline" nav-direction="enter">
+        <i class="icon ion-home" style=""></i>
+    </a>
+
+    <a class="tab-item" ng-class="{'tab-item-active': tabActive('topic')}" ui-sref="hey.topic" nav-direction="enter">
+        <i class="icon ion-quote" style=""></i>
+    </a>
+    <a class="tab-item" ng-class="{'tab-item-active': tabActive('user'), 'has-badge': badgeNum}" ui-sref="hey.user" nav-direction="enter">
+        <i class="icon ion-person" style=""></i>
+        <span class="badge badge-assertive" ng-if="badgeNum" style="">{{ badgeNum }}</span>
+    </a>
+</div>
+
+
+

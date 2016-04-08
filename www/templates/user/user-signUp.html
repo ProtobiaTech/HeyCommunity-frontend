@@ -1,13 +1,4 @@
 <ion-view view-title="{{ 'SIGN_UP' | translate}}">
-    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
-        <ion-nav-buttons side="left">
-          <button ui-sref="hey.user" class="button back-button buttons  button-clear header-item" style="">
-              <i class="icon ion-ios-arrow-back"></i> 
-              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
-          </button>
-        </ion-nav-buttons>
-    </ion-nav-bar>
-
     <ion-content id="module-user" class="page-signup">
         <div class="padding">
             <p class="h5">{{ 'WELCOME_COME_TO' | translate }}{{ tenantInfo.site_name }}</p>
@@ -61,7 +52,7 @@
 
             <div style="margin-top:4px;">
                 <a ng-if="signUpStep == 2" ng-click="setVal('signUpStep', 1)" class="">{{ 'PREV' | translate }}</a>
-                <a ui-sref="hey-user-signIn" class="pull-right">{{ 'SIGN_IN' | translate }}</a>
+                <a ui-sref="hey.user-signIn" class="pull-right">{{ 'SIGN_IN' | translate }}</a>
             </div>
         </div>
     </ion-content>

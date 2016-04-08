@@ -1,19 +1,10 @@
 <ion-view view-title="{{ 'USER_CENTER' | translate }}" cache-view="false">
-    <ion-nav-bar class="bar-positive bar-color-light nav-bar-container">
-        <ion-nav-buttons side="left">
-          <button ng-click="goBack()" class="button back-button buttons  button-clear header-item" style="">
-              <i class="icon ion-ios-arrow-back"></i>
-              <span class="back-text" style="transform: translate3d(0px, 0px, 0px);"></span>
-          </button>
-        </ion-nav-buttons>
-    </ion-nav-bar>
-
     <ion-content id="module-user" class="page-user">
         <div ng-if="userInfo">
             <div class="padding"></div>
 
             <div class="list hey-list">
-                <a class="item item-avatar item-icon-right" ui-sref="hey-user-info({id: userInfo.id})">
+                <a class="item item-avatar item-icon-right" ui-sref="hey.user-info({id: userInfo.id})">
                     <img style="background-color:#ddd;" ng-src="{{ getPicUrl(userInfo.avatar + '?imageView/2/w/80') }}">
                     <h2>{{ userInfo.nickname }}</h2>
                     <p>UID: {{ userInfo.id}}</p>
@@ -24,13 +15,13 @@
             <div class="padding"></div>
 
             <div class="list">
-                <a class="item item-icon-left" ui-sref="hey-user-timeline({user_id: userInfo.id})">
+                <a class="item item-icon-left" ui-sref="hey.user-timeline({user_id: userInfo.id})">
                     <i class="icon ion-aperture"></i>
                     {{ 'TIMELINE' | translate }}
                     <span class="item-note">
                     </span>
                 </a>
-                <a class="item item-icon-left" ui-sref="hey-user-topic({user_id: userInfo.id})">
+                <a class="item item-icon-left" ui-sref="hey.user-topic({user_id: userInfo.id})">
                     <i class="icon ion-quote"></i>
                     {{ 'TOPIC' | translate }}
                     <span class="item-note">

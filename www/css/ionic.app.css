@@ -9515,6 +9515,6 @@ a {
 @media (min-width: 1025px) {
   body {
     margin: 0 auto; }
-  ion-header-bar, ion-tabs, ion-view {
+  ion-header-bar, ion-tabs, .bottom-tabs, .tab-nav, ion-view {
     margin: 0 auto;
     max-width: 500px; } }

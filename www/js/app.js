@@ -7,8 +7,8 @@ var HeyCommunity = angular.module('starter', [
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge',
-    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http',
+    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http) {
     $ionicPlatform.ready(function($rootScope) {
         /* @mark what doing
         setTimeout(function () {
@@ -56,6 +56,14 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.tabActive = function(tabName) {
         var stateName = 'hey.' + tabName;
         return $state.includes(stateName);
+    }
+
+    $rootScope.changeAPI = function(api) {
+        $ionicHistory.clearHistory();
+        $ionicHistory.clearCache();
+        API = api;
+        CDN_DOMAIN = api;
+        $http.defaults.headers.common.domain = API;
     }
 
     // functions

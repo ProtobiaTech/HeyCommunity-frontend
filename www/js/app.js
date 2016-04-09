@@ -59,11 +59,9 @@ var HeyCommunity = angular.module('starter', [
     }
 
     $rootScope.changeAPI = function(api) {
-        $ionicHistory.clearHistory();
-        $ionicHistory.clearCache();
-        API = api;
-        CDN_DOMAIN = api;
-        $http.defaults.headers.common.domain = API;
+        localStorage.API_PRODUCT = api;
+        localStorage.API_DEVING = api;
+        localStorage.CDN_DOMAIN = api;
     }
 
     // functions

@@ -10,7 +10,7 @@ HeyCommunity
     .state('hey', {
         url: '',
         abstract: true,
-        templateUrl: 'templates/tabs.html'
+        templateUrl: 'templates/sidemenu.html'
     })
 
 

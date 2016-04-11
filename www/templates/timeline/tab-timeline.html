@@ -13,13 +13,13 @@
             <ion-spinner></ion-spinner>
         </div>
 
-        <div ng-repeat="item in timelines" class="list">
+        <div ng-repeat="(index, item) in timelines | orderBy: '-id'" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">
                     <img ui-sref="hey-uhome({id: item.author.id})" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                 </div>
                 <div class="pull-left">
-                    <div ui-sref="hey-uhome({id: item.author.id})" class="name">{{ item.author.nickname }}</div>
+                    <div ui-sref="hey-uhome({id: item.author.id})" class="name">{{ item.author.nickname }} {{ item.id }}</div>
                     <div class="date">{{ item.created_at | momentDate: 'fromNow' }}</div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                         <a ng-if="isAuth() && isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart"></a>
                         <a ng-if="isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
-                        <a class="icon ion-more" ui-sref="hey.timeline-detail({id: item.id})"></a>
+                        <a class="icon ion-more" ui-sref="hey.timeline-detail({id: index, timelineId: item.id})"></a>
                         <a ng-if="isAdmin()" ng-click="destroy(item.id)" class="icon ion-trash-b"></a>
                     </div>
                     <div style="line-height:1em;">
@@ -50,15 +50,15 @@
             </div>
             <div class="padding" style="line-height:1.2em; color:#555; background-color:#fff;">
                 <div style="position:relative;">
-                    <div ui-sref="hey.timeline-detail({id: item.id})" style="position:absolute; width:100%; height:100%;"></div>
+                    <div ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" style="position:absolute; width:100%; height:100%;"></div>
                     <div style="">
                         <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142); position:relative">{{ item.author.nickname }}: </a>
-                        <span ui-sref="hey.timeline-detail({id: item.id})" class="content" ng-bind-html="item.content | nl2br"></span>
+                        <span ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" class="content" ng-bind-html="item.content | nl2br"></span>
                     </div>
 
-                    <div style="margin-top:5px;" ng-repeat="(index, item) in item.comments | orderBy: '-id'">
-                        <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142); position:relative">{{ item.author.nickname }}: </a>
-                        <span ui-sref="hey.timeline-detail({id: item.timeline_id})" class="content" ng-bind-html="item.content | nl2br"></span>
+                    <div style="margin-top:5px;" ng-repeat="comment in item.comments | orderBy: '-id'">
+                        <a ui-sref="hey-uhome({id: comment.author.id})" style="color:rgb(54, 74, 142); position:relative">{{ comment.author.nickname }}: </a>
+                        <span ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" class="content" ng-bind-html="comment.content | nl2br"></span>
                     </div>
                 </div>
             </div>

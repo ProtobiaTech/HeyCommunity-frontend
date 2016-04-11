@@ -10,6 +10,9 @@ HeyCommunity
         if (typeof(params) == 'object' && 'user_id' in params) {
             url = url + 'where[key]=user_id&where[value]=' + params.user_id;
         }
+        if (typeof(params) == 'object' && 'type' in params) {
+            url = url + 'type=' + params.type + '&id=' + params.id;
+        }
 
         return $http.get(url);
     }

@@ -56,7 +56,7 @@
                         <span ui-sref="hey.timeline-detail({id: item.id})" class="content" ng-bind-html="item.content | nl2br"></span>
                     </div>
 
-                    <div style="margin-top:5px;" ng-repeat="(index, item) in item.comments | orderBy: '-created_at'">
+                    <div style="margin-top:5px;" ng-repeat="(index, item) in item.comments | orderBy: '-id'">
                         <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142); position:relative">{{ item.author.nickname }}: </a>
                         <span ui-sref="hey.timeline-detail({id: item.timeline_id})" class="content" ng-bind-html="item.content | nl2br"></span>
                     </div>

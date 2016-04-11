@@ -5,9 +5,7 @@ HeyCommunity
     $scope.$root.loadingShowDisabled = true;
     TimelineService.index().then(function(response) {
         if (response.status == 200) {
-            $scope.timelines = response.data.timelines.data;
-            $scope.timelineCurrentPage = response.data.timelines.current_page;
-
+            $scope.timelines = response.data.timelines;
             $scope.timelineLikes = response.data.likes;
         }
     });
@@ -113,10 +111,15 @@ HeyCommunity
     $scope.doRefresh = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        TimelineService.index().then(function(response) {
+        var params = {
+            type:   'refresh',
+            id:     $scope.timelines[0].id,
+        }
+        console.debug('### TimelineService.doRefresh params', params);
+        TimelineService.index(params).then(function(response) {
             console.debug('### TimelineService.doRefresh response', response);
             if (response.status == 200) {
-                angular.merge($scope.timelines, response.data.timelines.data);
+                angular.merge($scope.timelines, response.data.timelines);
             }
         }).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
@@ -129,14 +132,16 @@ HeyCommunity
         $scope.$root.loadingShowDisabled = true;
 
         var params = {
-            page: $scope.timelineCurrentPage + 1,
+            // page: $scope.timelineCurrentPage + 1,
+            type:   'infinite',
+            id:     $scope.timelines[$scope.timelines.length - 1].id,
         }
         console.debug('### TimelineService.loadMore params', params);
         TimelineService.index(params).then(function(response) {
             console.debug('### TimelineService.loadMore response', response);
             if (response.status == 200) {
-                if (typeof response.data.timelines.data !== 'undefined' && response.data.timelines.data.length > 0) {
-                    $scope.timelines = $scope.timelines.concat(response.data.timelines.data);
+                if (typeof response.data.timelines !== 'undefined' && response.data.timelines.length > 0) {
+                    $scope.timelines = $scope.timelines.concat(response.data.timelines);
                     $scope.timelineCurrentPage = response.data.timelines.current_page;
                 } else {
                     $scope.loadMoreDisabled = true;

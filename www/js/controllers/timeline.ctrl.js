@@ -30,7 +30,7 @@ HeyCommunity
     //
     //
     $scope.getInteractionNum = function(timeline, text) {
-        var num = timeline.like_num + timeline.comment_num;
+        var num = parseInt(timeline.like_num) + parseInt(timeline.comment_num);
         num = num ? num : 1;
         return $scope.filter('translate')(text, {num: num})
     }

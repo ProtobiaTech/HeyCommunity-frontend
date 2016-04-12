@@ -70,7 +70,6 @@ HeyCommunity
                             v.like_num = response.data.like_num;
                         }
                     })
-                    console.log($scope.$root.timelineLikes)
                 }
             })
         }
@@ -234,7 +233,6 @@ HeyCommunity
     var timelineId = $scope.stateParams.timelineId;
 
     $scope.TimelineComment = {};
-    console.log($scope.$root.timelines)
     if ($scope.$root.timelines !== undefined) {
         $scope.Timeline = $scope.$root.timelines[timelineIndex];
     }
@@ -245,6 +243,46 @@ HeyCommunity
             $scope.Timeline = response.data;
         }
     });
+
+    //
+    // is Like
+    $scope.isLike = function(id) {
+        if ($scope.$root.timelineLikes !== undefined) {
+            return inArray(id, $scope.$root.timelineLikes);
+        } else {
+            return false;
+        }
+    }
+
+    //
+    // like
+    $scope.like = function(id, isDoubleTap) {
+        $scope.$root.loadingShowDisabled = true;
+        if (!$scope.please_login_first()) {
+            var params = {
+                id: id,
+            }
+            console.debug('### TimelineService.like params', params);
+            TimelineService.like(params).then(function(response) {
+                console.debug('### TimelineService.like response', response);
+                if (response.status == 200) {
+                    if ($scope.$root.timelines !== undefined) {
+                        $scope.$root.timelines[timelineIndex] = response.data;
+                        $scope.Timeline = response.data;
+
+                        if ($scope.isLike(id)) {
+                            var i = $scope.$root.timelineLikes.indexOf(response.data.id);
+                            $scope.$root.timelineLikes.splice(i, 1);
+                        } else {
+                            $scope.$root.timelineLikes.push(response.data.id);
+                        }
+                    }
+                }
+            })
+        }
+    }
+
+    //
 
     //
     // do refresh
@@ -270,7 +308,9 @@ HeyCommunity
             if (response.status == 200) {
                 $scope.TimelineComment.content = '';
                 $scope.Timeline = response.data;
-                $scope.$root.timelines[timelineIndex] = response.data;
+                if ($scope.$root.timelines !== undefined) {
+                    $scope.$root.timelines[timelineIndex] = response.data;
+                }
             }
         });
     }

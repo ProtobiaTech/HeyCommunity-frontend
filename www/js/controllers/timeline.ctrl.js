@@ -283,20 +283,6 @@ HeyCommunity
     }
 
     //
-
-    //
-    // do refresh
-    $scope.doRefresh = function() {
-        TimelineService.show($scope.Timeline.id).then(function(response) {
-            if (response.status == 200) {
-                $scope.Timeline = response.data;
-            }
-        }).finally(function() {
-            $scope.$broadcast('scroll.refreshComplete');
-        });
-    }
-
-    //
     $scope.commentPublish = function() {
         var params = {
             id: $scope.stateParams.timelineId,

@@ -7,8 +7,8 @@ var HeyCommunity = angular.module('starter', [
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicScrollDelegate', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http',
-    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicScrollDelegate, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicScrollDelegate', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http', '$cordovaDialogs',
+    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicScrollDelegate, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http, $cordovaDialogs) {
     $ionicPlatform.ready(function($rootScope) {
         /* @mark what doing
         setTimeout(function () {
@@ -96,18 +96,15 @@ var HeyCommunity = angular.module('starter', [
 
     // An alert dialog
     $rootScope.showAlert = function(data) {
-        if (!data) {
+        if (data === undefined) {
             data = {
                 title: $filter('translate')('ALERT'),
                 template: ''
             }
         }
-        var alertPopup = $ionicPopup.alert({
-            title: data.title,
-            template: data.content,
-        });
 
-        alertPopup.then(function(res) {
+        $cordovaDialogs.alert(data.content, data.title).then(function() {
+            // callback success
         });
     }
 
@@ -119,15 +116,12 @@ var HeyCommunity = angular.module('starter', [
                 content: ''
             }
         }
-        var confirmPopup = $ionicPopup.confirm({
-            title: data.title,
-            template: data.content,
-        });
 
-        confirmPopup.then(function(res) {
-            if (res) {
+        $cordovaDialogs.confirm(data.content, data.title).then(function(buttonIndex) {
+            // no button = 0, 'OK' = 1, 'Cancel' = 2
+            if (buttonIndex === 1) {
                 doSuccess();
-            } else {
+            } else if (buttonIndex === 2) {
                 doFail();
             }
         });

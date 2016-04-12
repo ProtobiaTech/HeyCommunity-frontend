@@ -58,7 +58,7 @@ HeyCommunity
             TimelineService.like(params).then(function(response) {
                 console.debug('### TimelineService.like response', response);
                 if (response.status == 200) {
-                    angular.forEach($scope.$root.timelines, function(v) {
+                    angular.forEach($scope.$root.timelines, function(v, index) {
                         if (id == v.id) {
                             // if (v.like_num > response.data.like_num) {
                             if ($scope.isLike(id)) {
@@ -67,7 +67,7 @@ HeyCommunity
                             } else {
                                 $scope.$root.timelineLikes.push(response.data.id);
                             }
-                            v.like_num = response.data.like_num;
+                            $scope.$root.timelines[index] = response.data;
                         }
                     })
                 }

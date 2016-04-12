@@ -39,7 +39,7 @@
                         <a ng-if="isAdmin()" ng-click="destroy(item.id)" class="icon ion-trash-b"></a>
                     </div>
 
-                    <div ng-if="(item.like_num - 0) + (item.comment_num - 0)" style="line-height:1em;">
+                    <div ng-if="(item.like_num - 0) + (item.comment_num - 0) > 0" style="line-height:1em;">
                         <i class="icon ion-person-stalker"></i>
                         <small>
                             {{ getInteractionUsers(item) }}
@@ -48,7 +48,7 @@
                         </small>
                     </div>
 
-                    <div ng-hide="(item.like_num - 0) + (item.comment_num - 0)" style="line-height:1em;">
+                    <div ng-if="(item.like_num - 0) + (item.comment_num - 0) <= 0" style="line-height:1em;">
                         <i class="icon ion-person"></i>
                         <small>
                             {{ item.author.nickname }}

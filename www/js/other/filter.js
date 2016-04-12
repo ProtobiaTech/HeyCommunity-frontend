@@ -4,7 +4,7 @@ HeyCommunity
 .filter('nl2br', ['$sce', function ($sce) {
     return function (text) {
         text = text ? text.replace(/\n/g, '<br>') : '';
-        return $sce.trustAsHtml(text);
+        return text;
     };
 }])
 

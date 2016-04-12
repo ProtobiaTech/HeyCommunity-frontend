@@ -234,7 +234,10 @@ HeyCommunity
     var timelineId = $scope.stateParams.timelineId;
 
     $scope.TimelineComment = {};
-    $scope.Timeline = $scope.$root.timelines[timelineIndex];
+    console.log($scope.$root.timelines)
+    if ($scope.$root.timelines !== undefined) {
+        $scope.Timeline = $scope.$root.timelines[timelineIndex];
+    }
 
     //
     TimelineService.show({id: timelineId}).then(function(response) {
@@ -242,6 +245,18 @@ HeyCommunity
             $scope.Timeline = response.data;
         }
     });
+
+    //
+    // do refresh
+    $scope.doRefresh = function() {
+        TimelineService.show($scope.Timeline.id).then(function(response) {
+            if (response.status == 200) {
+                $scope.Timeline = response.data;
+            }
+        }).finally(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+    }
 
     //
     $scope.commentPublish = function() {
@@ -253,9 +268,9 @@ HeyCommunity
         TimelineService.commentPublish(params).then(function(response) {
             console.debug('### TimelineService.commentPublish response', response);
             if (response.status == 200) {
-                $scope.state.reload();
-                // add comments
-                // $scope.$root.timelines[timelineIndex].comments
+                $scope.TimelineComment.content = '';
+                $scope.Timeline = response.data;
+                $scope.$root.timelines[timelineIndex] = response.data;
             }
         });
     }

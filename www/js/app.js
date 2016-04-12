@@ -7,8 +7,8 @@ var HeyCommunity = angular.module('starter', [
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http',
-    function($ionicPlatform, $rootScope, $state, $stateParams, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicScrollDelegate', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http',
+    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicScrollDelegate, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http) {
     $ionicPlatform.ready(function($rootScope) {
         /* @mark what doing
         setTimeout(function () {
@@ -23,6 +23,10 @@ var HeyCommunity = angular.module('starter', [
         if (window.StatusBar) {
             //StatusBar.styleDefault();
             StatusBar.styleLightContent();
+
+            window.addEventListener("statusTap", function() {
+                $ionicScrollDelegate.scrollTop(true);
+            });
         }
     });
 

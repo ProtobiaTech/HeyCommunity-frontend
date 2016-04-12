@@ -6,8 +6,10 @@
 
         <div class="padding" ng-if="Timeline" style="background-color:#fff;">
             <div class="" style="order-bottom:1px solid #fff; line-height:24px;">
-                <span style="padding-left:3px; display:inline-block; width:44px; line-height:24px; height:24x;">
-                    <i class="icon ion-ios-heart" style="color:#f00; line-height:24px; font-size:18px;"></i>
+                <span ng-click="like(Timeline.id)" style="padding-left:3px; display:inline-block; width:44px; line-height:24px; height:24x;">
+                    <i ng-if="!isAuth()" class="icon ion-ios-heart" style="color:#f00; line-height:24px; font-size:18px;"></i>
+                    <i ng-if="isAuth() && isLike(Timeline.id)" class="icon ion-ios-heart" style="color:#f00; line-height:24px; font-size:18px;"></i>
+                    <i ng-if="isAuth() && !isLike(Timeline.id)" class="icon ion-ios-heart-outline" style="color:#f00; line-height:24px; font-size:18px;"></i>
                     <span class="assertive">{{ Timeline.like_num }}</span>
                 </span>
                 <img ng-repeat="item in Timeline.author_like" ui-sref="hey-uhome({id: item.author.id})" style="vertical-align:middle; width:20px; height:20px; border-radius:50%; background-color:#ddd;" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">

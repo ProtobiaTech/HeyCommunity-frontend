@@ -3,7 +3,7 @@
         <a class="button button-clear button-light icon ion-ios-camera-outline" ng-click="showActionSheet()" todo-ui-sref="hey.timeline-create"></a>
     </ion-nav-buttons>
 
-    <ion-content id="module-timeline" delegate-handle="contentScrollDelegate">
+    <ion-content id="module-timeline" scroll-sista="header" delegate-handle="contentScrollDelegate">
         <ion-refresher
             pulling-text="{{ 'PULL_TO_REFRESH' | translate }}"
             on-refresh="doRefresh()">
@@ -13,13 +13,13 @@
             <ion-spinner></ion-spinner>
         </div>
 
-        <div ng-repeat="(index, item) in timelines | orderBy: '-id'" class="list">
+        <div ng-repeat="(index, item) in timelines" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">
                     <img ui-sref="hey-uhome({id: item.author.id})" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                 </div>
                 <div class="pull-left">
-                    <div ui-sref="hey-uhome({id: item.author.id})" class="name">{{ item.author.nickname }} {{ item.id }}</div>
+                    <div ui-sref="hey-uhome({id: item.author.id})" class="name">{{ item.author.nickname }}</div>
                     <div class="date">{{ item.created_at | momentDate: 'fromNow' }}</div>
                 </div>
             </div>
@@ -38,12 +38,23 @@
                         <a class="icon ion-more" ui-sref="hey.timeline-detail({id: index, timelineId: item.id})"></a>
                         <a ng-if="isAdmin()" ng-click="destroy(item.id)" class="icon ion-trash-b"></a>
                     </div>
-                    <div style="line-height:1em;">
+
+                    <div ng-if="(item.like_num - 0) + (item.comment_num - 0) > 0" style="line-height:1em;">
                         <i class="icon ion-person-stalker"></i>
                         <small>
                             {{ getInteractionUsers(item) }}
                             <br>
                             {{ getInteractionNum(item, 'LIKE_OR_COMMENT') }}
+                        </small>
+                    </div>
+
+                    <div ng-if="(item.like_num - 0) + (item.comment_num - 0) <= 0" style="line-height:1em;">
+                        <i class="icon ion-person"></i>
+                        <small>
+                            {{ item.author.nickname }}
+                            {{ 'POSTED_ON' | translate }}
+                            <br>
+                            {{ item.created_at | momentDate | date : 'yyyy-MM-dd HH:mm:ss' }}
                         </small>
                     </div>
                 </div>
@@ -53,12 +64,12 @@
                     <div ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" style="position:absolute; width:100%; height:100%;"></div>
                     <div style="">
                         <a ui-sref="hey-uhome({id: item.author.id})" style="color:rgb(54, 74, 142); position:relative">{{ item.author.nickname }}: </a>
-                        <span ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" class="content" ng-bind-html="item.content | nl2br"></span>
+                        <span ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" class="content" ng-bind-html="item.content"></span>
                     </div>
 
                     <div style="margin-top:5px;" ng-repeat="comment in item.comments | orderBy: '-id'">
                         <a ui-sref="hey-uhome({id: comment.author.id})" style="color:rgb(54, 74, 142); position:relative">{{ comment.author.nickname }}: </a>
-                        <span ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" class="content" ng-bind-html="comment.content | nl2br"></span>
+                        <span ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" class="content" ng-bind-html="comment.content"></span>
                     </div>
                 </div>
             </div>

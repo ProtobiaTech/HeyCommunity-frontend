@@ -30,7 +30,7 @@ HeyCommunity
     //
     //
     $scope.getInteractionNum = function(timeline, text) {
-        var num = timeline.like_num + timeline.comment_num;
+        var num = parseInt(timeline.like_num) + parseInt(timeline.comment_num);
         num = num ? num : 1;
         return $scope.filter('translate')(text, {num: num})
     }
@@ -58,7 +58,7 @@ HeyCommunity
             TimelineService.like(params).then(function(response) {
                 console.debug('### TimelineService.like response', response);
                 if (response.status == 200) {
-                    angular.forEach($scope.$root.timelines, function(v) {
+                    angular.forEach($scope.$root.timelines, function(v, index) {
                         if (id == v.id) {
                             // if (v.like_num > response.data.like_num) {
                             if ($scope.isLike(id)) {
@@ -67,10 +67,9 @@ HeyCommunity
                             } else {
                                 $scope.$root.timelineLikes.push(response.data.id);
                             }
-                            v.like_num = response.data.like_num;
+                            $scope.$root.timelines[index] = response.data;
                         }
                     })
-                    console.log($scope.$root.timelineLikes)
                 }
             })
         }
@@ -184,20 +183,24 @@ HeyCommunity
     $scope.Timeline = {};
 
     $scope.store = function() {
-        var params = {
-            attachment: $scope.Timeline.pic,
-            content: $scope.Timeline.content,
-        }
-
-        console.debug('### TimelineService.store params', params);
-        TimelineService.store(Upload, params).then(function(response) {
-            console.debug('### TimelineService.store response', response);
-            if (response.status === 200) {
-                $scope.state.go('hey.timeline');
-            } else {
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
+        if ($scope.Timeline.pic && $scope.Timeline.content) {
+            var params = {
+                attachment: $scope.Timeline.pic,
+                content: $scope.Timeline.content,
             }
-        });
+
+            console.debug('### TimelineService.store params', params);
+            TimelineService.store(Upload, params).then(function(response) {
+                console.debug('### TimelineService.store response', response);
+                if (response.status === 200) {
+                    $scope.state.go('hey.timeline');
+                } else {
+                    $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
+                }
+            });
+        } else {
+            return false;
+        }
     }
 
     //
@@ -232,16 +235,58 @@ HeyCommunity
 .controller('TimelineDetailCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
     var timelineIndex = $scope.stateParams.id;
     var timelineId = $scope.stateParams.timelineId;
+    $scope.Timeline = {};
 
     $scope.TimelineComment = {};
-    $scope.Timeline = $scope.$root.timelines[timelineIndex];
+    if ($scope.$root.timelines !== undefined) {
+        $scope.Timeline = $scope.$root.timelines[timelineIndex];
+    }
 
     //
+    $scope.$root.loadingShowDisabled = true;
     TimelineService.show({id: timelineId}).then(function(response) {
         if (response.status === 200) {
             $scope.Timeline = response.data;
         }
     });
+
+    //
+    // is Like
+    $scope.isLike = function(id) {
+        if ($scope.$root.timelineLikes !== undefined) {
+            return inArray(id, $scope.$root.timelineLikes);
+        } else {
+            return false;
+        }
+    }
+
+    //
+    // like
+    $scope.like = function(id, isDoubleTap) {
+        $scope.$root.loadingShowDisabled = true;
+        if (!$scope.please_login_first()) {
+            var params = {
+                id: id,
+            }
+            console.debug('### TimelineService.like params', params);
+            TimelineService.like(params).then(function(response) {
+                console.debug('### TimelineService.like response', response);
+                if (response.status == 200) {
+                    if ($scope.$root.timelines !== undefined) {
+                        $scope.$root.timelines[timelineIndex] = response.data;
+                        $scope.Timeline = response.data;
+
+                        if ($scope.isLike(id)) {
+                            var i = $scope.$root.timelineLikes.indexOf(response.data.id);
+                            $scope.$root.timelineLikes.splice(i, 1);
+                        } else {
+                            $scope.$root.timelineLikes.push(response.data.id);
+                        }
+                    }
+                }
+            })
+        }
+    }
 
     //
     $scope.commentPublish = function() {
@@ -253,9 +298,11 @@ HeyCommunity
         TimelineService.commentPublish(params).then(function(response) {
             console.debug('### TimelineService.commentPublish response', response);
             if (response.status == 200) {
-                $scope.state.reload();
-                // add comments
-                // $scope.$root.timelines[timelineIndex].comments
+                $scope.TimelineComment.content = '';
+                $scope.Timeline = response.data;
+                if ($scope.$root.timelines !== undefined) {
+                    $scope.$root.timelines[timelineIndex] = response.data;
+                }
             }
         });
     }

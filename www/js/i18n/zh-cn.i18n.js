@@ -41,6 +41,7 @@ HeyCommunity
         MANAGEMENT_OPERATIONS:          '管理操作',
         CANCEL:                         '取消',
         COMING_SOON:                    '敬请期待',
+        POSTED_ON:                      '发布于',
 
         // Form
         AVATAR:             '头像',

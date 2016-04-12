@@ -183,20 +183,24 @@ HeyCommunity
     $scope.Timeline = {};
 
     $scope.store = function() {
-        var params = {
-            attachment: $scope.Timeline.pic,
-            content: $scope.Timeline.content,
-        }
-
-        console.debug('### TimelineService.store params', params);
-        TimelineService.store(Upload, params).then(function(response) {
-            console.debug('### TimelineService.store response', response);
-            if (response.status === 200) {
-                $scope.state.go('hey.timeline');
-            } else {
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
+        if ($scope.Timeline.pic && $scope.Timeline.content) {
+            var params = {
+                attachment: $scope.Timeline.pic,
+                content: $scope.Timeline.content,
             }
-        });
+
+            console.debug('### TimelineService.store params', params);
+            TimelineService.store(Upload, params).then(function(response) {
+                console.debug('### TimelineService.store response', response);
+                if (response.status === 200) {
+                    $scope.state.go('hey.timeline');
+                } else {
+                    $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
+                }
+            });
+        } else {
+            return false;
+        }
     }
 
     //
@@ -231,6 +235,7 @@ HeyCommunity
 .controller('TimelineDetailCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
     var timelineIndex = $scope.stateParams.id;
     var timelineId = $scope.stateParams.timelineId;
+    $scope.Timeline = {};
 
     $scope.TimelineComment = {};
     if ($scope.$root.timelines !== undefined) {
@@ -238,6 +243,7 @@ HeyCommunity
     }
 
     //
+    $scope.$root.loadingShowDisabled = true;
     TimelineService.show({id: timelineId}).then(function(response) {
         if (response.status === 200) {
             $scope.Timeline = response.data;

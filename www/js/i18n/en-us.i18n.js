@@ -41,6 +41,7 @@ HeyCommunity
         MANAGEMENT_OPERATIONS:          'Management Operations',
         CANCEL:                         'Cancel',
         COMING_SOON:                    'Coming soon',
+        POSTED_ON:                      'Posted on',
 
         // Form
         AVATAR:             'Avatar',

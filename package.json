@@ -33,7 +33,8 @@
       "locator": "https://github.com/jpush/jpush-phonegap-plugin.git",
       "id": "cn.jpush.phonegap.JPushPlugin"
     },
-    "org.apache.cordova.device"
+    "org.apache.cordova.device",
+    "cordova-plugin-dialogs"
   ],
   "cordovaPlatforms": [
     "ios",

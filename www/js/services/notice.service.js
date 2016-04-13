@@ -1,28 +1,50 @@
 HeyCommunity
 
-.service('NoticeService', ['$http', function($http) {
+.service('NoticeService', ['$http', '$rootScope', '$interval', function($http, $rootScope, $interval) {
     //
-    this.index = function(params) {
-        if (typeof(params) == 'object' && 'page' in params) {
-            var url = getApiUrl('/notice') + '?page=' + params.page + '&';
-        } else {
-            var url = getApiUrl('/notice') + '?';
-        }
-        if (typeof(params) == 'object' && 'user_id' in params) {
-            url = url + 'where[key]=user_id&where[value]=' + params.user_id;
-        }
+    //
+    var self = this;
+    self.notices = [];
 
-        return $http.get(url);
+    //
+    //
+    self.serviceRun = function() {
+        $interval(function() {
+            self.index();
+        }, 1000*60*5)
     }
 
     //
-    this.check = function(params) {
+    self.index = function(params) {
+        var url = getApiUrl('/notice');
+        var q = $http.get(url);
+
+        q.then(function(response) {
+            if (response.status === 200) {
+                var badgeNum = 0;
+                self.notices = response.data.data;
+
+                angular.forEach(response.data.data, function(item, $index) {
+                    if (item.is_checked != 1) {
+                        badgeNum += 1;
+                    }
+                });
+                $rootScope.badgeNum = badgeNum;
+                $rootScope.utility.setBadgeNum(badgeNum);
+            }
+        });
+
+        return q;
+    }
+
+    //
+    self.check = function(params) {
         var q = $http.post(getApiUrl('/notice/check'), params);
         return q;
     }
 
     //
-    this.destroy = function(params) {
+    self.destroy = function(params) {
         var q = $http.post(getApiUrl('/notice/destroy'), params);
         return q;
     }

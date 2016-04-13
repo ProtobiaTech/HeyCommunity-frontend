@@ -363,18 +363,10 @@ HeyCommunity
     $scope.shouldShowReorder = false;
     $scope.listCanSwipe = true
 
+    $scope.NoticeService = NoticeService;
+
     NoticeService.index().then(function(response) {
         if (response.status === 200) {
-            var badgeNum = 0;
-            $scope.notices = response.data.data;
-
-            angular.forEach(response.data.data, function(item, $index) {
-                if (item.is_checked != 1) {
-                    badgeNum += 1;
-                }
-            });
-            $scope.$root.badgeNum = badgeNum;
-            $scope.utility.setBadgeNum(badgeNum);
         }
     });
 
@@ -391,7 +383,7 @@ HeyCommunity
             },
             buttonClicked: function(index) {
                 if (index === 0) {
-                    angular.forEach($scope.notices, function(item, $index) {
+                    angular.forEach(NoticeService.notices, function(item, $index) {
                         if (item.is_checked != 1) {
                             $scope.check(item, $index);
                         }
@@ -399,7 +391,7 @@ HeyCommunity
                 }
             },
             destructiveButtonClicked: function(index) {
-                angular.forEach($scope.notices, function(item, $index) {
+                angular.forEach(NoticeService.notices, function(item, $index) {
                     $scope.destroy(item, $index);
                 })
             },

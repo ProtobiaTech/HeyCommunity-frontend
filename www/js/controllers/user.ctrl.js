@@ -81,7 +81,7 @@ HeyCommunity
             content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
         }
 
-        $scope.showConfirm(data, function() {
+        $scope.utility.showConfirm(data, function() {
             var params = {
                 id: id,
             }
@@ -91,7 +91,7 @@ HeyCommunity
                         if (value.id === params.id) {
                             delete $scope.timelines[key];
 
-                            $scope.showNoticeSuccess();
+                            $scope.utility.showNoticeSuccess();
                             $scope.timeout(function() {
                                 $scope.$root.$broadcast('notice:hide');
                             }, 1288);
@@ -198,7 +198,7 @@ HeyCommunity
                 }
             } else {
                 var content = $scope.filter('translate')('PHONE_OR_PASSWORD_ERROR');
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
             }
         });
     }
@@ -233,7 +233,7 @@ HeyCommunity
                     getCaptchaTimeout(60);
                 } else {
                     var content = typeof response.data === 'string' ? response.data : response.data.phone[0];
-                    $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                    $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
                 }
             });
         }
@@ -262,7 +262,7 @@ HeyCommunity
                 $scope.signUpStep = 2;
             } else {
                 var content = typeof response.data === 'string' ? response.data : response.data.phone[0];
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
                 $scope.user.captcha = '';
             }
         });
@@ -282,7 +282,7 @@ HeyCommunity
                 for (item in response.data) {
                     var content = response.data[item][0];
                 }
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
             }
         });
     }
@@ -332,7 +332,7 @@ HeyCommunity
                 $ionicHistory.clearCache();
                 $scope.$root.goBack();
             } else {
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
+                $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }
         });
     }
@@ -374,7 +374,7 @@ HeyCommunity
                 }
             });
             $scope.$root.badgeNum = badgeNum;
-            $scope.$root.setBadgeNum(badgeNum);
+            $scope.utility.setBadgeNum(badgeNum);
         }
     });
 
@@ -419,7 +419,7 @@ HeyCommunity
             if (response.status === 200) {
                 $scope.notices[$index].is_checked = true;
             } else {
-                $scope.showNoticeFail();
+                $scope.utility.showNoticeFail();
             }
         })
         $ionicListDelegate.closeOptionButtons();
@@ -434,7 +434,7 @@ HeyCommunity
             if (response.status === 200) {
                 $scope.notices.splice($index, 1);
             } else {
-                $scope.showNoticeFail();
+                $scope.utility.showNoticeFail();
             }
         })
         $ionicListDelegate.closeOptionButtons();

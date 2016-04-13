@@ -85,7 +85,7 @@ HeyCommunity
                 $ionicHistory.clearCache();
                 $scope.state.go('hey.topic', {}, {reload: true});
             } else {
-                $scope.showNoticeFail();
+                $scope.utility.showNoticeFail();
             }
         });
     }
@@ -131,7 +131,7 @@ HeyCommunity
             if (response.status == 200) {
                 $scope.state.go('hey.topic', {}, {reload: true});
             } else {
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
+                $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }
         });
     }

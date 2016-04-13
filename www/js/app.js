@@ -7,8 +7,8 @@ var HeyCommunity = angular.module('starter', [
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicScrollDelegate', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http', '$cordovaDialogs',
-    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicScrollDelegate, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http, $cordovaDialogs) {
+.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicScrollDelegate', 'UtilityService', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http', '$cordovaDialogs',
+    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicScrollDelegate, UtilityService, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http, $cordovaDialogs) {
     $ionicPlatform.ready(function($rootScope) {
         /* @mark what doing
         setTimeout(function () {
@@ -30,22 +30,7 @@ var HeyCommunity = angular.module('starter', [
         }
     });
 
-    //
-    $rootScope.setBadgeNum = function(badgeNum) {
-        if (window.cordova) {
-            $cordovaBadge.hasPermission().then(function(yes) {
-                $cordovaBadge.set($rootScope.badgeNum).then(function() {
-                    // $rootScope.showNoticeText('show badge ' + badgeNum);
-                }, function(err) {
-                    $rootScope.showNoticeText('show badge error');
-                });
-            }, function(no) {
-                $rootScope.showNoticeText(no);
-            });
-        } else {
-             return false;
-        }
-    }
+    $rootScope.utility = UtilityService;
 
     // Set TenantInfo
     $rootScope.appSiteTitle = 'Hey Community';
@@ -60,12 +45,6 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.tabActive = function(tabName) {
         var stateName = 'hey.' + tabName;
         return $state.includes(stateName);
-    }
-
-    $rootScope.changeAPI = function(api) {
-        localStorage.API_PRODUCT = api;
-        localStorage.API_DEVING = api;
-        localStorage.CDN_DOMAIN = api;
     }
 
     // functions
@@ -94,38 +73,6 @@ var HeyCommunity = angular.module('starter', [
     }
 
 
-    // An alert dialog
-    $rootScope.showAlert = function(data) {
-        if (data === undefined) {
-            data = {
-                title: $filter('translate')('ALERT'),
-                template: ''
-            }
-        }
-
-        $cordovaDialogs.alert(data.content, data.title).then(function() {
-            // callback success
-        });
-    }
-
-    // A confirm dialog
-    $rootScope.showConfirm = function(data, doSuccess, doFail) {
-        if (data === undefined) {
-            data = {
-                title: $filter('translate')('ALERT'),
-                content: ''
-            }
-        }
-
-        $cordovaDialogs.confirm(data.content, data.title).then(function(buttonIndex) {
-            // no button = 0, 'OK' = 1, 'Cancel' = 2
-            if (buttonIndex === 1) {
-                doSuccess();
-            } else if (buttonIndex === 2) {
-                doFail();
-            }
-        });
-    }
 
 
     // user
@@ -161,37 +108,9 @@ var HeyCommunity = angular.module('starter', [
         }
     }
 
-    $rootScope.disableNotice = function(text, time) {
-        $rootScope.$broadcast('notice:hide');
-    }
 
-    $rootScope.showNoticeText = function(text, time) {
-        if (time === undefined) {
-            time = 1288;
-        }
-        $rootScope.$broadcast('notice:show', $filter('translate')(text));
-        $timeout(function() {
-            $rootScope.$broadcast('notice:hide');
-        }, time);
-        return true;
-    }
 
-    $rootScope.showNoticeSuccess = function() {
-        $rootScope.$broadcast('notice:show', $filter('translate')('SUCCESS'));
-        $timeout(function() {
-            $rootScope.$broadcast('notice:hide');
-        }, 1288);
-        return true;
-    }
-
-    $rootScope.showNoticeFail = function() {
-        $rootScope.$broadcast('notice:show', $filter('translate')('FAIL'));
-        $timeout(function() {
-            $rootScope.$broadcast('notice:hide');
-        }, 1288);
-        return false;
-    }
-
+    //
     // loading state
     $rootScope.$on('loading:show', function() {
         $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})

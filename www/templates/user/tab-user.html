@@ -1,6 +1,6 @@
 <ion-view class="has-tabs" view-title="{{ 'USER_CENTER' | translate }}" cache-view="false" hide-back-button="true">
     <ion-content id="module-user" class="page-user">
-        <div ng-if="!isAuth()" class="padding">
+        <div ng-if="!utility.isAuth()" class="padding">
             <div class="text-center h4">{{ appSiteTitle }}</div>
 
             <p></p>
@@ -13,7 +13,7 @@
             <p>Best wishes your life more fun.</p>
         </div>
 
-        <div ng-if="isAuth()">
+        <div ng-if="utility.isAuth()">
             <div class="padding"></div>
 
             <div class="list hey-list">
@@ -70,7 +70,7 @@
         </div>
     </ion-content>
 
-    <div ng-if="!isAuth()" style="position:absolute; bottom:40px; width:100%" class="padding">
+    <div ng-if="!utility.isAuth()" style="position:absolute; bottom:40px; width:100%" class="padding">
         <div class="">
             <a class="button button-block" ui-sref="hey.user-signIn">{{ 'SIGN_IN' | translate }}</a>
         </div>

@@ -50,7 +50,7 @@ HeyCommunity
                 return true;
             }
         }
-        if (!$scope.please_login_first()) {
+        if (!$scope.utility.please_login_first()) {
             var params = {
                 id: id,
             }
@@ -83,7 +83,7 @@ HeyCommunity
             content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
         }
 
-        $scope.showConfirm(data, function() {
+        $scope.utility.showConfirm(data, function() {
             var params = {
                 id: id,
             }
@@ -93,7 +93,7 @@ HeyCommunity
                         if (value.id === params.id) {
                             delete $scope.$root.timelines.splice(key, 1);
 
-                            $scope.showNoticeSuccess();
+                            $scope.utility.showNoticeSuccess();
                             $scope.timeout(function() {
                                 $scope.$root.$broadcast('notice:hide');
                             }, 1288);
@@ -166,7 +166,7 @@ HeyCommunity
                 if (index === 0) {
                     $scope.state.go('hey.timeline-create');
                 } else if (index === 1) {
-                     $scope.showNoticeText('COMING_SOON');
+                     $scope.utility.showNoticeText('COMING_SOON');
                 }
             }
         });
@@ -195,7 +195,7 @@ HeyCommunity
                 if (response.status === 200) {
                     $scope.state.go('hey.timeline');
                 } else {
-                    $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
+                    $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
                 }
             });
         } else {
@@ -212,7 +212,7 @@ HeyCommunity
     //
     //
     $scope.picValueChanged = function() {
-        $scope.showNoticeText('loading...', 1888);
+        $scope.utility.showNoticeText('loading...', 1888);
     }
 
     //
@@ -224,7 +224,7 @@ HeyCommunity
             $ionicScrollDelegate.scrollBottom();
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.show();
-                $scope.disableNotice();
+                $scope.utility.disableNotice();
             }
         }, 100)
     }
@@ -264,7 +264,7 @@ HeyCommunity
     // like
     $scope.like = function(id, isDoubleTap) {
         $scope.$root.loadingShowDisabled = true;
-        if (!$scope.please_login_first()) {
+        if (!$scope.utility.please_login_first()) {
             var params = {
                 id: id,
             }

@@ -7,218 +7,92 @@ var HeyCommunity = angular.module('starter', [
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicScrollDelegate', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http', '$cordovaDialogs',
-    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicScrollDelegate, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http, $cordovaDialogs) {
-    $ionicPlatform.ready(function($rootScope) {
-        /* @mark what doing
-        setTimeout(function () {
-            navigator.splashscreen.hide();
-        }, 2000);
-        */
+.run([
+    '$ionicPlatform', '$rootScope', '$state', '$stateParams', 'UtilityService', 'SystemService', 'UserService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout',
+    function($ionicPlatform, $rootScope, $state, $stateParams, UtilityService, SystemService, UserService, $ionicLoading, $ionicHistory, $filter, $timeout) {
+        //
+        // platform ready
+        $ionicPlatform.ready(function($rootScope) {
+            if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+                // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                // cordova.plugins.Keyboard.disableScroll(true);
+            }
+            if (window.StatusBar) {
+                //StatusBar.styleDefault();
+                StatusBar.styleLightContent();
 
-        if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-            // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            // cordova.plugins.Keyboard.disableScroll(true);
-        }
-        if (window.StatusBar) {
-            //StatusBar.styleDefault();
-            StatusBar.styleLightContent();
-
-            window.addEventListener("statusTap", function() {
-                $ionicScrollDelegate.scrollTop(true);
-            });
-        }
-    });
-
-    //
-    $rootScope.setBadgeNum = function(badgeNum) {
-        if (window.cordova) {
-            $cordovaBadge.hasPermission().then(function(yes) {
-                $cordovaBadge.set($rootScope.badgeNum).then(function() {
-                    // $rootScope.showNoticeText('show badge ' + badgeNum);
-                }, function(err) {
-                    $rootScope.showNoticeText('show badge error');
+                // statusTap scroll to top
+                window.addEventListener("statusTap", function() {
+                    $ionicScrollDelegate.scrollTop(true);
                 });
-            }, function(no) {
-                $rootScope.showNoticeText(no);
-            });
-        } else {
-             return false;
-        }
-    }
-
-    // Set TenantInfo
-    $rootScope.appSiteTitle = 'Hey Community';
-    SystemService.getTenantInfo().then(function(response) {
-        if (typeof response.data === 'object') {
-            $rootScope.appSiteTitle = response.data.site_name;
-            document.title =  response.data.site_name;
-            localStorage.tenantInfo = JSON.stringify(response.data);
-        }
-    });
-
-    $rootScope.tabActive = function(tabName) {
-        var stateName = 'hey.' + tabName;
-        return $state.includes(stateName);
-    }
-
-    $rootScope.changeAPI = function(api) {
-        localStorage.API_PRODUCT = api;
-        localStorage.API_DEVING = api;
-        localStorage.CDN_DOMAIN = api;
-    }
-
-    // functions
-    $rootScope.getPicUrl = getPicUrl;
-    $rootScope.getApiUrl = getApiUrl;
-    $rootScope.getMomentDate = getMomentDate;
-
-    $rootScope.state = $state;
-    $rootScope.filter = $filter;
-    $rootScope.timeout = $timeout;
-    $rootScope.stateParams = $stateParams;
-    $rootScope.ionicHistory = $ionicHistory;
-    $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
-    $rootScope.badgeNum = 0;
-
-    $rootScope.goBack = function(state) {
-        if ($ionicHistory.backView() === null) {
-            if (state === undefined) {
-                $rootScope.state.go('hey.timeline')
-            } else {
-                $rootScope.state.go(state)
-            }
-        } else {
-            $ionicHistory.goBack();
-        }
-    }
-
-
-    // An alert dialog
-    $rootScope.showAlert = function(data) {
-        if (data === undefined) {
-            data = {
-                title: $filter('translate')('ALERT'),
-                template: ''
-            }
-        }
-
-        $cordovaDialogs.alert(data.content, data.title).then(function() {
-            // callback success
-        });
-    }
-
-    // A confirm dialog
-    $rootScope.showConfirm = function(data, doSuccess, doFail) {
-        if (data === undefined) {
-            data = {
-                title: $filter('translate')('ALERT'),
-                content: ''
-            }
-        }
-
-        $cordovaDialogs.confirm(data.content, data.title).then(function(buttonIndex) {
-            // no button = 0, 'OK' = 1, 'Cancel' = 2
-            if (buttonIndex === 1) {
-                doSuccess();
-            } else if (buttonIndex === 2) {
-                doFail();
             }
         });
-    }
 
 
-    // user
-    UserService.userInfo().then(function(response) {
-        if (response.status === 200) {
-            $rootScope.userInfo = response.data;
-        }
-    });
-    $rootScope.isAuth = function() {
-        if (localStorage.user) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    $rootScope.isAdmin = function() {
-        if ($rootScope.userInfo.id <= 4) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+        //
+        // the utility service
+        $rootScope.utility = UtilityService;
+        $rootScope.utility.serviceRun();
 
-    $rootScope.please_login_first = function() {
-        if (!$rootScope.isAuth()) {
-            $rootScope.$broadcast('notice:show', $filter('translate')('PLEASE_LOGIN_FIRST'));
-            $timeout(function() {
-                $rootScope.$broadcast('notice:hide');
-            }, 1288);
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-    $rootScope.disableNotice = function(text, time) {
-        $rootScope.$broadcast('notice:hide');
-    }
+        //
+        // Set TenantInfo
+        $rootScope.appSiteTitle = 'Hey Community';
+        SystemService.getTenantInfo().then(function(response) {
+            if (typeof response.data === 'object') {
+                $rootScope.appSiteTitle = response.data.site_name;
+                document.title =  response.data.site_name;
+                localStorage.tenantInfo = JSON.stringify(response.data);
+            }
+        });
 
-    $rootScope.showNoticeText = function(text, time) {
-        if (time === undefined) {
-            time = 1288;
-        }
-        $rootScope.$broadcast('notice:show', $filter('translate')(text));
-        $timeout(function() {
-            $rootScope.$broadcast('notice:hide');
-        }, time);
-        return true;
-    }
 
-    $rootScope.showNoticeSuccess = function() {
-        $rootScope.$broadcast('notice:show', $filter('translate')('SUCCESS'));
-        $timeout(function() {
-            $rootScope.$broadcast('notice:hide');
-        }, 1288);
-        return true;
-    }
+        //
+        // user
+        UserService.userInfo().then(function(response) {
+            if (response.status === 200) {
+                $rootScope.userInfo = response.data;
+            }
+        });
 
-    $rootScope.showNoticeFail = function() {
-        $rootScope.$broadcast('notice:show', $filter('translate')('FAIL'));
-        $timeout(function() {
-            $rootScope.$broadcast('notice:hide');
-        }, 1288);
-        return false;
-    }
 
-    // loading state
-    $rootScope.$on('loading:show', function() {
-        $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})
-    })
-    $rootScope.$on('loading:hide', function() {
-        $ionicLoading.hide()
-    })
-    $rootScope.$on('notice:show', function(event, text) {
-        $ionicLoading.show({template: text})
-    })
-    $rootScope.$on('notice:hide', function() {
-        $ionicLoading.hide()
-    })
-}])
+        //
+        // functions
+        $rootScope.getPicUrl = getPicUrl;
+        $rootScope.getApiUrl = getApiUrl;
+        $rootScope.getMomentDate = getMomentDate;
+
+        $rootScope.state = $state;
+        $rootScope.filter = $filter;
+        $rootScope.timeout = $timeout;
+        $rootScope.stateParams = $stateParams;
+        $rootScope.ionicHistory = $ionicHistory;
+        $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
+        $rootScope.badgeNum = 0;
+
+
+        //
+        // loading state
+        $rootScope.$on('loading:show', function() {
+            $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})
+        })
+        $rootScope.$on('loading:hide', function() {
+            $ionicLoading.hide()
+        })
+        $rootScope.$on('notice:show', function(event, text) {
+            $ionicLoading.show({template: text})
+        })
+        $rootScope.$on('notice:hide', function() {
+            $ionicLoading.hide()
+        })
+    }
+])
 
 
 .config(['$ionicFilterBarConfigProvider', '$ionicConfigProvider', '$httpProvider', '$translateProvider', function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
+    //
+    // set language
     if (!localStorage.appLanguage) {
-        /* default language
-        if (navigator.language) {
-            $translateProvider.preferredLanguage(navigator.language);
-            localStorage.appLanguage = navigator.language;
-        } else {
-            $translateProvider.preferredLanguage('zh-cn');
-            localStorage.appLanguage = 'zh-cn';
-        }
-        */
         $translateProvider.useSanitizeValueStrategy(null);
         $translateProvider.preferredLanguage('zh-cn');
         localStorage.appLanguage = 'zh-cn';
@@ -227,6 +101,8 @@ var HeyCommunity = angular.module('starter', [
         $translateProvider.preferredLanguage(localStorage.appLanguage);
     }
 
+    //
+    // filterBar config
     $ionicFilterBarConfigProvider.theme('light');
     $ionicFilterBarConfigProvider.clear('ion-close');
     $ionicFilterBarConfigProvider.search('ion-search');
@@ -234,13 +110,24 @@ var HeyCommunity = angular.module('starter', [
     $ionicFilterBarConfigProvider.transition('vertical');
     $ionicFilterBarConfigProvider.placeholder('Search...');
 
+
+    //
+    // backButton config
     $ionicConfigProvider.backButton.previousTitleText(false);
     $ionicConfigProvider.backButton.text('');
 
+
+    //
+    // navbar config
     $ionicConfigProvider.navBar.alignTitle('center');   // Places them at the bottom for all OS
+
+
+    //
+    // tabs config
     $ionicConfigProvider.tabs.position('bottom');   // Places them at the bottom for all OS
     $ionicConfigProvider.tabs.style('standard');    // Makes them all look the same across all OS
 
+    //
     // http provider config
     $httpProvider.defaults.headers.common.domain = API;
     $httpProvider.interceptors.push(['$rootScope', function($rootScope) {

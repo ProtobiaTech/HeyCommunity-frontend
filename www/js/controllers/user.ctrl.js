@@ -47,7 +47,7 @@ HeyCommunity
                 return true;
             }
         }
-        if (!$scope.please_login_first()) {
+        if (!$scope.utility.please_login_first()) {
             var params = {
                 id: id,
             }
@@ -81,7 +81,7 @@ HeyCommunity
             content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
         }
 
-        $scope.showConfirm(data, function() {
+        $scope.utility.showConfirm(data, function() {
             var params = {
                 id: id,
             }
@@ -91,7 +91,7 @@ HeyCommunity
                         if (value.id === params.id) {
                             delete $scope.timelines[key];
 
-                            $scope.showNoticeSuccess();
+                            $scope.utility.showNoticeSuccess();
                             $scope.timeout(function() {
                                 $scope.$root.$broadcast('notice:hide');
                             }, 1288);
@@ -198,7 +198,7 @@ HeyCommunity
                 }
             } else {
                 var content = $scope.filter('translate')('PHONE_OR_PASSWORD_ERROR');
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
             }
         });
     }
@@ -233,7 +233,7 @@ HeyCommunity
                     getCaptchaTimeout(60);
                 } else {
                     var content = typeof response.data === 'string' ? response.data : response.data.phone[0];
-                    $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                    $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
                 }
             });
         }
@@ -262,7 +262,7 @@ HeyCommunity
                 $scope.signUpStep = 2;
             } else {
                 var content = typeof response.data === 'string' ? response.data : response.data.phone[0];
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
                 $scope.user.captcha = '';
             }
         });
@@ -282,7 +282,7 @@ HeyCommunity
                 for (item in response.data) {
                     var content = response.data[item][0];
                 }
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
+                $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: content});
             }
         });
     }
@@ -330,9 +330,9 @@ HeyCommunity
                 $scope.$root.userInfo = response.data;
                 localStorage.userInfo = JSON.stringify(response.data);
                 $ionicHistory.clearCache();
-                $scope.$root.goBack();
+                $scope.utility.goBack();
             } else {
-                $scope.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
+                $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }
         });
     }
@@ -363,18 +363,10 @@ HeyCommunity
     $scope.shouldShowReorder = false;
     $scope.listCanSwipe = true
 
+    $scope.NoticeService = NoticeService;
+
     NoticeService.index().then(function(response) {
         if (response.status === 200) {
-            var badgeNum = 0;
-            $scope.notices = response.data.data;
-
-            angular.forEach(response.data.data, function(item, $index) {
-                if (item.is_checked != 1) {
-                    badgeNum += 1;
-                }
-            });
-            $scope.$root.badgeNum = badgeNum;
-            $scope.$root.setBadgeNum(badgeNum);
         }
     });
 
@@ -391,17 +383,21 @@ HeyCommunity
             },
             buttonClicked: function(index) {
                 if (index === 0) {
-                    angular.forEach($scope.notices, function(item, $index) {
+                    angular.forEach(NoticeService.notices, function(item, $index) {
                         if (item.is_checked != 1) {
                             $scope.check(item, $index);
                         }
                     })
                 }
+                $scope.timeout(function() { hideSheet(); }, 180);
+                // NoticeService.index();
             },
             destructiveButtonClicked: function(index) {
-                angular.forEach($scope.notices, function(item, $index) {
+                angular.forEach(NoticeService.notices, function(item, $index) {
                     $scope.destroy(item, $index);
                 })
+                $scope.timeout(function() { hideSheet(); }, 180);
+                // NoticeService.index();
             },
         });
 
@@ -412,31 +408,13 @@ HeyCommunity
 
     //
     $scope.check = function(item, $index) {
-        var params = {
-            id: item.id,
-        }
-        NoticeService.check(params).then(function(response) {
-            if (response.status === 200) {
-                $scope.notices[$index].is_checked = true;
-            } else {
-                $scope.showNoticeFail();
-            }
-        })
+        NoticeService.check($index);
         $ionicListDelegate.closeOptionButtons();
     }
 
     //
     $scope.destroy = function(item, $index) {
-        var params = {
-            id: item.id,
-        }
-        NoticeService.destroy(params).then(function(response) {
-            if (response.status === 200) {
-                $scope.notices.splice($index, 1);
-            } else {
-                $scope.showNoticeFail();
-            }
-        })
+        NoticeService.destroy(item, $index);
         $ionicListDelegate.closeOptionButtons();
     }
 

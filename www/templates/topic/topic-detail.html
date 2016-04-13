@@ -1,6 +1,6 @@
 <ion-view view-title="{{ 'TOPIC' | translate }}" cache-view="false">
     <ion-nav-buttons side="right">
-        <button ng-if="isAdmin()" ng-click="showActionSheet()" class="button back-button buttons button-clear header-item" style="">
+        <button ng-if="utility.isAdmin()" ng-click="showActionSheet()" class="button back-button buttons button-clear header-item" style="">
             <i class="icon ion-navicon"></i>
         </button>
     </ion-nav-buttons>
@@ -52,8 +52,8 @@
         <form name="ngForm" ng-submit="commentPublish()">
             <div style="positon:absoluted;" class="item item-input-inset">
                 <label class="item-input-wrapper">
-                    <input ng-if="isAuth()" ng-model="TopicComment.content" required ng-minlength="3" type="text" style="width:100%" placeholder="{{ 'SAY_SOMETHING' | translate }}">
-                    <input ng-if="!isAuth()" ng-model="TopicComment.content" required ng-minlength="3" type="text" style="width:100%" disabled placeholder="{{ 'PLEASE_SIGN_IN' | translate }}">
+                    <input ng-if="utility.isAuth()" ng-model="TopicComment.content" required ng-minlength="3" type="text" style="width:100%" placeholder="{{ 'SAY_SOMETHING' | translate }}">
+                    <input ng-if="!utility.isAuth()" ng-model="TopicComment.content" required ng-minlength="3" type="text" style="width:100%" disabled placeholder="{{ 'PLEASE_SIGN_IN' | translate }}">
                 </label>
                 <button type="submit" ng-disabled="ngForm.$invalid" class="button button-small">{{ 'COMMENT' | translate }}</button>
             </div>

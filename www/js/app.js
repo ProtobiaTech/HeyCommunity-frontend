@@ -7,84 +7,90 @@ var HeyCommunity = angular.module('starter', [
 ])
 
 
-.run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicScrollDelegate', 'UtilityService', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http', '$cordovaDialogs',
-    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicScrollDelegate, UtilityService, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http, $cordovaDialogs) {
-    $ionicPlatform.ready(function($rootScope) {
-        if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-            // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-            // cordova.plugins.Keyboard.disableScroll(true);
-        }
-        if (window.StatusBar) {
-            //StatusBar.styleDefault();
-            StatusBar.styleLightContent();
+.run([
+    '$ionicPlatform', '$rootScope', '$state', '$stateParams', 'UtilityService', 'SystemService', 'UserService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout',
+    function($ionicPlatform, $rootScope, $state, $stateParams, UtilityService, SystemService, UserService, $ionicLoading, $ionicHistory, $filter, $timeout) {
+        //
+        // platform ready
+        $ionicPlatform.ready(function($rootScope) {
+            if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+                // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                // cordova.plugins.Keyboard.disableScroll(true);
+            }
+            if (window.StatusBar) {
+                //StatusBar.styleDefault();
+                StatusBar.styleLightContent();
 
-            // statusTap scroll to top
-            window.addEventListener("statusTap", function() {
-                $ionicScrollDelegate.scrollTop(true);
-            });
-        }
-    });
-
-
-    //
-    // the utility service
-    $rootScope.utility = UtilityService;
+                // statusTap scroll to top
+                window.addEventListener("statusTap", function() {
+                    $ionicScrollDelegate.scrollTop(true);
+                });
+            }
+        });
 
 
-    //
-    // Set TenantInfo
-    $rootScope.appSiteTitle = 'Hey Community';
-    SystemService.getTenantInfo().then(function(response) {
-        if (typeof response.data === 'object') {
-            $rootScope.appSiteTitle = response.data.site_name;
-            document.title =  response.data.site_name;
-            localStorage.tenantInfo = JSON.stringify(response.data);
-        }
-    });
+        //
+        // the utility service
+        $rootScope.utility = UtilityService;
 
 
-    //
-    // user
-    UserService.userInfo().then(function(response) {
-        if (response.status === 200) {
-            $rootScope.userInfo = response.data;
-        }
-    });
+        //
+        // Set TenantInfo
+        $rootScope.appSiteTitle = 'Hey Community';
+        SystemService.getTenantInfo().then(function(response) {
+            if (typeof response.data === 'object') {
+                $rootScope.appSiteTitle = response.data.site_name;
+                document.title =  response.data.site_name;
+                localStorage.tenantInfo = JSON.stringify(response.data);
+            }
+        });
 
 
-    //
-    // functions
-    $rootScope.getPicUrl = getPicUrl;
-    $rootScope.getApiUrl = getApiUrl;
-    $rootScope.getMomentDate = getMomentDate;
-
-    $rootScope.state = $state;
-    $rootScope.filter = $filter;
-    $rootScope.timeout = $timeout;
-    $rootScope.stateParams = $stateParams;
-    $rootScope.ionicHistory = $ionicHistory;
-    $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
-    $rootScope.badgeNum = 0;
+        //
+        // user
+        UserService.userInfo().then(function(response) {
+            if (response.status === 200) {
+                $rootScope.userInfo = response.data;
+            }
+        });
 
 
-    //
-    // loading state
-    $rootScope.$on('loading:show', function() {
-        $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})
-    })
-    $rootScope.$on('loading:hide', function() {
-        $ionicLoading.hide()
-    })
-    $rootScope.$on('notice:show', function(event, text) {
-        $ionicLoading.show({template: text})
-    })
-    $rootScope.$on('notice:hide', function() {
-        $ionicLoading.hide()
-    })
-}])
+        //
+        // functions
+        $rootScope.getPicUrl = getPicUrl;
+        $rootScope.getApiUrl = getApiUrl;
+        $rootScope.getMomentDate = getMomentDate;
+
+        $rootScope.state = $state;
+        $rootScope.filter = $filter;
+        $rootScope.timeout = $timeout;
+        $rootScope.stateParams = $stateParams;
+        $rootScope.ionicHistory = $ionicHistory;
+        $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
+        $rootScope.badgeNum = 0;
+
+
+        //
+        // loading state
+        $rootScope.$on('loading:show', function() {
+            $ionicLoading.show({template: '<ion-spinner></ion-spinner>'})
+        })
+        $rootScope.$on('loading:hide', function() {
+            $ionicLoading.hide()
+        })
+        $rootScope.$on('notice:show', function(event, text) {
+            $ionicLoading.show({template: text})
+        })
+        $rootScope.$on('notice:hide', function() {
+            $ionicLoading.hide()
+        })
+    }
+])
 
 
 .config(['$ionicFilterBarConfigProvider', '$ionicConfigProvider', '$httpProvider', '$translateProvider', function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
+    //
+    // set language
     if (!localStorage.appLanguage) {
         $translateProvider.useSanitizeValueStrategy(null);
         $translateProvider.preferredLanguage('zh-cn');

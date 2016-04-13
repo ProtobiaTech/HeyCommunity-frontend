@@ -389,11 +389,15 @@ HeyCommunity
                         }
                     })
                 }
+                $scope.timeout(function() { hideSheet(); }, 180);
+                // NoticeService.index();
             },
             destructiveButtonClicked: function(index) {
                 angular.forEach(NoticeService.notices, function(item, $index) {
                     $scope.destroy(item, $index);
                 })
+                $scope.timeout(function() { hideSheet(); }, 180);
+                // NoticeService.index();
             },
         });
 
@@ -404,31 +408,13 @@ HeyCommunity
 
     //
     $scope.check = function(item, $index) {
-        var params = {
-            id: item.id,
-        }
-        NoticeService.check(params).then(function(response) {
-            if (response.status === 200) {
-                $scope.notices[$index].is_checked = true;
-            } else {
-                $scope.utility.showNoticeFail();
-            }
-        })
+        NoticeService.check($index);
         $ionicListDelegate.closeOptionButtons();
     }
 
     //
     $scope.destroy = function(item, $index) {
-        var params = {
-            id: item.id,
-        }
-        NoticeService.destroy(params).then(function(response) {
-            if (response.status === 200) {
-                $scope.notices.splice($index, 1);
-            } else {
-                $scope.utility.showNoticeFail();
-            }
-        })
+        NoticeService.destroy(item, $index);
         $ionicListDelegate.closeOptionButtons();
     }
 

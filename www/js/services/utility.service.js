@@ -7,7 +7,7 @@ HeyCommunity
         var self = this;
 
         //
-        //
+        // service run
         self.serviceRun = function() {
             $timeout(function() {
                 NoticeService.serviceRun();

@@ -6,6 +6,7 @@ HeyCommunity
     var self = this;
     self.notices = [];
 
+
     //
     //
     self.serviceRun = function() {
@@ -18,6 +19,8 @@ HeyCommunity
         }, 1000*60*1)
     }
 
+
+    //
     //
     self.index = function(params) {
         var url = getApiUrl('/notice');
@@ -41,15 +44,48 @@ HeyCommunity
         return q;
     }
 
+
     //
-    self.check = function(params) {
+    //
+    self.check = function($index) {
+        var notice = self.notices[$index];
+        var params = {
+            id: notice.id
+        }
+
         var q = $http.post(getApiUrl('/notice/check'), params);
+        q.then(function(response) {
+            if (response.status === 200) {
+                self.notices[$index].is_checked = true;
+            } else {
+                $rootScope.utility.showNoticeFail();
+            }
+        })
+
         return q;
     }
 
+
     //
-    self.destroy = function(params) {
+    //
+    self.destroy = function(item) {
+        var params = {
+            id: item.id
+        }
+
         var q = $http.post(getApiUrl('/notice/destroy'), params);
+        q.then(function(response) {
+            if (response.status === 200) {
+                angular.forEach(self.notices, function(notice, $index) {
+                    if (item.id === notice.id) {
+                        self.notices.splice($index, 1);
+                    }
+                })
+            } else {
+                $rootScope.utility.showNoticeFail();
+            }
+        })
+
         return q;
     }
 }])

@@ -1,7 +1,7 @@
 HeyCommunity
 
 // tab.user
-.controller('UserIndexCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('UserIndexCtrl', ['$scope', 'UserService', 'NoticeService', function($scope, UserService, NoticeService) {
     if ($scope.stateParams.id) {
         $scope.userInfo = false;
         $scope.isOwnInfo = false;
@@ -14,6 +14,9 @@ HeyCommunity
     } else {
         $scope.isOwnInfo = true;
     }
+
+    $scope.$root.loadingShowDisabled = true;
+    NoticeService.index();
 }])
 
 
@@ -366,10 +369,7 @@ HeyCommunity
     $scope.NoticeService = NoticeService;
 
     $scope.$root.loadingShowDisabled = true;
-    NoticeService.index().then(function(response) {
-        if (response.status === 200) {
-        }
-    });
+    NoticeService.index();
 
     //
     // load more

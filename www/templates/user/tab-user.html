@@ -32,7 +32,7 @@
                     <i class="icon ion-ios-bell"></i>
                     {{ 'NOTICE' | translate }}
                     <span ng-if="badgeNum > 0" class="badge badge-assertive">{{ badgeNum }}</span>
-                    <span ng-if="false && badgeNum === 0" class="badge badge-stable">{{ badgeNum }}</span>
+                    <span ng-if="badgeNum === 0" class="badge badge-stable">{{ badgeNum }}</span>
                 </a>
                 <a class="item item-icon-left" ui-sref="hey.user-timeline({user_id: userInfo.id})">
                     <i class="icon ion-aperture"></i>

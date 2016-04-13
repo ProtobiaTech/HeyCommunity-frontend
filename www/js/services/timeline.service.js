@@ -1,31 +1,56 @@
 HeyCommunity
 
 .service('TimelineService', ['$http', function($http) {
-    this.index = function(params) {
-        if (typeof(params) == 'object' && 'page' in params) {
-            var url = getApiUrl('/timeline') + '?page=' + params.page + '&';
-        } else {
-            var url = getApiUrl('/timeline') + '?';
-        }
-        if (typeof(params) == 'object' && 'user_id' in params) {
-            url = url + 'where[key]=user_id&where[value]=' + params.user_id;
-        }
+    //
+    //
+    var self = this;
+    self.timelines = [];
+    self.timelineLikes = [];
+
+
+    //
+    //
+    self.index = function(params) {
+        var url = getApiUrl('/timeline');
         if (typeof(params) == 'object' && 'type' in params) {
-            url = url + 'type=' + params.type + '&id=' + params.id;
+            url = url + '?type=' + params.type + '&id=' + params.id;
         }
 
-        return $http.get(url);
+        var q = $http.get(url);
+        q.then(function(response) {
+            if (response.status == 200) {
+                if (params !== undefined) {
+                    if (params.type === 'refresh') {
+                        while (response.data.timelines.length > 0) {
+                            self.timelines.unshift(response.data.timelines.shift());
+                        }
+                    } else if (params.type === 'infinite') {
+                        self.timelines = self.timelines.concat(response.data.timelines);
+                    }
+
+                    self.timelineLikes = response.data.likes;
+                } else {
+                    self.timelines = response.data.timelines;
+                    self.timelineLikes = response.data.likes;
+                }
+
+                localStorage.timelines = JSON.stringify(self.timelines);
+                localStorage.timelineLikes = JSON.stringify(self.timelineLikes);
+            }
+        })
+
+        return q;
     }
 
 
     // show
-    this.show = function(params) {
+    self.show = function(params) {
         return $http.get(getApiUrl('/timeline/show/' + params.id));
     }
 
 
     // store
-    this.store = function(http, params) {
+    self.store = function(http, params) {
         return http.upload({
             url: getApiUrl('/timeline/store'),
             data: params
@@ -35,19 +60,19 @@ HeyCommunity
 
     //
     // destory
-    this.destroy = function(params) {
+    self.destroy = function(params) {
         return $http.post(getApiUrl('/timeline/destroy'), params);
     }
 
 
     // like
-    this.like = function(params) {
+    self.like = function(params) {
         return $http.post(getApiUrl('/timeline/like'), params);
     }
 
 
     // comment
-    this.commentPublish = function(params) {
+    self.commentPublish = function(params) {
         return $http.post(getApiUrl('/timeline/comment-publish'),  params);
     }
 }])

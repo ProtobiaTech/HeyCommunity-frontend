@@ -47,7 +47,7 @@ HeyCommunity
                 return true;
             }
         }
-        if (!$scope.please_login_first()) {
+        if (!$scope.utility.please_login_first()) {
             var params = {
                 id: id,
             }
@@ -330,7 +330,7 @@ HeyCommunity
                 $scope.$root.userInfo = response.data;
                 localStorage.userInfo = JSON.stringify(response.data);
                 $ionicHistory.clearCache();
-                $scope.$root.goBack();
+                $scope.utility.goBack();
             } else {
                 $scope.utility.showAlert({title: $scope.filter('translate')('ERROR'), content: response.data});
             }

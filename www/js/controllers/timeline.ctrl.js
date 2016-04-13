@@ -50,7 +50,7 @@ HeyCommunity
                 return true;
             }
         }
-        if (!$scope.please_login_first()) {
+        if (!$scope.utility.please_login_first()) {
             var params = {
                 id: id,
             }
@@ -264,7 +264,7 @@ HeyCommunity
     // like
     $scope.like = function(id, isDoubleTap) {
         $scope.$root.loadingShowDisabled = true;
-        if (!$scope.please_login_first()) {
+        if (!$scope.utility.please_login_first()) {
             var params = {
                 id: id,
             }

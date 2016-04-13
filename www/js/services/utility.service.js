@@ -1,8 +1,8 @@
 HeyCommunity
 
 .service('UtilityService', [
-    '$cordovaBadge', '$cordovaDialogs', '$rootScope', '$filter',
-     function($cordovaBadge, $cordovaDialogs, $rootScope, $filter) {
+    '$cordovaBadge', '$cordovaDialogs', '$rootScope', '$filter', '$state', '$ionicHistory', '$timeout',
+     function($cordovaBadge, $cordovaDialogs, $rootScope, $filter, $state, $ionicHistory, $timeout) {
 
         //
         // Set badge num
@@ -10,15 +10,80 @@ HeyCommunity
             if (window.cordova) {
                 $cordovaBadge.hasPermission().then(function(yes) {
                     $cordovaBadge.set($rootScope.badgeNum).then(function() {
-                        // $rootScope.showNoticeText('show badge ' + badgeNum);
+                        // this.showNoticeText('show badge ' + badgeNum);
                     }, function(err) {
-                        $rootScope.showNoticeText('show badge error');
+                        this.showNoticeText('show badge error');
                     });
                 }, function(no) {
-                    $rootScope.showNoticeText(no);
+                    this.showNoticeText(no);
                 });
             } else {
                  return false;
+            }
+        }
+
+
+
+        //
+        // tab active
+        this.tabActive = function(tabName) {
+            var stateName = 'hey.' + tabName;
+            return $state.includes(stateName);
+        }
+
+
+
+        //
+        // Go back
+        this.goBack = function(state) {
+            if ($ionicHistory.backView() === null) {
+                if (state === undefined) {
+                    $state.go('hey.timeline')
+                } else {
+                    $state.go(state)
+                }
+            } else {
+                $ionicHistory.goBack();
+            }
+        }
+
+
+
+        //
+        // is auth
+        this.isAuth = function() {
+            if (localStorage.user) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+        //
+        // is admin
+        this.isAdmin = function() {
+            if ($rootScope.userInfo.id <= 4) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+        //
+        // please login first
+        this.please_login_first = function() {
+            if (!this.isAuth()) {
+                $rootScope.$broadcast('notice:show', $filter('translate')('PLEASE_LOGIN_FIRST'));
+                $timeout(function() {
+                    $rootScope.$broadcast('notice:hide');
+                }, 1288);
+                return true;
+            } else {
+                return false;
             }
         }
 

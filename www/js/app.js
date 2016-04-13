@@ -30,8 +30,13 @@ var HeyCommunity = angular.module('starter', [
         }
     });
 
+
+    //
+    // the utility service
     $rootScope.utility = UtilityService;
 
+
+    //
     // Set TenantInfo
     $rootScope.appSiteTitle = 'Hey Community';
     SystemService.getTenantInfo().then(function(response) {
@@ -42,11 +47,16 @@ var HeyCommunity = angular.module('starter', [
         }
     });
 
-    $rootScope.tabActive = function(tabName) {
-        var stateName = 'hey.' + tabName;
-        return $state.includes(stateName);
-    }
 
+    // user
+    UserService.userInfo().then(function(response) {
+        if (response.status === 200) {
+            $rootScope.userInfo = response.data;
+        }
+    });
+
+
+    //
     // functions
     $rootScope.getPicUrl = getPicUrl;
     $rootScope.getApiUrl = getApiUrl;
@@ -59,55 +69,6 @@ var HeyCommunity = angular.module('starter', [
     $rootScope.ionicHistory = $ionicHistory;
     $rootScope.userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : {};
     $rootScope.badgeNum = 0;
-
-    $rootScope.goBack = function(state) {
-        if ($ionicHistory.backView() === null) {
-            if (state === undefined) {
-                $rootScope.state.go('hey.timeline')
-            } else {
-                $rootScope.state.go(state)
-            }
-        } else {
-            $ionicHistory.goBack();
-        }
-    }
-
-
-
-
-    // user
-    UserService.userInfo().then(function(response) {
-        if (response.status === 200) {
-            $rootScope.userInfo = response.data;
-        }
-    });
-    $rootScope.isAuth = function() {
-        if (localStorage.user) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    $rootScope.isAdmin = function() {
-        if ($rootScope.userInfo.id <= 4) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    $rootScope.please_login_first = function() {
-        if (!$rootScope.isAuth()) {
-            $rootScope.$broadcast('notice:show', $filter('translate')('PLEASE_LOGIN_FIRST'));
-            $timeout(function() {
-                $rootScope.$broadcast('notice:hide');
-            }, 1288);
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 
 
     //

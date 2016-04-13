@@ -224,7 +224,7 @@ HeyCommunity
             $ionicScrollDelegate.scrollBottom();
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.show();
-                $scope.disableNotice();
+                $scope.utility.disableNotice();
             }
         }, 100)
     }

@@ -32,6 +32,7 @@ var HeyCommunity = angular.module('starter', [
         //
         // the utility service
         $rootScope.utility = UtilityService;
+        $rootScope.utility.serviceRun();
 
 
         //

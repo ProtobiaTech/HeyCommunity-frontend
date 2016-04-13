@@ -1,21 +1,31 @@
 HeyCommunity
 
 .service('UtilityService', [
-    '$cordovaBadge', '$cordovaDialogs', '$rootScope', '$filter', '$state', '$ionicHistory', '$timeout',
-     function($cordovaBadge, $cordovaDialogs, $rootScope, $filter, $state, $ionicHistory, $timeout) {
+    '$cordovaBadge', '$cordovaDialogs', '$rootScope', '$filter', '$state', '$ionicHistory', '$timeout', 'NoticeService',
+    function($cordovaBadge, $cordovaDialogs, $rootScope, $filter, $state, $ionicHistory, $timeout, NoticeService) {
+
+        var self = this;
+
+        //
+        //
+        self.serviceRun = function() {
+            $timeout(function() {
+                NoticeService.serviceRun();
+            }, 888)
+        }
 
         //
         // Set badge num
-        this.setBadgeNum = function(badgeNum) {
+        self.setBadgeNum = function(badgeNum) {
             if (window.cordova) {
                 $cordovaBadge.hasPermission().then(function(yes) {
                     $cordovaBadge.set($rootScope.badgeNum).then(function() {
-                        // this.showNoticeText('show badge ' + badgeNum);
+                        // self.showNoticeText('show badge ' + badgeNum);
                     }, function(err) {
-                        this.showNoticeText('show badge error');
+                        self.showNoticeText('show badge error');
                     });
                 }, function(no) {
-                    this.showNoticeText(no);
+                    self.showNoticeText(no);
                 });
             } else {
                  return false;
@@ -26,7 +36,7 @@ HeyCommunity
 
         //
         // tab active
-        this.tabActive = function(tabName) {
+        self.tabActive = function(tabName) {
             var stateName = 'hey.' + tabName;
             return $state.includes(stateName);
         }
@@ -35,7 +45,7 @@ HeyCommunity
 
         //
         // Go back
-        this.goBack = function(state) {
+        self.goBack = function(state) {
             if ($ionicHistory.backView() === null) {
                 if (state === undefined) {
                     $state.go('hey.timeline')
@@ -51,7 +61,7 @@ HeyCommunity
 
         //
         // is auth
-        this.isAuth = function() {
+        self.isAuth = function() {
             if (localStorage.user) {
                 return true;
             } else {
@@ -63,7 +73,7 @@ HeyCommunity
 
         //
         // is admin
-        this.isAdmin = function() {
+        self.isAdmin = function() {
             if ($rootScope.userInfo.id <= 4) {
                 return true;
             } else {
@@ -75,8 +85,8 @@ HeyCommunity
 
         //
         // please login first
-        this.please_login_first = function() {
-            if (!this.isAuth()) {
+        self.please_login_first = function() {
+            if (!self.isAuth()) {
                 $rootScope.$broadcast('notice:show', $filter('translate')('PLEASE_LOGIN_FIRST'));
                 $timeout(function() {
                     $rootScope.$broadcast('notice:hide');
@@ -91,7 +101,7 @@ HeyCommunity
 
         //
         // An alert dialog
-        this.showAlert = function(data) {
+        self.showAlert = function(data) {
             if (data === undefined) {
                 data = {
                     title: $filter('translate')('ALERT'),
@@ -108,7 +118,7 @@ HeyCommunity
 
         //
         // A confirm dialog
-        this.showConfirm = function(data, doSuccess, doFail) {
+        self.showConfirm = function(data, doSuccess, doFail) {
             if (data === undefined) {
                 data = {
                     title: $filter('translate')('ALERT'),
@@ -130,11 +140,11 @@ HeyCommunity
 
         //
         //
-        this.disableNotice = function(text, time) {
+        self.disableNotice = function(text, time) {
             $rootScope.$broadcast('notice:hide');
         }
 
-        this.showNoticeText = function(text, time) {
+        self.showNoticeText = function(text, time) {
             if (time === undefined) {
                 time = 1288;
             }
@@ -145,7 +155,7 @@ HeyCommunity
             return true;
         }
 
-        this.showNoticeSuccess = function() {
+        self.showNoticeSuccess = function() {
             $rootScope.$broadcast('notice:show', $filter('translate')('SUCCESS'));
             $timeout(function() {
                 $rootScope.$broadcast('notice:hide');
@@ -153,7 +163,7 @@ HeyCommunity
             return true;
         }
 
-        this.showNoticeFail = function() {
+        self.showNoticeFail = function() {
             $rootScope.$broadcast('notice:show', $filter('translate')('FAIL'));
             $timeout(function() {
                 $rootScope.$broadcast('notice:hide');

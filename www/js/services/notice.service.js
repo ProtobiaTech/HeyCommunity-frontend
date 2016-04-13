@@ -9,9 +9,13 @@ HeyCommunity
     //
     //
     self.serviceRun = function() {
+        $rootScope.loadingShowDisabled = true;
+        self.index();
+
         $interval(function() {
+            $rootScope.loadingShowDisabled = true;
             self.index();
-        }, 1000*60*5)
+        }, 1000*60*1)
     }
 
     //

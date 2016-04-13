@@ -10,12 +10,6 @@ var HeyCommunity = angular.module('starter', [
 .run(['$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicScrollDelegate', 'UtilityService', 'SystemService', '$ionicLoading', '$ionicHistory', 'UserService', '$ionicPopup', '$translate', '$filter', '$timeout', '$cordovaBadge', '$http', '$cordovaDialogs',
     function($ionicPlatform, $rootScope, $state, $stateParams, $ionicScrollDelegate, UtilityService, SystemService, $ionicLoading, $ionicHistory, UserService, $ionicPopup, $translate, $filter, $timeout, $cordovaBadge, $http, $cordovaDialogs) {
     $ionicPlatform.ready(function($rootScope) {
-        /* @mark what doing
-        setTimeout(function () {
-            navigator.splashscreen.hide();
-        }, 2000);
-        */
-
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
             // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             // cordova.plugins.Keyboard.disableScroll(true);
@@ -24,6 +18,7 @@ var HeyCommunity = angular.module('starter', [
             //StatusBar.styleDefault();
             StatusBar.styleLightContent();
 
+            // statusTap scroll to top
             window.addEventListener("statusTap", function() {
                 $ionicScrollDelegate.scrollTop(true);
             });
@@ -90,15 +85,6 @@ var HeyCommunity = angular.module('starter', [
 
 .config(['$ionicFilterBarConfigProvider', '$ionicConfigProvider', '$httpProvider', '$translateProvider', function($ionicFilterBarConfigProvider, $ionicConfigProvider, $httpProvider, $translateProvider) {
     if (!localStorage.appLanguage) {
-        /* default language
-        if (navigator.language) {
-            $translateProvider.preferredLanguage(navigator.language);
-            localStorage.appLanguage = navigator.language;
-        } else {
-            $translateProvider.preferredLanguage('zh-cn');
-            localStorage.appLanguage = 'zh-cn';
-        }
-        */
         $translateProvider.useSanitizeValueStrategy(null);
         $translateProvider.preferredLanguage('zh-cn');
         localStorage.appLanguage = 'zh-cn';
@@ -107,6 +93,8 @@ var HeyCommunity = angular.module('starter', [
         $translateProvider.preferredLanguage(localStorage.appLanguage);
     }
 
+    //
+    // filterBar config
     $ionicFilterBarConfigProvider.theme('light');
     $ionicFilterBarConfigProvider.clear('ion-close');
     $ionicFilterBarConfigProvider.search('ion-search');
@@ -114,13 +102,24 @@ var HeyCommunity = angular.module('starter', [
     $ionicFilterBarConfigProvider.transition('vertical');
     $ionicFilterBarConfigProvider.placeholder('Search...');
 
+
+    //
+    // backButton config
     $ionicConfigProvider.backButton.previousTitleText(false);
     $ionicConfigProvider.backButton.text('');
 
+
+    //
+    // navbar config
     $ionicConfigProvider.navBar.alignTitle('center');   // Places them at the bottom for all OS
+
+
+    //
+    // tabs config
     $ionicConfigProvider.tabs.position('bottom');   // Places them at the bottom for all OS
     $ionicConfigProvider.tabs.style('standard');    // Makes them all look the same across all OS
 
+    //
     // http provider config
     $httpProvider.defaults.headers.common.domain = API;
     $httpProvider.interceptors.push(['$rootScope', function($rootScope) {

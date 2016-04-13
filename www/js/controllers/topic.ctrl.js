@@ -52,14 +52,16 @@ HeyCommunity
 // tab.topic-detail
 .controller('TopicDetailCtrl', ['$scope', 'TopicService', '$ionicActionSheet', '$ionicHistory', function($scope, TopicService, $ionicActionSheet, $ionicHistory) {
     $scope.TopicComment = {};
+    $scope.Topic = TopicService.topics[$scope.stateParams.id];
 
-    TopicService.show({id: $scope.stateParams.id}).then(function(response) {
+    TopicService.show({id: $scope.stateParams.topicId}).then(function(response) {
         $scope.Topic = response.data;
     });
 
+
     $scope.commentPublish = function() {
         var params = {
-            id: $scope.stateParams.id,
+            id: $scope.stateParams.topicId,
             content: $scope.TopicComment.content,
         }
         console.debug('### TopicService.commentPublish params', params);
@@ -73,7 +75,7 @@ HeyCommunity
 
     $scope.destroy = function() {
         var params = {
-            id: $scope.stateParams.id,
+            id: $scope.stateParams.topicId,
         }
         TopicService.destroy(params).then(function(response) {
             if (response.status === 200) {

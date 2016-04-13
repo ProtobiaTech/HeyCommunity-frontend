@@ -279,7 +279,7 @@ HeyCommunity
     })
 
     .state('hey.topic-detail', {
-        url: '/topic-detail/:id',
+        url: '/topic-detail/:topicId/:id?',
         views: {
             'menuContent': {
                 templateUrl: 'templates/topic/topic-detail.html',

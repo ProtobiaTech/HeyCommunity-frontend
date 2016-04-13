@@ -9,11 +9,11 @@
             on-refresh="doRefresh()">
         </ion-refresher>
 
-        <div ng-hide="timelines" class="padding text-center">
+        <div ng-hide="TimelineService.timelines" class="padding text-center">
             <ion-spinner></ion-spinner>
         </div>
 
-        <div ng-repeat="(index, item) in timelines" class="list">
+        <div ng-repeat="(index, item) in TimelineService.timelines track by $index" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">
                     <img ui-sref="hey-uhome({id: item.author.id})" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div ng-if="timelines && timelines.length == 0" class="padding text-center">
+        <div ng-if="TimelineService.timelines && TimelineService.timelines.length == 0" class="padding text-center">
             {{ 'WHAT_IS_NEW' | translate }}
         </div>
 

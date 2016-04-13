@@ -15,12 +15,12 @@
             on-refresh="doRefresh()">
         </ion-refresher>
 
-        <div ng-hide="topics" class="padding text-center">
+        <div ng-hide="TopicService.topics" class="padding text-center">
             <ion-spinner></ion-spinner>
         </div>
 
         <div class="list">
-            <a ng-repeat="item in topics" class="item item-text-wrap" ui-sref="hey.topic-detail({id: item.id})" nav-direction="forward">
+            <a ng-repeat="item in TopicService.topics track by $index" class="item item-text-wrap" ui-sref="hey.topic-detail({id: $index, topicId: item.id})" nav-direction="forward">
                 <h2 class="title ng-binding">{{ item.title }}</h2>
                 <div style="max-height:60px; overflow:hidden;">
                     <p class="content">

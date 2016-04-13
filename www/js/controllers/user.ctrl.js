@@ -1,7 +1,7 @@
 HeyCommunity
 
 // tab.user
-.controller('UserIndexCtrl', ['$scope', 'UserService', function($scope, UserService) {
+.controller('UserIndexCtrl', ['$scope', 'UserService', 'NoticeService', function($scope, UserService, NoticeService) {
     if ($scope.stateParams.id) {
         $scope.userInfo = false;
         $scope.isOwnInfo = false;
@@ -14,6 +14,9 @@ HeyCommunity
     } else {
         $scope.isOwnInfo = true;
     }
+
+    $scope.$root.loadingShowDisabled = true;
+    NoticeService.index();
 }])
 
 
@@ -365,10 +368,17 @@ HeyCommunity
 
     $scope.NoticeService = NoticeService;
 
-    NoticeService.index().then(function(response) {
-        if (response.status === 200) {
-        }
-    });
+    $scope.$root.loadingShowDisabled = true;
+    NoticeService.index();
+
+    //
+    // load more
+    $scope.doRefresh = function() {
+        $scope.$root.loadingShowDisabled = true;
+        NoticeService.index().finally(function() {
+            $scope.$broadcast('scroll.refreshComplete');
+        });
+    }
 
     //
     $scope.showActionSheet = function() {
@@ -421,7 +431,7 @@ HeyCommunity
     //
     $scope.goState = function(item) {
         if (item.type.name === 'timeline_like' || item.type.name === 'timeline_comment') {
-            $scope.state.go('hey.timeline-detail', {id: item.entity_id})
+            $scope.state.go('hey.timeline-detail', {timelineId: item.entity_id})
         } else if (item.type.name === 'topic_like' || item.type.name === 'topic_comment') {
             $scope.state.go('hey.topic-detail', {id: item.entity_id})
         }

@@ -2,26 +2,25 @@ HeyCommunity
 
 // tab.topic
 .controller('TopicCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
-    $scope.$root.loadingShowDisabled = true;
-    TopicService.index().then(function(response) {
-        if (response.status == 200) {
-            $scope.topics = response.data.data;
-            $scope.currentPage = response.data.current_page;
-        }
-    });
+    $scope.TopicService = TopicService;
+
+    if (localStorage.topics) {
+        $scope.TopicService.topics = JSON.parse(localStorage.topics);
+    } else {
+        $scope.$root.loadingShowDisabled = true;
+        TopicService.index();
+    }
 
     //
     // do refresh
     $scope.doRefresh = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        TopicService.index().then(function(response) {
-            console.debug('### TopicService.doRefresh response', response);
-            if (response.status == 200) {
-                $scope.topics = response.data.data;
-                $scope.currentPage = response.data.current_page;
-            }
-        }).finally(function() {
+        var params = {
+            type:   'refresh',
+            id:     $scope.TopicService.topics[0].id,
+        }
+        TopicService.index(params).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
         });
     }
@@ -32,16 +31,12 @@ HeyCommunity
         $scope.$root.loadingShowDisabled = true;
 
         var params = {
-            page: $scope.currentPage + 1,
+            type:   'infinite',
+            id:     $scope.TopicService.topics[$scope.TopicService.topics.length - 1].id,
         }
-        console.debug('### TopicService.loadMore params', params);
         TopicService.index(params).then(function(response) {
-            console.debug('### TopicService.loadMore response', response);
             if (response.status == 200) {
-                if (typeof response.data.data !== 'undefined' && response.data.data.length > 0) {
-                    $scope.topics = $scope.topics.concat(response.data.data);
-                    $scope.currentPage = response.data.current_page;
-                } else {
+                if (response.data.length <= 0) {
                     $scope.loadMoreDisabled = true;
                 }
             }
@@ -57,14 +52,16 @@ HeyCommunity
 // tab.topic-detail
 .controller('TopicDetailCtrl', ['$scope', 'TopicService', '$ionicActionSheet', '$ionicHistory', function($scope, TopicService, $ionicActionSheet, $ionicHistory) {
     $scope.TopicComment = {};
+    $scope.Topic = TopicService.topics[$scope.stateParams.id];
 
-    TopicService.show({id: $scope.stateParams.id}).then(function(response) {
+    TopicService.show({id: $scope.stateParams.topicId}).then(function(response) {
         $scope.Topic = response.data;
     });
 
+
     $scope.commentPublish = function() {
         var params = {
-            id: $scope.stateParams.id,
+            id: $scope.stateParams.topicId,
             content: $scope.TopicComment.content,
         }
         console.debug('### TopicService.commentPublish params', params);
@@ -78,7 +75,7 @@ HeyCommunity
 
     $scope.destroy = function() {
         var params = {
-            id: $scope.stateParams.id,
+            id: $scope.stateParams.topicId,
         }
         TopicService.destroy(params).then(function(response) {
             if (response.status === 200) {

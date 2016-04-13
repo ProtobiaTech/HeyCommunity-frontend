@@ -6,6 +6,11 @@
     </ion-nav-buttons>
 
     <ion-content id="module-user" class="page-user-notice">
+        <ion-refresher
+            pulling-text="{{ 'PULL_TO_REFRESH' | translate }}"
+            on-refresh="doRefresh()">
+        </ion-refresher>
+
         <ion-list ng-repeat="($index, item) in NoticeService.notices" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
             <ion-item class="item" ng-click="goState(item)">
                 <img ui-sref="hey-uhome({id: item.initiator.id})" style="background-color:#ddd; border-radius:20%; height:41px; width:41px; position:absolute;" ng-src="{{ getPicUrl(item.initiator.avatar) }}">
@@ -15,7 +20,7 @@
                         <small class="stable">
                             {{ item.created_at | momentDate: 'fromNow' }}
                         </small>
-                        <small ng-if="item.is_checked == 1" class="stable pull-right">
+                        <small ng-if="item.is_checked == 1" class="stable" style="font-size:10px">
                             {{ 'READED' | translate }}
                         </small>
                     </div>
@@ -24,7 +29,12 @@
                         <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'topic_like'">like your</span>
                         <span ng-if="item.type.name == 'timeline_comment' || item.type.name == 'topic_comment'">comment your</span>
 
-                        <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'timeline_comment'">{{ 'TIMELINE' | translate }} - {{ item.entity_id }}</span>
+                        <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'timeline_comment'">
+                            {{ 'TIMELINE' | translate }}
+                            <div style="position:absolute; right:16px; top:16px;">
+                                <img style="height:41px; border-radius:2px;" ng-src="{{ getPicUrl(item.entity.attachment) }}">
+                            </div>
+                        </span>
                         <span ng-if="item.type.name == 'topic_like' || item.type.name == 'topic_comment'">{{ 'TOPIC' | translate }} - {{ item.entity_id }}</span>
                         <span>&nbsp;</span>
                     </div>

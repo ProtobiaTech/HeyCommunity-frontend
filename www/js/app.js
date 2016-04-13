@@ -43,6 +43,7 @@ var HeyCommunity = angular.module('starter', [
     });
 
 
+    //
     // user
     UserService.userInfo().then(function(response) {
         if (response.status === 200) {

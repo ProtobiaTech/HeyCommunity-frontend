@@ -29,9 +29,9 @@ HeyCommunity
         q.then(function(response) {
             if (response.status === 200) {
                 var badgeNum = 0;
-                self.notices = response.data.data;
+                self.notices = response.data;
 
-                angular.forEach(response.data.data, function(item, $index) {
+                angular.forEach(response.data, function(item, $index) {
                     if (item.is_checked != 1) {
                         badgeNum += 1;
                     }

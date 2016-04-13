@@ -39,7 +39,7 @@ HeyCommunity
     })
 
     .state('hey.timeline-detail', {
-        url: '/timeline-detail/:timelineId/:id',
+        url: '/timeline-detail/:timelineId/:id?',
         views: {
             'menuContent': {
                 templateUrl: 'templates/timeline/timeline-detail.html',

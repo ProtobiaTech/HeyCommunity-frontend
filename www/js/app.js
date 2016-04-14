@@ -8,15 +8,18 @@ var HeyCommunity = angular.module('starter', [
 
 
 .run([
-    '$ionicPlatform', '$rootScope', '$state', '$stateParams', 'UtilityService', 'SystemService', 'UserService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout',
-    function($ionicPlatform, $rootScope, $state, $stateParams, UtilityService, SystemService, UserService, $ionicLoading, $ionicHistory, $filter, $timeout) {
+    '$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicModal', 'UtilityService', 'SystemService', 'UserService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout', '$ionicScrollDelegate', 'UserSignInService', 'UserSignUpService',
+    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicModal, UtilityService, SystemService, UserService, $ionicLoading, $ionicHistory, $filter, $timeout, $ionicScrollDelegate, UserSignInService, UserSignUpService) {
         //
         // platform ready
         $ionicPlatform.ready(function($rootScope) {
+            // keyboard
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 // cordova.plugins.Keyboard.disableScroll(true);
             }
+
+            // status bar
             if (window.StatusBar) {
                 //StatusBar.styleDefault();
                 StatusBar.styleLightContent();
@@ -53,6 +56,26 @@ var HeyCommunity = angular.module('starter', [
             if (response.status === 200) {
                 $rootScope.userInfo = response.data;
             }
+        });
+
+
+        //
+        // user modal
+        $rootScope.UserSignUpService = UserSignUpService;
+        $rootScope.UserSignInService = UserSignInService;
+
+        $ionicModal.fromTemplateUrl('templates/user/user-signUp.html', {
+            scope: $rootScope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $rootScope.signUpModal = modal;
+        });
+
+        $ionicModal.fromTemplateUrl('templates/user/user-signIn.html', {
+            scope: $rootScope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $rootScope.signInModal = modal;
         });
 
 

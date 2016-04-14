@@ -16,9 +16,11 @@ HeyCommunity
     $scope.doRefresh = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        var params = {
-            type:   'refresh',
-            id:     $scope.TopicService.topics[0].id,
+        if ($scope.TopicService.topics.length > 0) {
+            var params = {
+                type:   'refresh',
+                id:     $scope.TopicService.topics[0].id,
+            }
         }
         TopicService.index(params).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
@@ -30,9 +32,11 @@ HeyCommunity
     $scope.loadMore = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        var params = {
-            type:   'infinite',
-            id:     $scope.TopicService.topics[$scope.TopicService.topics.length - 1].id,
+        if ($scope.TopicService.topics.length > 0) {
+            var params = {
+                type:   'infinite',
+                id:     $scope.TopicService.topics[$scope.TopicService.topics.length - 1].id,
+            }
         }
         TopicService.index(params).then(function(response) {
             if (response.status == 200) {

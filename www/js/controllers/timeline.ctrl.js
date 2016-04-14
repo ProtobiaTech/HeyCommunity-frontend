@@ -113,9 +113,11 @@ HeyCommunity
     $scope.doRefresh = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        var params = {
-            type:   'refresh',
-            id:     $scope.TimelineService.timelines[0].id,
+        if ($scope.TimelineService.timelines.length > 0) {
+            var params = {
+                type:   'refresh',
+                id:     $scope.TimelineService.timelines[0].id,
+            }
         }
         TimelineService.index(params).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
@@ -127,9 +129,11 @@ HeyCommunity
     $scope.loadMore = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        var params = {
-            type:   'infinite',
-            id:     $scope.TimelineService.timelines[$scope.TimelineService.timelines.length - 1].id,
+        if ($scope.TimelineService.timelines.length > 0) {
+            var params = {
+                type:   'infinite',
+                id:     $scope.TimelineService.timelines[$scope.TimelineService.timelines.length - 1].id,
+            }
         }
         TimelineService.index(params).finally(function() {
             $scope.$broadcast('scroll.infiniteScrollComplete');

@@ -128,26 +128,6 @@ HeyCommunity
         }
     })
 
-    .state('hey.user-signIn', {
-        url: '/user/signIn',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/user/user-signIn.html',
-                controller: 'UserSignInCtrl'
-            }
-        }
-    })
-
-    .state('hey.user-signUp', {
-        url: '/user/signUp',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/user/user-signUp.html',
-                controller: 'UserSignUpCtrl'
-            }
-        }
-    })
-
     .state('hey.user-signOut', {
         cache: false,
         url: '/user/signOut',
@@ -168,8 +148,8 @@ HeyCommunity
         }
     })
 
-    .state('hey-uhome', {
-        url: '/uhome/:id',
+    .state('hey.user-home', {
+        url: '/user/home/:id',
         views: {
             'menuContent': {
                 templateUrl: 'templates/user/user-uhome.html',

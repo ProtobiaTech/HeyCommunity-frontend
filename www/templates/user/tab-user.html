@@ -1,16 +1,36 @@
-<ion-view class="has-tabs" view-title="{{ 'USER_CENTER' | translate }}" cache-view="false" hide-back-button="true">
+<ion-view class="has-tabs" view-title="{{ utility.isAuth() ? ('USER_CENTER' | translate) : appSiteTitle }}" cache-view="false" hide-back-button="true">
     <ion-content id="module-user" class="page-user">
         <div ng-if="!utility.isAuth()" class="padding">
-            <div class="text-center h4">{{ appSiteTitle }}</div>
+
+            <div class="text-center" style="margin-top:60px;">
+                <img src="imgs/apple-touch-icon.png" style="width:100px; border-radius:10px;">
+            </div>
 
             <p></p>
-            <p>
-                Welcome to {{ appSiteTitle }},
-                Here you can share the good things you find,
-                initiate a topic to discuss with you.
-            </p>
 
-            <p>Best wishes your life more fun.</p>
+            <div class="text-center" style="margin:20px 40px;">
+                <p class="">
+                    欢迎来到 {{ appSiteTitle }} <br>
+                    在这里分享你的新发现和有趣的事物,
+                    你也可以发起一个话题与大家一起讨论
+                </p>
+
+                <p class="">
+                    希望你能从中获取到乐趣
+                </p>
+            </div>
+
+            <div class="text-center hide" style="margin:20px 40px;">
+                <p class="">
+                    Welcome to {{ appSiteTitle }},
+                    Here you can share the good things you find,
+                    initiate a topic to discuss with you.
+                </p>
+
+                <p class="">
+                    Best wishes your life more fun.
+                </p>
+            </div>
         </div>
 
         <div ng-if="utility.isAuth()">
@@ -70,12 +90,12 @@
         </div>
     </ion-content>
 
-    <div ng-if="!utility.isAuth()" style="position:absolute; bottom:40px; width:100%" class="padding">
+    <div ng-if="!utility.isAuth()" style="position:absolute; bottom:0px; width:100%" class="padding-left padding-right">
         <div class="">
-            <a class="button button-block" ui-sref="hey.user-signIn">{{ 'SIGN_IN' | translate }}</a>
+            <a class="button button-block" ng-click="signInModal.show()" todo-ui-sref="hey.user-signIn">{{ 'SIGN_IN' | translate }}</a>
         </div>
         <div class="">
-            <a class="button button-block" ui-sref="hey.user-signUp">{{ 'SIGN_UP' | translate }}</a>
+            <a class="button button-block" ng-click="signUpModal.show()" todo-ui-sref="hey.user-signUp">{{ 'SIGN_UP' | translate }}</a>
         </div>
     </div>
 </ion-view>

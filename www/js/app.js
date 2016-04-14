@@ -8,8 +8,8 @@ var HeyCommunity = angular.module('starter', [
 
 
 .run([
-    '$ionicPlatform', '$rootScope', '$state', '$stateParams', 'UtilityService', 'SystemService', 'UserService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout', '$ionicScrollDelegate',
-    function($ionicPlatform, $rootScope, $state, $stateParams, UtilityService, SystemService, UserService, $ionicLoading, $ionicHistory, $filter, $timeout, $ionicScrollDelegate) {
+    '$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicModal', 'UtilityService', 'SystemService', 'UserService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout', '$ionicScrollDelegate', 'UserSignInService', 'UserSignUpService',
+    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicModal, UtilityService, SystemService, UserService, $ionicLoading, $ionicHistory, $filter, $timeout, $ionicScrollDelegate, UserSignInService, UserSignUpService) {
         //
         // platform ready
         $ionicPlatform.ready(function($rootScope) {
@@ -56,6 +56,26 @@ var HeyCommunity = angular.module('starter', [
             if (response.status === 200) {
                 $rootScope.userInfo = response.data;
             }
+        });
+
+
+        //
+        // user modal
+        $rootScope.UserSignUpService = UserSignUpService;
+        $rootScope.UserSignInService = UserSignInService;
+
+        $ionicModal.fromTemplateUrl('templates/user/user-signUp.html', {
+            scope: $rootScope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $rootScope.signUpModal = modal;
+        });
+
+        $ionicModal.fromTemplateUrl('templates/user/user-signIn.html', {
+            scope: $rootScope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $rootScope.signInModal = modal;
         });
 
 

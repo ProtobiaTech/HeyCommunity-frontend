@@ -168,8 +168,8 @@ HeyCommunity
         }
     })
 
-    .state('hey-uhome', {
-        url: '/uhome/:id',
+    .state('hey.user-home', {
+        url: '/user/home/:id',
         views: {
             'menuContent': {
                 templateUrl: 'templates/user/user-uhome.html',

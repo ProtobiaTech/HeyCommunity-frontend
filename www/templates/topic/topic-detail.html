@@ -9,10 +9,10 @@
         <div ng-if="Topic">
             <div class="list card">
                 <div class="item item-avatar">
-                    <img ui-sref="hey-uhome({id: Topic.author.id})" ng-if="Topic" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(Topic.author.avatar + '?imageView/2/w/80') }}">
+                    <img ui-sref="hey.user-home({id: Topic.author.id})" ng-if="Topic" style="background-color:#dfdfdf;" ng-src="{{ getPicUrl(Topic.author.avatar + '?imageView/2/w/80') }}">
                     <h2>{{ Topic.title }}</h2>
                     <p>
-                        <span ui-sref="hey-uhome({id: Topic.author.id})">{{ Topic.author.nickname }}</span> &nbsp; {{ getMomentDate(Topic.created_at) | date: "yyyy-MM-dd" : "+0800"}}
+                        <span ui-sref="hey.user-home({id: Topic.author.id})">{{ Topic.author.nickname }}</span> &nbsp; {{ getMomentDate(Topic.created_at) | date: "yyyy-MM-dd" : "+0800"}}
                     </p>
                 </div>
 
@@ -30,11 +30,11 @@
                 <div class="item item-body" style="padding:0;">
                     <div class="row">
                         <div class="col col-10">
-                            <img ui-sref="hey-uhome({id: item.author.id})" style="width:100%; border-radius:50%; background-color:#dfdfdf" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
+                            <img ui-sref="hey.user-home({id: item.author.id})" style="width:100%; border-radius:50%; background-color:#dfdfdf" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">
                         </div>
                         <div class="col" style="font-size:14px;">
                             <div class="subedue" style="font-size:14px; line-height:1.5em; white-space:nowrap; overflow:hidden;">
-                                <span ui-sref="hey-uhome({id: item.author.id})">{{ item.author.nickname }}</span>
+                                <span ui-sref="hey.user-home({id: item.author.id})">{{ item.author.nickname }}</span>
                                 &nbsp;&nbsp;
                                 <span>{{ item.created_at | momentDate | date: "yyyy-MM-dd" : "+0800"}}</span>
                             </div>

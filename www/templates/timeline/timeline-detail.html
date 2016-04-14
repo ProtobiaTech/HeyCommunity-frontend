@@ -44,7 +44,7 @@
             <div style="positon:absoluted;" class="item item-input-inset">
                 <label class="item-input-wrapper">
                     <input ng-if="utility.isAuth()" ng-model="TimelineComment.content" required ng-minlength="3" type="text" style="width:100%" placeholder="{{ 'SAY_SOMETHING' | translate }}">
-                    <input ng-if="!utility.isAuth()" ng-model="TimelineComment.content" required ng-minlength="3" type="text" style="width:100%" disabled placeholder="{{ 'PLEASE_SIGN_IN' | translate }}">
+                    <input ng-if="!utility.isAuth()" ng-click="signInModal.show()" ng-model="TimelineComment.content" required ng-minlength="3" type="text" style="width:100%" placeholder="{{ 'SAY_SOMETHING' | translate }}">
                 </label>
                 <button type="submit" ng-disabled="ngForm.$invalid" class="button button-small">{{ 'COMMENT' | translate }}</button>
             </div>

@@ -1,8 +1,8 @@
 HeyCommunity
 
 .service('UtilityService', [
-    '$cordovaBadge', '$cordovaDialogs', '$rootScope', '$filter', '$state', '$ionicHistory', '$timeout', 'NoticeService',
-    function($cordovaBadge, $cordovaDialogs, $rootScope, $filter, $state, $ionicHistory, $timeout, NoticeService) {
+    '$cordovaBadge', '$cordovaDialogs', '$rootScope', '$filter', '$state', '$ionicHistory', '$timeout', '$cordovaInAppBrowser', 'NoticeService',
+    function($cordovaBadge, $cordovaDialogs, $rootScope, $filter, $state, $ionicHistory, $timeout, $cordovaInAppBrowser, NoticeService) {
 
         var self = this;
 
@@ -169,6 +169,21 @@ HeyCommunity
                 $rootScope.$broadcast('notice:hide');
             }, 1288);
             return false;
+        }
+
+
+        //
+        //
+        self.openPage = function(url) {
+            var options = {
+                location: 'no',
+                clearcache: 'yes',
+                toolbar: 'yes'
+            };
+
+            $cordovaInAppBrowser.open(url, '_blank', options).then(function(event) {
+                // success
+            })
         }
 
     }

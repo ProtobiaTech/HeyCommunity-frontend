@@ -34,7 +34,8 @@
       "id": "cn.jpush.phonegap.JPushPlugin"
     },
     "org.apache.cordova.device",
-    "cordova-plugin-dialogs"
+    "cordova-plugin-dialogs",
+    "cordova-plugin-inappbrowser"
   ],
   "cordovaPlatforms": [
     "ios",

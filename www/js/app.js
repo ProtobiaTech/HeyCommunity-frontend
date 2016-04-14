@@ -8,15 +8,18 @@ var HeyCommunity = angular.module('starter', [
 
 
 .run([
-    '$ionicPlatform', '$rootScope', '$state', '$stateParams', 'UtilityService', 'SystemService', 'UserService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout',
-    function($ionicPlatform, $rootScope, $state, $stateParams, UtilityService, SystemService, UserService, $ionicLoading, $ionicHistory, $filter, $timeout) {
+    '$ionicPlatform', '$rootScope', '$state', '$stateParams', 'UtilityService', 'SystemService', 'UserService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout', '$ionicScrollDelegate',
+    function($ionicPlatform, $rootScope, $state, $stateParams, UtilityService, SystemService, UserService, $ionicLoading, $ionicHistory, $filter, $timeout, $ionicScrollDelegate) {
         //
         // platform ready
         $ionicPlatform.ready(function($rootScope) {
+            // keyboard
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
                 // cordova.plugins.Keyboard.disableScroll(true);
             }
+
+            // status bar
             if (window.StatusBar) {
                 //StatusBar.styleDefault();
                 StatusBar.styleLightContent();

@@ -1,6 +1,12 @@
-<ion-view view-title="{{ 'SIGN_UP' | translate}}">
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <button class="button button-clear button-primary" ng-click="signUpModal.hide()">{{ 'CLOSE' | translate }}</button>
+        <h1 class="title">{{ 'SIGN_UP' | translate}}</h1>
+    </ion-header-bar>
+
     <ion-content id="module-user" class="page-signup">
         <div class="padding">
+            {{ signUpModal }}
             <p class="h5">{{ 'WELCOME_COME_TO' | translate }}{{ tenantInfo.site_name }}</p>
 
             <!-- step of 1 -->
@@ -52,8 +58,8 @@
 
             <div style="margin-top:4px;">
                 <a ng-if="signUpStep == 2" ng-click="setVal('signUpStep', 1)" class="">{{ 'PREV' | translate }}</a>
-                <a ui-sref="hey.user-signIn" class="pull-right">{{ 'SIGN_IN' | translate }}</a>
+                <a ng-click="signInModal.show();signUpModal.hide();" todo-ui-sref="hey.user-signIn" class="pull-right">{{ 'SIGN_IN' | translate }}</a>
             </div>
         </div>
     </ion-content>
-</ion-view>
+</ion-modal-view>

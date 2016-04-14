@@ -1,4 +1,9 @@
-<ion-view view-title="{{ 'SIGN_IN' | translate}}">
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <button class="button button-clear button-primary" ng-click="signInModal.hide()">{{ 'CLOSE' | translate }}</button>
+        <h1 class="title">{{ 'SIGN_IN' | translate}}</h1>
+    </ion-header-bar>
+
     <ion-content id="module-user" class="page-signin">
         <div class="padding">
             <p class="h5">{{ 'WELCOME_COME_BACK' | translate }}{{ tenantInfo.site_name }}</p>
@@ -20,8 +25,8 @@
 
             <div style="margin-top:4px;">
                 <a style="color:#ddd">{{ 'FORGET_PASSWORD' | translate }}</a>
-                <a ui-sref="hey.user-signUp" class="pull-right">{{ 'SIGN_UP' | translate }}</a>
+                <a ng-click="signUpModal.show();signInModal.hide();" todo-ui-sref="hey.user-signUp" class="pull-right">{{ 'SIGN_UP' | translate }}</a>
             </div>
         </div>
     </ion-content>
-</ion-view>
+</ion-modal-view>

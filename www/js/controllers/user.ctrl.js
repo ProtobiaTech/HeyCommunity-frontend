@@ -1,7 +1,7 @@
 HeyCommunity
 
 // tab.user
-.controller('UserIndexCtrl', ['$scope', 'UserService', 'NoticeService', function($scope, UserService, NoticeService) {
+.controller('UserIndexCtrl', ['$scope', 'UserService', 'NoticeService', '$ionicModal', function($scope, UserService, NoticeService, $ionicModal) {
     if ($scope.stateParams.id) {
         $scope.userInfo = false;
         $scope.isOwnInfo = false;
@@ -17,6 +17,21 @@ HeyCommunity
 
     $scope.$root.loadingShowDisabled = true;
     NoticeService.index();
+
+
+    $ionicModal.fromTemplateUrl('templates/user/user-signUp.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.signUpModal = modal;
+    });
+
+    $ionicModal.fromTemplateUrl('templates/user/user-signIn.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.signInModal = modal;
+    });
 }])
 
 

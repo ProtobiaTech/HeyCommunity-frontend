@@ -14,6 +14,7 @@ HeyCommunity
         LANGUAGE:           '语言',
         PLEASE_SIGN_IN:     '请先登录',
         ERROR:              '错误',
+        REPORT:             '报告',
 
         FORGET_PASSWORD:    '忘记密码',
         NEXT:               '下一步',

@@ -36,10 +36,9 @@
                         <a ng-if="utility.isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
                         <a class="icon ion-more" ui-sref="hey.timeline-detail({id: index, timelineId: item.id})"></a>
-                        <a ng-if="utility.isAdmin()" ng-click="destroy(item.id)" class="icon ion-trash-b"></a>
                     </div>
 
-                    <div ng-if="(item.like_num - 0) + (item.comment_num - 0) > 0" style="line-height:1em;">
+                    <div ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" ng-if="(item.like_num - 0) + (item.comment_num - 0) > 0" style="line-height:1em;">
                         <i class="icon ion-person-stalker"></i>
                         <small>
                             {{ getInteractionUsers(item) }}
@@ -48,7 +47,7 @@
                         </small>
                     </div>
 
-                    <div ng-if="(item.like_num - 0) + (item.comment_num - 0) <= 0" style="line-height:1em;">
+                    <div ui-sref="hey.timeline-detail({id: index, timelineId: item.id})" ng-if="(item.like_num - 0) + (item.comment_num - 0) <= 0" style="line-height:1em;">
                         <i class="icon ion-person"></i>
                         <small>
                             {{ item.author.nickname }}

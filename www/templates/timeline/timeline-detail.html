@@ -1,4 +1,10 @@
 <ion-view cache-view="false"  view-title="{{ 'COMMENTS' | translate }}" hide-tabs>
+    <ion-nav-buttons side="right">
+        <button ng-click="showActionSheet()" class="button back-button buttons button-clear header-item" style="">
+            <i class="icon ion-navicon"></i>
+        </button>
+    </ion-nav-buttons>
+
     <ion-content id="module-timeline" style="margin-bottom:53px;">
         <div>
             <img style="min-height:60px; width:100%; margin-top:-10px; background-color:#ddd;" ng-src="{{ getPicUrl(Timeline.attachment + '?imageView/2/w/800') }}">

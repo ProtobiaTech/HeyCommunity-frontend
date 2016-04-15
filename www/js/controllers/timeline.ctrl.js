@@ -79,36 +79,6 @@ HeyCommunity
     }
 
     //
-    // destroy
-    $scope.destroy = function(id) {
-        var data = {
-            title: $scope.filter('translate')('ALERT'),
-            content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
-        }
-
-        $scope.utility.showConfirm(data, function() {
-            var params = {
-                id: id,
-            }
-            TimelineService.destroy(params).then(function(response) {
-                if (response.status === 200) {
-                    angular.forEach($scope.TimelineService.timelines, function(value, key) {
-                        if (value.id === params.id) {
-                            delete $scope.TimelineService.timelines.splice(key, 1);
-
-                            $scope.utility.showNoticeSuccess();
-                            $scope.timeout(function() {
-                                $scope.$root.$broadcast('notice:hide');
-                            }, 1288);
-                        }
-                    });
-                }
-            })
-        }, function() {
-        });
-    }
-
-    //
     // do refresh
     $scope.doRefresh = function() {
         $scope.$root.loadingShowDisabled = true;
@@ -223,7 +193,7 @@ HeyCommunity
 
 
 // hey.timeline-detail
-.controller('TimelineDetailCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
+.controller('TimelineDetailCtrl', ['$scope', 'TimelineService', '$ionicActionSheet', function($scope, TimelineService, $ionicActionSheet) {
     var timelineIndex = $scope.stateParams.id;
     var timelineId = $scope.stateParams.timelineId;
     $scope.Timeline = {};
@@ -298,4 +268,65 @@ HeyCommunity
             }
         });
     }
+
+
+    //
+    // destroy
+    $scope.destroy = function() {
+        var data = {
+            title: $scope.filter('translate')('ALERT'),
+            content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
+        }
+
+        $scope.utility.showConfirm(data, function() {
+            var params = {
+                id: $scope.Timeline.id,
+            }
+            TimelineService.destroy(params).then(function(response) {
+                if (response.status === 200) {
+                    angular.forEach($scope.TimelineService.timelines, function(value, key) {
+                        if (value.id === params.id) {
+                            delete $scope.TimelineService.timelines.splice(key, 1);
+
+                            $scope.state.go('hey.timeline');
+                        }
+                    });
+                }
+            })
+        }, function() {
+        });
+    }
+
+    //
+    $scope.showActionSheet = function() {
+        var config = {
+            buttons: [{
+                text: $scope.filter('translate')('REPORT')
+            }],
+            titleText: $scope.filter('translate')('MANAGEMENT_OPERATIONS'),
+            cancelText: $scope.filter('translate')('CANCEL'),
+            cancel: function() {
+            },
+            buttonClicked: function(index) {
+                if (index === 0) {
+                    $scope.reportModal.show();
+                }
+                hideSheet();
+            },
+            destructiveButtonClicked: function(index) {
+                $scope.destroy();
+                hideSheet();
+            },
+        }
+
+        if ($scope.utility.isAdmin()) {
+            config.destructiveText = $scope.filter('translate')('DESTROY');
+        }
+
+        var hideSheet = $ionicActionSheet.show(config);
+
+        $scope.timeout(function() {
+            hideSheet();
+        }, 6000);
+    };
 }])

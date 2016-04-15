@@ -14,6 +14,7 @@ HeyCommunity
         LANGUAGE:           'Language',
         PLEASE_SIGN_IN:     'Please Sign-in',
         ERROR:              'Error',
+        REPORT:             'Report',
 
         FORGET_PASSWORD:    'Forget Password',
         NEXT:               'Next Step',

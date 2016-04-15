@@ -87,6 +87,7 @@ HeyCommunity
         // please login first
         self.please_login_first = function() {
             if (!self.isAuth()) {
+                $rootScope.signInModal.show();
                 $rootScope.$broadcast('notice:show', $filter('translate')('PLEASE_LOGIN_FIRST'));
                 $timeout(function() {
                     $rootScope.$broadcast('notice:hide');

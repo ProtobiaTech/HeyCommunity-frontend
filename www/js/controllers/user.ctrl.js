@@ -2,25 +2,22 @@ HeyCommunity
 
 // tab.user
 .controller('UserIndexCtrl', ['$scope', 'UserService', 'NoticeService', '$ionicModal', function($scope, UserService, NoticeService, $ionicModal) {
-    if ($scope.stateParams.id) {
-        $scope.userInfo = false;
-        $scope.isOwnInfo = false;
-
-        UserService.userInfo($scope.stateParams.id).then(function(response) {
-            if (response.status === 200) {
-                $scope.userInfo = response.data;
-            }
-        });
-    } else {
-        $scope.isOwnInfo = true;
-    }
-
     $scope.$root.loadingShowDisabled = true;
     NoticeService.index();
-
-
 }])
 
+
+//
+//
+.controller('UserHomeCtrl', ['$scope', 'UserService', 'NoticeService', '$ionicModal', function($scope, UserService, NoticeService, $ionicModal) {
+    $scope.userInfo = false;
+
+    UserService.userInfo($scope.stateParams.id).then(function(response) {
+        if (response.status === 200) {
+            $scope.userInfo = response.data;
+        }
+    });
+}])
 
 
 //

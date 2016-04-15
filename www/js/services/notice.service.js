@@ -10,12 +10,16 @@ HeyCommunity
     //
     //
     self.serviceRun = function() {
-        $rootScope.loadingShowDisabled = true;
-        self.index();
-
-        $interval(function() {
+        if ($rootScope.utility.isAuth()) {
             $rootScope.loadingShowDisabled = true;
             self.index();
+        }
+
+        $interval(function() {
+            if ($rootScope.utility.isAuth()) {
+                $rootScope.loadingShowDisabled = true;
+                self.index();
+            }
         }, 1000*60*1)
     }
 

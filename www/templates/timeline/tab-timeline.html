@@ -3,7 +3,7 @@
         <a class="button button-clear button-light icon ion-ios-camera-outline" ng-click="showActionSheet()"></a>
     </ion-nav-buttons>
 
-    <ion-content id="module-timeline" delegate-handle="contentScrollDelegate">
+    <ion-content id="module-timeline">
         <ion-refresher
             pulling-text="{{ 'PULL_TO_REFRESH' | translate }}"
             on-refresh="doRefresh()">

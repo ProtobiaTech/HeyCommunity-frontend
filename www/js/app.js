@@ -8,8 +8,8 @@ var HeyCommunity = angular.module('starter', [
 
 
 .run([
-    '$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicModal', 'UtilityService', 'SystemService', 'UserService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout', '$ionicScrollDelegate', 'UserSignInService', 'UserSignUpService',
-    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicModal, UtilityService, SystemService, UserService, $ionicLoading, $ionicHistory, $filter, $timeout, $ionicScrollDelegate, UserSignInService, UserSignUpService) {
+    '$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicModal', 'UtilityService', 'SystemService', 'UserService', 'UserReportService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout', '$ionicScrollDelegate', 'UserSignInService', 'UserSignUpService',
+    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicModal, UtilityService, SystemService, UserService, UserReportService, $ionicLoading, $ionicHistory, $filter, $timeout, $ionicScrollDelegate, UserSignInService, UserSignUpService) {
         //
         // platform ready
         $ionicPlatform.ready(function($rootScope) {
@@ -63,6 +63,7 @@ var HeyCommunity = angular.module('starter', [
         // user modal
         $rootScope.UserSignUpService = UserSignUpService;
         $rootScope.UserSignInService = UserSignInService;
+        $rootScope.UserReportService = UserReportService;
 
         $ionicModal.fromTemplateUrl('templates/user/user-signUp.html', {
             scope: $rootScope,
@@ -76,6 +77,13 @@ var HeyCommunity = angular.module('starter', [
             animation: 'slide-in-up'
         }).then(function(modal) {
             $rootScope.signInModal = modal;
+        });
+
+        $ionicModal.fromTemplateUrl('templates/user/user-report.html', {
+            scope: $rootScope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $rootScope.reportModal = modal;
         });
 
 

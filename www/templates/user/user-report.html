@@ -1,0 +1,32 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <button class="button button-clear button-primary" ng-click="UserReportService.close()">
+            <i class="icon ion-ios-close-empty"></i>
+        </button>
+
+        <h1 class="title">{{ 'REPORT' | translate}}</h1>
+
+        <button ng-if="UserReportService.canSubmit()" class="button button-clear button-primary" ng-click="UserReportService.submit()">
+            {{ 'SUBMIT' | translate }}
+        </button>
+    </ion-header-bar>
+
+    <ion-content id="module-user" class="page-report">
+        <div class="padding">
+            <p>请选择报告原因</p>
+            <ion-list>
+                <ion-checkbox ng-model="UserReportService.type.one1">欺诈信息</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one2">谣言与不实信息</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one3">色情信息</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one4">违反法规与论理的信息</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one5">侵权信息（冒名、诽谤、抄袭）</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one6">其它</ion-checkbox>
+
+                <div class="item item-input item-stacked-label">
+                    <span class="input-label">详细描述</span>
+                    <textarea ng-model="UserReportService.content" placeholder="" rows="6"></textarea>
+                </div>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-modal-view>

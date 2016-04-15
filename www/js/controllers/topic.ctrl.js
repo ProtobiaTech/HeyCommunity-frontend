@@ -93,23 +93,35 @@ HeyCommunity
 
     //
     $scope.showActionSheet = function() {
-        var hideSheet = $ionicActionSheet.show({
-            destructiveText: $scope.filter('translate')('DESTROY'),
+        var config = {
+            buttons: [{
+                text: $scope.filter('translate')('REPORT')
+            }],
             titleText: $scope.filter('translate')('MANAGEMENT_OPERATIONS'),
             cancelText: $scope.filter('translate')('CANCEL'),
             cancel: function() {
             },
             buttonClicked: function(index) {
-                return true;
+                if (index === 0) {
+                    $scope.reportModal.show();
+                }
+                hideSheet();
             },
             destructiveButtonClicked: function(index) {
                 $scope.destroy();
+                hideSheet();
             },
-        });
+        }
+
+        if ($scope.utility.isAdmin()) {
+            config.destructiveText = $scope.filter('translate')('DESTROY');
+        }
+
+        var hideSheet = $ionicActionSheet.show(config);
 
         $scope.timeout(function() {
             hideSheet();
-        }, 2000);
+        }, 6000);
     };
 }])
 

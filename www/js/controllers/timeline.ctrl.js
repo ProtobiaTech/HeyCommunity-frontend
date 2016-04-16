@@ -123,16 +123,19 @@ HeyCommunity
             },
             buttonClicked: function(index) {
                 if (index === 0) {
-                    $scope.state.go('hey.timeline-create');
+                    if (!$scope.utility.please_login_first()) {
+                        $scope.state.go('hey.timeline-create');
+                    }
                 } else if (index === 1) {
                      $scope.utility.showNoticeText('COMING_SOON');
                 }
+                hideSheet();
             }
         });
 
         $scope.timeout(function() {
             hideSheet();
-        }, 5000);
+        }, 6000);
     };
 }])
 

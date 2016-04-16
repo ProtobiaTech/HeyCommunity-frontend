@@ -47,12 +47,20 @@
 
     <div ng-if="Timeline" class="list" style="position:absolute; bottom:0px; width:100%">
         <form name="ngForm" ng-submit="commentPublish()">
-            <div style="positon:absoluted;" class="item item-input-inset">
+            <div ng-if="utility.isAuth()" style="positon:absoluted;" class="item item-input-inset">
                 <label class="item-input-wrapper">
-                    <input ng-if="utility.isAuth()" ng-model="TimelineComment.content" required ng-minlength="3" type="text" style="width:100%" placeholder="{{ 'SAY_SOMETHING' | translate }}">
-                    <input ng-if="!utility.isAuth()" ng-click="signInModal.show()" ng-model="TimelineComment.content" required ng-minlength="3" type="text" style="width:100%" placeholder="{{ 'SAY_SOMETHING' | translate }}">
+                    <input ng-model="TimelineComment.content" required ng-minlength="3" type="text" style="width:100%" placeholder="{{ 'SAY_SOMETHING' | translate }}">
                 </label>
                 <button type="submit" ng-disabled="ngForm.$invalid" class="button button-small">{{ 'COMMENT' | translate }}</button>
+            </div>
+
+            <div ng-if="!utility.isAuth()" style="positon:absoluted;" class="item item-input-inset">
+                <label ng-click="signInModal.show()" class="item-input-wrapper">
+                    <div style="width:100%; line-height:29px; color:#666; padding-left:4px;">
+                        {{ 'SAY_SOMETHING' | translate }}
+                    </div>
+                </label>
+                <button disabled class="button button-small">{{ 'COMMENT' | translate }}</button>
             </div>
         </form>
     </div>

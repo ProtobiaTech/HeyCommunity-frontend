@@ -2,149 +2,32 @@ HeyCommunity
 
 // tab.user
 .controller('UserIndexCtrl', ['$scope', 'UserService', 'NoticeService', '$ionicModal', function($scope, UserService, NoticeService, $ionicModal) {
-    if ($scope.stateParams.id) {
-        $scope.userInfo = false;
-        $scope.isOwnInfo = false;
-
-        UserService.userInfo($scope.stateParams.id).then(function(response) {
-            if (response.status === 200) {
-                $scope.userInfo = response.data;
-            }
-        });
-    } else {
-        $scope.isOwnInfo = true;
-    }
-
     $scope.$root.loadingShowDisabled = true;
     NoticeService.index();
-
-
 }])
 
+
+//
+//
+.controller('UserHomeCtrl', ['$scope', 'UserService', 'NoticeService', '$ionicModal', function($scope, UserService, NoticeService, $ionicModal) {
+    $scope.userInfo = false;
+
+    UserService.userInfo($scope.stateParams.id).then(function(response) {
+        if (response.status === 200) {
+            $scope.userInfo = response.data;
+        }
+    });
+}])
 
 
 //
 .controller('UserTimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
-    var params = {
-        user_id: $scope.stateParams.user_id,
-    }
-    TimelineService.index(params).then(function(response) {
-        if (response.status == 200) {
-            $scope.timelines = response.data.timelines.data;
-            $scope.timelineCurrentPage = response.data.timelines.current_page;
-
-            $scope.timelineLikes = response.data.likes;
-        }
-    });
+    $scope.TimelineService = TimelineService;
 
     //
     // is Like
     $scope.isLike = function(id) {
-        return inArray(id, $scope.timelineLikes);
-    }
-
-    //
-    // like
-    $scope.like = function(id, isDoubleTap) {
-        $scope.$root.loadingShowDisabled = true;
-        if (isDoubleTap) {
-            if ($scope.isLike(id)) {
-                return true;
-            }
-        }
-        if (!$scope.utility.please_login_first()) {
-            var params = {
-                id: id,
-            }
-            console.debug('### TimelineService.like params', params);
-            TimelineService.like(params).then(function(response) {
-                console.debug('### TimelineService.like response', response);
-                if (response.status == 200) {
-                    angular.forEach($scope.timelines, function(v) {
-                        if (id == v.id) {
-                            // if (v.like_num > response.data.like_num) {
-                            if ($scope.isLike(id)) {
-                                var i = $scope.timelineLikes.indexOf(response.data.id);
-                                $scope.timelineLikes.splice(i, 1);
-                            } else {
-                                $scope.timelineLikes.push(response.data.id);
-                            }
-                            v.like_num = response.data.like_num;
-                        }
-                    })
-                    console.log($scope.timelineLikes)
-                }
-            })
-        }
-    }
-
-    //
-    // destroy
-    $scope.destroy = function(id) {
-        var data = {
-            title: $scope.filter('translate')('ALERT'),
-            content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
-        }
-
-        $scope.utility.showConfirm(data, function() {
-            var params = {
-                id: id,
-            }
-            TimelineService.destroy(params).then(function(response) {
-                if (response.status === 200) {
-                    angular.forEach($scope.timelines, function(value, key) {
-                        if (value.id === params.id) {
-                            delete $scope.timelines[key];
-
-                            $scope.utility.showNoticeSuccess();
-                            $scope.timeout(function() {
-                                $scope.$root.$broadcast('notice:hide');
-                            }, 1288);
-                        }
-                    });
-                }
-            })
-        }, function() {
-        });
-    }
-
-    //
-    // do refresh
-    $scope.doRefresh = function() {
-        $scope.$root.loadingShowDisabled = true;
-
-        TimelineService.index().then(function(response) {
-            console.debug('### TimelineService.doRefresh response', response);
-            if (response.status == 200) {
-                angular.merge($scope.timelines, response.data.timelines.data);
-            }
-        }).finally(function() {
-            $scope.$broadcast('scroll.refreshComplete');
-        });
-    }
-
-    //
-    // load more
-    $scope.loadMore = function() {
-        $scope.$root.loadingShowDisabled = true;
-
-        var params = {
-            page: $scope.timelineCurrentPage + 1,
-        }
-        console.debug('### TimelineService.loadMore params', params);
-        TimelineService.index(params).then(function(response) {
-            console.debug('### TimelineService.loadMore response', response);
-            if (response.status == 200) {
-                if (typeof response.data.timelines.data !== 'undefined' && response.data.timelines.data.length > 0) {
-                    $scope.timelines = $scope.timelines.concat(response.data.timelines.data);
-                    $scope.timelineCurrentPage = response.data.timelines.current_page;
-                } else {
-                    $scope.loadMoreDisabled = true;
-                }
-            }
-        }).finally(function() {
-            $scope.$broadcast('scroll.infiniteScrollComplete');
-        });
+        return inArray(id, $scope.TimelineService.timelineLikes);
     }
 }])
 
@@ -152,15 +35,7 @@ HeyCommunity
 
 //
 .controller('UserTopicCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
-    var params = {
-        user_id: $scope.stateParams.user_id,
-    }
-    TopicService.index(params).then(function(response) {
-        if (response.status == 200) {
-            $scope.topics = response.data.data;
-            $scope.currentPage = response.data.current_page;
-        }
-    });
+    $scope.TopicService = TopicService;
 }])
 
 

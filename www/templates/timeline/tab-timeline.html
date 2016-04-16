@@ -1,9 +1,9 @@
 <ion-view class="has-tabs" view-title="{{ appSiteTitle }}" hide-back-button="true">
     <ion-nav-buttons side="right">
-        <a class="button button-clear button-light icon ion-ios-camera-outline" ng-click="showActionSheet()" todo-ui-sref="hey.timeline-create"></a>
+        <a class="button button-clear button-light icon ion-ios-camera-outline" ng-click="showActionSheet()"></a>
     </ion-nav-buttons>
 
-    <ion-content id="module-timeline" delegate-handle="contentScrollDelegate">
+    <ion-content id="module-timeline">
         <ion-refresher
             pulling-text="{{ 'PULL_TO_REFRESH' | translate }}"
             on-refresh="doRefresh()">

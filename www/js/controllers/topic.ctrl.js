@@ -49,6 +49,14 @@ HeyCommunity
         });
     }
 
+
+    //
+    // create
+    $scope.create = function() {
+        if (!$scope.utility.please_login_first()) {
+            $scope.state.go('hey.topic-create');
+        }
+    }
 }])
 
 

@@ -152,8 +152,8 @@ HeyCommunity
         url: '/user/home/:id',
         views: {
             'menuContent': {
-                templateUrl: 'templates/user/user-uhome.html',
-                controller: 'UserIndexCtrl'
+                templateUrl: 'templates/user/user-home.html',
+                controller: 'UserHomeCtrl'
             }
         }
     })

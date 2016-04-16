@@ -54,7 +54,9 @@ HeyCommunity
         }
         q.then(function(response) {
             if (response.status === 200 && typeof(response.data) === 'object') {
-                localStorage.user = JSON.stringify(response.data);
+                if (id === undefined) {
+                    localStorage.user = JSON.stringify(response.data);
+                }
             } else {
                 localStorage.removeItem('user');
             }

@@ -1,6 +1,6 @@
 <ion-view class="has-tabs" view-title="{{ 'TOPIC' | translate}}" hide-back-button="true">
     <ion-nav-buttons side="right">
-        <a class="button button-clear button-light icon ion-ios-compose-outline" ui-sref="hey.topic-create">
+        <a class="button button-clear button-light icon ion-ios-compose-outline" ng-click="create()">
         </a>
         <style>
         .ion-ios-compose-outline:before {
@@ -9,7 +9,7 @@
         </style>
     </ion-nav-buttons>
 
-    <ion-content id="module-topic" delegate-handle="contentScrollDelegate">
+    <ion-content id="module-topic">
         <ion-refresher
             pulling-text="{{ 'PULL_TO_REFRESH' | translate }}"
             on-refresh="doRefresh()">

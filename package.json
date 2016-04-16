@@ -1,6 +1,6 @@
 {
   "name": "HeyCommunity",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "WebApp & IOS App & Android App of Community",
   "dependencies": {
     "gulp": "^3.5.6",

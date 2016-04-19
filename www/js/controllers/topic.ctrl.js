@@ -2,25 +2,16 @@ HeyCommunity
 
 // tab.topic
 .controller('TopicCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
-    $scope.TopicService = TopicService;
-
-    if (localStorage.topics) {
-        $scope.TopicService.topics = JSON.parse(localStorage.topics);
-    } else {
-        $scope.$root.loadingShowDisabled = true;
-        TopicService.index();
-    }
+    $scope.$root.loadingShowDisabled = true;
+    TopicService.index({type: 'refresh'});
 
     //
     // do refresh
     $scope.doRefresh = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        if ($scope.TopicService.topics.length > 0) {
-            var params = {
-                type:   'refresh',
-                id:     $scope.TopicService.topics[0].id,
-            }
+        var params = {
+            type:   'refresh',
         }
         TopicService.index(params).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
@@ -32,11 +23,8 @@ HeyCommunity
     $scope.loadMore = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        if ($scope.TopicService.topics.length > 0) {
-            var params = {
-                type:   'infinite',
-                id:     $scope.TopicService.topics[$scope.TopicService.topics.length - 1].id,
-            }
+        var params = {
+            type:   'infinite',
         }
         TopicService.index(params).then(function(response) {
             if (response.status == 200) {

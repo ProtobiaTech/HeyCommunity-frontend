@@ -4,7 +4,7 @@ HeyCommunity
 // hey.timeline
 .controller('TimelineCtrl', ['$scope', 'TimelineService', '$ionicActionSheet', function($scope, TimelineService, $ionicActionSheet) {
     $scope.$root.loadingShowDisabled = true;
-    TimelineService.index();
+    TimelineService.index({type: 'refresh'});
 
 
     //
@@ -53,11 +53,7 @@ HeyCommunity
     // do refresh
     $scope.doRefresh = function() {
         $scope.$root.loadingShowDisabled = true;
-
-        var params = {
-            type:   'refresh',
-        }
-        TimelineService.index(params).finally(function() {
+        TimelineService.index({type: 'refresh'}).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
         });
     }
@@ -66,11 +62,7 @@ HeyCommunity
     // load more
     $scope.loadMore = function() {
         $scope.$root.loadingShowDisabled = true;
-
-        var params = {
-            type:   'infinite',
-        }
-        TimelineService.index(params).finally(function() {
+        TimelineService.index({type: 'infinite'}).finally(function() {
             $scope.$broadcast('scroll.infiniteScrollComplete');
         });
     }

@@ -156,10 +156,11 @@ HeyCommunity
 .controller('TimelineDetailCtrl', ['$scope', 'TimelineService', '$ionicActionSheet', function($scope, TimelineService, $ionicActionSheet) {
     var timelineIndex = $scope.stateParams.id;
     var timelineId = $scope.stateParams.timelineId;
-    $scope.Timeline = {};
-    $scope.$root.TimelineService = TimelineService;
 
+    $scope.$root.TimelineService = TimelineService;
+    $scope.Timeline = {};
     $scope.TimelineComment = {};
+
     if ($scope.$root.TimelineService.timelines !== undefined) {
         $scope.Timeline = $scope.$root.TimelineService.timelines[timelineIndex];
     }

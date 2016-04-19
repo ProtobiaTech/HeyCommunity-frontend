@@ -76,7 +76,7 @@ HeyCommunity
         q.then(function(response) {
             if (response.status == 200) {
                 angular.forEach(self.topics, function(value, key) {
-                    if (value.id === params.id) {
+                    if (value.id == params.id) {
                         delete self.topics.splice(key, 1);
                     }
                 });

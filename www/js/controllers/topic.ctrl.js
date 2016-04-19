@@ -51,9 +51,19 @@ HeyCommunity
 
 // tab.topic-detail
 .controller('TopicDetailCtrl', ['$scope', 'TopicService', '$ionicActionSheet', '$ionicHistory', function($scope, TopicService, $ionicActionSheet, $ionicHistory) {
-    $scope.TopicComment = {};
-    $scope.Topic = TopicService.topics[$scope.stateParams.id];
+    var topicIndex = $scope.stateParams.id;
+    var topicId = $scope.stateParams.topicId;
 
+    $scope.$root.TopicService = TopicService;
+    $scope.Topic = {};
+    $scope.TopicComment = {};
+
+    if ($scope.$root.TopicService.topics !== undefined) {
+        $scope.Topic = $scope.filter('orderBy')(TopicService.topics, '-id')[$scope.stateParams.id];
+    }
+
+    //
+    $scope.$root.loadingShowDisabled = true;
     TopicService.show({id: $scope.stateParams.topicId}).then(function(response) {
         $scope.Topic = response.data;
     });
@@ -68,7 +78,8 @@ HeyCommunity
         TopicService.commentPublish(params).then(function(response) {
             console.debug('### TopicService.commentPublish response', response);
             if (response.status == 200) {
-                $scope.state.reload();
+                $scope.TopicComment.content = '';
+                $scope.Topic = response.data;
             }
         });
     }
@@ -85,7 +96,6 @@ HeyCommunity
             }
             TopicService.destroy(params).then(function(response) {
                 if (response.status === 200) {
-                    $ionicHistory.clearCache();
                     $scope.state.go('hey.topic', {}, {reload: true});
                 } else {
                     $scope.utility.showNoticeFail();

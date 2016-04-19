@@ -12,10 +12,10 @@
         </ion-refresher>
 
         <ion-list ng-repeat="($index, item) in NoticeService.notices" show-delete="shouldShowDelete" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
-            <ion-item class="item" ng-click="goState(item)">
+            <ion-item class="item">
                 <img ui-sref="hey.user-home({id: item.initiator.id})" style="background-color:#ddd; border-radius:20%; height:41px; width:41px; position:absolute;" ng-src="{{ getPicUrl(item.initiator.avatar) }}">
                 <div style="padding-left:51px; margin-right:-33px !important;">
-                    <div>
+                    <div ng-click="goState(item)">
                         <a ui-sref="hey.user-home({id: item.initiator.id})">{{ item.initiator.nickname }}</a>
                         <small class="stable">
                             {{ item.created_at | momentDate: 'fromNow' }}
@@ -25,7 +25,7 @@
                         </small>
                     </div>
 
-                    <div style="color:#777;">
+                    <div style="color:#777;" ng-click="goState(item)">
                         <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'topic_like'">like your</span>
                         <span ng-if="item.type.name == 'timeline_comment' || item.type.name == 'topic_comment'">comment your</span>
 

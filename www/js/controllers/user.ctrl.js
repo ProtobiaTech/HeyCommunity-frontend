@@ -156,18 +156,18 @@ HeyCommunity
                 if (index === 0) {
                     angular.forEach(NoticeService.notices, function(item, $index) {
                         if (item.is_checked != 1) {
-                            $scope.check(item, $index);
+                            NoticeService.check($index);
                         }
                     })
                 }
-                $scope.timeout(function() { hideSheet(); }, 180);
+                hideSheet();
                 // NoticeService.index();
             },
             destructiveButtonClicked: function(index) {
                 angular.forEach(NoticeService.notices, function(item, $index) {
-                    $scope.destroy(item, $index);
+                    NoticeService.destroy(item, $index);
                 })
-                $scope.timeout(function() { hideSheet(); }, 180);
+                hideSheet();
                 // NoticeService.index();
             },
         });

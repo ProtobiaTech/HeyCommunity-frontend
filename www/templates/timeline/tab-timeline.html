@@ -32,8 +32,8 @@
                 <div>
                     <div class="btns pull-right">
                         <a ng-if="!utility.isAuth()" ng-click="signInModal.show()" class="icon ion-ios-heart-outline" style="color:#ddd"></a>
-                        <a ng-if="utility.isAuth() && isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart"></a>
-                        <a ng-if="utility.isAuth() && !isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
+                        <a ng-if="utility.isAuth() && TimelineService.isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart"></a>
+                        <a ng-if="utility.isAuth() && !TimelineService.isLike(item.id)" ng-click="like(item.id)" class="icon ion-ios-heart-outline"></a>
 
                         <a class="icon ion-more" ui-sref="hey.timeline-detail({id: index, timelineId: item.id})"></a>
                     </div>

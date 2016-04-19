@@ -86,16 +86,25 @@ HeyCommunity
     }
 
     $scope.destroy = function() {
-        var params = {
-            id: $scope.stateParams.topicId,
+        var data = {
+            title: $scope.filter('translate')('ALERT'),
+            content: $scope.filter('translate')('ARE_YOU_SURE_DESTROY_IT'),
         }
-        TopicService.destroy(params).then(function(response) {
-            if (response.status === 200) {
-                $ionicHistory.clearCache();
-                $scope.state.go('hey.topic', {}, {reload: true});
-            } else {
-                $scope.utility.showNoticeFail();
+
+        $scope.utility.showConfirm(data, function() {
+            var params = {
+                id: $scope.stateParams.topicId,
             }
+            TopicService.destroy(params).then(function(response) {
+                if (response.status === 200) {
+                    $ionicHistory.clearCache();
+                    $scope.state.go('hey.topic', {}, {reload: true});
+                } else {
+                    $scope.utility.showNoticeFail();
+                }
+            });
+
+        }, function() {
         });
     }
 

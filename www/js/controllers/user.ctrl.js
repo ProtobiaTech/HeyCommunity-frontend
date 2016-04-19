@@ -23,6 +23,36 @@ HeyCommunity
 //
 .controller('UserTimelineCtrl', ['$scope', 'TimelineService', function($scope, TimelineService) {
     $scope.TimelineService = TimelineService;
+    $scope.timelineFilter = {
+        user_id: parseInt($scope.stateParams.user_id),
+    }
+    $scope.timelineFilterStrict = true;
+
+    //
+    //
+    $scope.getInteractionUsers = function(timeline) {
+        var str = '';
+        if (timeline.like_num > 0) {
+            timeline.author_like.forEach(function(author_like, $index) {
+                if ($index < 4) {
+                    str = str + author_like.author.nickname + ', ';
+                }
+            })
+            str = str.substring(0, str.length - 2);
+        } else {
+            str += timeline.author.nickname;
+        }
+        return str;
+    }
+
+    //
+    //
+    $scope.getInteractionNum = function(timeline, text) {
+        var num = parseInt(timeline.like_num) + parseInt(timeline.comment_num);
+        num = num ? num : 1;
+        return $scope.filter('translate')(text, {num: num})
+    }
+
 
     //
     // is Like
@@ -36,6 +66,10 @@ HeyCommunity
 //
 .controller('UserTopicCtrl', ['$scope', 'TopicService', function($scope, TopicService) {
     $scope.TopicService = TopicService;
+    $scope.topicFilter = {
+        user_id: parseInt($scope.stateParams.user_id),
+    }
+    $scope.topicFilterStrict = true;
 }])
 
 

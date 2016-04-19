@@ -33,7 +33,7 @@ HeyCommunity
     //
     self.index = function(params) {
         var url = getApiUrl('/timeline');
-        if (typeof(params) == 'object' && 'type' in params) {
+        if (typeof(params) == 'object' && 'type' in params && self.timelines.length > 0) {
             if (params.type === 'refresh') {
                 var id = $rootScope.filter('orderBy')(self.timelines, '-id')[0].id;
                 url = url + '?type=' + params.type + '&id=' + id;
@@ -62,8 +62,16 @@ HeyCommunity
     // show
     self.show = function(params) {
         var q = $http.get(getApiUrl('/timeline/show/' + params.id));
-        q.then(function() {
-            //
+        q.then(function(response) {
+            if (response.status === 200) {
+                angular.forEach(self.timelines, function(value, key) {
+                    if (value.id === response.data.id) {
+                        self.timelines[key] = response.data;
+                    }
+                });
+
+                self.saveInLocalStorage();
+            }
         }, function() {
             UtilityService.showNoticeFail();
         })
@@ -112,11 +120,34 @@ HeyCommunity
     }
 
 
+    //
+    // is like
+    self.isLike = function(id) {
+        return inArray(id, self.timelineLikes);
+    }
+
+
+    //
     // like
     self.like = function(params) {
         var q = $http.post(getApiUrl('/timeline/like'), params);
-        q.then(function() {
-            //
+        q.then(function(response) {
+            if (response.status === 200) {
+                angular.forEach(self.timelines, function(value, key) {
+                    if (value.id === response.data.id) {
+                        self.timelines[key] = response.data;
+
+                        if (self.isLike(value.id)) {
+                            var i = self.timelineLikes.indexOf(response.data.id);
+                            self.timelineLikes.splice(i, 1);
+                        } else {
+                            self.timelineLikes.push(response.data.id);
+                        }
+                    }
+                });
+
+                self.saveInLocalStorage();
+            }
         }, function() {
             UtilityService.showNoticeFail();
         })
@@ -128,8 +159,16 @@ HeyCommunity
     // comment
     self.commentPublish = function(params) {
         var q = $http.post(getApiUrl('/timeline/comment-publish'),  params);
-        q.then(function() {
-            //
+        q.then(function(response) {
+            if (response.status === 200) {
+                angular.forEach(self.timelines, function(value, key) {
+                    if (value.id === response.data.id) {
+                        self.timelines[key] = response.data;
+                    }
+                });
+
+                self.saveInLocalStorage();
+            }
         }, function() {
             UtilityService.showNoticeFail();
         })

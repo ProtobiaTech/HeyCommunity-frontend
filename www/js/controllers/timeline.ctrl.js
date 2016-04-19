@@ -3,14 +3,8 @@ HeyCommunity
 //
 // hey.timeline
 .controller('TimelineCtrl', ['$scope', 'TimelineService', '$ionicActionSheet', function($scope, TimelineService, $ionicActionSheet) {
-    $scope.$root.TimelineService = TimelineService;
-
-    if (localStorage.timelines) {
-        $scope.$root.TimelineService.timelines = JSON.parse(localStorage.timelines);
-    } else {
-        $scope.$root.loadingShowDisabled = true;
-        TimelineService.index();
-    }
+    $scope.$root.loadingShowDisabled = true;
+    TimelineService.index();
 
 
     //
@@ -39,12 +33,6 @@ HeyCommunity
     }
 
     //
-    // is Like
-    $scope.isLike = function(id) {
-        return inArray(id, $scope.$root.TimelineService.timelineLikes);
-    }
-
-    //
     // like
     $scope.like = function(id, isDoubleTap) {
         $scope.$root.loadingShowDisabled = true;
@@ -57,24 +45,7 @@ HeyCommunity
             var params = {
                 id: id,
             }
-            console.debug('### TimelineService.like params', params);
-            TimelineService.like(params).then(function(response) {
-                console.debug('### TimelineService.like response', response);
-                if (response.status == 200) {
-                    angular.forEach($scope.$root.TimelineService.timelines, function(v, index) {
-                        if (id == v.id) {
-                            // if (v.like_num > response.data.like_num) {
-                            if ($scope.isLike(id)) {
-                                var i = $scope.$root.TimelineService.timelineLikes.indexOf(response.data.id);
-                                $scope.$root.TimelineService.timelineLikes.splice(i, 1);
-                            } else {
-                                $scope.$root.TimelineService.timelineLikes.push(response.data.id);
-                            }
-                            $scope.$root.TimelineService.timelines[index] = response.data;
-                        }
-                    })
-                }
-            })
+            TimelineService.like(params);
         }
     }
 
@@ -83,11 +54,8 @@ HeyCommunity
     $scope.doRefresh = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        if ($scope.$root.TimelineService.timelines.length > 0) {
-            var params = {
-                type:   'refresh',
-                id:     $scope.$root.TimelineService.timelines[0].id,
-            }
+        var params = {
+            type:   'refresh',
         }
         TimelineService.index(params).finally(function() {
             $scope.$broadcast('scroll.refreshComplete');
@@ -99,11 +67,8 @@ HeyCommunity
     $scope.loadMore = function() {
         $scope.$root.loadingShowDisabled = true;
 
-        if ($scope.$root.TimelineService.timelines.length > 0) {
-            var params = {
-                type:   'infinite',
-                id:     $scope.$root.TimelineService.timelines[$scope.$root.TimelineService.timelines.length - 1].id,
-            }
+        var params = {
+            type:   'infinite',
         }
         TimelineService.index(params).finally(function() {
             $scope.$broadcast('scroll.infiniteScrollComplete');

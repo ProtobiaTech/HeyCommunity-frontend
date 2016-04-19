@@ -217,15 +217,10 @@ HeyCommunity
             id: $scope.stateParams.timelineId,
             content: $scope.TimelineComment.content,
         }
-        console.debug('### TimelineService.commentPublish params', params);
         TimelineService.commentPublish(params).then(function(response) {
-            console.debug('### TimelineService.commentPublish response', response);
             if (response.status == 200) {
                 $scope.TimelineComment.content = '';
                 $scope.Timeline = response.data;
-                if ($scope.$root.TimelineService.timelines !== undefined) {
-                    $scope.$root.TimelineService.timelines[timelineIndex] = response.data;
-                }
             }
         });
     }

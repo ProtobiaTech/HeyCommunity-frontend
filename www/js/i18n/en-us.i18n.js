@@ -138,5 +138,7 @@ HeyCommunity
         // Notice
         // --------------------------------
         NOTICE:                 'Notice',
+        COMMENT_YOUR:           ' Comment Your',
+        LIKE_YOUR:              ' Like Your',
     });
 }]);

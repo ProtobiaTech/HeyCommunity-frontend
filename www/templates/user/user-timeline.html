@@ -4,7 +4,7 @@
             <ion-spinner></ion-spinner>
         </div>
 
-        <div ng-repeat="(index, item) in TimelineService.timelines track by $index" class="list">
+        <div ng-repeat="(index, item) in TimelineService.timelines | filter:timelineFilter:timelineFilterStrict track by $index" class="list">
             <div class="item item-header item-divider" ion-affix>
                 <div class="pull-left">
                     <img ui-sref="hey.user-home({id: item.author.id})" ng-src="{{ getPicUrl(item.author.avatar + '?imageView/2/w/80') }}">

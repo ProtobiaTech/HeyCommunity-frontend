@@ -35,7 +35,7 @@ HeyCommunity
                 var badgeNum = 0;
                 self.notices = response.data;
 
-                angular.forEach(response.data, function(item, $index) {
+                angular.forEach(self.notices, function(item, $index) {
                     if (item.is_checked != 1) {
                         badgeNum += 1;
                     }
@@ -61,9 +61,19 @@ HeyCommunity
         q.then(function(response) {
             if (response.status === 200) {
                 self.notices[$index].is_checked = true;
+
+                var badgeNum = 0;
+                angular.forEach(self.notices, function(item, $index) {
+                    if (item.is_checked != 1) {
+                        badgeNum += 1;
+                    }
+                });
             } else {
                 $rootScope.utility.showNoticeFail();
             }
+
+            $rootScope.badgeNum = badgeNum;
+            $rootScope.utility.setBadgeNum(badgeNum);
         })
 
         return q;
@@ -72,22 +82,28 @@ HeyCommunity
 
     //
     //
-    self.destroy = function(item) {
+    self.destroy = function(notice) {
         var params = {
-            id: item.id
+            id: notice.id
         }
 
         var q = $http.post(getApiUrl('/notice/destroy'), params);
         q.then(function(response) {
             if (response.status === 200) {
-                angular.forEach(self.notices, function(notice, $index) {
+                var badgeNum = 0;
+                angular.forEach(self.notices, function(item, $index) {
                     if (item.id === notice.id) {
                         self.notices.splice($index, 1);
+                    } else if (item.is_checked != 1) {
+                        badgeNum += 1;
                     }
                 })
             } else {
                 $rootScope.utility.showNoticeFail();
             }
+
+            $rootScope.badgeNum = badgeNum;
+            $rootScope.utility.setBadgeNum(badgeNum);
         })
 
         return q;

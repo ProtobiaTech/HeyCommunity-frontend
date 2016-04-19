@@ -90,6 +90,7 @@ HeyCommunity
     // -------------------------------
     .state('hey.user', {
         url: '/user',
+        cache: false,
         views: {
             'menuContent': {
                 templateUrl: 'templates/user/tab-user.html',

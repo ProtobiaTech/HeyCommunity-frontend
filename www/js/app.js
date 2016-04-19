@@ -8,8 +8,8 @@ var HeyCommunity = angular.module('starter', [
 
 
 .run([
-    '$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicModal', 'UtilityService', 'SystemService', 'UserService', 'UserReportService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout', '$ionicScrollDelegate', 'UserSignInService', 'UserSignUpService',
-    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicModal, UtilityService, SystemService, UserService, UserReportService, $ionicLoading, $ionicHistory, $filter, $timeout, $ionicScrollDelegate, UserSignInService, UserSignUpService) {
+    '$ionicPlatform', '$rootScope', '$state', '$stateParams', '$ionicModal', 'UtilityService', 'TimelineService', 'SystemService', 'UserService', 'UserReportService', '$ionicLoading', '$ionicHistory', '$filter', '$timeout', '$ionicScrollDelegate', 'UserSignInService', 'UserSignUpService',
+    function($ionicPlatform, $rootScope, $state, $stateParams, $ionicModal, UtilityService, TimelineService, SystemService, UserService, UserReportService, $ionicLoading, $ionicHistory, $filter, $timeout, $ionicScrollDelegate, UserSignInService, UserSignUpService) {
         //
         // platform ready
         $ionicPlatform.ready(function($rootScope) {
@@ -36,6 +36,12 @@ var HeyCommunity = angular.module('starter', [
         // the utility service
         $rootScope.utility = UtilityService;
         $rootScope.utility.serviceRun();
+
+
+        //
+        //
+        $rootScope.TimelineService = TimelineService;
+        $rootScope.TimelineService.getByLocalStorage();
 
 
         //

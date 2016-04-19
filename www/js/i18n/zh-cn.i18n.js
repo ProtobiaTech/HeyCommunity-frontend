@@ -138,5 +138,7 @@ HeyCommunity
         // Notice
         // --------------------------------
         NOTICE:                 '通知',
+        COMMENT_YOUR:           '评论你的',
+        LIKE_YOUR:              '喜欢你的',
     });
 }]);

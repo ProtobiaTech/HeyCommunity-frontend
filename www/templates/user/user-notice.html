@@ -32,11 +32,11 @@
                         <span ng-if="item.type.name == 'timeline_like' || item.type.name == 'timeline_comment'">
                             {{ 'TIMELINE' | translate }}
                             <div style="position:absolute; right:16px; top:16px;">
-                                <img style="height:41px; border-radius:2px;" ng-src="{{ getPicUrl(item.entity.attachment) }}">
+                                <img style="height:41px; border-radius:2px;" ng-src="{{ getPicUrl(item.noticeable.attachment) }}">
                             </div>
                         </span>
                         <span ng-if="item.type.name == 'topic_like' || item.type.name == 'topic_comment'">
-                            <small>{{ item.entity.title }}</small>
+                            <small>{{ item.noticeable.title }}</small>
                         </span>
                         <span>&nbsp;</span>
                     </div>

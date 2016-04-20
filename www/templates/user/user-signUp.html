@@ -58,9 +58,12 @@
             </form>
 
             <div style="margin-top:4px;">
-                <a ng-click="utility.openPage('http://bbs.hey-community.cn/d/8-heycommunity')" style="">{{ '注册即表示您已同意《服务条款》' | translate }}</a>
-                <a ng-if="UserSignUpService.signUpStep == 2" ng-click="setVal('UserSignUpService.signUpStep', 1)" class="">{{ 'PREV' | translate }}</a>
-                <a ng-click="signInModal.show();signUpModal.hide();" todo-ui-sref="hey.user-signIn" class="pull-right">{{ 'SIGN_IN' | translate }}</a>
+                <a ng-click="utility.openPage('http://bbs.hey-community.cn/d/8-heycommunity')" style="">
+                    {{ '注册即表示您已同意' | translate }}
+                    <span style="color:#930">《服务条款》</span>
+                </a>
+                <a ng-if="UserSignUpService.signUpStep == 1" ng-click="signInModal.show();signUpModal.hide();" todo-ui-sref="hey.user-signIn" class="pull-right">{{ 'SIGN_IN' | translate }}</a>
+                <a ng-if="UserSignUpService.signUpStep == 2" ng-click="setVal('UserSignUpService.signUpStep', 1)" class="pull-right">{{ 'PREV' | translate }}</a>
             </div>
         </div>
     </ion-content>

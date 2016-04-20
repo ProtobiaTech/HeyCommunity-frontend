@@ -123,7 +123,11 @@ HeyCommunity
     //
     // is like
     self.isLike = function(id) {
-        return inArray(id, self.timelineLikes);
+        if (self.timelineLikes !== undefined) {
+            return inArray(id, self.timelineLikes);
+        } else {
+            return false;
+        }
     }
 
 

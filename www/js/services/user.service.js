@@ -1,6 +1,6 @@
 HeyCommunity
 
-.service('UserService', ['$http', function($http) {
+.service('UserService', ['$http', '$rootScope', function($http, $rootScope) {
     // sign up verify
     this.signUpVerifyCaptcha = function(params) {
         return $http.post(getApiUrl('/user/sign-up-verify-captcha'), params);
@@ -40,6 +40,9 @@ HeyCommunity
         q.then(function(response) {
             if (response.status === 200) {
                 localStorage.removeItem('user');
+
+                $rootScope.badgeNum = 0;
+                $rootScope.utility.setBadgeNum($rootScope.badgeNum);
             }
         });
         return q;

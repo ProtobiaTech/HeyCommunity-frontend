@@ -41,7 +41,7 @@ HeyCommunity
                     }
                 });
                 $rootScope.badgeNum = badgeNum;
-                $rootScope.utility.setBadgeNum(badgeNum);
+                $rootScope.utility.setBadgeNum($rootScope.badgeNum);
             }
         });
 
@@ -73,7 +73,7 @@ HeyCommunity
             }
 
             $rootScope.badgeNum = badgeNum;
-            $rootScope.utility.setBadgeNum(badgeNum);
+            $rootScope.utility.setBadgeNum($rootScope.badgeNum);
         })
 
         return q;
@@ -103,7 +103,7 @@ HeyCommunity
             }
 
             $rootScope.badgeNum = badgeNum;
-            $rootScope.utility.setBadgeNum(badgeNum);
+            $rootScope.utility.setBadgeNum($rootScope.badgeNum);
         })
 
         return q;

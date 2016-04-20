@@ -167,9 +167,13 @@ var HeyCommunity = angular.module('starter', [
     $ionicConfigProvider.tabs.position('bottom');   // Places them at the bottom for all OS
     $ionicConfigProvider.tabs.style('standard');    // Makes them all look the same across all OS
 
+
     //
     // http provider config
+    $httpProvider.defaults.timeout = 5000;
+
     $httpProvider.defaults.headers.common.domain = API;
+
     $httpProvider.interceptors.push(['$rootScope', function($rootScope) {
         return {
             request: function(config) {

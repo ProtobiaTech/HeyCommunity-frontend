@@ -3,7 +3,9 @@ HeyCommunity
 // tab.user
 .controller('UserIndexCtrl', ['$scope', 'UserService', 'NoticeService', '$ionicModal', function($scope, UserService, NoticeService, $ionicModal) {
     $scope.$root.loadingShowDisabled = true;
-    NoticeService.index();
+    if ($scope.utility.isAuth()) {
+        NoticeService.index();
+    }
 }])
 
 

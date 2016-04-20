@@ -37,7 +37,7 @@ HeyCommunity
     $scope.like = function(id, isDoubleTap) {
         $scope.$root.loadingShowDisabled = true;
         if (isDoubleTap) {
-            if ($scope.isLike(id)) {
+            if ($scope.$root.TimelineService.isLike(id)) {
                 return true;
             }
         }
@@ -174,16 +174,6 @@ HeyCommunity
     });
 
     //
-    // is Like
-    $scope.isLike = function(id) {
-        if ($scope.$root.TimelineService.timelineLikes !== undefined) {
-            return inArray(id, $scope.$root.TimelineService.timelineLikes);
-        } else {
-            return false;
-        }
-    }
-
-    //
     // like
     $scope.like = function(id, isDoubleTap) {
         $scope.$root.loadingShowDisabled = true;
@@ -199,7 +189,7 @@ HeyCommunity
                         $scope.filter('orderBy')(TimelineService.timelines, '-id')[timelineIndex] = response.data;
                         $scope.Timeline = response.data;
 
-                        if ($scope.isLike(id)) {
+                        if ($scope.$root.TimelineService.isLike(id)) {
                             var i = $scope.$root.TimelineService.timelineLikes.indexOf(response.data.id);
                             $scope.$root.TimelineService.timelineLikes.splice(i, 1);
                         } else {

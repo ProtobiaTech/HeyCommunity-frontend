@@ -41,8 +41,10 @@ HeyCommunity
                     }
                 });
                 $rootScope.badgeNum = badgeNum;
-                $rootScope.utility.setBadgeNum(badgeNum);
+                $rootScope.utility.setBadgeNum($rootScope.badgeNum);
             }
+        }, function() {
+            UtilityService.showNoticeFail();
         });
 
         return q;
@@ -73,7 +75,9 @@ HeyCommunity
             }
 
             $rootScope.badgeNum = badgeNum;
-            $rootScope.utility.setBadgeNum(badgeNum);
+            $rootScope.utility.setBadgeNum($rootScope.badgeNum);
+        }, function() {
+            UtilityService.showNoticeFail();
         })
 
         return q;
@@ -103,7 +107,9 @@ HeyCommunity
             }
 
             $rootScope.badgeNum = badgeNum;
-            $rootScope.utility.setBadgeNum(badgeNum);
+            $rootScope.utility.setBadgeNum($rootScope.badgeNum);
+        }, function() {
+            UtilityService.showNoticeFail();
         })
 
         return q;

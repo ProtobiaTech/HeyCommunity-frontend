@@ -1,6 +1,6 @@
 HeyCommunity
 
-.service('UserSignInService', ['$http', '$rootScope', 'UserService', function($http, $rootScope, UserService) {
+.service('UserSignInService', ['$http', '$rootScope', 'UserService', 'NoticeService', function($http, $rootScope, UserService, NoticeService) {
     var self = this;
 
     //
@@ -13,6 +13,9 @@ HeyCommunity
         UserService.signIn(params).then(function(response) {
             if (response.status === 200) {
                 $rootScope.userInfo = response.data;
+
+                $rootScope.loadingShowDisabled = true;
+                NoticeService.index();
 
                 $rootScope.signInModal.hide();
             } else {

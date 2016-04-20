@@ -1,14 +1,27 @@
 HeyCommunity
 
-.service('UserService', ['$http', function($http) {
+.service('UserService', ['$http', '$rootScope', function($http, $rootScope) {
     // sign up verify
     this.signUpVerifyCaptcha = function(params) {
-        return $http.post(getApiUrl('/user/sign-up-verify-captcha'), params);
+        var q = $http.post(getApiUrl('/user/sign-up-verify-captcha'), params);
+        q.then(function(response) {
+            //
+        }, function(response) {
+            UtilityService.showNoticeFail();
+        })
+
+        return q;
     }
 
     //
     this.signUpGetCaptcha = function(params) {
         var q = $http.post(getApiUrl('/user/get-captcha'), params);
+        q.then(function(response) {
+            //
+        }, function(response) {
+            UtilityService.showNoticeFail();
+        })
+
         return q;
     }
 
@@ -19,6 +32,8 @@ HeyCommunity
             if (response.status === 200) {
                 localStorage.user = JSON.stringify(response.data);
             }
+        }, function(response) {
+            UtilityService.showNoticeFail();
         });
         return q;
     }
@@ -30,6 +45,8 @@ HeyCommunity
             if (response.status === 200) {
                 localStorage.user = JSON.stringify(response.data);
             }
+        }, function(response) {
+            UtilityService.showNoticeFail();
         });
         return q;
     }
@@ -40,7 +57,12 @@ HeyCommunity
         q.then(function(response) {
             if (response.status === 200) {
                 localStorage.removeItem('user');
+
+                $rootScope.badgeNum = 0;
+                $rootScope.utility.setBadgeNum($rootScope.badgeNum);
             }
+        }, function(response) {
+            UtilityService.showNoticeFail();
         });
         return q;
     }
@@ -60,6 +82,8 @@ HeyCommunity
             } else {
                 localStorage.removeItem('user');
             }
+        }, function(response) {
+            UtilityService.showNoticeFail();
         });
         return q;
     }
@@ -67,9 +91,17 @@ HeyCommunity
 
     // update avatar
     this.updateAvatar = function(http, params) {
-        return http.upload({
+        var q = http.upload({
             url: getApiUrl('/user/update-avatar'),
             data: params,
-        })
+        });
+
+        q.then(function(response) {
+            //
+        }, function(response) {
+            UtilityService.showNoticeFail();
+        });
+
+        return q;
     }
 }])

@@ -162,7 +162,7 @@ HeyCommunity
     $scope.TimelineComment = {};
 
     if ($scope.$root.TimelineService.timelines !== undefined) {
-        $scope.Timeline = $scope.$root.TimelineService.timelines[timelineIndex];
+        $scope.Timeline = $scope.filter('orderBy')(TimelineService.timelines, '-id')[timelineIndex];
     }
 
     //
@@ -196,7 +196,7 @@ HeyCommunity
                 console.debug('### TimelineService.like response', response);
                 if (response.status == 200) {
                     if ($scope.$root.TimelineService.timelines !== undefined) {
-                        $scope.$root.TimelineService.timelines[timelineIndex] = response.data;
+                        $scope.filter('orderBy')(TimelineService.timelines, '-id')[timelineIndex] = response.data;
                         $scope.Timeline = response.data;
 
                         if ($scope.isLike(id)) {

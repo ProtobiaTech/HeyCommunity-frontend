@@ -58,14 +58,19 @@ HeyCommunity
     $scope.Topic = {};
     $scope.TopicComment = {};
 
+    console.log($scope.$root.TopicService.topics)
     if ($scope.$root.TopicService.topics !== undefined) {
         $scope.Topic = $scope.filter('orderBy')(TopicService.topics, '-id')[$scope.stateParams.id];
     }
+    console.log($scope.Topic)
 
+    //
     //
     $scope.$root.loadingShowDisabled = true;
     TopicService.show({id: $scope.stateParams.topicId}).then(function(response) {
-        $scope.Topic = response.data;
+        if (response.status === 200) {
+            $scope.Topic = response.data;
+        }
     });
 
 

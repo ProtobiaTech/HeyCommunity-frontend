@@ -12,7 +12,7 @@ HeyCommunity
     self.serviceRun = function() {
         if ($rootScope.utility.isAuth()) {
             $rootScope.loadingShowDisabled = true;
-            $rootScope.NoticeService.index();
+            self.index();
         }
 
         $interval(function() {
@@ -43,6 +43,8 @@ HeyCommunity
                 $rootScope.badgeNum = badgeNum;
                 $rootScope.utility.setBadgeNum($rootScope.badgeNum);
             }
+        }, function() {
+            UtilityService.showNoticeFail();
         });
 
         return q;
@@ -74,6 +76,8 @@ HeyCommunity
 
             $rootScope.badgeNum = badgeNum;
             $rootScope.utility.setBadgeNum($rootScope.badgeNum);
+        }, function() {
+            UtilityService.showNoticeFail();
         })
 
         return q;
@@ -104,6 +108,8 @@ HeyCommunity
 
             $rootScope.badgeNum = badgeNum;
             $rootScope.utility.setBadgeNum($rootScope.badgeNum);
+        }, function() {
+            UtilityService.showNoticeFail();
         })
 
         return q;

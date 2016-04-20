@@ -53,6 +53,8 @@ HeyCommunity
             } else {
                 UtilityService.showNoticeFail();
             }
+        }, function() {
+            UtilityService.showNoticeFail();
         })
 
         return q;

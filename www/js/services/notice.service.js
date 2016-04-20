@@ -12,7 +12,7 @@ HeyCommunity
     self.serviceRun = function() {
         if ($rootScope.utility.isAuth()) {
             $rootScope.loadingShowDisabled = true;
-            self.index();
+            $rootScope.NoticeService.index();
         }
 
         $interval(function() {

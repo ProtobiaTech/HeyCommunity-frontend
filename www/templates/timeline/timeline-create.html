@@ -1,8 +1,7 @@
 <ion-view cache-view="false"  view-title="{{ 'CREATE_TIMELINE' | translate }}" hide-tabs>
     <ion-nav-buttons side="right">
-        <button ng-click="store()" class="button back-button buttons  button-clear header-item" style="overflow:hidden">
-            <span ng-if="!Timeline.content || !Timeline.pic" class="back-text" style="color:#ccc; transform: translate3d(0px, 0px, 0px);">{{ 'PUBLISH' | translate }}</span>
-            <span ng-if="Timeline.content && Timeline.pic" class="back-text" style="transform: translate3d(0px, 0px, 0px);">{{ 'PUBLISH' | translate }}</span>
+        <button ng-if="Timeline.content && Timeline.pic" ng-click="store()" class="button back-button buttons  button-clear header-item" style="overflow:hidden">
+            <span class="back-text" style="transform: translate3d(0px, 0px, 0px);">{{ 'PUBLISH' | translate }}</span>
         </button>
     </ion-nav-buttons>
 

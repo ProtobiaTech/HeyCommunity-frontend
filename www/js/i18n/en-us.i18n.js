@@ -105,7 +105,7 @@ HeyCommunity
         PICTURE:                'Picture',
         NEW_PHOTO:              'New Photo',
         NEW_VIDEO:              'New Video',
-        LIKE_OR_COMMENT:        'Etc. {{ num }} user likes or comments',
+        LIKE_OR_COMMENT:        'Total {{ num }} likes or comments',
 
 
 

@@ -1,8 +1,8 @@
 HeyCommunity
 
 .service('UtilityService', [
-    '$cordovaBadge', '$cordovaDialogs', '$rootScope', '$filter', '$state', '$ionicHistory', '$timeout', '$cordovaInAppBrowser', 'NoticeService',
-    function($cordovaBadge, $cordovaDialogs, $rootScope, $filter, $state, $ionicHistory, $timeout, $cordovaInAppBrowser, NoticeService) {
+    '$cordovaBadge', '$cordovaDialogs', '$rootScope', '$filter', '$state', '$ionicHistory', '$timeout', '$cordovaInAppBrowser', '$translate', 'NoticeService',
+    function($cordovaBadge, $cordovaDialogs, $rootScope, $filter, $state, $ionicHistory, $timeout, $cordovaInAppBrowser, $translate, NoticeService) {
 
         var self = this;
 
@@ -185,6 +185,13 @@ HeyCommunity
             $cordovaInAppBrowser.open(url, '_blank', options).then(function(event) {
                 // success
             })
+        }
+
+
+        //
+        //
+        self.getAppLang = function() {
+            return $translate.use();
         }
 
     }

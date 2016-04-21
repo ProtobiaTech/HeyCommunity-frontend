@@ -80,6 +80,9 @@ HeyCommunity
         WELCOME_COME_TO:                '欢迎来到',
         WELCOME_COME_BACK:              '欢迎回到',
 
+        TERMS_OF_SERVICE:               '《服务条款》',
+        BY_SIGNING_UP_YOU_AGREE:        '注册即表示您同意',
+
 
 
         //

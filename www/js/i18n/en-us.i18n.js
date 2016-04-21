@@ -80,6 +80,9 @@ HeyCommunity
         WELCOME_COME_TO:                'Welcome come to ',
         WELCOME_COME_BACK:              'Welcome come back ',
 
+        TERMS_OF_SERVICE:               '<Terms Of Service>',
+        BY_SIGNING_UP_YOU_AGREE:        'By signing up you agree',
+
 
 
         //

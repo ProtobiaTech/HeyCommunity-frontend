@@ -12,7 +12,7 @@
     </ion-header-bar>
 
     <ion-content id="module-user" class="page-report">
-        <div class="padding">
+        <div ng-if="utility.getAppLang() === 'zh-cn'" class="padding">
             <p>请选择报告原因</p>
             <ion-list>
                 <ion-checkbox ng-model="UserReportService.type.one1">欺诈信息</ion-checkbox>
@@ -24,6 +24,23 @@
 
                 <div class="item item-input item-stacked-label">
                     <span class="input-label">详细描述</span>
+                    <textarea ng-model="UserReportService.content" placeholder="" rows="6"></textarea>
+                </div>
+            </ion-list>
+        </div>
+
+        <div ng-if="utility.getAppLang() === 'en-us'" class="padding">
+            <p>Please select a report reason</p>
+            <ion-list>
+                <ion-checkbox ng-model="UserReportService.type.one1">Fraud information</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one2">Rumors and false information</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one3">Pornography</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one4">Violation of regulations and ethics of information</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one5">Infringement information</ion-checkbox>
+                <ion-checkbox ng-model="UserReportService.type.one6">Other</ion-checkbox>
+
+                <div class="item item-input item-stacked-label">
+                    <span class="input-label">A detailed description</span>
                     <textarea ng-model="UserReportService.content" placeholder="" rows="6"></textarea>
                 </div>
             </ion-list>

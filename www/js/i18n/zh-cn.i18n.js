@@ -80,6 +80,9 @@ HeyCommunity
         WELCOME_COME_TO:                '欢迎来到',
         WELCOME_COME_BACK:              '欢迎回到',
 
+        TERMS_OF_SERVICE:               '《服务条款》',
+        BY_SIGNING_UP_YOU_AGREE:        '注册即表示您同意',
+
 
 
         //
@@ -102,7 +105,7 @@ HeyCommunity
         PICTURE:                '图片',
         NEW_PHOTO:              '照片',
         NEW_VIDEO:              '小视频',
-        LIKE_OR_COMMENT:        '等 {{ num }} 个用户喜欢或评论',
+        LIKE_OR_COMMENT:        '共 {{ num }} 次喜欢或评论',
 
 
 

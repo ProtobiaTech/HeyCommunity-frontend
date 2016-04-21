@@ -80,6 +80,9 @@ HeyCommunity
         WELCOME_COME_TO:                'Welcome come to ',
         WELCOME_COME_BACK:              'Welcome come back ',
 
+        TERMS_OF_SERVICE:               '<Terms Of Service>',
+        BY_SIGNING_UP_YOU_AGREE:        'By signing up you agree',
+
 
 
         //
@@ -102,7 +105,7 @@ HeyCommunity
         PICTURE:                'Picture',
         NEW_PHOTO:              'New Photo',
         NEW_VIDEO:              'New Video',
-        LIKE_OR_COMMENT:        'Etc. {{ num }} user likes or comments',
+        LIKE_OR_COMMENT:        'Total {{ num }} likes or comments',
 
 
 

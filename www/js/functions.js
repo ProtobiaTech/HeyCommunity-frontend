@@ -4,7 +4,7 @@
 
 // Get Api Url
 function getApiUrl(url) {
-    return API + '/api' + url;
+    return API + url;
 }
 
 
@@ -13,7 +13,7 @@ function getPicUrl(url) {
     if (url.substring(0, 4) == 'http') {
         return url;
     } else {
-        return CDN_DOMAIN + url;
+        return CDN + url;
     }
 }
 
@@ -37,7 +37,7 @@ function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    return results === null ? undefined : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 

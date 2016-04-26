@@ -37,7 +37,7 @@ function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
-    return results === undefined ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    return results === null ? undefined : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
 

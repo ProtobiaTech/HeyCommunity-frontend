@@ -4,7 +4,7 @@
 
 // Get Api Url
 function getApiUrl(url) {
-    return API + '/api' + url;
+    return API + url;
 }
 
 
@@ -13,7 +13,7 @@ function getPicUrl(url) {
     if (url.substring(0, 4) == 'http') {
         return url;
     } else {
-        return CDN_DOMAIN + url;
+        return CDN + url;
     }
 }
 

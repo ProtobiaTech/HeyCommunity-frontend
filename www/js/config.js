@@ -2,10 +2,10 @@
  * Config
  */
 
-CDN_DOMAIN          =   localStorage.CDN_DOMAIN ? localStorage.CDN_DOMAIN : 'http://public.hey-community.cn';
+CDN_DOMAIN          =   'http://public.hey-community.cn';
 
-API_PRODUCT         =   localStorage.API_PRODUCT ? localStorage.API_PRODUCT : 'http://demo.hey-community.cn';
-API_DEVING          =   localStorage.API_DEVING ? localStorage.API_DEVING : 'http://demo.hey-community.local';
+API_PRODUCT         =   'http://demo.hey-community.cn';
+API_DEVING          =   'http://demo.hey-community.local';
 
 
 

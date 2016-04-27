@@ -19,7 +19,15 @@ CDN_DOMAIN          =   'please use qiniu.com';                         // the c
 
 // auto set API
 if (window.location.protocol == 'http:' || window.location.protocol == 'https:') {
-    API     =   window.location.protocol + '//' + window.location.hostname + '/api';
+    // set API
+    if (API_WEBAPP.substring(0, 4) == 'http') {
+        API     =   API_WEBAPP;
+    } else {
+        API     =   window.location.protocol + '//' + window.location.hostname + '/api';
+    }
+
+
+    // set CDN
     if (getParameterByName('env') === undefined && CDN_DOMAIN.substring(0, 4) == 'http') {
         CDN =   CDN_DOMAIN;
     } else {

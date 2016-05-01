@@ -7,7 +7,7 @@
 API_APP             =   'http://demo.hey-community.cn/api';             // app use the api
 API_WEBAPP          =   "it's will be auto get from URL";               // webApp use the api
 
-CDN_DOMAIN          =   'please use qiniu.com';                         // the cdn, Non-essential
+CDN_DOMAIN          =   'please use qiniu.com';                         // the cdn, app env is need
 
 
 
@@ -35,6 +35,7 @@ if (window.location.protocol == 'http:' || window.location.protocol == 'https:')
     }
 } else {
     API     =   API_APP;
+    CDN     =   CDN_DOMAIN;
 }
 
 console.debug('the API is: ' + API);

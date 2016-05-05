@@ -194,6 +194,7 @@ HeyCommunity
         views: {
             'menuContent': {
                 templateUrl: 'templates/user/user-setup-accountSecurity.html',
+                controller: 'AccountSecurityCtrl'
             }
         }
     })

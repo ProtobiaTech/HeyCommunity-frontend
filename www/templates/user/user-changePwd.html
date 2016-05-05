@@ -1,0 +1,29 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <button class="button button-clear button-primary" ng-click="changePwdModal.hide()">
+            <i class="icon ion-ios-close-empty"></i>
+        </button>
+        <h1 class="title">{{ 'CHANGE_PWD' | translate}}</h1>
+    </ion-header-bar>
+
+    <ion-content id="module-user" class="page-signin">
+        <div class="padding">
+            <p class="h5">{{ 'CHANGE_PWD' | translate }}</p>
+
+            <form name="ngForm" ng-submit="UserSignInService.signIn()">
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">{{ 'PASSWORD' | translate }}</span>
+                        <input ng-model="UserSignInService.phone" required ng-minlength="11" type="number" placeholder="">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">{{ 'NEW_PASSWORD' | translate }}</span>
+                        <input ng-model="UserSignInService.password" required ng-minlength="6" type="password" placeholder="">
+                    </label>
+                </div>
+
+                <button ng-disabled="ngForm.$invalid" class="button button-block">{{ 'CHANGE_PWD' | translate }}</button>
+            </form>
+        </div>
+    </ion-content>
+</ion-modal-view>

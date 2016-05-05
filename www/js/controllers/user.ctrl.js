@@ -146,7 +146,11 @@ HeyCommunity
       localStorage.timelines = '';
     }
 }])
-
+.controller('AccountSecurityCtrl', ['$scope', 'UserService', function($scope, UserService) {
+    $scope.change_pwd = function(){
+      localStorage.timelines = '';
+    }
+  }])
 
 // tab.user-setup-general-language
 .controller('UserSetupGeneralLanguageCtrl', ['$scope', 'UserService', '$translate', function($scope, UserService, $translate) {

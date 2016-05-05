@@ -88,6 +88,13 @@ var HeyCommunity = angular.module('starter', [
             $rootScope.signInModal = modal;
         });
 
+        $ionicModal.fromTemplateUrl('templates/user/user-changePwd.html', {
+          scope: $rootScope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $rootScope.changePwdModal = modal;
+        });
+
         $ionicModal.fromTemplateUrl('templates/user/user-report.html', {
             scope: $rootScope,
             animation: 'slide-in-up'

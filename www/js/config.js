@@ -5,9 +5,9 @@
  */
 
 API_APP             =   'http://demo.hey-community.cn/api';             // app use the api
-API_WEBAPP          =   "it's will be auto get from URL";               // webApp use the api
+API_WEBAPP          =   "http://demo.hey-community.cn/api";               // webApp use the api
 
-CDN_DOMAIN          =   'please use qiniu.com';                         // the cdn, Non-essential
+CDN_DOMAIN          =   'http://public.hey-community.cn';                         // the cdn, Non-essential
 
 
 

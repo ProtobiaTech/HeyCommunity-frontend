@@ -117,6 +117,7 @@ HeyCommunity
         PRIVACY:                'Privacy',
         FEEDBACK:               'Feedback',
         SOFT_INFO:              'More Information',
+        CLEAR_CACHE:            'Clear Cache',
         SIGN_OFF:               'Sign Off',
 
 

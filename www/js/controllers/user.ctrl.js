@@ -142,6 +142,9 @@ HeyCommunity
 
 // tab.user-setup
 .controller('UserSetupCtrl', ['$scope', 'UserService', function($scope, UserService) {
+    $scope.clear_cache = function(){
+      localStorage.timelines = '';
+    }
 }])
 
 

@@ -5,6 +5,8 @@ node_modules/
 platforms/
 plugins/
 
+.idea/*
+
 .DS_Store
 .swp
 www/js/all.hey-community.min.js

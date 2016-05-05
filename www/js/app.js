@@ -95,6 +95,13 @@ var HeyCommunity = angular.module('starter', [
           $rootScope.changePwdModal = modal;
         });
 
+        $ionicModal.fromTemplateUrl('templates/user/user-forgetPwd.html', {
+          scope: $rootScope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $rootScope.forgetPwdModal = modal;
+        });
+
         $ionicModal.fromTemplateUrl('templates/user/user-report.html', {
             scope: $rootScope,
             animation: 'slide-in-up'

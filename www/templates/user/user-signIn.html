@@ -26,7 +26,7 @@
             </form>
 
             <div style="margin-top:4px;">
-                <a style="color:#ddd">{{ 'FORGET_PASSWORD' | translate }}</a>
+                <a ng-click="forgetPwdModal.show();signInModal.hide();">{{ 'FORGET_PASSWORD' | translate }}</a>
                 <a ng-click="signUpModal.show();signInModal.hide();" todo-ui-sref="hey.user-signUp" class="pull-right">{{ 'SIGN_UP' | translate }}</a>
             </div>
         </div>

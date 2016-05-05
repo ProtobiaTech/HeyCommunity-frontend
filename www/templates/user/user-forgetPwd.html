@@ -1,0 +1,51 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-positive">
+        <button class="button button-clear button-primary" ng-click="forgetPwdModal.hide()">
+            <i class="icon ion-ios-close-empty"></i>
+        </button>
+        <h1 class="title">{{ 'FORGET_PASSWORD' | translate}}</h1>
+    </ion-header-bar>
+
+    <ion-content id="module-user" class="page-signup">
+        <div class="padding">
+            <p class="h5">{{ 'FORGET_PASSWORD' | translate }}</p>
+
+            <!-- step of 1 -->
+            <form ng-if="UserSignUpService.signUpStep == 1" name="ngFormSignUpVerify" ng-submit="UserSignUpService.signUpVerifyCaptcha()">
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">{{ 'PHONE' | translate }}</span>
+                        <input ng-model="UserSignUpService.user.phone" name="phone" type="number" required ng-maxlength="11" ng-minlength="11">
+                    </label>
+
+
+                    <label class="item item-input">
+                        <span class="input-label">{{ 'CAPTCHA' | translate }}</span>
+                        <button type="button" ng-disabled="ngFormSignUpVerify.phone.$invalid" style="position:absolute; right:10px;" class="button button-small" ng-click="UserSignUpService.getCaptcha()">{{ UserSignUpService.getCaptchaBtnText | translate }}</button>
+                        <input ng-model="UserSignUpService.user.captcha" name="captcha" type="text" required ng-minlength="6">
+                    </label>
+                </div>
+
+                <button ng-disabled="ngFormSignUpVerify.$invalid" class="button button-block">{{ 'NEXT' | translate }}</button>
+            </form>
+
+
+            <!-- step of 2 -->
+            <form ng-if="UserSignUpService.signUpStep == 2" name="ngFormSignUp" ng-submit="UserSignUpService.signUp()">
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">{{ 'PASSWORD' | translate }}</span>
+                        <input ng-model="UserSignUpService.user.password" ng-minlength="6" name="password" type="text" required type="text" placeholder="">
+                    </label>
+
+                    <label class="item item-input">
+                      <span class="input-label">{{ 'NEW_PASSWORD' | translate }}</span>
+                      <input ng-model="UserSignUpService.user.password" ng-minlength="6" name="password" type="text" required type="text" placeholder="">
+                    </label>
+                </div>
+
+                <button ng-disabled="ngFormSignUp.$invalid" class="button button-block">{{ 'SIGN_UP' | translate }}</button>
+            </form>
+        </div>
+    </ion-content>
+</ion-modal-view>

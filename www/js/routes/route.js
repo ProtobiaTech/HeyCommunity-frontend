@@ -129,16 +129,6 @@ HeyCommunity
         }
     })
 
-    .state('hey.user-signOut', {
-        cache: false,
-        url: '/user/signOut',
-        views: {
-            'menuContent': {
-                controller: 'UserSignOutCtrl'
-            }
-        }
-    })
-
     .state('hey.user-info', {
         url: '/user/user-info/:id',
         views: {

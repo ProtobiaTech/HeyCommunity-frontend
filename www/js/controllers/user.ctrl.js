@@ -76,20 +76,6 @@ HeyCommunity
 
 
 
-// tab.user-signOut
-.controller('UserSignOutCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
-    UserService.signOut().then(function(response) {
-        if (response.status === 200) {
-            $ionicHistory.clearCache();
-            $scope.state.go('hey.user');
-        } else {
-            $scope.state.go('hey.user-setup');
-        }
-    });
-}])
-
-
-
 // tab.user-info
 .controller('UserInfoCtrl', ['$scope', 'UserService', function($scope, UserService) {
     if ($scope.stateParams.id != $scope.$root.userInfo.id) {
@@ -140,12 +126,33 @@ HeyCommunity
 
 
 
-// tab.user-setup
-.controller('UserSetupCtrl', ['$scope', 'UserService', function($scope, UserService) {
-    $scope.clear_cache = function(){
-      localStorage.timelines = '';
+// hey.user-setup
+.controller('UserSetupCtrl', ['$scope', 'UserService', '$ionicHistory', function($scope, UserService, $ionicHistory) {
+    //
+    $scope.clearCache = function(){
+        localStorage.removeItem('timelines');
+        localStorage.removeItem('timelineLikes');
+        localStorage.removeItem('topics');
+        localStorage.removeItem('user');
+        localStorage.removeItem('tenantInfo');
+        $scope.utility.showNoticeSuccess();
+    }
+
+    //
+    $scope.signOut = function() {
+        UserService.signOut().then(function(response) {
+            if (response.status === 200) {
+                $ionicHistory.clearCache();
+                $scope.state.go('hey.user');
+            } else {
+                $scope.utility.showNoticeFail();
+            }
+        });
     }
 }])
+
+
+
 .controller('AccountSecurityCtrl', ['$scope', 'UserService', function($scope, UserService) {
     $scope.change_pwd = function(){
       localStorage.timelines = '';

@@ -5,7 +5,7 @@ import {TabsPage} from './pages/tabs/tabs';
 
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  templateUrl: 'build/app.html'
 })
 export class MyApp {
 

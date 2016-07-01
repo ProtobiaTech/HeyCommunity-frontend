@@ -4,18 +4,30 @@
       <ion-icon name="menu"></ion-icon>
     </button>
 
-    <ion-title>Topic</ion-title>
+    <ion-segment [(ngModel)]="pet" [attr.light]="isAndroid ? '' : null">
+      <ion-segment-button value="kittens">
+        New
+      </ion-segment-button>
+      <ion-segment-button value="ducklings">
+        Hot
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+      <button>
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="topic">
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>app/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content class="topic">
+
+<ion-list>
+  <ion-item *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
+    <h2>My Neighbor Totoro {{ item }}</h2>
+    <p>Hayao Miyazaki • 1988</p>
+  </ion-item>
+</ion-list>
+
 </ion-content>

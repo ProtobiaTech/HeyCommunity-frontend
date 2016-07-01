@@ -5,18 +5,59 @@
     </button>
 
     <ion-title>Timeline</ion-title>
+
+    <ion-buttons end>
+      <button>
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="timeline">
-  <ion-list>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let item of [1,2,3,4,5,6]">
+
     <ion-item>
       <ion-avatar item-left>
-        <img src="img/avatar-finn.png" style="background-color:#ddd;">
+        <img src="http://lorempixel.com/200/200/?86791?imageView/2/w/80">
       </ion-avatar>
-      <h2>Finn</h2>
-      <h3>Don't Know What To Do!</h3>
-      <p>I've had a pretty messed up day. If we just...</p>
+      <h2>Marty McFly</h2>
+      <p>November 5, 1955</p>
     </ion-item>
-  </ion-list>
+
+    <img src="http://lorempixel.com/640/480/?31319?imageView/2/w/800">
+
+    <ion-card-content>
+      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button primary clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>12 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button primary clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>4 Comments</div>
+        </button>
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+          11h ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

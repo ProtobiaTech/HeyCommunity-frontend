@@ -1,2 +1,13 @@
 .timeline {
+  background-color: #eee;
+
+  ion-card {
+    width: 100%;
+    margin: 0 0 12px 0;
+  }
+
+  img {
+    height: 100px;
+    background-color: #ddd;
+  }
 }

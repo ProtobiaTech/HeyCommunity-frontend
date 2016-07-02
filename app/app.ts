@@ -23,5 +23,6 @@ export class MyApp {
 }
 
 ionicBootstrap(MyApp, [], {
+  backButtonText: '',
   tabbarPlacement: 'bottom'
 })

@@ -1,11 +1,21 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 
+import {TimelineCreatePage} from '../timeline-create/timeline-create';
+
 @Component({
   templateUrl: 'build/pages/timeline/timeline.html'
 })
 export class TimelinePage {
-  constructor(private navController: NavController) {
+  constructor(
+    private navController: NavController
+  ) {
+  }
+
+  //
+  // go to create timeline page
+  gotoTimelineCreatePage() {
+    this.navController.push(TimelineCreatePage);
   }
 
   //

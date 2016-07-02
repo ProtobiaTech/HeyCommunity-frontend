@@ -3,7 +3,7 @@ import {NavController} from 'ionic-angular';
 
 
 @Component({
-  templateUrl: 'build/pages/timeline-create/timeline-create.html'
+  templateUrl: 'build/pages/timeline/timeline-create.html'
 })
 export class TimelineCreatePage {
   constructor(

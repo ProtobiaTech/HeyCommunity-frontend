@@ -4,7 +4,7 @@ import {NavController} from 'ionic-angular';
 import {Timeline} from '../../models/timeline.model';
 import {TimelineService} from '../../services/timeline.service';
 
-import {TimelineCreatePage} from '../timeline-create/timeline-create';
+import {TimelineCreatePage} from '../timeline/timeline-create';
 import {TimelineDetailPage} from '../timeline/timeline-detail';
 
 

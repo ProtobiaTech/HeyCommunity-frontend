@@ -19,33 +19,34 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let item of [1,2,3,4,5,6]">
-
+  <ion-card *ngFor="let item of timelines">
     <ion-item>
       <ion-avatar item-left>
-        <img src="http://lorempixel.com/200/200/?86791?imageView/2/w/80">
+        <img src="{{ item.attachment }}">
       </ion-avatar>
-      <h2>Marty McFly</h2>
-      <p>November 5, 1955</p>
+      <h2>{{ item.author.nickname }}</h2>
+      <p>{{ item.created_at }}</p>
     </ion-item>
 
-    <img src="http://lorempixel.com/640/480/?31319?imageView/2/w/800">
+    <img *ngIf="item.attachment" src="{{ item.attachment }}">
+    <hr *ngIf="!item.attachment" style="margin:0;">
 
     <ion-card-content>
       <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+      <p *ngIf="item.content">{{ item.content }}</p>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
         <button primary clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
+          <div>{{ item.like_num }} Likes</div>
         </button>
       </ion-col>
       <ion-col>
         <button primary clear small>
           <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
+          <div>{{ item.comment_num }} Comments</div>
         </button>
       </ion-col>
       <ion-col center text-center>
@@ -54,7 +55,6 @@
         </ion-note>
       </ion-col>
     </ion-row>
-
   </ion-card>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

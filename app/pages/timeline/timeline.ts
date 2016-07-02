@@ -5,6 +5,7 @@ import {Timeline} from '../../models/timeline.model';
 import {TimelineService} from '../../services/timeline.service';
 
 import {TimelineCreatePage} from '../timeline-create/timeline-create';
+import {TimelineDetailPage} from '../timeline/timeline-detail';
 
 
 @Component({
@@ -14,24 +15,39 @@ import {TimelineCreatePage} from '../timeline-create/timeline-create';
   ]
 })
 export class TimelinePage {
+  timelines: Timeline[];
+
+
+  //
+  // constructor
   constructor(
     private navController: NavController,
     private timelineService: TimelineService
   ) {
   }
 
-  timelines: Timeline[];
 
+  //
+  // on init
   ngOnInit() {
     this.timelineService.getTimelines()
       .then(timelines => this.timelines = timelines);
   }
+
+
   //
   // go to create timeline page
   gotoTimelineCreatePage() {
     this.navController.push(TimelineCreatePage);
-    console.log(this.timelines)
   }
+
+
+  //
+  // go to timeline detail
+  gotoTimelineDetailPage(timeline: Timeline) {
+    this.navController.push(TimelineDetailPage, timeline);
+  }
+
 
   //
   // Refresh
@@ -43,6 +59,7 @@ export class TimelinePage {
       refresher.complete();
     }, 800);
   }
+
 
   //
   // Infinite

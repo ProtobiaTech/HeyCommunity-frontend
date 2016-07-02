@@ -31,8 +31,7 @@
     <img *ngIf="item.attachment" src="{{ item.attachment }}">
     <hr *ngIf="!item.attachment" style="margin:0;">
 
-    <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+    <ion-card-content (click)="gotoTimelineDetailPage(item)">
       <p *ngIf="item.content">{{ item.content }}</p>
     </ion-card-content>
 

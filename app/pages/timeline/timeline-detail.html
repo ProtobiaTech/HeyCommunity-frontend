@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Timeline Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="timeline-detail">
+  <img *ngIf="timeline.attachment" src="{{ timeline.attachment }}">
+  <div padding *ngIf="timeline.content">{{ timeline.content }}</div>
+</ion-content>

@@ -1,9 +1,20 @@
+//
+// timeline
+// ----------------------------------------
 .timeline {
   background-color: #eee;
 
   ion-card {
     width: 100%;
     margin: 0 0 12px 0;
+
+    hr {
+      margin: 0;
+    }
+
+    .content {
+      color: $textColorPrimary;
+    }
 
     img.avatar {
       min-height: 36px;
@@ -13,8 +24,64 @@
 
     img.phtot {
       width: 100%;
-      min-height: 120px;
       background-color: #ddd;
     }
+  }
+}
+
+
+
+//
+// timeline-detail
+// ---------------------------------------
+.timeline-detail {
+  .section-comment {
+    background-color: #eee;
+    color: $textColorPrimary;
+
+
+    //
+    .avatar {
+      position: absolute;
+      border-radius: 50%;
+      background-color: #ddd;
+      width: 30px;
+      height: 30px;
+    }
+
+
+    //
+    .comments {
+
+      .comment-content {
+        margin-left: 40px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 16px;
+
+
+        .header {
+          line-height: 20px;
+
+          a {
+            font-size: 16px;
+          }
+
+          span {
+            float: right;
+            color: #999;
+          }
+        }
+      }
+
+
+      //
+      &:last-of-type .comment-content {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+      }
+    }
+
   }
 }

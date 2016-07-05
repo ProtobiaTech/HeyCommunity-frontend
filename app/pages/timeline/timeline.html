@@ -29,10 +29,10 @@
     </ion-item>
 
     <img class="photo" *ngIf="item.attachment" src="{{ item.attachment }}">
-    <hr *ngIf="!item.attachment" style="margin:0;">
+    <hr>
 
     <ion-card-content (click)="gotoTimelineDetailPage(item)">
-      <p *ngIf="item.content">{{ item.content }}</p>
+      <div class="content" *ngIf="item.content">{{ item.content }}</div>
     </ion-card-content>
 
     <ion-row>

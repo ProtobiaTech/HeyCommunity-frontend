@@ -22,13 +22,13 @@
   <ion-card *ngFor="let item of timelines">
     <ion-item>
       <ion-avatar item-left>
-        <img src="{{ item.attachment }}">
+        <img class="avatar" src="{{ item.attachment }}">
       </ion-avatar>
       <h2>{{ item.author.nickname }}</h2>
       <p>{{ item.created_at }}</p>
     </ion-item>
 
-    <img *ngIf="item.attachment" src="{{ item.attachment }}">
+    <img class="photo" *ngIf="item.attachment" src="{{ item.attachment }}">
     <hr *ngIf="!item.attachment" style="margin:0;">
 
     <ion-card-content (click)="gotoTimelineDetailPage(item)">

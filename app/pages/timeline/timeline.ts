@@ -7,11 +7,16 @@ import {TimelineService} from '../../services/timeline.service';
 import {TimelineCreatePage} from '../timeline/timeline-create';
 import {TimelineDetailPage} from '../timeline/timeline-detail';
 
+import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
+
 
 @Component({
   templateUrl: 'build/pages/timeline/timeline.html',
   providers: [
     TimelineService,
+  ],
+  pipes: [
+    TimeagoPipe
   ]
 })
 export class TimelinePage {

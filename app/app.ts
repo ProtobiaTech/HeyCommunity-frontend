@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Platform, ionicBootstrap} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HTTP_PROVIDERS} from '@angular/http';
+import {Helper} from './other/helper.component';
 
 import {TabsPage} from './pages/tabs/tabs';
 
@@ -25,7 +26,8 @@ export class MyApp {
 }
 
 ionicBootstrap(MyApp, [
-  HTTP_PROVIDERS
+  HTTP_PROVIDERS,
+  Helper
 ], {
   backButtonText: '',
   tabbarPlacement: 'bottom'

@@ -37,6 +37,7 @@ export class TimelinePage {
   ngOnInit() {
     this.timelineService.getTimelines()
       .then(timelines => this.timelines = timelines);
+
   }
 
 
@@ -55,25 +56,38 @@ export class TimelinePage {
 
 
   //
+  // set like timeline
+  setLikeTimeline(timeline: Timeline) {
+    console.log(timeline);
+    this.timelineService.setLike(timeline)
+  }
+
+
+  //
   // Refresh
   doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
 
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      refresher.complete();
-    }, 800);
+    let params: any = {
+      id: this.timelines[0].id,
+    }
+    this.timelineService.refresh(params)
+      .then(timelines => {
+        this.timelines = timelines.concat(this.timelines);
+        refresher.complete();
+      });
   }
 
 
   //
   // Infinite
   doInfinite(infiniteScroll) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      infiniteScroll.complete();
-    }, 500);
+    let params: any = {
+      id: this.timelines[this.timelines.length - 1].id,
+    }
+    this.timelineService.infinite(params)
+      .then(timelines => {
+        this.timelines = this.timelines.concat(timelines);
+        infiniteScroll.complete();
+      });
   }
 }

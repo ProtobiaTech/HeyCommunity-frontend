@@ -37,13 +37,14 @@
 
     <ion-row>
       <ion-col>
-        <button primary clear small>
-          <ion-icon name="thumbs-up"></ion-icon>
+        <button primary clear small (click)="setLikeTimeline(item)">
+          <ion-icon *ngIf="false" name="heart"></ion-icon>
+          <ion-icon name="heart-outline"></ion-icon>
           <div>{{ item.like_num }} Likes</div>
         </button>
       </ion-col>
       <ion-col>
-        <button primary clear small>
+        <button primary clear small (click)="gotoTimelineDetailPage(item)">
           <ion-icon name="text"></ion-icon>
           <div>{{ item.comment_num }} Comments</div>
         </button>

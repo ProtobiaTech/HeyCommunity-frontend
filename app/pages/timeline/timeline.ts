@@ -56,10 +56,14 @@ export class TimelinePage {
 
 
   //
-  // set like timeline
-  setLikeTimeline(timeline: Timeline) {
-    console.log(timeline);
+  // set like for timeline
+  setLikeForTimeline(timeline: Timeline) {
     this.timelineService.setLike(timeline)
+      .then(newTimeline => {
+        for (let key in newTimeline) {
+          timeline[key] = newTimeline[key];
+        }
+      });
   }
 
 

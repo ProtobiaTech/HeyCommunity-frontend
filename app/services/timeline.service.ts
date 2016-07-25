@@ -52,7 +52,7 @@ export class TimelineService {
 
     return this.http.post(api, params)
       .toPromise()
-      .then(response => response.json().timelines)
+      .then(response => response.json())
       .catch(this.handleError);
   }
 

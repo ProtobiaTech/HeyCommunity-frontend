@@ -37,9 +37,9 @@
 
     <ion-row>
       <ion-col>
-        <button primary clear small (click)="setLikeTimeline(item)">
-          <ion-icon *ngIf="false" name="heart"></ion-icon>
-          <ion-icon name="heart-outline"></ion-icon>
+        <button primary clear small (click)="setLikeForTimeline(item)">
+          <ion-icon *ngIf="item.is_like" name="heart"></ion-icon>
+          <ion-icon *ngIf="!item.is_like" name="heart-outline"></ion-icon>
           <div>{{ item.like_num }} Likes</div>
         </button>
       </ion-col>

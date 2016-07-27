@@ -3,7 +3,7 @@
     <ion-title>Timeline Create</ion-title>
 
     <ion-buttons end>
-      <button>
+      <button (click)="timelineCreateHandle(timelineCreateForm)">
         Send
       </button>
     </ion-buttons>
@@ -12,10 +12,13 @@
 
 <ion-content class="timeline-create">
   <ion-list id="section-textarea">
-    <ion-item>
-      <ion-textarea rows="8" placeholder="What is new">
-      </ion-textarea>
-    </ion-item>
+
+    <form #timelineCreateForm="ngForm" novalidate>
+        <ion-item>
+          <ion-textarea [(ngModel)]="newTimeline.content" ngControl="content" #content="ngForm" rows="8" placeholder="What is new">
+          </ion-textarea>
+        </ion-item>
+    </form>
   </ion-list>
   <div class="media-toolbar">
     <button dark outline clear>

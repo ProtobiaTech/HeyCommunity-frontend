@@ -1,7 +1,9 @@
 export class Timeline {
-  id: number;
-  content: string;
-  is_like: boolean;
-  like_num: number;
-  comment_num: number;
+  constructor(
+    public id: number,
+    public content: string,
+    public is_like: boolean,
+    public like_num: number,
+    public comment_num: number
+  ) {  }
 }

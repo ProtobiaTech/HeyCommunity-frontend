@@ -7,17 +7,24 @@ import {Helper} from '../other/helper.component';
 
 @Injectable()
 export class TimelineService {
+  timelines: Timeline[] = [];
+
   constructor(
     private http: Http,
     private helper: Helper
-  ) { }
+  ) {
+    this.timelines = [];
+  }
 
   //
   //
   getTimelines(): Promise<Timeline[]> {
     return this.http.get(this.helper.getAPI('timeline'))
       .toPromise()
-      .then(response => response.json())
+      .then(response => {
+        this.timelines = response.json();
+        return response.json();
+      })
       .catch(this.handleError);
   }
 
@@ -46,14 +53,52 @@ export class TimelineService {
   //
   setLike(timeline): Promise<Timeline> {
     let api: string = this.helper.getAPI('timeline/set-like');
-    let params: any = {id: timeline.id};
+    let data: any = {id: timeline.id};
 
     // return timeline;
-
-    return this.http.post(api, params)
+    return this.http.post(api, data)
       .toPromise()
       .then(response => response.json())
       .catch(this.handleError);
+  }
+
+
+  //
+  //
+  store(params): Promise<Timeline> {
+    let api: string = this.helper.getAPI('timeline/store');
+    let data: any = {content: params.content};
+
+    return this.http.post(api, data)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+
+  //
+  //
+  update(params): Promise<Timeline> {
+    let api: string = this.helper.getAPI('timeline/update');
+    let data: any = {content: params.content};
+
+    return this.http.post(api, data)
+      .toPromise()
+      .then(response => response.json())
+      .catch(this.handleError);
+  }
+
+
+  //
+  //
+  destroy(params): Promise<Timeline> {
+    let api: string = this.helper.getAPI('timeline/destroy');
+    let data: any = {id: params.id};
+
+    return this.http.post(api, data)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
   }
 
 

@@ -36,8 +36,10 @@ export class TimelinePage {
   // on init
   ngOnInit() {
     this.timelineService.getTimelines()
-      .then(timelines => this.timelines = timelines);
-
+    .then(timelines => {
+      this.timelineService.timelines = timelines;
+      this.timelines = timelines;
+    });
   }
 
 
@@ -51,7 +53,7 @@ export class TimelinePage {
   //
   // go to timeline detail
   gotoTimelineDetailPage(timeline: Timeline) {
-    this.navController.push(TimelineDetailPage, timeline);
+    this.navController.push(TimelineDetailPage, {timelines: this.timelines, timeline: timeline});
   }
 
 

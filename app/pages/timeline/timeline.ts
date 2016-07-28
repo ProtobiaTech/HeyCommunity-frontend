@@ -16,7 +16,8 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
     TimelineService,
   ],
   pipes: [
-    TimeagoPipe
+    TimeagoPipe,
+    MomentPipe,
   ]
 })
 export class TimelinePage {

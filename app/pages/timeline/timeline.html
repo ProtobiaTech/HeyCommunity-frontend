@@ -25,7 +25,7 @@
         <img class="avatar" src="{{ item.author.avatar }}">
       </ion-avatar>
       <h2>{{ item.author.nickname }}</h2>
-      <p>{{ item.created_at }}</p>
+      <p>{{ item.created_at | moment: ['YYYY-MM-DD HH:mm'] }}</p>
     </ion-item>
 
     <img class="photo" *ngIf="item.attachment" src="{{ item.attachment }}">

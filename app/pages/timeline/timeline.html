@@ -22,7 +22,7 @@
   <ion-card *ngFor="let item of timelines">
     <ion-item>
       <ion-avatar item-left>
-        <img class="avatar" src="{{ item.attachment }}">
+        <img class="avatar" src="{{ item.author.avatar }}">
       </ion-avatar>
       <h2>{{ item.author.nickname }}</h2>
       <p>{{ item.created_at }}</p>

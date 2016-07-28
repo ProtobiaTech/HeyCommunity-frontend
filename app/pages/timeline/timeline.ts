@@ -37,7 +37,6 @@ export class TimelinePage {
   ngOnInit() {
     this.timelineService.getTimelines()
     .then(timelines => {
-      this.timelineService.timelines = timelines;
       this.timelines = timelines;
     });
   }
@@ -46,7 +45,7 @@ export class TimelinePage {
   //
   // go to create timeline page
   gotoTimelineCreatePage() {
-    this.navController.push(TimelineCreatePage);
+    this.navController.push(TimelineCreatePage, {timelines: this.timelines});
   }
 
 
@@ -61,26 +60,26 @@ export class TimelinePage {
   // set like for timeline
   setLikeForTimeline(timeline: Timeline) {
     this.timelineService.setLike(timeline)
-      .then(newTimeline => {
-        for (let key in newTimeline) {
-          timeline[key] = newTimeline[key];
-        }
-      });
+    .then(newTimeline => {
+      for (let key in newTimeline) {
+        timeline[key] = newTimeline[key];
+      }
+    });
   }
 
 
   //
   // Refresh
   doRefresh(refresher) {
-
     let params: any = {
       id: this.timelines[0].id,
     }
+
     this.timelineService.refresh(params)
-      .then(timelines => {
-        this.timelines = timelines.concat(this.timelines);
-        refresher.complete();
-      });
+    .then(timelines => {
+      this.timelines = timelines.concat(this.timelines);
+      refresher.complete();
+    });
   }
 
 
@@ -90,10 +89,11 @@ export class TimelinePage {
     let params: any = {
       id: this.timelines[this.timelines.length - 1].id,
     }
+
     this.timelineService.infinite(params)
-      .then(timelines => {
-        this.timelines = this.timelines.concat(timelines);
-        infiniteScroll.complete();
-      });
+    .then(timelines => {
+      this.timelines = this.timelines.concat(timelines);
+      infiniteScroll.complete();
+    });
   }
 }

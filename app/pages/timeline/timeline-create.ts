@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 
 import {Timeline} from '../../models/timeline.model';
 import {TimelineService} from '../../services/timeline.service';
@@ -19,22 +19,22 @@ export class TimelineCreatePage {
   // constructor
   constructor(
     private nav: NavController,
+    private navParams: NavParams,
     private timelineService: TimelineService
   ) {
   }
 
 
   //
-  // timeline create handle
-  timelineCreateHandle(ngForm) {
-    let params: any = {
+  // timeline create handler
+  timelineCreateHandler(ngForm) {
+    let data: any = {
       content: ngForm.value.content
     };
 
-    this.timelineService.store(params)
-      .then(newTimeline => {
-        this.nav.pop();
-        console.log(newTimeline);
-      });
+    this.timelineService.store(data)
+    .then((newTimeline: Timeline) => {
+      this.nav.pop();
+    });
   }
 }

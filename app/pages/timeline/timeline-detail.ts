@@ -33,9 +33,6 @@ export class TimelineDetailPage {
   ngOnInit() {
   }
 
-  ngAfterViewInit() {
-  }
-
 
   //
   // destroy

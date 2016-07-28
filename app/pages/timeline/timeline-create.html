@@ -12,7 +12,6 @@
 
 <ion-content class="timeline-create">
   <ion-list id="section-textarea">
-
     <form #timelineCreateForm="ngForm" novalidate>
         <ion-item>
           <ion-textarea [(ngModel)]="newTimeline.content" ngControl="content" #content="ngForm" rows="8" placeholder="What is new">
@@ -20,14 +19,15 @@
         </ion-item>
     </form>
   </ion-list>
+
   <div class="media-toolbar">
     <button dark outline clear>
       <ion-icon name="images"></ion-icon>
     </button>
-    <button dark outline clear>
+    <button disabled dark outline clear>
       <ion-icon name="videocam"></ion-icon>
     </button>
-    <button dark outline clear>
+    <button disabled dark outline clear>
       <ion-icon name="mic"></ion-icon>
     </button>
   </div>

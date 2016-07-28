@@ -92,15 +92,25 @@
 // timeline-create
 // ---------------------------------------
 .timeline-create {
-    //
-    #section-textarea {
-        margin-bottom: 0;
-    }
-
+  //
+  #section-textarea {
+    margin-bottom: 0;
 
     //
-    .media-toolbar {
-        margin-bottom: -7px;
+    ion-item {
+      padding-left: 0;
     }
+
+    //
+    textarea {
+      padding-left: 16px;
+    }
+  }
+
+
+  //
+  .media-toolbar {
+    margin-bottom: -7px;
+  }
 }
 

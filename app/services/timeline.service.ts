@@ -104,6 +104,19 @@ export class TimelineService {
 
 
   //
+  // store comment
+  storeComment(params): Promise<Timeline> {
+    let api: string = this.helper.getAPI('timeline/store-comment');
+    let data: any = {timeline_id: params.timeline_id, content: params.content};
+
+    return this.http.post(api, data)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
   // handle error
   private handleError(error: any) {
     console.error('An error occurred', error);

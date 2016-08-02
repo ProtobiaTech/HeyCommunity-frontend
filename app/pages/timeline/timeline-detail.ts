@@ -14,6 +14,7 @@ import {TimelineService} from '../../services/timeline.service';
 export class TimelineDetailPage {
   timeline: Timeline;
   timelines: Timeline[];
+  newComment: {content?: string, timeline_id?: number} = {};
 
 
   //
@@ -25,6 +26,7 @@ export class TimelineDetailPage {
   ) {
     this.timeline = navParams.data.timeline;
     this.timelines = navParams.data.timelines;
+    this.newComment.timeline_id = this.timeline.id;
   }
 
 
@@ -43,6 +45,26 @@ export class TimelineDetailPage {
       this.timelines.splice(index, 1);
 
       this.nav.pop();
+    });
+  }
+
+
+  //
+  // send comment handler
+  sendCommentHandler() {
+    let params: Object = {
+      timeline_id: this.newComment.timeline_id,
+      content: this.newComment.content,
+    }
+
+    this.timelineService.storeComment(params)
+    .then((ret) => {
+      this.newComment.content = '';
+
+      let index = this.timelines.indexOf(this.timeline);
+      for (let key in this.timelines[index]) {
+        this.timelines[index][key] = ret[key];
+      }
     });
   }
 

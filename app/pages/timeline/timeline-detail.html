@@ -33,8 +33,10 @@
 <ion-footer class="timeline-detail">
   <ion-toolbar no-border-bottom>
     <div class="section-comment-inputbox">
-      <ion-input type="text" placeholder="say something" class="input-comment"></ion-input>
-      <button small class="btn-send">Send</button>
+      <ion-input [(ngModel)]="newComment.content" type="text" placeholder="say something" class="input-comment"></ion-input>
+      <button small class="btn-send" (click)="sendCommentHandler()">
+        Send
+      </button>
     </div>
   </ion-toolbar>
 </ion-footer>

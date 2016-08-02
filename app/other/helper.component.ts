@@ -11,7 +11,7 @@ export class Helper {
   //
   //
   getAPI(string): string {
-    return '/api/' + string;
-    // return 'http://demo.hey-community.com/api/' + string;
+    // return '/api/' + string;
+    return 'http://new-app.heycommunity.com/api/' + string;
   }
 }

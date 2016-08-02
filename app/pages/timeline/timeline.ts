@@ -46,14 +46,14 @@ export class TimelinePage {
   //
   // go to create timeline page
   gotoTimelineCreatePage() {
-    this.navController.push(TimelineCreatePage, {timelines: this.timelines});
+    this.navController.rootNav.push(TimelineCreatePage, {timelines: this.timelines});
   }
 
 
   //
   // go to timeline detail
   gotoTimelineDetailPage(timeline: Timeline) {
-    this.navController.push(TimelineDetailPage, {timelines: this.timelines, timeline: timeline});
+    this.navController.rootNav.push(TimelineDetailPage, {timelines: this.timelines, timeline: timeline});
   }
 
 

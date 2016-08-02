@@ -10,20 +10,31 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content class="timeline-detail">
   <img *ngIf="timeline.attachment" src="{{ timeline.attachment }}">
   <div padding *ngIf="!timeline.content">{{ timeline.content }}</div>
 
   <div padding class="section-comment">
-    <div class="comments" *ngFor="let item of [1,2,3,4,5]">
+    <div class="comments" *ngFor="let comment of timeline.comments">
       <img class="avatar" src="http://demo.hey-community.local/assets/images/userAvatar-default.png">
       <div class="comment-content">
         <div class="header">
-          <a>{{ timeline.author.nickname }}</a>
-          <span>{{ timeline.created_at }}</span>
+          <a>{{ comment.author.nickname }}</a>
+          <span>{{ comment.created_at }}</span>
         </div>
-        {{ timeline.content }}
+        {{ comment.content }}
       </div>
     </div>
   </div>
 </ion-content>
+
+
+<ion-footer class="timeline-detail">
+  <ion-toolbar no-border-bottom>
+    <div class="section-comment-inputbox">
+      <ion-input type="text" placeholder="say something" class="input-comment"></ion-input>
+      <button small class="btn-send">Send</button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

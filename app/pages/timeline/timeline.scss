@@ -39,7 +39,6 @@
     background-color: #eee;
     color: $textColorPrimary;
 
-
     //
     .avatar {
       position: absolute;
@@ -49,7 +48,6 @@
       height: 30px;
     }
 
-
     //
     .comments {
 
@@ -58,7 +56,6 @@
         margin-bottom: 16px;
         border-bottom: 1px solid #fff;
         padding-bottom: 16px;
-
 
         .header {
           line-height: 20px;
@@ -74,7 +71,6 @@
         }
       }
 
-
       //
       &:last-of-type .comment-content {
         padding-bottom: 0;
@@ -82,7 +78,30 @@
         border-bottom: none;
       }
     }
+  }
 
+
+  //
+  //
+  .section-comment-inputbox {
+    position: relative;
+    .input-comment {
+       padding: 0 64px 0 6px;
+
+       input {
+         border-radius: 4px;
+         background-color: #ddd;
+         padding: 6px 10px;
+         margin: 6px 8px 4px 0;
+       }
+    }
+
+    .btn-send {
+      position: absolute;
+      right: 6px;
+      top: 3px;
+      width: 56px;
+    }
   }
 }
 

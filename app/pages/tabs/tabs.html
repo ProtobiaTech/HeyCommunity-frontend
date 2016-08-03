@@ -1,7 +1,13 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Timeline" tabIcon="home"></ion-tab>
+<ion-tabs [selectedIndex]="mySelectedIndex">
+  <ion-tab [root]="tab1Root" tabTitle="Timeline" tabIcon="pulse"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Timeline" tabIcon="images"></ion-tab>
+
+  <ion-tab [root]="tab1Root" tabTitle="Timeline" tabIcon="flower"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Timeline" tabIcon="sunny"></ion-tab>
+  <ion-tab [root]="tab1Root" tabTitle="Timeline" tabIcon="aperture"></ion-tab>
+
   <!-- <ion-tab [root]="tab2Root" tabTitle="Topic" tabIcon="quote"></ion-tab> -->
-  <ion-tab [root]="tab3Root" tabTitle="Me" tabIcon="person"></ion-tab>
+  <!-- <ion-tab [root]="tab3Root" tabTitle="Me" tabIcon="person"></ion-tab> -->
 
   <!--
   <ion-tab [root]="homeRoot" tabTitle="Home" tabIcon="home"></ion-tab>

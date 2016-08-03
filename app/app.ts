@@ -1,11 +1,12 @@
 import {Component, ViewChild} from '@angular/core';
-import {Platform, ionicBootstrap, Nav} from 'ionic-angular';
+import {Platform, ionicBootstrap, Nav, Modal} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {Helper} from './other/helper.component';
 
 import {TabsPage} from './pages/tabs/tabs';
-import {TimelinePage} from './pages/timeline/timeline';
+import {UserSignInPage} from './pages/user/userSignIn';
+import {UserLogInPage} from './pages/user/userLogIn';
 
 
 interface PageObj {
@@ -13,6 +14,7 @@ interface PageObj {
   title: string;
   component?: any;
   index?: number;
+  type?: string;
 }
 
 @Component({
@@ -32,8 +34,9 @@ export class MyApp {
   ]
 
   loggedOutPages: [Object] = [
-    {icon: 'log-in', title: 'Login'},
-    {icon: 'log-out', title: 'Logout'},
+    {icon: 'log-in', title: 'Sign In', component: UserSignInPage, type: 'modal'},
+    {icon: 'log-in', title: 'Log In', component: UserLogInPage, type: 'modal'},
+    {icon: 'log-out', title: 'Log Out', component: UserLogInPage, type: 'modal'},
   ]
 
 
@@ -55,11 +58,14 @@ export class MyApp {
   //
   //
   openPage(page: PageObj) {
-    if (page.index) {
-      this.nav.setRoot(page.component, {tabIndex: page.index});
-
+    if (page.type) {
+      this.showModal(page.component);
     } else {
-      this.nav.setRoot(page.component);
+      if (page.index) {
+        this.nav.setRoot(page.component, {tabIndex: page.index});
+      } else {
+        this.nav.setRoot(page.component);
+      }
     }
 
     /*
@@ -70,6 +76,14 @@ export class MyApp {
       }, 1000);
     }
     */
+  }
+
+
+  //
+  //
+  showModal(page) {
+    let modal = Modal.create(page);
+    this.nav.present(modal);
   }
 }
 

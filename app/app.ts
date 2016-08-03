@@ -1,8 +1,10 @@
 import {Component, ViewChild} from '@angular/core';
-import {Platform, ionicBootstrap, Nav, Modal} from 'ionic-angular';
+import {Platform, ionicBootstrap, Nav, Modal, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HTTP_PROVIDERS} from '@angular/http';
+
 import {Helper} from './other/helper.component';
+import {Auth} from './other/Auth.component';
 
 import {TabsPage} from './pages/tabs/tabs';
 import {UserSignInPage} from './pages/user/userSignIn';
@@ -43,7 +45,9 @@ export class MyApp {
   //
   //
   constructor(
-    private platform:Platform
+    private platform: Platform,
+    private menuCtrl: MenuController,
+    private auth: Auth
   ) {
     this.rootPage = TabsPage;
 
@@ -52,6 +56,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
     });
+  }
+
+
+  //
+  //
+  ngOnInit() {
+    this.enableMenu(this.auth.isAuth());
   }
 
 
@@ -81,6 +92,14 @@ export class MyApp {
 
   //
   //
+  enableMenu(isAuth) {
+    this.menuCtrl.enable(isAuth, 'loggedInMenu');
+    this.menuCtrl.enable(!isAuth, 'loggedOutMenu');
+  }
+
+
+  //
+  //
   showModal(page) {
     let modal = Modal.create(page);
     this.nav.present(modal);
@@ -90,7 +109,8 @@ export class MyApp {
 
 ionicBootstrap(MyApp, [
   HTTP_PROVIDERS,
-  Helper
+  Helper,
+  Auth
 ], {
   backButtonText: '',
   tabbarPlacement: 'bottom'

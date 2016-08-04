@@ -12,32 +12,40 @@ export class Auth {
 
   //
   //
-  constructor(private http: Http) {
+  constructor(
+    private http: Http,
+    private events: Events
+  ) {
   }
 
 
   //
   //
-  isAuth(): boolean {
-    return true;
+  isAuth() {
+    return this.storage.get(this.IS_AUTH).then(value => {
+      return value;
+    });
   }
 
 
   //
   //
-  loggedIn(params) {
+  logIn(params) {
     let userInfo: string = JSON.stringify(params);
-    console.log(userInfo);
 
     this.storage.set(this.IS_AUTH, true);
     this.storage.set(this.USER_INFO, userInfo);
+
+    this.events.publish('auth:loggedIn');
   }
 
 
   //
   //
-  loggedOut() {
+  logOut() {
     this.storage.remove(this.IS_AUTH);
     this.storage.remove(this.USER_INFO);
+
+    this.events.publish('auth:loggedOut');
   }
 }

@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Platform, ionicBootstrap, Nav, Modal, MenuController} from 'ionic-angular';
+import {Platform, ionicBootstrap, Events, Nav, Modal, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HTTP_PROVIDERS} from '@angular/http';
 
@@ -26,8 +26,10 @@ interface PageObj {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  //
   private rootPage:any;
 
+  //
   appPages: PageObj[] = [
     {icon: 'pulse', title: 'Timeline', component: TabsPage, index: 0},
     {icon: 'images', title: 'Timeline', component: TabsPage, index: 1},
@@ -36,10 +38,15 @@ export class MyApp {
     {icon: 'aperture', title: 'Timeline', component: TabsPage, index: 4},
   ]
 
+  //
+  loggedInPages: [Object] = [
+    {icon: 'log-out', title: 'Log Out', handler: 'logOutHandler', type: 'handler'},
+  ]
+
+  //
   loggedOutPages: [Object] = [
     {icon: 'log-in', title: 'Sign Up', component: UserSignUpPage, type: 'modal'},
     {icon: 'log-in', title: 'Log In', component: UserLogInPage, type: 'modal'},
-    {icon: 'log-out', title: 'Log Out', handler: 'logOutHandler', type: 'handler'},
   ]
 
 
@@ -48,6 +55,7 @@ export class MyApp {
   constructor(
     private platform: Platform,
     private menuCtrl: MenuController,
+    private events: Events,
     private auth: Auth
   ) {
     this.rootPage = TabsPage;
@@ -57,13 +65,14 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
     });
-  }
 
+    // listen to auth events
+    this.listenToAuthEvents();
 
-  //
-  //
-  ngOnInit() {
-    this.enableMenu(this.auth.isAuth());
+    // set menu
+    this.auth.isAuth().then(isAuth => {
+      this.enableMenu(isAuth);
+    })
   }
 
 
@@ -83,22 +92,27 @@ export class MyApp {
         this.nav.setRoot(page.component);
       }
     }
+  }
 
-    /*
-    if (page.title === 'Logout') {
-      // Give the menu time to close before changing to logged out
-      setTimeout(() => {
-        this.userData.logout();
-      }, 1000);
-    }
-    */
+
+  //
+  // log out handler
+  logOutHandler() {
+    this.auth.logOut();
+    this.events.publish('auth:loggedOut');
   }
 
 
   //
   //
-  logOutHandler() {
-    this.auth.loggedOut();
+  listenToAuthEvents() {
+    this.events.subscribe('auth:loggedIn', () => {
+      this.enableMenu(true);
+    });
+
+    this.events.subscribe('auth:loggedOut', () => {
+      this.enableMenu(false);
+    });
   }
 
 

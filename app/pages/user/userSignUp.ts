@@ -45,7 +45,7 @@ export class UserSignUpPage {
     if (ngForm.valid) {
       this.userService.signUp(data)
       .then(ret => {
-        this.auth.loggedIn(ret);
+        this.auth.logIn(ret);
         this.viewCtrl.dismiss();
       });
     }
@@ -63,7 +63,7 @@ export class UserSignUpPage {
     if (ngForm.valid) {
       this.userService.logIn(data)
       .then(ret => {
-        this.auth.loggedIn(ret);
+        this.auth.logIn(ret);
         console.log('ret', ret);
         this.viewCtrl.dismiss();
       });

@@ -1,5 +1,5 @@
 <!-- logged in menu -->
-<ion-menu id="loggedInMenu" [content]="content">
+<ion-menu id="loggedInMenu" [content]="content" swipeEnabled=false>
   <ion-toolbar>
     <ion-title *ngIf="user">Hey {{ user.nickname }}</ion-title>
   </ion-toolbar>

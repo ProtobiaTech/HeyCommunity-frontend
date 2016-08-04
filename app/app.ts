@@ -5,6 +5,7 @@ import {HTTP_PROVIDERS} from '@angular/http';
 
 import {Helper} from './other/helper.component';
 import {Auth} from './other/Auth.component';
+import {User} from './models/user.model';
 
 import {TabsPage} from './pages/tabs/tabs';
 import {UserSignUpPage} from './pages/user/userSignUp';
@@ -28,6 +29,9 @@ export class MyApp {
 
   //
   private rootPage:any;
+
+  //
+  user: User = {id: 0, nickname: '', phone: ''};
 
   //
   appPages: PageObj[] = [
@@ -73,6 +77,9 @@ export class MyApp {
     this.auth.isAuth().then(isAuth => {
       this.enableMenu(isAuth);
     })
+
+    // set user
+    this.setUser();
   }
 
 
@@ -105,9 +112,19 @@ export class MyApp {
 
   //
   //
+  setUser() {
+    this.auth.getUser().then(data => {
+      this.user = data;
+    });
+  }
+
+
+  //
+  //
   listenToAuthEvents() {
     this.events.subscribe('auth:loggedIn', () => {
       this.enableMenu(true);
+      this.setUser();
     });
 
     this.events.subscribe('auth:loggedOut', () => {

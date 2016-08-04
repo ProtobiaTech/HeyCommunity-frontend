@@ -30,6 +30,16 @@ export class Auth {
 
   //
   //
+  getUser() {
+    return this.storage.get(this.USER_INFO).then(value => {
+      console.log(value, JSON.parse(value));
+      return JSON.parse(value);
+    })
+  }
+
+
+  //
+  //
   logIn(params) {
     let userInfo: string = JSON.stringify(params);
 

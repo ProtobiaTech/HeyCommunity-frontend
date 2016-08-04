@@ -12,7 +12,6 @@ import {Auth} from '../../other/Auth.component';
 })
 export class UserSignUpPage {
   signUpModel: {nickname?: string, phone?: number, password?: string} = {};
-  logInModel: {phone?: number, password?: string} = {};
 
 
   //
@@ -46,25 +45,6 @@ export class UserSignUpPage {
       this.userService.signUp(data)
       .then(ret => {
         this.auth.logIn(ret);
-        this.viewCtrl.dismiss();
-      });
-    }
-  }
-
-
-  //
-  //
-  logInHandler(ngForm) {
-    let data: Object = {
-      phone: this.logInModel.phone,
-      password: this.logInModel.password,
-    };
-
-    if (ngForm.valid) {
-      this.userService.logIn(data)
-      .then(ret => {
-        this.auth.logIn(ret);
-        console.log('ret', ret);
         this.viewCtrl.dismiss();
       });
     }

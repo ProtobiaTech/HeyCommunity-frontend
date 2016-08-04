@@ -7,7 +7,7 @@ import {Helper} from './other/helper.component';
 import {Auth} from './other/Auth.component';
 
 import {TabsPage} from './pages/tabs/tabs';
-import {UserSignInPage} from './pages/user/userSignIn';
+import {UserSignUpPage} from './pages/user/userSignUp';
 import {UserLogInPage} from './pages/user/userLogIn';
 
 
@@ -17,6 +17,7 @@ interface PageObj {
   component?: any;
   index?: number;
   type?: string;
+  handler?: string;
 }
 
 @Component({
@@ -36,9 +37,9 @@ export class MyApp {
   ]
 
   loggedOutPages: [Object] = [
-    {icon: 'log-in', title: 'Sign In', component: UserSignInPage, type: 'modal'},
+    {icon: 'log-in', title: 'Sign Up', component: UserSignUpPage, type: 'modal'},
     {icon: 'log-in', title: 'Log In', component: UserLogInPage, type: 'modal'},
-    {icon: 'log-out', title: 'Log Out', component: UserLogInPage, type: 'modal'},
+    {icon: 'log-out', title: 'Log Out', handler: 'logOutHandler', type: 'handler'},
   ]
 
 
@@ -69,8 +70,12 @@ export class MyApp {
   //
   //
   openPage(page: PageObj) {
-    if (page.type) {
+    if (page.type && page.type === 'modal') {
       this.showModal(page.component);
+    } else if (page.type && page.type === 'handler') {
+      if (this[page.handler]) {
+        this[page.handler]();
+      }
     } else {
       if (page.index) {
         this.nav.setRoot(page.component, {tabIndex: page.index});
@@ -87,6 +92,13 @@ export class MyApp {
       }, 1000);
     }
     */
+  }
+
+
+  //
+  //
+  logOutHandler() {
+    this.auth.loggedOut();
   }
 
 

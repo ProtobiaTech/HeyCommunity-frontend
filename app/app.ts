@@ -36,10 +36,10 @@ export class MyApp {
   //
   appPages: PageObj[] = [
     {icon: 'pulse', title: 'Timeline', component: TabsPage, index: 0},
-    {icon: 'images', title: 'Timeline', component: TabsPage, index: 1},
-    {icon: 'flower', title: 'Timeline', component: TabsPage, index: 2},
-    {icon: 'sunny', title: 'Timeline', component: TabsPage, index: 3},
-    {icon: 'aperture', title: 'Timeline', component: TabsPage, index: 4},
+    {icon: 'images', title: 'Timeline', component: TabsPage, index: 0},
+    {icon: 'flower', title: 'Timeline', component: TabsPage, index: 0},
+    {icon: 'sunny', title: 'Timeline', component: TabsPage, index: 0},
+    {icon: 'aperture', title: 'Timeline', component: TabsPage, index: 0},
   ]
 
   //

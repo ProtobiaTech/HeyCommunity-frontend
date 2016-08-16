@@ -6,6 +6,7 @@ import {HTTP_PROVIDERS} from '@angular/http';
 import {Helper} from './other/helper.component';
 import {Auth} from './other/Auth.component';
 import {User} from './models/user.model';
+import {UserService} from './services/user.service';
 
 import {TabsPage} from './pages/tabs/tabs';
 import {UserSignUpPage} from './pages/user/userSignUp';
@@ -22,7 +23,10 @@ interface PageObj {
 }
 
 @Component({
-  templateUrl: 'build/app.html'
+  templateUrl: 'build/app.html',
+  providers: [
+    UserService,
+  ],
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -60,6 +64,7 @@ export class MyApp {
     private platform: Platform,
     private menuCtrl: MenuController,
     private events: Events,
+    private userService: UserService,
     private auth: Auth
   ) {
     this.rootPage = TabsPage;
@@ -105,8 +110,11 @@ export class MyApp {
   //
   // log out handler
   logOutHandler() {
-    this.auth.logOut();
-    this.events.publish('auth:loggedOut');
+    this.userService.logOut()
+    .then(ret => {
+      this.auth.logOut();
+      this.events.publish('auth:loggedOut');
+    });
   }
 
 

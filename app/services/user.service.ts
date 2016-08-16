@@ -29,8 +29,6 @@ export class UserService {
   }
 
 
-
-
   //
   //
   logIn(params): Promise<User> {
@@ -38,6 +36,18 @@ export class UserService {
     let data: Object = params;
 
     return this.http.post(api, data)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
+  //
+  logOut(): Promise<User> {
+    let api: string = this.helper.getAPI('user/log-out');
+
+    return this.http.post(api, null)
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError);

@@ -4,7 +4,7 @@ import {StatusBar} from 'ionic-native';
 import {HTTP_PROVIDERS} from '@angular/http';
 
 import {Helper} from './other/helper.component';
-import {Auth} from './other/Auth.component';
+import {Auth} from './other/auth.component';
 import {User} from './models/user.model';
 import {UserService} from './services/user.service';
 

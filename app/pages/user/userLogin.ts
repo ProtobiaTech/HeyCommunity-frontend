@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, ViewController} from 'ionic-angular';
 
 import {UserService} from '../../services/user.service';
-import {Auth} from '../../other/Auth.component';
+import {Auth} from '../../other/auth.component';
 
 
 @Component({

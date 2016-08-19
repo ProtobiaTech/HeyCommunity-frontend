@@ -5,6 +5,7 @@ import {Timeline} from '../../models/timeline.model';
 import {TimelineService} from '../../services/timeline.service';
 import {Helper} from '../../other/helper.component';
 import {Auth} from '../../other/auth.component';
+import {Common} from '../../other/common.component';
 
 import {TimelineCreatePage} from '../timeline/timeline-create';
 import {TimelineDetailPage} from '../timeline/timeline-detail';
@@ -27,6 +28,7 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
 export class TimelinePage {
   timelines: Timeline[];
   isAuth: boolean = false;
+  commonOpenModal: Common;
 
 
   //
@@ -37,6 +39,7 @@ export class TimelinePage {
     private timelineService: TimelineService
   ) {
     this.isAuth = this.auth.isAuth;
+    this.commonOpenModal = new Common(this.navCtrl);
   }
 
 
@@ -53,7 +56,11 @@ export class TimelinePage {
   //
   // go to create timeline page
   gotoTimelineCreatePage() {
-    this.navCtrl.rootNav.push(TimelineCreatePage, {timelines: this.timelines});
+    if (!this.auth.isAuth) {
+      this.commonOpenModal.openUserLogInModal();
+    } else {
+      this.navCtrl.rootNav.push(TimelineCreatePage, {timelines: this.timelines});
+    }
   }
 
 
@@ -68,7 +75,7 @@ export class TimelinePage {
   // set like for timeline
   setLikeForTimeline(timeline: Timeline) {
     if (!this.auth.isAuth) {
-      this.showUserLogInModal();
+      this.commonOpenModal.openUserLogInModal();
     } else {
       this.timelineService.setLike(timeline)
       .then(newTimeline => {

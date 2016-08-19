@@ -38,6 +38,9 @@ export class MyApp {
   user: User = {id: 0, nickname: '', phone: ''};
 
   //
+  isAuth: boolean = false;
+
+  //
   appPages: PageObj[] = [
     {icon: 'pulse', title: 'Timeline', component: TabsPage, index: 0},
     {icon: 'images', title: 'Timeline', component: TabsPage, index: 0},
@@ -79,8 +82,9 @@ export class MyApp {
     this.listenToAuthEvents();
 
     // set menu
-    this.auth.isAuth().then(isAuth => {
+    this.auth.getIsAuth().then(isAuth => {
       this.enableMenu(isAuth);
+      this.isAuth = isAuth;
     })
 
     // set user

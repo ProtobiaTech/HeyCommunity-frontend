@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list padding-top>
+    <button ion-item (click)="goToPage()">
+      <ion-label>Avatar</ion-label>
+      <ion-avatar item-right>
+        <img src="assets/images/userAvatar-default.png">
+      </ion-avatar>
+    </button>
+
+    <ion-item>
+      <ion-label>ID</ion-label>
+      <ion-note item-right>
+        111
+      </ion-note>
+    </ion-item>
+
+    <button ion-item>
+      <ion-label>Name</ion-label>
+      <ion-note item-right>
+        Rod
+      </ion-note>
+    </button>
+
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select [(ngModel)]="gaming">
+        <ion-option value="nes">NES</ion-option>
+        <ion-option value="n64">Nintendo64</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <button ion-item>
+      <ion-label>Bio</ion-label>
+      <ion-note item-right>
+        start is my love, up is my life
+      </ion-note>
+    </button>
+  </ion-list>
+</ion-content>

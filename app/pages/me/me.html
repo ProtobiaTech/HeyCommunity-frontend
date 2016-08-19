@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Me
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list padding-top>
+    <button ion-item (click)="goToMeProfilePage()">
+      <ion-avatar item-left>
+        <img *ngIf="isAuth" src="assets/images/userAvatar-default.png">
+        <img *ngIf="!isAuth" src="assets/images/userAvatar-default.png">
+      </ion-avatar>
+      <h2 *ngIf="isAuth">Rod</h2>
+      <p *ngIf="isAuth">start is my love, up is my life</p>
+      <h2 *ngIf="!isAuth">Visitor</h2>
+      <p *ngIf="!isAuth">please login, first</p>
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item (click)="goToPage()">
+      <ion-icon name="notifications" item-left></ion-icon>
+      Notices
+    </button>
+    <button ion-item (click)="goToPage()">
+      <ion-icon name="pulse" item-left></ion-icon>
+      Timeline
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item (click)="goToPage()">
+      <ion-icon name="cog" item-left></ion-icon>
+      Setting
+    </button>
+  </ion-list>
+</ion-content>

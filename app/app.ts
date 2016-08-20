@@ -90,6 +90,10 @@ export class MyApp {
 
     // set user
     this.setUser();
+
+    this.userService.getUser().then(data => {
+      console.log('the user:', data);
+    })
   }
 
 

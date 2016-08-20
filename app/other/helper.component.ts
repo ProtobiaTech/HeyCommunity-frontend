@@ -10,8 +10,16 @@ export class Helper {
 
   //
   //
-  getAPI(string): string {
-    return '/api/' + string;
+  getAPI(uri): string {
+    return '/api/' + uri;
     // return 'http://new-app.heycommunity.com/api/' + string;
+  }
+
+
+  //
+  //
+  getImg(uri): string {
+    return 'http://backend.heycommunity.local/' + uri;
+    // return 'http://new-app.heycommunity.com' + uri;
   }
 }

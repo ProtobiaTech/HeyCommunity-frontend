@@ -7,6 +7,8 @@ import {Helper} from '../other/helper.component';
 
 @Injectable()
 export class TimelineService {
+  timelineStoreImgAPI: string = this.helper.getAPI('timeline/store-img');
+
   constructor(
     private http: Http,
     private helper: Helper
@@ -68,9 +70,8 @@ export class TimelineService {
   // store
   store(params): Promise<Timeline> {
     let api: string = this.helper.getAPI('timeline/store');
-    let data: any = {content: params.content};
 
-    return this.http.post(api, data)
+    return this.http.post(api, params)
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError);

@@ -28,7 +28,13 @@
       <p>{{ item.created_at | moment: ['YYYY-MM-DD HH:mm'] }}</p>
     </ion-item>
 
-    <img class="photo" *ngIf="item.attachment" src="{{ item.attachment }}">
+    <div class="" *ngIf="item.imgs">
+      <ion-slides>
+        <ion-slide *ngFor="let img of item.imgs">
+          <img class="photo" src="{{ helper.getImg(img.uri) }}">
+        </ion-slide>
+      </ion-slides>
+    </div>
     <hr>
 
     <ion-card-content (click)="gotoTimelineDetailPage(item)">

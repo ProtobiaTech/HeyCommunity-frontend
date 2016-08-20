@@ -17,11 +17,12 @@
           <ion-textarea [(ngModel)]="newTimeline.content" ngControl="content" #content="ngForm" rows="8" placeholder="What is new">
           </ion-textarea>
         </ion-item>
+        <input #inputImgs class="hidden hide" type="file" (change)="uploadImgs($event)" multiple>
     </form>
   </ion-list>
 
   <div class="media-toolbar">
-    <button dark outline clear>
+    <button dark outline clear (click)="selectImgs()">
       <ion-icon name="images"></ion-icon>
     </button>
     <button disabled dark outline clear>
@@ -32,4 +33,16 @@
     </button>
   </div>
   <hr>
+
+  <div class="preview-imgs hide">
+    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
+    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
+    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
+    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
+    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
+  </div>
+
+  <div class="preview-imgs">
+    <img *ngFor="let item of imgs" src="{{ helper.getImg(item.uri) }}">
+  </div>
 </ion-content>

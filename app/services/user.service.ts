@@ -18,6 +18,18 @@ export class UserService {
 
   //
   //
+  getUser(): Promise<User> {
+    let api: string = this.helper.getAPI('user/my-info');
+
+    return this.http.get(api)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
+  //
   signUp(params): Promise<User> {
     let api: string = this.helper.getAPI('user/sign-up');
     let data: Object = params;

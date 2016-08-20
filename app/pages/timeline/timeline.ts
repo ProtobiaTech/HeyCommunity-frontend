@@ -35,6 +35,7 @@ export class TimelinePage {
   // constructor
   constructor(
     private auth: Auth,
+    private helper: Helper,
     private navCtrl: NavController,
     private timelineService: TimelineService
   ) {

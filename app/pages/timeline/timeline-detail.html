@@ -15,8 +15,19 @@
   <img *ngIf="timeline.attachment" src="{{ timeline.attachment }}">
   <div padding *ngIf="!timeline.content">{{ timeline.content }}</div>
 
-  <div padding class="section-comment">
-    <div class="comments" *ngFor="let comment of timeline.comments">
+  <div padding class="section-comment items-comment">
+    <div class="item-comment">
+      <img class="avatar" src="http://demo.hey-community.local/assets/images/userAvatar-default.png">
+      <div class="comment-content">
+        <div class="header">
+          <a>{{ timeline.author.nickname }}</a>
+          <span>{{ timeline.created_at }}</span>
+        </div>
+        {{ timeline.content }}
+      </div>
+    </div>
+
+    <div class="item-comment" *ngFor="let comment of timeline.comments">
       <img class="avatar" src="http://demo.hey-community.local/assets/images/userAvatar-default.png">
       <div class="comment-content">
         <div class="header">

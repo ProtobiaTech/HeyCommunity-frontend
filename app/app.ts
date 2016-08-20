@@ -51,6 +51,7 @@ export class MyApp {
 
   //
   loggedInPages: [Object] = [
+    {icon: 'person', title: 'MeHome', component: TabsPage, index: 1},
     {icon: 'log-out', title: 'Log Out', handler: 'logOutHandler', type: 'handler'},
   ]
 

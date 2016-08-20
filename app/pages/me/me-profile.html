@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Profile
+      userInfo
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -18,29 +18,28 @@
     <ion-item>
       <ion-label>ID</ion-label>
       <ion-note item-right>
-        111
+        {{ auth.userInfo.id }}
       </ion-note>
     </ion-item>
 
     <button ion-item>
       <ion-label>Name</ion-label>
       <ion-note item-right>
-        Rod
+        {{ auth.userInfo.nickname }}
       </ion-note>
     </button>
 
-    <ion-item>
+    <button ion-item>
       <ion-label>Gender</ion-label>
-      <ion-select [(ngModel)]="gaming">
-        <ion-option value="nes">NES</ion-option>
-        <ion-option value="n64">Nintendo64</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-note item-right>
+        {{ auth.userInfo.gender }}
+      </ion-note>
+    </button>
 
     <button ion-item>
       <ion-label>Bio</ion-label>
       <ion-note item-right>
-        start is my love, up is my life
+        {{ auth.userInfo.bio }}
       </ion-note>
     </button>
   </ion-list>

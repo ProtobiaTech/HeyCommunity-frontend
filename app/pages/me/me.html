@@ -1,5 +1,9 @@
 <ion-header>
   <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
     <ion-title>
       Me
     </ion-title>
@@ -10,29 +14,31 @@
   <ion-list padding-top>
     <button ion-item (click)="goToMeProfilePage()">
       <ion-avatar item-left>
-        <img *ngIf="isAuth" src="assets/images/userAvatar-default.png">
-        <img *ngIf="!isAuth" src="assets/images/userAvatar-default.png">
+        <img *ngIf="auth.isAuth" src="assets/images/userAvatar-default.png">
+        <img *ngIf="!auth.isAuth" src="assets/images/userAvatar-default.png">
       </ion-avatar>
-      <h2 *ngIf="isAuth">Rod</h2>
-      <p *ngIf="isAuth">start is my love, up is my life</p>
-      <h2 *ngIf="!isAuth">Visitor</h2>
-      <p *ngIf="!isAuth">please login, first</p>
+
+      <h2 *ngIf="auth.isAuth">{{ auth.userInfo.nickname }}</h2>
+      <p *ngIf="auth.isAuth">{{ auth.userInfo.bio ? auth.userInfo.bio : 'null' }}</p>
+
+      <h2 *ngIf="!auth.isAuth">Visitor</h2>
+      <p *ngIf="!auth.isAuth">please login, first</p>
     </button>
   </ion-list>
 
   <ion-list>
-    <button ion-item (click)="goToPage()">
+    <button ion-item (click)="goToMeNoticePage()">
       <ion-icon name="notifications" item-left></ion-icon>
       Notices
     </button>
-    <button ion-item (click)="goToPage()">
+    <button ion-item (click)="goToMeTimelinePage()">
       <ion-icon name="pulse" item-left></ion-icon>
       Timeline
     </button>
   </ion-list>
 
   <ion-list>
-    <button ion-item (click)="goToPage()">
+    <button ion-item (click)="goToMeSettingPage()">
       <ion-icon name="cog" item-left></ion-icon>
       Setting
     </button>

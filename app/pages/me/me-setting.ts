@@ -7,9 +7,9 @@ import {UserService} from '../../services/user.service';
 
 
 @Component({
-  templateUrl: 'build/pages/me/me-profile.html'
+  templateUrl: 'build/pages/me/me-setting.html'
 })
-export class MeProfilePage {
+export class MeSettingPage {
   constructor(
     private navCtrl: NavController,
     private auth: Auth,
@@ -17,9 +17,18 @@ export class MeProfilePage {
   ) {
   }
 
+  goToPage() {
+    console.log('hihihi');
+  }
+
 
   //
   //
-  goToPage() {
+  goToLogOut() {
+    this.userService.logOut()
+    .then(ret => {
+      this.auth.logOut();
+      this.navCtrl.pop();
+    });
   }
 }

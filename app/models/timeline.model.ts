@@ -1,6 +1,7 @@
 export class Timeline {
   constructor(
     public id: number,
+    public user_id: number,
     public content: string,
     public is_like: boolean,
     public like_num: number,

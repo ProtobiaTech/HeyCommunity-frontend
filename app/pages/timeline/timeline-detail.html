@@ -21,7 +21,7 @@
       <div class="comment-content">
         <div class="header">
           <a>{{ timeline.author.nickname }}</a>
-          <span>{{ timeline.created_at }}</span>
+          <span>{{ timeline.created_at  | moment: ['MM-DD HH:mm'] }}</span>
         </div>
         {{ timeline.content }}
       </div>
@@ -32,7 +32,7 @@
       <div class="comment-content">
         <div class="header">
           <a>{{ comment.author.nickname }}</a>
-          <span>{{ comment.created_at }}</span>
+          <span>{{ comment.created_at | moment: ['MM-DD HH:mm'] }}</span>
         </div>
         {{ comment.content }}
       </div>
@@ -44,7 +44,7 @@
 <ion-footer class="timeline-detail">
   <ion-toolbar no-border-bottom>
     <div class="section-comment-inputbox">
-      <ion-input [(ngModel)]="newComment.content" type="text" placeholder="say something" class="input-comment"></ion-input>
+      <ion-input [(ngModel)]="newComment.content" (click)="inputCommentHandler()" type="text" placeholder="say something" class="input-comment"></ion-input>
       <button small class="btn-send" (click)="sendCommentHandler()">
         Send
       </button>

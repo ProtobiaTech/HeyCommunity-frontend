@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, ActionSheet, NavParams} from 'ionic-angular';
+import {NavController, ActionSheetController, NavParams} from 'ionic-angular';
 
 import {Auth} from '../../other/auth.component';
 import {Common} from '../../other/common.component';
@@ -22,7 +22,7 @@ export class TimelineDetailPage {
   timeline: Timeline;
   timelines: Timeline[];
   newComment: {content?: string, timeline_id?: number} = {};
-  commonOpenModal: Common;
+  // commonOpenModal: Common;
 
 
   //
@@ -31,12 +31,13 @@ export class TimelineDetailPage {
     private navParams: NavParams,
     private navCtrl: NavController,
     private auth: Auth,
+    private actionSheetCtrl: ActionSheetController,
     public timelineService: TimelineService
   ) {
     this.timeline = navParams.data.timeline;
     this.timelines = this.timelineService.timelines;
     this.newComment.timeline_id = this.timeline.id;
-    this.commonOpenModal = new Common(this.navCtrl);
+    // this.commonOpenModal = new Common();
   }
 
 
@@ -72,7 +73,7 @@ export class TimelineDetailPage {
   // send comment handler
   sendCommentHandler() {
     if (!this.auth.isAuth) {
-      this.commonOpenModal.openUserLogInModal();
+      // this.commonOpenModal.openUserLogInModal();
     } else {
       let params: Object = {
         timeline_id: this.newComment.timeline_id,
@@ -118,11 +119,11 @@ export class TimelineDetailPage {
       buttons = [btnCancel];
     }
 
-    //
-    let actionSheet = ActionSheet.create({
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Operations',
       buttons: buttons,
     });
 
-    this.navCtrl.present(actionSheet);
+    actionSheet.present(actionSheet);
   }
 }

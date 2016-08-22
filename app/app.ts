@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Platform, ionicBootstrap, Events, Nav, Modal, MenuController} from 'ionic-angular';
+import {Platform, ionicBootstrap, Events, Nav, ModalController, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HTTP_PROVIDERS} from '@angular/http';
 
@@ -67,6 +67,7 @@ export class MyApp {
   constructor(
     private platform: Platform,
     private menuCtrl: MenuController,
+    private modalCtrl: ModalController,
     private events: Events,
     private userService: UserService,
     private auth: Auth
@@ -84,16 +85,16 @@ export class MyApp {
 
     // set menu
     this.auth.getIsAuth().then(isAuth => {
-      this.enableMenu(isAuth);
       this.isAuth = isAuth;
+
+      setTimeout(() => {
+        console.log('set menu');
+        this.enableMenu(this.isAuth);
+      }, 2000);
     })
 
     // set user
     this.setUser();
-
-    this.userService.getUser().then(data => {
-      console.log('the user:', data);
-    })
   }
 
 
@@ -161,8 +162,8 @@ export class MyApp {
   //
   //
   showModal(page) {
-    let modal = Modal.create(page);
-    this.nav.present(modal);
+    let modalPage = this.modalCtrl.create(page);
+    modalPage.present();
   }
 }
 

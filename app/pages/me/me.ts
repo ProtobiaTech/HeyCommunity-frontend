@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {NavController, Modal} from 'ionic-angular';
+import {Nav, NavController, Modal} from 'ionic-angular';
 
 import {Auth} from '../../other/auth.component';
 import {Common} from '../../other/common.component';
@@ -16,21 +16,14 @@ import {UserLogInPage} from '../user/userLogIn';
   templateUrl: 'build/pages/me/me.html'
 })
 export class MePage {
-  commonOpenModal: Common;
+  // commonOpenModal: Common;
 
   constructor(
     private navCtrl: NavController,
+    private nav: Nav,
     private auth: Auth
   ) {
-    this.commonOpenModal = new Common(this.navCtrl);
-  }
-
-
-  //
-  //
-  goToPage() {
-    let modal = Modal.create(UserLogInPage);
-    this.navCtrl.present(modal);
+    // this.commonOpenModal = new Common();
   }
 
 
@@ -38,9 +31,9 @@ export class MePage {
   // go to me profile page
   goToMeProfilePage() {
     if (this.auth.isAuth) {
-      this.navCtrl.rootNav.push(MeProfilePage);
+      this.nav.push(MeProfilePage);
     } else {
-      this.commonOpenModal.openUserLogInModal();
+      // this.commonOpenModal.openUserLogInModal();
     }
   }
 
@@ -49,9 +42,9 @@ export class MePage {
   // go to me setting page
   goToMeSettingPage() {
     if (this.auth.isAuth) {
-      this.navCtrl.rootNav.push(MeSettingPage);
+      this.nav.push(MeSettingPage);
     } else {
-      this.commonOpenModal.openUserLogInModal();
+      // this.commonOpenModal.openUserLogInModal();
     }
   }
 
@@ -60,9 +53,9 @@ export class MePage {
   // go to me notice page
   goToMeNoticePage() {
     if (this.auth.isAuth) {
-      this.navCtrl.rootNav.push(MeNoticePage);
+      this.nav.push(MeNoticePage);
     } else {
-      this.commonOpenModal.openUserLogInModal();
+      // this.commonOpenModal.openUserLogInModal();
     }
   }
 
@@ -71,9 +64,9 @@ export class MePage {
   // go to me timeline page
   goToMeTimelinePage() {
     if (this.auth.isAuth) {
-      this.navCtrl.rootNav.push(MeTimelinePage);
+      this.nav.push(MeTimelinePage);
     } else {
-      this.commonOpenModal.openUserLogInModal();
+      // this.commonOpenModal.openUserLogInModal();
     }
   }
 }

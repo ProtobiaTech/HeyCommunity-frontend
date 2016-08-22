@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, Modal} from 'ionic-angular';
+import {NavController, Nav} from 'ionic-angular';
 
 import {Timeline} from '../../models/timeline.model';
 import {TimelineService} from '../../services/timeline.service';
@@ -11,11 +11,13 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
 import {TimelineCreatePage} from '../timeline/timeline-create';
 import {TimelineDetailPage} from '../timeline/timeline-detail';
 
+import {UserLogInPage} from '../user/userLogIn';
 
 @Component({
   templateUrl: 'build/pages/timeline/timeline.html',
   providers: [
     TimelineService,
+    Common,
   ],
   pipes: [
     TimeagoPipe,
@@ -24,7 +26,7 @@ import {TimelineDetailPage} from '../timeline/timeline-detail';
 })
 export class TimelinePage {
   isAuth: boolean = false;
-  commonOpenModal: Common;
+  // commonOpenModal: Common;
 
 
   //
@@ -32,11 +34,13 @@ export class TimelinePage {
   constructor(
     private auth: Auth,
     private helper: Helper,
+    private nav: Nav,
     private navCtrl: NavController,
+    private common: Common,
     private timelineService: TimelineService
   ) {
     this.isAuth = this.auth.isAuth;
-    this.commonOpenModal = new Common(this.navCtrl);
+    // this.commonOpenModal = new Common();
   }
 
 
@@ -51,9 +55,9 @@ export class TimelinePage {
   // go to create timeline page
   gotoTimelineCreatePage() {
     if (!this.auth.isAuth) {
-      this.commonOpenModal.openUserLogInModal();
+      // this.commonOpenModal.openUserLogInModal();
     } else {
-      this.navCtrl.rootNav.push(TimelineCreatePage);
+      this.nav.push(TimelineCreatePage);
     }
   }
 
@@ -61,15 +65,17 @@ export class TimelinePage {
   //
   // go to timeline detail
   gotoTimelineDetailPage(timeline: Timeline) {
-    this.navCtrl.rootNav.push(TimelineDetailPage, {timeline: timeline});
+    this.nav.push(TimelineDetailPage, {timeline: timeline});
   }
 
 
   //
   // set like for timeline
   setLikeForTimeline(timeline: Timeline) {
+    console.log(timeline, this.auth.isAuth);
     if (!this.auth.isAuth) {
-      this.commonOpenModal.openUserLogInModal();
+      // this.common.openUserLogInModal();
+      // console.log(this.commonOpenModal);
     } else {
       this.timelineService.setLike(timeline)
       .then(newTimeline => {

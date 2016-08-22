@@ -28,7 +28,7 @@ export class Auth {
   //
   getIsAuth() {
     return this.storage.get(this.IS_AUTH).then(value => {
-      this.isAuth = value;
+      this.isAuth = value ? true : false;
 
       if (this.isAuth) {
         this.userInfo = this.getUser();

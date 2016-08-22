@@ -20,12 +20,15 @@
   </ion-refresher>
 
   <ion-card *ngFor="let item of timelines">
-    <ion-item>
+    <ion-item class="header">
       <ion-avatar item-left>
         <img class="avatar" src="{{ item.author.avatar }}">
       </ion-avatar>
-      <h2>{{ item.author.nickname }}</h2>
-      <p>{{ item.created_at | moment: ['YYYY-MM-DD HH:mm'] }}</p>
+      <h2>
+        <span class="date pull-right">{{ item.created_at | moment: ['MM-DD HH:mm'] }}</span>
+        {{ item.author.nickname }}
+      </h2>
+      <p>{{ item.bio ? item.bio : 'not bio' }}</p>
     </ion-item>
 
     <div class="" *ngIf="item.imgs">
@@ -41,7 +44,7 @@
       <div class="content" *ngIf="item.content">{{ item.content }}</div>
     </ion-card-content>
 
-    <ion-row>
+    <ion-row class="footer">
       <ion-col>
         <button primary clear small (click)="setLikeForTimeline(item)">
           <ion-icon *ngIf="item.is_like" name="heart"></ion-icon>
@@ -55,7 +58,7 @@
           <div>{{ item.comment_num }} Comments</div>
         </button>
       </ion-col>
-      <ion-col center text-center>
+      <ion-col width-50 center class="date">
         <ion-note>
           {{ item.created_at | timeago }}
         </ion-note>

@@ -17,7 +17,7 @@
           <ion-textarea [(ngModel)]="newTimeline.content" ngControl="content" #content="ngForm" rows="8" placeholder="What is new">
           </ion-textarea>
         </ion-item>
-        <input #inputImgs class="hidden hide" type="file" (change)="uploadImgs($event)" multiple>
+        <input #inputImgs class="hidden " type="file" (change)="uploadImgs($event)" multiple>
     </form>
   </ion-list>
 

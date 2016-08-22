@@ -8,6 +8,7 @@ import {Helper} from '../other/helper.component';
 @Injectable()
 export class TimelineService {
   timelineStoreImgAPI: string = this.helper.getAPI('timeline/store-img');
+  timelines: Timeline[] = [];
 
   constructor(
     private http: Http,
@@ -23,6 +24,7 @@ export class TimelineService {
     return this.http.get(api)
     .toPromise()
     .then(response => {
+      this.timelines = response.json();
       return response.json();
     })
     .catch(this.handleError);
@@ -36,7 +38,11 @@ export class TimelineService {
 
     return this.http.get(api)
     .toPromise()
-    .then(response => response.json())
+    .then(response => {
+      let timelines = response.json();
+      this.timelines = timelines.concat(this.timelines);
+      return response.json();
+    })
     .catch(this.handleError);
   }
 
@@ -48,7 +54,11 @@ export class TimelineService {
 
     return this.http.get(api)
     .toPromise()
-    .then(response => response.json())
+    .then(response => {
+      let timelines = response.json();
+      this.timelines = this.timelines.concat(timelines);
+      return response.json();
+    })
     .catch(this.handleError);
   }
 

@@ -6,13 +6,10 @@ import {TimelineService} from '../../services/timeline.service';
 import {Helper} from '../../other/helper.component';
 import {Auth} from '../../other/auth.component';
 import {Common} from '../../other/common.component';
+import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
 
 import {TimelineCreatePage} from '../timeline/timeline-create';
 import {TimelineDetailPage} from '../timeline/timeline-detail';
-import {UserSignUpPage} from '../user/userSignUp';
-import {UserLogInPage} from '../user/userLogIn';
-
-import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
 
 
 @Component({
@@ -26,7 +23,6 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
   ]
 })
 export class TimelinePage {
-  timelines: Timeline[];
   isAuth: boolean = false;
   commonOpenModal: Common;
 
@@ -47,10 +43,7 @@ export class TimelinePage {
   //
   // on init
   ngOnInit() {
-    this.timelineService.getTimelines()
-    .then(timelines => {
-      this.timelines = timelines;
-    });
+    this.timelineService.getTimelines();
   }
 
 
@@ -60,7 +53,7 @@ export class TimelinePage {
     if (!this.auth.isAuth) {
       this.commonOpenModal.openUserLogInModal();
     } else {
-      this.navCtrl.rootNav.push(TimelineCreatePage, {timelines: this.timelines});
+      this.navCtrl.rootNav.push(TimelineCreatePage);
     }
   }
 
@@ -68,7 +61,7 @@ export class TimelinePage {
   //
   // go to timeline detail
   gotoTimelineDetailPage(timeline: Timeline) {
-    this.navCtrl.rootNav.push(TimelineDetailPage, {timelines: this.timelines, timeline: timeline});
+    this.navCtrl.rootNav.push(TimelineDetailPage, {timeline: timeline});
   }
 
 
@@ -80,19 +73,10 @@ export class TimelinePage {
     } else {
       this.timelineService.setLike(timeline)
       .then(newTimeline => {
-        for (let key in newTimeline) {
-          timeline[key] = newTimeline[key];
-        }
+        timeline.is_like = newTimeline.is_like;
+        timeline.like_num = newTimeline.like_num;
       });
     }
-  }
-
-
-  //
-  // show user login modal
-  showUserLogInModal() {
-    let userLogInModal = Modal.create(UserLogInPage);
-    this.navCtrl.present(userLogInModal);
   }
 
 
@@ -100,12 +84,11 @@ export class TimelinePage {
   // Refresh
   doRefresh(refresher) {
     let params: any = {
-      id: this.timelines[0].id,
+      id: this.timelineService.timelines[0].id,
     }
 
     this.timelineService.refresh(params)
     .then(timelines => {
-      this.timelines = timelines.concat(this.timelines);
       refresher.complete();
     });
   }
@@ -115,12 +98,11 @@ export class TimelinePage {
   // Infinite
   doInfinite(infiniteScroll) {
     let params: any = {
-      id: this.timelines[this.timelines.length - 1].id,
+      id: this.timelineService.timelines[this.timelineService.timelines.length - 1].id,
     }
 
     this.timelineService.infinite(params)
     .then(timelines => {
-      this.timelines = this.timelines.concat(timelines);
       infiniteScroll.complete();
     });
   }

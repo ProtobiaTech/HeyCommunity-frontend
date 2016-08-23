@@ -12,7 +12,9 @@
 
 
 <ion-content class="timeline-detail">
-  <img *ngIf="timeline.attachment" src="{{ timeline.attachment }}">
+  <div *ngIf="timeline.imgs">
+    <img *ngFor="let img of timeline.imgs" src="{{ helper.getImg(img.uri) }}">
+  </div>
   <div padding *ngIf="!timeline.content">{{ timeline.content }}</div>
 
   <div padding class="section-comment items-comment">

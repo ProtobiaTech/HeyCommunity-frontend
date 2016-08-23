@@ -19,7 +19,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let item of timelineService.timelines">
+  <ion-card *ngFor="let item of timelineService.timelines; let i = index">
     <ion-item class="header">
       <ion-avatar item-left>
         <img class="avatar" src="{{ item.author.avatar }}">
@@ -36,7 +36,7 @@
     </div>
     <hr>
 
-    <ion-card-content (click)="gotoTimelineDetailPage(item)">
+    <ion-card-content (click)="gotoTimelineDetailPage(i)">
       <div class="content" *ngIf="item.content">{{ item.content }}</div>
     </ion-card-content>
 
@@ -48,7 +48,7 @@
         </button>
       </ion-col>
       <ion-col>
-        <button primary clear small (click)="gotoTimelineDetailPage(item)">
+        <button primary clear small (click)="gotoTimelineDetailPage(i)">
           <ion-icon name="text"></ion-icon>
           <div>{{ item.comment_num }} Comments</div>
         </button>

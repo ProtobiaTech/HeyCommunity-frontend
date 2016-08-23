@@ -1,12 +1,14 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild, enableProdMode} from '@angular/core';
 import {Platform, ionicBootstrap, Events, Nav, ModalController, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HTTP_PROVIDERS} from '@angular/http';
 
 import {Helper} from './other/helper.component';
+import {Common} from './other/common.component';
 import {Auth} from './other/auth.component';
 import {User} from './models/user.model';
 import {UserService} from './services/user.service';
+import {TimelineService} from './services/timeline.service';
 
 import {TabsPage} from './pages/tabs/tabs';
 import {UserSignUpPage} from './pages/user/userSignUp';
@@ -168,9 +170,12 @@ export class MyApp {
 }
 
 
+
 ionicBootstrap(MyApp, [
   HTTP_PROVIDERS,
   Helper,
+  TimelineService,
+  Common,
   Auth
 ], {
   backButtonText: '',

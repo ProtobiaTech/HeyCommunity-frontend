@@ -45,7 +45,6 @@ export class TimelineCreatePage {
       content: ngForm.value.content,
       imgs: JSON.stringify(this.imgIdArr),
     };
-    console.log(this.imgIdArr, data);
 
     this.timelineService.store(data)
     .then((newTimeline: Timeline) => {

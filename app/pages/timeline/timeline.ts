@@ -16,7 +16,6 @@ import {UserLogInPage} from '../user/userLogIn';
 @Component({
   templateUrl: 'build/pages/timeline/timeline.html',
   providers: [
-    TimelineService,
     Common,
   ],
   pipes: [
@@ -62,8 +61,8 @@ export class TimelinePage {
 
   //
   // go to timeline detail
-  gotoTimelineDetailPage(timeline: Timeline) {
-    this.nav.push(TimelineDetailPage, {timeline: timeline});
+  gotoTimelineDetailPage(index: number) {
+    this.nav.push(TimelineDetailPage, {index: index});
   }
 
 

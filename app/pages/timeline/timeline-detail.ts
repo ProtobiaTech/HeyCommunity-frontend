@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, ActionSheetController, NavParams} from 'ionic-angular';
 
 import {Auth} from '../../other/auth.component';
+import {Helper} from '../../other/helper.component';
 import {Common} from '../../other/common.component';
 import {Timeline} from '../../models/timeline.model';
 import {TimelineService} from '../../services/timeline.service';
@@ -11,7 +12,6 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
 @Component({
   templateUrl: 'build/pages/timeline/timeline-detail.html',
   providers: [
-    TimelineService,
     Common,
   ],
   pipes: [
@@ -21,7 +21,7 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
 })
 export class TimelineDetailPage {
   timeline: Timeline;
-  timelines: Timeline[];
+  timelineIndex: number;
   newComment: {content?: string, timeline_id?: number} = {};
 
 
@@ -32,11 +32,13 @@ export class TimelineDetailPage {
     private navCtrl: NavController,
     private common: Common,
     private auth: Auth,
+    private helper: Helper,
     private actionSheetCtrl: ActionSheetController,
-    public timelineService: TimelineService
+    private timelineService: TimelineService
   ) {
-    this.timeline = navParams.data.timeline;
-    this.timelines = this.timelineService.timelines;
+    // this.timeline = navParams.data.timeline;
+    this.timelineIndex = navParams.data.index;
+    this.timeline = this.timelineService.timelines[this.timelineIndex];
     this.newComment.timeline_id = this.timeline.id;
   }
 
@@ -52,8 +54,8 @@ export class TimelineDetailPage {
   destroy() {
     this.timelineService.destroy(this.timeline)
     .then((ret) => {
-      let index = this.timelines.indexOf(this.timeline);
-      this.timelines.splice(index, 1);
+      let index = this.timelineService.timelines.indexOf(this.timeline);
+      this.timelineService.timelines.splice(index, 1);
 
       this.navCtrl.pop();
     });
@@ -84,6 +86,7 @@ export class TimelineDetailPage {
       .then((ret) => {
         this.newComment.content = '';
 
+        this.timelineService.timelines[this.timelineIndex] = ret;
         this.timeline = ret;
       });
     }

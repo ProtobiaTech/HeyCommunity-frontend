@@ -26,7 +26,6 @@ import {UserLogInPage} from '../user/userLogIn';
 })
 export class TimelinePage {
   isAuth: boolean = false;
-  // commonOpenModal: Common;
 
 
   //
@@ -40,7 +39,6 @@ export class TimelinePage {
     private timelineService: TimelineService
   ) {
     this.isAuth = this.auth.isAuth;
-    // this.commonOpenModal = new Common();
   }
 
 
@@ -55,7 +53,7 @@ export class TimelinePage {
   // go to create timeline page
   gotoTimelineCreatePage() {
     if (!this.auth.isAuth) {
-      // this.commonOpenModal.openUserLogInModal();
+      this.common.openUserLogInModal();
     } else {
       this.nav.push(TimelineCreatePage);
     }
@@ -74,8 +72,7 @@ export class TimelinePage {
   setLikeForTimeline(timeline: Timeline) {
     console.log(timeline, this.auth.isAuth);
     if (!this.auth.isAuth) {
-      // this.common.openUserLogInModal();
-      // console.log(this.commonOpenModal);
+      this.common.openUserLogInModal();
     } else {
       this.timelineService.setLike(timeline)
       .then(newTimeline => {

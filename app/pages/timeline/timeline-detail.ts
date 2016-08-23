@@ -12,6 +12,7 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
   templateUrl: 'build/pages/timeline/timeline-detail.html',
   providers: [
     TimelineService,
+    Common,
   ],
   pipes: [
     TimeagoPipe,
@@ -22,7 +23,6 @@ export class TimelineDetailPage {
   timeline: Timeline;
   timelines: Timeline[];
   newComment: {content?: string, timeline_id?: number} = {};
-  // commonOpenModal: Common;
 
 
   //
@@ -30,6 +30,7 @@ export class TimelineDetailPage {
   constructor(
     private navParams: NavParams,
     private navCtrl: NavController,
+    private common: Common,
     private auth: Auth,
     private actionSheetCtrl: ActionSheetController,
     public timelineService: TimelineService
@@ -37,7 +38,6 @@ export class TimelineDetailPage {
     this.timeline = navParams.data.timeline;
     this.timelines = this.timelineService.timelines;
     this.newComment.timeline_id = this.timeline.id;
-    // this.commonOpenModal = new Common();
   }
 
 
@@ -64,7 +64,7 @@ export class TimelineDetailPage {
   // input comment handler
   inputCommentHandler() {
     if (!this.auth.isAuth) {
-      // this.commonOpenModal.openUserLogInModal();
+      this.common.openUserLogInModal();
     }
   }
 
@@ -73,7 +73,7 @@ export class TimelineDetailPage {
   // send comment handler
   sendCommentHandler() {
     if (!this.auth.isAuth) {
-      // this.commonOpenModal.openUserLogInModal();
+      this.common.openUserLogInModal();
     } else {
       let params: Object = {
         timeline_id: this.newComment.timeline_id,

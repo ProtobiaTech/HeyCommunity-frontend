@@ -13,17 +13,17 @@
     <form #signUpForm="ngForm">
       <ion-item>
         <ion-label primary>Nickname</ion-label>
-        <ion-input [(ngModel)]="signUpModel.nickname" ngControl="nickname" type="text" #nickname="ngForm" required></ion-input>
+        <ion-input [(ngModel)]="signUpModel.nickname" name="nickname" type="text" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label primary>Phone</ion-label>
-        <ion-input [(ngModel)]="signUpModel.phone" ngControl="phone" type="text" #phone="ngForm" required number></ion-input>
+        <ion-input [(ngModel)]="signUpModel.phone" name="phone" type="text" required number></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label primary>Password</ion-label>
-        <ion-input [(ngModel)]="signUpModel.password" ngControl="password" type="text" #password="ngForm" required></ion-input>
+        <ion-input [(ngModel)]="signUpModel.password" name="password" type="text" required></ion-input>
       </ion-item>
     </form>
   </ion-list>

@@ -13,12 +13,12 @@
     <form #logInForm="ngForm">
       <ion-item>
         <ion-label primary>Phone</ion-label>
-        <ion-input [(ngModel)]="logInModel.phone" ngControl="phone" type="text" #phone="ngForm" required number></ion-input>
+        <ion-input [(ngModel)]="logInModel.phone" name="phone" type="text" required number></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label primary>Password</ion-label>
-        <ion-input [(ngModel)]="logInModel.password" ngControl="password" type="text" #password="ngForm" required></ion-input>
+        <ion-input [(ngModel)]="logInModel.password" name="password" type="text" required></ion-input>
       </ion-item>
     </form>
   </ion-list>

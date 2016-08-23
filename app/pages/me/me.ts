@@ -13,17 +13,19 @@ import {UserSignUpPage} from '../user/userSignUp';
 import {UserLogInPage} from '../user/userLogIn';
 
 @Component({
-  templateUrl: 'build/pages/me/me.html'
+  templateUrl: 'build/pages/me/me.html',
+  providers: [
+    Common,
+  ],
 })
 export class MePage {
-  // commonOpenModal: Common;
 
   constructor(
     private navCtrl: NavController,
+    private common: Common,
     private nav: Nav,
     private auth: Auth
   ) {
-    // this.commonOpenModal = new Common();
   }
 
 
@@ -33,7 +35,7 @@ export class MePage {
     if (this.auth.isAuth) {
       this.nav.push(MeProfilePage);
     } else {
-      // this.commonOpenModal.openUserLogInModal();
+      this.common.openUserLogInModal();
     }
   }
 
@@ -44,7 +46,7 @@ export class MePage {
     if (this.auth.isAuth) {
       this.nav.push(MeSettingPage);
     } else {
-      // this.commonOpenModal.openUserLogInModal();
+      this.common.openUserLogInModal();
     }
   }
 
@@ -55,7 +57,7 @@ export class MePage {
     if (this.auth.isAuth) {
       this.nav.push(MeNoticePage);
     } else {
-      // this.commonOpenModal.openUserLogInModal();
+      this.common.openUserLogInModal();
     }
   }
 
@@ -66,7 +68,7 @@ export class MePage {
     if (this.auth.isAuth) {
       this.nav.push(MeTimelinePage);
     } else {
-      // this.commonOpenModal.openUserLogInModal();
+      this.common.openUserLogInModal();
     }
   }
 }

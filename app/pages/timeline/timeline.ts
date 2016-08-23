@@ -70,7 +70,6 @@ export class TimelinePage {
   //
   // set like for timeline
   setLikeForTimeline(timeline: Timeline) {
-    console.log(timeline, this.auth.isAuth);
     if (!this.auth.isAuth) {
       this.common.openUserLogInModal();
     } else {

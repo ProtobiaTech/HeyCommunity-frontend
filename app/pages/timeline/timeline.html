@@ -32,11 +32,7 @@
     </ion-item>
 
     <div class="" *ngIf="item.imgs">
-      <ion-slides>
-        <ion-slide *ngFor="let img of item.imgs">
-          <img class="photo" src="{{ helper.getImg(img.uri) }}">
-        </ion-slide>
-      </ion-slides>
+      <img *ngFor="let img of item.imgs" class="photo" src="{{ helper.getImg(img.uri) }}">
     </div>
     <hr>
 

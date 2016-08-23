@@ -84,10 +84,7 @@ export class TimelineDetailPage {
       .then((ret) => {
         this.newComment.content = '';
 
-        let index = this.timelines.indexOf(this.timeline);
-        for (let key in this.timelines[index]) {
-          this.timelines[index][key] = ret[key];
-        }
+        this.timeline = ret;
       });
     }
   }

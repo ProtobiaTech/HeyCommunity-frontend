@@ -1,25 +1,34 @@
 import {Injectable} from '@angular/core';
+import {Platform} from 'ionic-angular';
 import {Http} from '@angular/http';
 
 
 @Injectable()
 export class Helper {
-  constructor(private http: Http) {
+  constructor(
+    private platform: Platform
+  ) {
   }
 
 
   //
   //
   getAPI(uri): string {
-    return '/api/' + uri;
-    // return 'http://new-app.heycommunity.com/api/' + uri;
+    if (this.platform.is('cordova')) {
+      return 'http://v2.hey-community.com/api/' + uri;
+    } else {
+      return '/api/' + uri;
+    }
   }
 
 
   //
   //
   getImg(uri): string {
-    return uri;
-    // return 'http://new-app.heycommunity.com' + uri;
+    if (this.platform.is('cordova')) {
+      return 'http://v2.hey-community.com/' + uri;
+    } else {
+      return uri;
+    }
   }
 }

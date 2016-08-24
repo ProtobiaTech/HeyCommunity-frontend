@@ -12,14 +12,14 @@ export class Helper {
   //
   getAPI(uri): string {
     return '/api/' + uri;
-    // return 'http://new-app.heycommunity.com/api/' + string;
+    // return 'http://new-app.heycommunity.com/api/' + uri;
   }
 
 
   //
   //
   getImg(uri): string {
-    return 'http://backend.heycommunity.local/' + uri;
+    return uri;
     // return 'http://new-app.heycommunity.com' + uri;
   }
 }

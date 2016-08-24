@@ -9,8 +9,8 @@
 </ion-header>
 
 <ion-content class="user">
-  <ion-list>
-    <form #signUpForm="ngForm">
+  <form #signUpForm="ngForm">
+    <ion-list>
       <ion-item>
         <ion-label primary>Nickname</ion-label>
         <ion-input [(ngModel)]="signUpModel.nickname" name="nickname" type="text" required></ion-input>
@@ -25,8 +25,16 @@
         <ion-label primary>Password</ion-label>
         <ion-input [(ngModel)]="signUpModel.password" name="password" type="text" required></ion-input>
       </ion-item>
-    </form>
-  </ion-list>
+    </ion-list>
+
+    <div class="session-bottom">
+      <button clear small></button>
+
+      <div class="pull-right">
+        <button dark clear small (click)="openUserLogInModal()">Log In</button>
+      </div>
+    </div>
+  </form>
 
   <div padding-left padding-right>
     <button block (click)="signUpHandler(signUpForm)">Sign Up</button>

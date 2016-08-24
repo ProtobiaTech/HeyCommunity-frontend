@@ -9,8 +9,8 @@
 </ion-header>
 
 <ion-content class="user">
-  <ion-list>
-    <form #logInForm="ngForm">
+  <form #logInForm="ngForm">
+    <ion-list>
       <ion-item>
         <ion-label primary>Phone</ion-label>
         <ion-input [(ngModel)]="logInModel.phone" name="phone" type="text" required number></ion-input>
@@ -20,8 +20,16 @@
         <ion-label primary>Password</ion-label>
         <ion-input [(ngModel)]="logInModel.password" name="password" type="text" required></ion-input>
       </ion-item>
-    </form>
-  </ion-list>
+    </ion-list>
+
+    <div class="session-bottom">
+      <button dark clear small>forget password?</button>
+
+      <div class="pull-right">
+        <button dark clear small (click)="openUserSignUpModal()">Sign Up</button>
+      </div>
+    </div>
+  </form>
 
   <div padding-left padding-right>
     <button block (click)="logInHandler(logInForm)">Log In</button>

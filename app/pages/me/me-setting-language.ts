@@ -5,16 +5,11 @@ import {Helper} from '../../other/helper.component';
 import {Auth} from '../../other/auth.component';
 import {UserService} from '../../services/user.service';
 
-import {MeSettingLanguagePage} from '../../pages/me/me-setting-language';
 
 @Component({
-  templateUrl: 'build/pages/me/me-setting.html'
+  templateUrl: 'build/pages/me/me-setting-language.html'
 })
-export class MeSettingPage {
-  //
-  meSettingLanguagePage = MeSettingLanguagePage;
-
-
+export class MeSettingLanguagePage {
   constructor(
     private navCtrl: NavController,
     private auth: Auth,

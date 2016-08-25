@@ -9,8 +9,6 @@ import {MeNoticePage} from '../me/me-notice';
 import {MeTimelinePage} from '../me/me-timeline';
 import {MeSettingPage} from '../me/me-setting';
 
-import {UserSignUpPage} from '../user/userSignUp';
-import {UserLogInPage} from '../user/userLogIn';
 
 @Component({
   templateUrl: 'build/pages/me/me.html',

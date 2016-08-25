@@ -11,7 +11,6 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
 import {TimelineCreatePage} from '../timeline/timeline-create';
 import {TimelineDetailPage} from '../timeline/timeline-detail';
 
-import {UserLogInPage} from '../user/userLogIn';
 
 @Component({
   templateUrl: 'build/pages/timeline/timeline.html',

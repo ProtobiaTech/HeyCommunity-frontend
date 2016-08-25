@@ -5,7 +5,6 @@ import {UserService} from '../../services/user.service';
 import {TimelineService} from '../../services/timeline.service';
 import {Auth} from '../../other/auth.component';
 
-import {UserSignUpPage} from '../../pages/user/userSignUp';
 
 @Component({
   templateUrl: 'build/pages/user/authenticate.html',

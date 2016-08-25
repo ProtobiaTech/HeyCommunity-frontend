@@ -23,8 +23,6 @@ import {TimelineDetailPage} from '../timeline/timeline-detail';
   ]
 })
 export class TimelinePage {
-  isAuth: boolean = false;
-
 
   //
   // constructor
@@ -36,7 +34,6 @@ export class TimelinePage {
     private common: Common,
     private timelineService: TimelineService
   ) {
-    this.isAuth = this.auth.isAuth;
   }
 
 

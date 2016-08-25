@@ -11,8 +11,7 @@ import {UserService} from './services/user.service';
 import {TimelineService} from './services/timeline.service';
 
 import {TabsPage} from './pages/tabs/tabs';
-import {UserSignUpPage} from './pages/user/userSignUp';
-import {UserLogInPage} from './pages/user/userLogIn';
+import {AuthenticatePage} from './pages/user/authenticate';
 
 
 interface PageObj {
@@ -55,8 +54,8 @@ export class MyApp {
 
   //
   loggedOutPages: [Object] = [
-    {icon: 'log-in', title: 'Sign Up', component: UserSignUpPage, type: 'modal'},
-    {icon: 'log-in', title: 'Log In', component: UserLogInPage, type: 'modal'},
+    {icon: 'log-in', title: 'Sign Up', component: AuthenticatePage, params: {modal: 'SignUp'}, type: 'modal'},
+    {icon: 'log-in', title: 'Log In', component: AuthenticatePage, params: {modal: 'LogIn'}, type: 'modal'},
   ]
 
 
@@ -100,7 +99,7 @@ export class MyApp {
   //
   openPage(page: PageObj) {
     if (page.type && page.type === 'modal') {
-      this.showModal(page.component);
+      this.openModal(page);
     } else if (page.type && page.type === 'handler') {
       if (this[page.handler]) {
         this[page.handler]();
@@ -159,8 +158,8 @@ export class MyApp {
 
   //
   //
-  showModal(page) {
-    let modalPage = this.modalCtrl.create(page);
+  openModal(page) {
+    let modalPage = this.modalCtrl.create(page.component, page.params);
     modalPage.present();
   }
 }

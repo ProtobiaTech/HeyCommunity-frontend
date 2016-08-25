@@ -35,7 +35,7 @@ export class MePage {
     if (this.auth.isAuth) {
       this.nav.push(MeProfilePage);
     } else {
-      this.common.openUserLogInModal();
+      this.common.openAuthenticateModal();
     }
   }
 
@@ -46,7 +46,7 @@ export class MePage {
     if (this.auth.isAuth) {
       this.nav.push(MeSettingPage);
     } else {
-      this.common.openUserLogInModal();
+      this.common.openAuthenticateModal();
     }
   }
 
@@ -57,8 +57,8 @@ export class MePage {
     if (this.auth.isAuth) {
       this.nav.push(MeNoticePage);
     } else {
-      this.common.openUserLogInModal();
     }
+      this.common.openAuthenticateModal();
   }
 
 
@@ -68,7 +68,7 @@ export class MePage {
     if (this.auth.isAuth) {
       this.nav.push(MeTimelinePage);
     } else {
-      this.common.openUserLogInModal();
+      this.common.openAuthenticateModal();
     }
   }
 }

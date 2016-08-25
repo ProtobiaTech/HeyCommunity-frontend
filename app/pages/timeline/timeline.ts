@@ -52,7 +52,7 @@ export class TimelinePage {
   // go to create timeline page
   gotoTimelineCreatePage() {
     if (!this.auth.isAuth) {
-      this.common.openUserLogInModal();
+      this.common.openAuthenticateModal();
     } else {
       this.nav.push(TimelineCreatePage);
     }
@@ -70,7 +70,7 @@ export class TimelinePage {
   // set like for timeline
   setLikeForTimeline(timeline: Timeline) {
     if (!this.auth.isAuth) {
-      this.common.openUserLogInModal();
+      this.common.openAuthenticateModal();
     } else {
       this.timelineService.setLike(timeline)
       .then(newTimeline => {

@@ -66,7 +66,7 @@ export class TimelineDetailPage {
   // input comment handler
   inputCommentHandler() {
     if (!this.auth.isAuth) {
-      this.common.openUserLogInModal();
+      this.common.openAuthenticateModal();
     }
   }
 
@@ -75,7 +75,7 @@ export class TimelineDetailPage {
   // send comment handler
   sendCommentHandler() {
     if (!this.auth.isAuth) {
-      this.common.openUserLogInModal();
+      this.common.openAuthenticateModal();
     } else {
       let params: Object = {
         timeline_id: this.newComment.timeline_id,

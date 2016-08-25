@@ -2,6 +2,7 @@ import {Component, Injectable} from '@angular/core';
 import {Nav, NavController, ModalController} from 'ionic-angular';
 import {UserLogInPage} from '../pages/user/userLogIn';
 import {UserSignUpPage} from '../pages/user/userSignUp';
+import {AuthenticatePage} from '../pages/user/authenticate';
 
 
 @Injectable()
@@ -11,6 +12,14 @@ export class Common {
     private navCtrl: NavController,
     private modalCtrl: ModalController
   ) {}
+
+
+  //
+  //
+  openAuthenticateModal() {
+    let authenticateModal = this.modalCtrl.create(AuthenticatePage);
+    authenticateModal.present();
+  }
 
 
   //

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Update Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list padding-top [hidden]="item !== 'name'">
+    <ion-item>
+      <ion-input type="text" placeholder="Name"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list padding-top [hidden]="item !== 'bio'">
+    <ion-item>
+      <ion-textarea placeholder="Bio">
+      </ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-list padding-top radio-group [hidden]="item !== 'gender'">
+    <ion-item>
+      <ion-label>Male</ion-label>
+      <ion-radio checked="true" value="fale"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Female</ion-label>
+      <ion-radio value="female"></ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>

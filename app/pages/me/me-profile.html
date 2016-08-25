@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      userInfo
+      Profile
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list padding-top>
-    <button ion-item (click)="goToPage()">
+    <button ion-item [navPush]="meUpdateProfilePage" [navParams]="{item: 'avatar'}">
       <ion-label>Avatar</ion-label>
       <ion-avatar item-right>
         <img src="assets/images/userAvatar-default.png">
@@ -22,21 +22,21 @@
       </ion-note>
     </ion-item>
 
-    <button ion-item>
+    <button ion-item [navPush]="meUpdateProfilePage" [navParams]="{item: 'name'}">
       <ion-label>Name</ion-label>
       <ion-note item-right>
         {{ auth.userInfo.nickname }}
       </ion-note>
     </button>
 
-    <button ion-item>
+    <button ion-item [navPush]="meUpdateProfilePage" [navParams]="{item: 'gender'}">
       <ion-label>Gender</ion-label>
       <ion-note item-right>
         {{ auth.userInfo.gender }}
       </ion-note>
     </button>
 
-    <button ion-item>
+    <button ion-item [navPush]="meUpdateProfilePage" [navParams]="{item: 'bio'}">
       <ion-label>Bio</ion-label>
       <ion-note item-right>
         {{ auth.userInfo.bio }}

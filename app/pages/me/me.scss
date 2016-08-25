@@ -1,2 +1,17 @@
-.contact {
+#me {
+  //
+  //
+  &.page-notice {
+    .pic {
+      height: 45px;
+      max-width: 80px;
+      overflow: hidden;
+      margin-right: 0;
+      line-height: 45px;
+
+      img {
+        vertical-align: middle;
+      }
+    }
+  }
 }

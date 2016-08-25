@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
+import {Storage, LocalStorage} from 'ionic-angular';
 import 'rxjs/add/operator/toPromise';
 
 import {Timeline} from '../models/timeline.model';
@@ -8,8 +9,10 @@ import {Helper} from '../other/helper.component';
 
 @Injectable()
 export class TimelineService {
+  storage = new Storage(LocalStorage);
   timelineStoreImgAPI: string = this.helper.getAPI('timeline/store-img');
   timelines: Timeline[] = [];
+  CACHE_TIMELINES: string = 'cache_timelines';
 
   constructor(
     private http: Http,
@@ -20,12 +23,20 @@ export class TimelineService {
   //
   // get timelines
   getTimelines(params?): Promise<Timeline[]> {
+    //
+    this.storage.get(this.CACHE_TIMELINES).then(value => {
+      let timelines = JSON.parse(value);
+      this.timelines = timelines;
+    });
+
+    //
     let api: string = this.helper.getAPI('timeline');
 
     return this.http.get(api)
     .toPromise()
     .then(response => {
       this.timelines = response.json();
+      this.storageTimelines();
       return response.json();
     })
     .catch(this.handleError);
@@ -42,6 +53,7 @@ export class TimelineService {
     .then(response => {
       let timelines = response.json();
       this.timelines = timelines.concat(this.timelines);
+      this.storageTimelines();
       return response.json();
     })
     .catch(this.handleError);
@@ -58,6 +70,7 @@ export class TimelineService {
     .then(response => {
       let timelines = response.json();
       this.timelines = this.timelines.concat(timelines);
+      this.storageTimelines();
       return response.json();
     })
     .catch(this.handleError);
@@ -125,6 +138,14 @@ export class TimelineService {
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError);
+  }
+
+
+  //
+  //
+  storageTimelines() {
+    let timelines = JSON.stringify(this.timelines);
+    this.storage.set(this.CACHE_TIMELINES, timelines);
   }
 
 

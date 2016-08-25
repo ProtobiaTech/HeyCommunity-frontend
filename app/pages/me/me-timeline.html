@@ -6,7 +6,30 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="me" class="page-timeline">
+  <div padding [hidden]="myTimelines.length > 0">You did not have timelines</div>
+
   <ion-list padding-top>
+      <ion-card *ngFor="let item of myTimelines; let i = index">
+        <ion-item class="header">
+          <ion-avatar item-left>
+            <img class="avatar" src="{{ item.author.avatar }}">
+          </ion-avatar>
+          <h2>
+            <span class="date pull-right">{{ item.created_at | moment: ['MM-DD HH:mm'] }}</span>
+            {{ item.author.nickname }}
+          </h2>
+          <p>{{ item.bio ? item.bio : 'no bio' }}</p>
+        </ion-item>
+
+        <div class="" *ngIf="item.imgs">
+          <img *ngFor="let img of item.imgs" class="photo" src="{{ helper.getImg(img.uri) }}">
+        </div>
+        <hr>
+
+        <ion-card-content>
+          <div class="content" *ngIf="item.content">{{ item.content }}</div>
+        </ion-card-content>
+      </ion-card>
   </ion-list>
 </ion-content>

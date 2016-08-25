@@ -1,6 +1,7 @@
 #me {
   //
   //
+  // ----------------------------------------
   &.page-notice {
     .pic {
       height: 45px;
@@ -14,4 +15,54 @@
       }
     }
   }
+
+
+
+  //
+  // timeline
+  // ----------------------------------------
+  &.page-timeline {
+    ion-card {
+      width: 100%;
+      margin: 0 0 12px 0;
+
+      .header {
+        .date {
+          font-size: 14px;
+          color: #bbb;
+        }
+      }
+
+      hr {
+        margin: 0;
+      }
+
+      .content {
+        color: $textColorPrimary;
+      }
+
+      img.avatar {
+        min-height: 36px;
+        min-width: 36px;
+        background-color: #ddd;
+      }
+
+      img.photo {
+        width: 100%;
+        background-color: #ddd;
+      }
+
+      .footer .date {
+        text-align: right;
+        padding-right: 13px;
+
+        ion-note {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: hidden;
+        }
+      }
+    }
+  }
 }
+

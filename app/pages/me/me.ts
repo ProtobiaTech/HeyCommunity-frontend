@@ -55,8 +55,8 @@ export class MePage {
     if (this.auth.isAuth) {
       this.nav.push(MeNoticePage);
     } else {
-    }
       this.common.openAuthenticateModal();
+    }
   }
 
 

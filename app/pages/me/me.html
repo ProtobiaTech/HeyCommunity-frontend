@@ -10,7 +10,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="me" class="page-me">
   <ion-list padding-top>
     <button ion-item (click)="goToMeProfilePage()">
       <ion-avatar item-left>
@@ -19,7 +19,7 @@
       </ion-avatar>
 
       <h2 *ngIf="auth.isAuth">{{ auth.userInfo.nickname }}</h2>
-      <p *ngIf="auth.isAuth">{{ auth.userInfo.bio ? auth.userInfo.bio : 'null' }}</p>
+      <p *ngIf="auth.isAuth">{{ auth.userInfo.bio ? auth.userInfo.bio : 'no bio' }}</p>
 
       <h2 *ngIf="!auth.isAuth">Visitor</h2>
       <p *ngIf="!auth.isAuth">please login, first</p>

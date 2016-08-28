@@ -1,6 +1,20 @@
 #me {
   //
+  // me
+  // ----------------------------------------
+  &.page-me {
+    ion-avatar img {
+      max-width: 45px;
+      max-height: 45px;
+      width: 45px;
+      height: 45px;
+    }
+  }
+
+
+
   //
+  // notice
   // ----------------------------------------
   &.page-notice {
     .pic {

@@ -26,8 +26,6 @@ export class MeTimelinePage {
     private navCtrl: NavController,
     private timelineService: TimelineService
   ) {
-    this.myTimelines = this.timelineService.timelines;
-
     if (this.auth.isAuth) {
       this.timelineService.timelines.forEach(function(timeline) {
         if (timeline.user_id === this.auth.userInfo.user_id) {

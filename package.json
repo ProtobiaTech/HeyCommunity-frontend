@@ -45,6 +45,6 @@
       "locator": "ios"
     }
   ],
-  "name": "heycommunity-frontend",
-  "description": "HeyCommunity-frontend: An Ionic project"
+  "name": "heycommunity",
+  "description": "WebApp & IOS App & Android App of Community"
 }

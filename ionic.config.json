@@ -6,7 +6,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://backend.heycommunity.local/api"
+      "proxyUrl": "http://dev.hey-community.local/api"
     }
   ]
 }

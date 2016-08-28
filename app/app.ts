@@ -39,9 +39,6 @@ export class MyApp {
   loading: Loading;
 
   //
-  user: User = {id: 0, nickname: '', phone: ''};
-
-  //
   isAuth: boolean = false;
 
   //
@@ -134,8 +131,10 @@ export class MyApp {
   //
   //
   setUser() {
-    this.auth.getUser().then(data => {
-      this.user = data;
+    this.userService.getUser().then(data => {
+      this.auth.logIn(data);
+    }, data => {
+      this.auth.logOut();
     });
   }
 
@@ -145,7 +144,6 @@ export class MyApp {
   listenToAuthEvents() {
     this.events.subscribe('auth:loggedIn', () => {
       this.enableMenu(true);
-      this.setUser();
     });
 
     this.events.subscribe('auth:loggedOut', () => {

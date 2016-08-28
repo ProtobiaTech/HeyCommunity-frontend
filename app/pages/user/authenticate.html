@@ -12,11 +12,11 @@
       <div padding-bottom></div>
       <h3 class="text-center">Log In</h3>
 
-      <form #logInForm="ngForm">
+      <form #logInForm="ngForm" (ngSubmit)="logInHandler(logInForm)">
         <ion-list>
           <ion-item>
             <ion-label primary>Phone</ion-label>
-            <ion-input [(ngModel)]="logInModel.phone" name="phone" type="text" required ngModel pattern="[0-9]{11}"></ion-input>
+            <ion-input [(ngModel)]="logInModel.phone" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -26,17 +26,17 @@
         </ion-list>
 
         <div class="session-bottom">
-          <button dark clear small>forget password?</button>
+          <button dark clear small disabled>forget password?</button>
 
           <div class="pull-right">
             <button dark clear small (click)="currentModal = 'SignUp'">Sign Up</button>
           </div>
         </div>
-      </form>
 
-      <div padding-left padding-right>
-        <button block [disabled]="!logInForm.valid" (click)="logInHandler(logInForm)">Log In</button>
-      </div>
+        <div padding-left padding-right>
+          <button block [disabled]="!logInForm.valid" type="submit">Log In</button>
+        </div>
+      </form>
   </div>
 
 
@@ -45,7 +45,7 @@
       <div padding-bottom></div>
       <h3 class="text-center">Sign Up</h3>
 
-      <form #signUpForm="ngForm">
+      <form #signUpForm="ngForm" (ngSubmit)="signUpHandler(signUpForm)">
         <ion-list>
           <ion-item>
             <ion-label primary>Nickname</ion-label>
@@ -54,7 +54,7 @@
 
           <ion-item>
             <ion-label primary>Phone</ion-label>
-            <ion-input [(ngModel)]="signUpModel.phone" name="phone" type="text" required ngModel pattern="[0-9]{11}"></ion-input>
+            <ion-input [(ngModel)]="signUpModel.phone" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -70,10 +70,10 @@
             <button dark clear small (click)="currentModal = 'LogIn'">Log In</button>
           </div>
         </div>
-      </form>
 
-      <div padding-left padding-right>
-        <button block [disabled]="!signUpForm.valid" (click)="signUpHandler(signUpForm)">Sign Up</button>
-      </div>
+        <div padding-left padding-right>
+          <button block [disabled]="!signUpForm.valid" type="submit">Sign Up</button>
+        </div>
+      </form>
   </div>
 </ion-content>

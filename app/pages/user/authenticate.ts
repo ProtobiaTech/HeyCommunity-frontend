@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, ViewController, NavParams, ModalController} from 'ionic-angular';
+import {NavController, ViewController, NavParams, ModalController, Loading, LoadingController} from 'ionic-angular';
 
 import {UserService} from '../../services/user.service';
 import {TimelineService} from '../../services/timeline.service';
@@ -23,6 +23,9 @@ export class AuthenticatePage {
   //
   currentModal: string = 'LogIn';
 
+  //
+  loading: Loading;
+
 
   //
   //
@@ -32,6 +35,7 @@ export class AuthenticatePage {
     private viewCtrl: ViewController,
     private modalCtrl: ModalController,
     private userService: UserService,
+    private loadingCtrl: LoadingController,
     private auth: Auth
   ) {
     if (this.navParams.get('modal')) {
@@ -56,11 +60,14 @@ export class AuthenticatePage {
     };
 
     if (ngForm.valid) {
+      this.openLoadingModal();
+
       this.userService.logIn(data)
       .then(ret => {
         this.auth.logIn(ret);
-        console.log('ret', ret);
-        this.viewCtrl.dismiss();
+        this.viewCtrl.dismiss().then(() => {
+          this.dismissLoadingModal();
+        });
       });
     }
   }
@@ -76,12 +83,33 @@ export class AuthenticatePage {
     };
 
     if (ngForm.valid) {
+      this.openLoadingModal();
+
       this.userService.signUp(data)
       .then(ret => {
         this.auth.logIn(ret);
-        this.viewCtrl.dismiss();
+        this.viewCtrl.dismiss().then(() => {
+          this.dismissLoadingModal();
+        });
       });
     }
   }
-}
 
+
+  //
+  //
+  openLoadingModal() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+  }
+
+
+  //
+  //
+  dismissLoadingModal() {
+    this.loading.dismiss();
+  }
+}

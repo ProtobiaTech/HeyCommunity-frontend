@@ -1,5 +1,5 @@
 import {Component, ViewChild, enableProdMode} from '@angular/core';
-import {Platform, ionicBootstrap, Events, Nav, ModalController, MenuController} from 'ionic-angular';
+import {Platform, ionicBootstrap, Events, Nav, ModalController, MenuController, Loading, LoadingController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HTTP_PROVIDERS} from '@angular/http';
 
@@ -36,6 +36,9 @@ export class MyApp {
   private rootPage:any;
 
   //
+  loading: Loading;
+
+  //
   user: User = {id: 0, nickname: '', phone: ''};
 
   //
@@ -67,6 +70,7 @@ export class MyApp {
     private modalCtrl: ModalController,
     private events: Events,
     private userService: UserService,
+    private loadingCtrl: LoadingController,
     private auth: Auth
   ) {
     this.rootPage = TabsPage;
@@ -117,10 +121,12 @@ export class MyApp {
   //
   // log out handler
   logOutHandler() {
+    this.openLoadingModal();
     this.userService.logOut()
     .then(ret => {
       this.auth.logOut();
       this.events.publish('auth:loggedOut');
+      this.dismissLoadingModal();
     });
   }
 
@@ -161,6 +167,24 @@ export class MyApp {
   openModal(page) {
     let modalPage = this.modalCtrl.create(page.component, page.params);
     modalPage.present();
+  }
+
+
+  //
+  //
+  openLoadingModal() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    this.loading.present();
+  }
+
+
+  //
+  //
+  dismissLoadingModal() {
+    this.loading.dismiss();
   }
 }
 

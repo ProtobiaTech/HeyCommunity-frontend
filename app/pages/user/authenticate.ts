@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, ViewController, NavParams, ModalController, Loading, LoadingController} from 'ionic-angular';
+import {NavController, ViewController, NavParams, ModalController, Loading, LoadingController, AlertController} from 'ionic-angular';
 
 import {UserService} from '../../services/user.service';
 import {TimelineService} from '../../services/timeline.service';
@@ -36,10 +36,11 @@ export class AuthenticatePage {
     private modalCtrl: ModalController,
     private userService: UserService,
     private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
     private auth: Auth
   ) {
     if (this.navParams.get('modal')) {
-        this.currentModal = this.navParams.get('modal');
+      this.currentModal = this.navParams.get('modal');
     }
   }
 
@@ -65,8 +66,12 @@ export class AuthenticatePage {
       this.userService.logIn(data)
       .then(ret => {
         this.auth.logIn(ret);
-        this.viewCtrl.dismiss().then(() => {
+        this.viewCtrl.dismiss().then((data) => {
           this.dismissLoadingModal();
+        });
+      }, (data) => {
+        this.dismissLoadingModal().then(() => {
+          this.openAlter({title: 'LogIn Failed', subTitle: data._body});
         });
       });
     }
@@ -91,6 +96,10 @@ export class AuthenticatePage {
         this.viewCtrl.dismiss().then(() => {
           this.dismissLoadingModal();
         });
+      }, (data) => {
+        this.dismissLoadingModal().then(() => {
+          this.openAlter({title: 'SignUp Failed', subTitle: data._body});
+        });
       });
     }
   }
@@ -103,13 +112,32 @@ export class AuthenticatePage {
       content: 'Please wait...'
     });
 
-    this.loading.present();
+    return this.loading.present();
   }
 
 
   //
   //
   dismissLoadingModal() {
-    this.loading.dismiss();
+    return this.loading.dismiss();
+  }
+
+
+  //
+  //
+  openAlter(params?) {
+    if (!params) {
+      params = {
+        title: 'Alter',
+        subTitle: '',
+      }
+    }
+
+    let alert = this.alertCtrl.create({
+      title: params.title,
+      subTitle: params.subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }

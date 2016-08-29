@@ -12,6 +12,8 @@ import {UserService} from '../../services/user.service';
 export class MeUpdateProfilePage {
   //
   item: string;
+  isUpdated: string = '';
+  userInfo: Object = {};
 
 
   //
@@ -23,11 +25,21 @@ export class MeUpdateProfilePage {
     private userService: UserService
   ) {
     this.item = this.navParams.get('item');
+    this.userInfo = this.auth.userInfo;
   }
 
 
   //
   //
-  goToPage() {
+  ngOnDestroy() {
+    if (this.isUpdated) {
+      let params = {};
+      params[this.isUpdated] = this.userInfo[this.isUpdated];
+
+      this.userService.update(params)
+      .then((response) => {
+        this.auth.reset(response);
+      });
+    }
   }
 }

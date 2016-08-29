@@ -36,6 +36,18 @@ export class UserService {
 
   //
   //
+  update(params): Promise<User> {
+    let api: string = this.helper.getAPI('user/update');
+
+    return this.http.post(api, params, this.requestOptions)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
+  //
   signUp(params): Promise<User> {
     let api: string = this.helper.getAPI('user/sign-up');
     let data: Object = params;

@@ -65,6 +65,13 @@ export class Auth {
 
   //
   //
+  reset(params) {
+    this.logIn(params);
+  }
+
+
+  //
+  //
   logOut() {
     this.isAuth = false;
     this.userInfo = null;

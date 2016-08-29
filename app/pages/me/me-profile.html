@@ -8,12 +8,12 @@
 
 <ion-content>
   <ion-list padding-top>
-    <button ion-item [navPush]="meUpdateProfilePage" [navParams]="{item: 'avatar'}">
+    <div ion-item>
       <ion-label>Avatar</ion-label>
       <ion-avatar item-right>
         <img src="assets/images/userAvatar-default.png">
       </ion-avatar>
-    </button>
+    </div>
 
     <ion-item>
       <ion-label>ID</ion-label>
@@ -32,7 +32,8 @@
     <button ion-item [navPush]="meUpdateProfilePage" [navParams]="{item: 'gender'}">
       <ion-label>Gender</ion-label>
       <ion-note item-right>
-        {{ auth.userInfo.gender }}
+        <span [hidden]="auth.userInfo.gender != 1">Male</span>
+        <span [hidden]="auth.userInfo.gender != 2">Female</span>
       </ion-note>
     </button>
 

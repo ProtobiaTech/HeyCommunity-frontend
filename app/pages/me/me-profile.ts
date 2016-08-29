@@ -15,16 +15,12 @@ export class MeProfilePage {
   meUpdateProfilePage = MeUpdateProfilePage;
 
 
+  //
+  //
   constructor(
     private navCtrl: NavController,
     private auth: Auth,
     private userService: UserService
   ) {
-  }
-
-
-  //
-  //
-  goToPage() {
   }
 }

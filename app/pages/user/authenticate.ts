@@ -72,6 +72,7 @@ export class AuthenticatePage {
         this.auth.logIn(ret);
         this.viewCtrl.dismiss().then((data) => {
           this.common.dismissLoadingModal();
+          this.common.openToast('Welcome back');
         });
       }, (data) => {
         this.common.dismissLoadingModal().then(() => {
@@ -99,6 +100,7 @@ export class AuthenticatePage {
         this.auth.logIn(ret);
         this.viewCtrl.dismiss().then(() => {
           this.common.dismissLoadingModal();
+          this.common.openToast('Sign up success, Welcome ' + ret.nickname);
         });
       }, (data) => {
         this.common.dismissLoadingModal().then(() => {

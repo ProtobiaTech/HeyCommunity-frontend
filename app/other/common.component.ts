@@ -1,5 +1,5 @@
 import {Component, Injectable} from '@angular/core';
-import {Nav, NavController, ModalController, Loading, LoadingController, AlertController} from 'ionic-angular';
+import {Nav, NavController, ModalController, Loading, LoadingController, AlertController, ToastController} from 'ionic-angular';
 
 
 @Injectable()
@@ -13,6 +13,7 @@ export class Common {
     private navCtrl: NavController,
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
+    private toastCtrl: ToastController,
     private loadingCtrl: LoadingController
   ) {}
 
@@ -83,6 +84,18 @@ export class Common {
       ]
     });
     return confirm.present();
+  }
+
+
+  //
+  //
+  openToast(message: string, duration: number = 3000, position: string = 'bottom') {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: duration,
+      position: position,
+    });
+    toast.present();
   }
 }
 

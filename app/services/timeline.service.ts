@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import {Storage, LocalStorage} from 'ionic-angular';
 import 'rxjs/add/operator/toPromise';
 
@@ -14,10 +14,15 @@ export class TimelineService {
   timelines: Timeline[] = [];
   CACHE_TIMELINES: string = 'cache_timelines';
 
+  headers: Headers;
+  requestOptions: RequestOptions;
+
   constructor(
     private http: Http,
     private helper: Helper
   ) {
+    this.headers = new Headers({'X-Requested-With': 'XMLHttpRequest'});
+    this.requestOptions = new RequestOptions({headers: this.headers});
   }
 
   //
@@ -32,7 +37,7 @@ export class TimelineService {
     //
     let api: string = this.helper.getAPI('timeline');
 
-    return this.http.get(api)
+    return this.http.get(api, this.requestOptions)
     .toPromise()
     .then(response => {
       this.timelines = response.json();
@@ -48,7 +53,7 @@ export class TimelineService {
   refresh(params): Promise<Timeline[]> {
     let api: string = this.helper.getAPI('timeline?type=refresh&id=' + params.id);
 
-    return this.http.get(api)
+    return this.http.get(api, this.requestOptions)
     .toPromise()
     .then(response => {
       let timelines = response.json();
@@ -65,7 +70,7 @@ export class TimelineService {
   infinite(params): Promise<Timeline[]> {
     let api: string = this.helper.getAPI('timeline?type=infinite&id=' + params.id);
 
-    return this.http.get(api)
+    return this.http.get(api, this.requestOptions)
     .toPromise()
     .then(response => {
       let timelines = response.json();
@@ -83,7 +88,7 @@ export class TimelineService {
     let api: string = this.helper.getAPI('timeline/set-like');
     let data: any = {id: timeline.id};
 
-    return this.http.post(api, data)
+    return this.http.post(api, data, this.requestOptions)
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError);
@@ -95,7 +100,7 @@ export class TimelineService {
   store(params): Promise<Timeline> {
     let api: string = this.helper.getAPI('timeline/store');
 
-    return this.http.post(api, params)
+    return this.http.post(api, params, this.requestOptions)
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError);
@@ -108,7 +113,7 @@ export class TimelineService {
     let api: string = this.helper.getAPI('timeline/update');
     let data: any = {content: params.content};
 
-    return this.http.post(api, data)
+    return this.http.post(api, data, this.requestOptions)
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError);
@@ -121,7 +126,7 @@ export class TimelineService {
     let api: string = this.helper.getAPI('timeline/destroy');
     let data: any = {id: params.id};
 
-    return this.http.post(api, data)
+    return this.http.post(api, data, this.requestOptions)
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError);
@@ -134,7 +139,7 @@ export class TimelineService {
     let api: string = this.helper.getAPI('timeline/store-comment');
     let data: any = {timeline_id: params.timeline_id, content: params.content};
 
-    return this.http.post(api, data)
+    return this.http.post(api, data, this.requestOptions)
     .toPromise()
     .then(response => response.json())
     .catch(this.handleError);

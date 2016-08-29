@@ -6,6 +6,7 @@ import {TimelineService} from '../../services/timeline.service';
 import {Helper} from '../../other/helper.component';
 import {Auth} from '../../other/auth.component';
 import {Common} from '../../other/common.component';
+import {AuthModal} from '../../other/authModal.component';
 import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
 
 import {TimelineCreatePage} from '../timeline/timeline-create';
@@ -16,6 +17,7 @@ import {TimelineDetailPage} from '../timeline/timeline-detail';
   templateUrl: 'build/pages/timeline/timeline.html',
   providers: [
     Common,
+    AuthModal,
   ],
   pipes: [
     TimeagoPipe,
@@ -32,6 +34,7 @@ export class TimelinePage {
     private nav: Nav,
     private navCtrl: NavController,
     private common: Common,
+    private authModal: AuthModal,
     private timelineService: TimelineService
   ) {
   }
@@ -48,7 +51,7 @@ export class TimelinePage {
   // go to create timeline page
   gotoTimelineCreatePage() {
     if (!this.auth.isAuth) {
-      this.common.openAuthenticateModal();
+      this.authModal.openAuthenticateModal();
     } else {
       this.nav.push(TimelineCreatePage);
     }
@@ -66,7 +69,7 @@ export class TimelinePage {
   // set like for timeline
   setLikeForTimeline(timeline: Timeline) {
     if (!this.auth.isAuth) {
-      this.common.openAuthenticateModal();
+      this.authModal.openAuthenticateModal();
     } else {
       this.timelineService.setLike(timeline)
       .then(newTimeline => {

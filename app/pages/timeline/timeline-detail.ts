@@ -4,6 +4,7 @@ import {NavController, ActionSheetController, NavParams} from 'ionic-angular';
 import {Auth} from '../../other/auth.component';
 import {Helper} from '../../other/helper.component';
 import {Common} from '../../other/common.component';
+import {AuthModal} from '../../other/authModal.component';
 import {Timeline} from '../../models/timeline.model';
 import {TimelineService} from '../../services/timeline.service';
 import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
@@ -13,6 +14,7 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
   templateUrl: 'build/pages/timeline/timeline-detail.html',
   providers: [
     Common,
+    AuthModal,
   ],
   pipes: [
     TimeagoPipe,
@@ -31,6 +33,7 @@ export class TimelineDetailPage {
     private navParams: NavParams,
     private navCtrl: NavController,
     private common: Common,
+    private authModal: AuthModal,
     private auth: Auth,
     private helper: Helper,
     private actionSheetCtrl: ActionSheetController,
@@ -66,7 +69,7 @@ export class TimelineDetailPage {
   // input comment handler
   inputCommentHandler() {
     if (!this.auth.isAuth) {
-      this.common.openAuthenticateModal();
+      this.authModal.openAuthenticateModal();
     }
   }
 
@@ -75,7 +78,7 @@ export class TimelineDetailPage {
   // send comment handler
   sendCommentHandler() {
     if (!this.auth.isAuth) {
-      this.common.openAuthenticateModal();
+      this.authModal.openAuthenticateModal();
     } else {
       let params: Object = {
         timeline_id: this.newComment.timeline_id,

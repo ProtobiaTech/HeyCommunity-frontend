@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {NavController, ViewController, NavParams, ModalController, Loading, LoadingController, AlertController} from 'ionic-angular';
+import {Nav, NavController, ViewController, NavParams, ModalController, Loading, LoadingController, AlertController} from 'ionic-angular';
 
 import {UserService} from '../../services/user.service';
 import {TimelineService} from '../../services/timeline.service';
 import {Auth} from '../../other/auth.component';
+import {Common} from '../../other/common.component';
 
 
 @Component({
@@ -11,6 +12,8 @@ import {Auth} from '../../other/auth.component';
   providers: [
     UserService,
     TimelineService,
+    Nav,
+    Common,
   ],
 })
 export class AuthenticatePage {
@@ -37,6 +40,7 @@ export class AuthenticatePage {
     private userService: UserService,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
+    private common: Common,
     private auth: Auth
   ) {
     if (this.navParams.get('modal')) {
@@ -61,17 +65,17 @@ export class AuthenticatePage {
     };
 
     if (ngForm.valid) {
-      this.openLoadingModal();
+      this.common.openLoadingModal();
 
       this.userService.logIn(data)
       .then(ret => {
         this.auth.logIn(ret);
         this.viewCtrl.dismiss().then((data) => {
-          this.dismissLoadingModal();
+          this.common.dismissLoadingModal();
         });
       }, (data) => {
-        this.dismissLoadingModal().then(() => {
-          this.openAlter({title: 'LogIn Failed', subTitle: data._body});
+        this.common.dismissLoadingModal().then(() => {
+          this.common.openAlter({title: 'LogIn Failed', subTitle: data._body});
         });
       });
     }
@@ -88,56 +92,20 @@ export class AuthenticatePage {
     };
 
     if (ngForm.valid) {
-      this.openLoadingModal();
+      this.common.openLoadingModal();
 
       this.userService.signUp(data)
       .then(ret => {
         this.auth.logIn(ret);
         this.viewCtrl.dismiss().then(() => {
-          this.dismissLoadingModal();
+          this.common.dismissLoadingModal();
         });
       }, (data) => {
-        this.dismissLoadingModal().then(() => {
-          this.openAlter({title: 'SignUp Failed', subTitle: data._body});
+        this.common.dismissLoadingModal().then(() => {
+          let body = JSON.parse(data._body);
+          this.common.openAlter({title: 'SignUp Failed', subTitle: body[Object.keys(body)[0]]});
         });
       });
     }
-  }
-
-
-  //
-  //
-  openLoadingModal() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-
-    return this.loading.present();
-  }
-
-
-  //
-  //
-  dismissLoadingModal() {
-    return this.loading.dismiss();
-  }
-
-
-  //
-  //
-  openAlter(params?) {
-    if (!params) {
-      params = {
-        title: 'Alter',
-        subTitle: '',
-      }
-    }
-
-    let alert = this.alertCtrl.create({
-      title: params.title,
-      subTitle: params.subTitle,
-      buttons: ['OK']
-    });
-    alert.present();
   }
 }

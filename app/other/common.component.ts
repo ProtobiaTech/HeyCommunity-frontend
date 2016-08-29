@@ -1,6 +1,5 @@
 import {Component, Injectable} from '@angular/core';
 import {Nav, NavController, ModalController, Loading, LoadingController, AlertController} from 'ionic-angular';
-import {AuthenticatePage} from '../pages/user/authenticate';
 
 
 @Injectable()
@@ -16,14 +15,6 @@ export class Common {
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController
   ) {}
-
-
-  //
-  //
-  openAuthenticateModal() {
-    let authenticateModal = this.modalCtrl.create(AuthenticatePage);
-    return authenticateModal.present();
-  }
 
 
   //

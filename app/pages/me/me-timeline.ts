@@ -27,8 +27,9 @@ export class MeTimelinePage {
     private timelineService: TimelineService
   ) {
     if (this.auth.isAuth) {
+      console.log(this.auth);
       this.timelineService.timelines.forEach(function(timeline) {
-        if (timeline.user_id === this.auth.userInfo.user_id) {
+        if (timeline.user_id === this.auth.userInfo.id) {
           this.myTimelines = this.myTimelines.concat(timeline);
         }
       }, this)

@@ -25,10 +25,12 @@
         <img class="avatar" src="{{ item.author.avatar }}">
       </ion-avatar>
       <h2>
-        <span class="date pull-right">{{ item.created_at | moment: ['MM-DD HH:mm'] }}</span>
+        <span class="date pull-right">
+          {{ item.created_at | timeago }}
+        </span>
         {{ item.author.nickname }}
       </h2>
-      <p>{{ item.bio ? item.bio : 'no bio' }}</p>
+      <p>{{ item.author.bio ? item.author.bio : 'no bio' }}</p>
     </ion-item>
 
     <div class="" *ngIf="item.imgs">
@@ -55,7 +57,7 @@
       </ion-col>
       <ion-col width-50 center class="date">
         <ion-note>
-          {{ item.created_at | timeago }}
+          {{ item.created_at | moment: ['MM-DD HH:mm'] }}
         </ion-note>
       </ion-col>
     </ion-row>

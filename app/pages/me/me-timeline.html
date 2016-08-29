@@ -19,7 +19,7 @@
             <span class="date pull-right">{{ item.created_at | moment: ['MM-DD HH:mm'] }}</span>
             {{ item.author.nickname }}
           </h2>
-          <p>{{ item.bio ? item.bio : 'no bio' }}</p>
+          <p>{{ item.author.bio ? item.author.bio : 'no bio' }}</p>
         </ion-item>
 
         <div class="" *ngIf="item.imgs">

@@ -34,7 +34,6 @@ export class MeSettingPage {
   //
   goToLogOut() {
     this.common.openLoadingModal();
-      this.common.dismissLoadingModal();
 
     this.userService.logOut()
     .then(ret => {

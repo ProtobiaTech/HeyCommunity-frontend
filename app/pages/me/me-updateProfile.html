@@ -40,6 +40,6 @@
 
   <div padding class="avatar" [hidden]="item !== 'avatar'">
     <img src="{{ helper.getImg(userInfo.avatar) }}">
-    <input #inputAvatar class="hide " type="file" (change)="uploadAvatar($event)">
+    <input #inputAvatar [hidden]="!helper.platform.is('ios')" type="file" (change)="uploadAvatar($event)">
   </div>
 </ion-content>

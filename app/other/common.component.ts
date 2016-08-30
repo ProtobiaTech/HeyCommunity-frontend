@@ -24,7 +24,8 @@ export class Common {
   //
   openLoadingModal() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Please wait...',
+      duration: 10000,
     });
 
     return this.loading.present();

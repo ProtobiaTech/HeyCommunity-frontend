@@ -8,12 +8,12 @@
 
 <ion-content>
   <ion-list padding-top>
-    <div ion-item>
+    <button ion-item [navPush]="meUpdateProfilePage" [navParams]="{item: 'avatar'}">
       <ion-label>Avatar</ion-label>
       <ion-avatar item-right>
-        <img src="assets/images/userAvatar-default.png">
+        <img src="{{ helper.getImg(auth.userInfo.avatar) }}">
       </ion-avatar>
-    </div>
+    </button>
 
     <ion-item>
       <ion-label>ID</ion-label>

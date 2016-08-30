@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {Nav, NavController, Modal} from 'ionic-angular';
 
 import {Auth} from '../../other/auth.component';
+import {Helper} from '../../other/helper.component';
 import {Common} from '../../other/common.component';
 import {AuthModal} from '../../other/authModal.component';
 
@@ -25,6 +26,7 @@ export class MePage {
     private common: Common,
     private authModal: AuthModal,
     private nav: Nav,
+    private helper: Helper,
     private auth: Auth
   ) {
   }

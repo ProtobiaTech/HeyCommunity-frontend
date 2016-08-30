@@ -20,6 +20,7 @@ export class MeProfilePage {
   constructor(
     private navCtrl: NavController,
     private auth: Auth,
+    private helper: Helper,
     private userService: UserService
   ) {
   }

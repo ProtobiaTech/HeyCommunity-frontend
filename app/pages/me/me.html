@@ -14,8 +14,8 @@
   <ion-list padding-top>
     <button ion-item (click)="goToMeProfilePage()">
       <ion-avatar item-left>
-        <img *ngIf="auth.isAuth" src="assets/images/userAvatar-default.png">
-        <img *ngIf="!auth.isAuth" src="assets/images/userAvatar-default.png">
+        <img [hidden]="auth.isAuth" src="assets/images/userAvatar-default.png">
+        <img [hidden]="!auth.isAuth" src="{{ helper.getImg(auth.userInfo.avatar) }}">
       </ion-avatar>
 
       <h2 *ngIf="auth.isAuth">{{ auth.userInfo.nickname }}</h2>

@@ -3,10 +3,16 @@
     <ion-title>
       Update Profile
     </ion-title>
+
+    <ion-buttons end [hidden]="item !== 'avatar'">
+      <button (click)="showActionSheet()">
+          <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content id="me" class="page-updateProfile">
   <ion-list padding-top [hidden]="item !== 'name'">
     <ion-item>
       <ion-input [(ngModel)]="userInfo.nickname" (ngModelChange)="isUpdated = 'nickname'" name="nickname" type="text" placeholder="Nickame" required minlength="3"></ion-input>
@@ -31,4 +37,9 @@
       <ion-radio name="gender" value="2"></ion-radio>
     </ion-item>
   </ion-list>
+
+  <div padding class="avatar" [hidden]="item !== 'avatar'">
+    <img src="{{ helper.getImg(userInfo.avatar) }}">
+    <input #inputAvatar class="hide " type="file" (change)="uploadAvatar($event)">
+  </div>
 </ion-content>

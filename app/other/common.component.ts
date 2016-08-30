@@ -1,5 +1,6 @@
 import {Component, Injectable} from '@angular/core';
 import {Nav, NavController, ModalController, Loading, LoadingController, AlertController, ToastController} from 'ionic-angular';
+import {ActionSheetController} from 'ionic-angular';
 
 
 @Injectable()
@@ -14,6 +15,7 @@ export class Common {
     private modalCtrl: ModalController,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
+    private actionSheetCtrl: ActionSheetController,
     private loadingCtrl: LoadingController
   ) {}
 
@@ -96,6 +98,17 @@ export class Common {
       position: position,
     });
     toast.present();
+  }
+
+
+  //
+  //
+  openActionSheet(title = 'Operations', btns: Object[] = []) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: title,
+      buttons: btns,
+    });
+    actionSheet.present();
   }
 }
 

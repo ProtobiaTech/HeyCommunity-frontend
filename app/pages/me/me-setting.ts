@@ -7,6 +7,7 @@ import {Common} from '../../other/common.component';
 import {UserService} from '../../services/user.service';
 
 import {MeSettingLanguagePage} from '../../pages/me/me-setting-language';
+import {MeAboutPage} from '../../pages/me/me-about';
 
 @Component({
   templateUrl: 'build/pages/me/me-setting.html',
@@ -17,6 +18,7 @@ import {MeSettingLanguagePage} from '../../pages/me/me-setting-language';
 export class MeSettingPage {
   //
   meSettingLanguagePage = MeSettingLanguagePage;
+  meAboutPage = MeAboutPage;
 
 
   constructor(

@@ -12,6 +12,18 @@
       <ion-icon name="globe" item-left></ion-icon>
       Language
     </button>
+
+    <button ion-item disabled>
+      <ion-icon name="trash" item-left></ion-icon>
+      Clear Cache
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item [navPush]="meAboutPage">
+      <ion-icon name="information-circle" item-left></ion-icon>
+      About
+    </button>
   </ion-list>
 
   <ion-list>

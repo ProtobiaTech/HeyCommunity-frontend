@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {NavParams} from 'ionic-angular';
 
-import {TimelinePage} from '../timeline/timeline';
+import {NoticeService} from '../../services/notice.service';
+
+import {TimelinePage} from '../../pages/timeline/timeline';
 import {MePage} from '../me/me';
 
 
@@ -17,7 +19,10 @@ export class TabsPage {
 
   //
   //
-  constructor(navParams: NavParams) {
+  constructor(
+    private navParams: NavParams,
+    private noticeService: NoticeService
+  ) {
     // this tells the tabs component which Pages
     // should be each tab's root Page
     this.timelineRoot = TimelinePage;

@@ -68,6 +68,7 @@ export class MyApp {
     private modalCtrl: ModalController,
     private events: Events,
     private userService: UserService,
+    private noticeService: NoticeService,
     private loadingCtrl: LoadingController,
     private auth: Auth
   ) {
@@ -81,16 +82,31 @@ export class MyApp {
 
     // listen to auth events
     this.listenToAuthEvents();
+  }
 
+
+  //
+  //
+  ngOnInit() {
     // set menu
     this.auth.getIsAuth().then(isAuth => {
       this.isAuth = isAuth;
+      if (isAuth) {
+        this.noticeService.getIndex();
+      }
 
       setTimeout(() => {
         console.log('set menu');
         this.enableMenu(this.isAuth);
-      }, 2000);
-    })
+      }, 1000);
+    });
+
+    //
+    setInterval(() => {
+      if (this.isAuth) {
+        this.noticeService.getIndex();
+      }
+    }, 5000);
 
     // set user
     this.setUser();

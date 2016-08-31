@@ -9,7 +9,7 @@ import {Helper} from '../other/helper.component';
 @Injectable()
 export class NoticeService {
   headers: Headers;
-  notices: Notice[];
+  notices: Notice[] = [];
   requestOptions: RequestOptions;
 
   userUpdateAvatarAPI: string = this.helper.getAPI('user/update-avatar');

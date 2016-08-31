@@ -5,6 +5,8 @@ import {Auth} from '../../other/auth.component';
 import {Helper} from '../../other/helper.component';
 import {Common} from '../../other/common.component';
 import {AuthModal} from '../../other/authModal.component';
+import {NoticeService} from '../../services/notice.service';
+import {TimelineService} from '../../services/timeline.service';
 
 import {MeProfilePage} from '../me/me-profile';
 import {MeNoticePage} from '../me/me-notice';
@@ -23,6 +25,8 @@ export class MePage {
 
   constructor(
     private navCtrl: NavController,
+    private noticeService: NoticeService,
+    private timelineService: TimelineService,
     private common: Common,
     private authModal: AuthModal,
     private nav: Nav,

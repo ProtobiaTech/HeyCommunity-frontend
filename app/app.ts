@@ -9,6 +9,7 @@ import {Auth} from './other/auth.component';
 import {User} from './models/user.model';
 import {UserService} from './services/user.service';
 import {TimelineService} from './services/timeline.service';
+import {NoticeService} from './services/notice.service';
 
 import {TabsPage} from './pages/tabs/tabs';
 import {AuthenticatePage} from './pages/user/authenticate';
@@ -192,6 +193,7 @@ ionicBootstrap(MyApp, [
   HTTP_PROVIDERS,
   Helper,
   TimelineService,
+  NoticeService,
   Auth
 ], {
   backButtonText: '',

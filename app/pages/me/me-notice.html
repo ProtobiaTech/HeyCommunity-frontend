@@ -3,6 +3,12 @@
     <ion-title>
       Notices
     </ion-title>
+
+    <ion-buttons end>
+      <button (click)="destroyAll()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -10,15 +16,24 @@
   <div padding [hidden]="true">You did not have notices</div>
 
   <ion-list>
-    <ion-item *ngFor="let notice of noticeService.notices">
-      <ion-avatar item-left>
-        <img src="{{ helper.getImg(notice.initiator.avatar) }}">
-      </ion-avatar>
-      <h2>{{ notice.initiator.nickname }}</h2>
-      <p>{{ getNoticeText(notice) }}</p>
-      <div class="pic" item-right>
-        <img src="{{ getImg(notice.entity.imgs) }}">
-      </div>
-    </ion-item>
+    <ion-item-sliding #item *ngFor="let notice of noticeService.notices">
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="{{ helper.getImg(notice.initiator.avatar) }}">
+        </ion-avatar>
+        <h2>{{ notice.initiator.nickname }}</h2>
+        <p>{{ getNoticeText(notice) }}</p>
+        <div class="pic" item-right>
+          <img src="{{ getImg(notice.entity.imgs) }}">
+        </div>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button danger (click)="destroy(notice)">
+          <ion-icon name="trash"></ion-icon>
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

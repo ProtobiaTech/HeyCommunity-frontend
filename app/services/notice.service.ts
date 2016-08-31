@@ -41,6 +41,36 @@ export class NoticeService {
 
 
   //
+  //
+  check(params): Promise<Notice> {
+    let api: string = this.helper.getAPI('notice/check');
+
+    return this.http.post(api, params, this.requestOptions)
+    .toPromise()
+    .then((response) => {
+      this.notices = response.json();
+      return response.json();
+    })
+    .catch(this.handleError);
+  }
+
+
+  //
+  // destroy
+  destroy(params): Promise<Notice> {
+    let api: string = this.helper.getAPI('notice/destroy');
+
+    return this.http.post(api, params, this.requestOptions)
+    .toPromise()
+    .then((response) => {
+      // this.notices = response.json();
+      return response.json();
+    })
+    .catch(this.handleError);
+  }
+
+
+  //
   // handle error
   private handleError(error: any) {
     return Promise.reject(error.message || error);

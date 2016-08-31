@@ -23,6 +23,54 @@ export class MeNoticePage {
   //
   ngOnInit() {
     this.noticeService.getIndex();
+    setTimeout(() => {
+      let params = {
+        ids: this.getNoticesIds(),
+      }
+      this.noticeService.check(params)
+      .then();
+    }, 3000);
+  }
+
+
+  //
+  //
+  destroy(notice) {
+    let params = {
+      id: notice.id,
+    };
+
+    this.noticeService.destroy(params)
+    .then((response) => {
+      let index = this.noticeService.notices.indexOf(notice);
+      this.noticeService.notices.splice(index, 1);
+    });
+  }
+
+
+  //
+  //
+  destroyAll() {
+    let params = {
+      id: this.getNoticesIds(),
+      is_multiple: true,
+    };
+
+    this.noticeService.destroy(params)
+    .then((response) => {
+      this.noticeService.notices = [];
+    });
+  }
+
+
+  //
+  //
+  getNoticesIds() {
+    let ids = [];
+    this.noticeService.notices.forEach(function(notice) {
+      ids = ids.concat(notice.id);
+    }, ids);
+    return ids;
   }
 
 

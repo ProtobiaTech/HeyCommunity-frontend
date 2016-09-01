@@ -1,6 +1,6 @@
 <ion-tabs [selectedIndex]="mySelectedIndex">
   <ion-tab [root]="timelineRoot" tabTitle="Timeline" tabIcon="pulse"></ion-tab>
-  <ion-tab [root]="meRoot" tabTitle="Me" tabIcon="person" tabBadge="{{ noticeService.notices.length }}" tabBadgeStyle="danger"></ion-tab>
+  <ion-tab [root]="meRoot" tabTitle="Me" tabIcon="person" tabBadge="{{ noticeService.notices.length }}" tabBadgeStyle="{{ noticeService.notices.length > 0 ? 'danger' : 'danger'}}"></ion-tab>
 
   <!-- <ion-tab [root]="tab2Root" tabTitle="Topic" tabIcon="quote"></ion-tab> -->
 

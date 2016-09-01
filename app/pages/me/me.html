@@ -11,18 +11,25 @@
 </ion-header>
 
 <ion-content id="me" class="page-me">
-  <ion-list padding-top>
+  <ion-list *ngIf="!auth.isAuth" padding-top>
     <button ion-item (click)="goToMeProfilePage()">
       <ion-avatar item-left>
-        <img [hidden]="auth.isAuth" src="assets/images/userAvatar-default.png">
-        <img [hidden]="!auth.isAuth" src="{{ auth.isAuth ? helper.getImg(auth.userInfo.avatar) : '' }}">
+        <img src="assets/images/userAvatar-default.png">
       </ion-avatar>
 
-      <h2 *ngIf="auth.isAuth">{{ auth.userInfo.nickname }}</h2>
-      <p *ngIf="auth.isAuth">{{ auth.userInfo.bio ? auth.userInfo.bio : 'no bio' }}</p>
+      <h2>Visitor</h2>
+      <p>please login, first</p>
+    </button>
+  </ion-list>
 
-      <h2 *ngIf="!auth.isAuth">Visitor</h2>
-      <p *ngIf="!auth.isAuth">please login, first</p>
+  <ion-list *ngIf="auth.isAuth" padding-top>
+    <button ion-item (click)="goToMeProfilePage()">
+      <ion-avatar item-left>
+        <img src="{{ auth.isAuth ? helper.getImg(auth.userInfo.avatar) : '' }}">
+      </ion-avatar>
+
+      <h2>{{ auth.userInfo.nickname }}</h2>
+      <p>{{ auth.userInfo.bio ? auth.userInfo.bio : 'no bio' }}</p>
     </button>
   </ion-list>
 

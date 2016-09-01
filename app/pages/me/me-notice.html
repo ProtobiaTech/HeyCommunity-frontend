@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content id="me" class="page-notice">
-  <div padding [hidden]="true">You did not have notices</div>
+  <div padding [hidden]="noticeService.notices.length > 0">You did not have notices</div>
 
   <ion-list>
     <ion-item-sliding #item *ngFor="let notice of noticeService.notices">
@@ -23,8 +23,8 @@
         </ion-avatar>
         <h2>{{ notice.initiator.nickname }}</h2>
         <p>{{ getNoticeText(notice) }}</p>
-        <div class="pic" item-right>
-          <img src="{{ getImg(notice.entity.imgs) }}">
+        <div [hidden]="!notice.entity.images" class="pic" item-right>
+          <img src="{{ getImg(notice.entity.images) }}">
         </div>
       </ion-item>
 

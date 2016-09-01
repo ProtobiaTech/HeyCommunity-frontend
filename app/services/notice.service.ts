@@ -63,7 +63,7 @@ export class NoticeService {
     return this.http.post(api, params, this.requestOptions)
     .toPromise()
     .then((response) => {
-      // this.notices = response.json();
+      this.notices = response.json();
       return response.json();
     })
     .catch(this.handleError);

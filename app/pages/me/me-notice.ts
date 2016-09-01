@@ -23,13 +23,13 @@ export class MeNoticePage {
   //
   ngOnInit() {
     this.noticeService.getIndex();
-    setTimeout(() => {
-      let params = {
-        ids: this.getNoticesIds(),
-      }
-      this.noticeService.check(params)
-      .then();
-    }, 3000);
+
+    let ids = this.getNoticesIds();
+    if (ids.length > 0) {
+      setTimeout(() => {
+        this.check(ids);
+      }, 3000);
+    }
   }
 
 
@@ -45,6 +45,17 @@ export class MeNoticePage {
       let index = this.noticeService.notices.indexOf(notice);
       this.noticeService.notices.splice(index, 1);
     });
+  }
+
+
+  //
+  //
+  check(ids) {
+    let params = {
+      ids: ids,
+    }
+    this.noticeService.check(params)
+    .then();
   }
 
 
@@ -77,7 +88,11 @@ export class MeNoticePage {
   //
   //
   getImg(imgs) {
-    return 'null';
+    if (imgs) {
+      return this.helper.getImg(imgs[0].uri);
+    } else {
+      return '';
+    }
   }
 
 

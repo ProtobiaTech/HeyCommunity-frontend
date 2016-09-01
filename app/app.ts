@@ -37,6 +37,9 @@ export class MyApp {
   private rootPage:any;
 
   //
+  noticeInterval: any;
+
+  //
   loading: Loading;
 
   //
@@ -98,15 +101,13 @@ export class MyApp {
       setTimeout(() => {
         console.log('set menu');
         this.enableMenu(this.isAuth);
-      }, 1000);
+      }, 600);
     });
 
     //
-    setInterval(() => {
-      if (this.isAuth) {
-        this.noticeService.getIndex();
-      }
-    }, 5000);
+    if (this.isAuth) {
+      this.autoGetNotices();
+    }
 
     // set user
     this.setUser();
@@ -158,19 +159,6 @@ export class MyApp {
 
   //
   //
-  listenToAuthEvents() {
-    this.events.subscribe('auth:loggedIn', () => {
-      this.enableMenu(true);
-    });
-
-    this.events.subscribe('auth:loggedOut', () => {
-      this.enableMenu(false);
-    });
-  }
-
-
-  //
-  //
   enableMenu(isAuth) {
     this.menuCtrl.enable(isAuth, 'loggedInMenu');
     this.menuCtrl.enable(!isAuth, 'loggedOutMenu');
@@ -200,6 +188,40 @@ export class MyApp {
   //
   dismissLoadingModal() {
     this.loading.dismiss();
+  }
+
+
+  //
+  //
+  autoGetNotices() {
+    this.noticeInterval = setInterval(() => {
+      if (this.isAuth) {
+        this.noticeService.getIndex();
+      }
+    }, 10000);
+  }
+
+
+  //
+  //
+  closeNoticeInterval() {
+    clearInterval(this.noticeInterval);
+  }
+
+
+  //
+  //
+  listenToAuthEvents() {
+    this.events.subscribe('auth:loggedIn', () => {
+      this.enableMenu(true);
+      this.autoGetNotices();
+    });
+
+    this.events.subscribe('auth:loggedOut', () => {
+      this.enableMenu(false);
+      this.noticeService.notices = [];
+      this.closeNoticeInterval();
+    });
   }
 }
 

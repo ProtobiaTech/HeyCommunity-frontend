@@ -232,6 +232,7 @@ ionicBootstrap(MyApp, [
   Helper,
   TimelineService,
   NoticeService,
+  Common,
   Auth
 ], {
   backButtonText: '',

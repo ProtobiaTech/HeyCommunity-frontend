@@ -17,15 +17,21 @@
   // notice
   // ----------------------------------------
   &.page-notice {
-    .pic {
-      height: 45px;
-      max-width: 80px;
-      overflow: hidden;
-      margin-right: 0;
-      line-height: 45px;
+    ion-item {
+      &.checked {
+        opacity: 0.6;
+      }
 
-      img {
-        vertical-align: middle;
+      .pic {
+        height: 45px;
+        max-width: 80px;
+        overflow: hidden;
+        margin-right: 0;
+        line-height: 45px;
+
+        img {
+          vertical-align: middle;
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, ActionSheetController} from 'ionic-angular';
 
 import {Notice} from '../../models/notice.model';
 import {NoticeType, NoticeTypes} from '../../models/noticeType.model';
@@ -14,6 +14,7 @@ export class MeNoticePage {
   constructor(
     private helper: Helper,
     private navCtrl: NavController,
+    private actionSheetCtrl: ActionSheetController,
     private noticeService: NoticeService
   ) {
   }
@@ -101,5 +102,30 @@ export class MeNoticePage {
   getNoticeText(notice) {
     let type = NoticeTypes[notice.type_id];
     return type.eventText;
+  }
+
+
+  //
+  // show action sheet
+  showActionSheet() {
+    let buttons = [{
+      text: 'Check All',
+      handler: () => {
+        this.check(this.getNoticesIds());
+      }
+    }, {
+      text: 'Remove All',
+      role: 'destructive',
+      handler: () => {
+        this.destroyAll();
+      }
+    }];
+
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Operations',
+      buttons: buttons,
+    });
+
+    actionSheet.present(actionSheet);
   }
 }

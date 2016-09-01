@@ -37,8 +37,8 @@
     <button ion-item (click)="goToMeNoticePage()">
       <ion-icon name="notifications" item-left></ion-icon>
       Notices
-      <ion-badge [hidden]="noticeService.notices.length <= 0" danger item-right>{{ noticeService.notices.length }}</ion-badge>
-      <ion-badge [hidden]="noticeService.notices.length > 0" light item-right>0</ion-badge>
+      <ion-badge [hidden]="noticeService.noCheckNotices.length <= 0" danger item-right>{{ noticeService.noCheckNotices.length }}</ion-badge>
+      <ion-badge [hidden]="noticeService.noCheckNotices.length > 0" light item-right>0</ion-badge>
     </button>
     <button ion-item (click)="goToMeTimelinePage()">
       <ion-icon name="pulse" item-left></ion-icon>

@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Notices
+      Notices ({{ noticeService.noCheckNotices.length }})
     </ion-title>
 
     <ion-buttons end>
-      <button (click)="destroyAll()">
-        <ion-icon name="trash"></ion-icon>
+      <button (click)="showActionSheet()">
+        <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -17,11 +17,13 @@
 
   <ion-list>
     <ion-item-sliding #item *ngFor="let notice of noticeService.notices">
-      <ion-item>
+      <ion-item [ngClass]="{ checked: notice.is_checked === 1 }">
         <ion-avatar item-left>
           <img src="{{ helper.getImg(notice.initiator.avatar) }}">
         </ion-avatar>
-        <h2>{{ notice.initiator.nickname }}</h2>
+        <h2>
+          {{ notice.initiator.nickname }}
+        </h2>
         <p>{{ getNoticeText(notice) }}</p>
         <div [hidden]="!notice.entity.images" class="pic" item-right>
           <img src="{{ getImg(notice.entity.images) }}">

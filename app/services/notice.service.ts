@@ -10,6 +10,7 @@ import {Helper} from '../other/helper.component';
 export class NoticeService {
   headers: Headers;
   notices: Notice[] = [];
+  noCheckNotices: Notice[] = [];
   requestOptions: RequestOptions;
 
   userUpdateAvatarAPI: string = this.helper.getAPI('user/update-avatar');
@@ -34,6 +35,9 @@ export class NoticeService {
     .toPromise()
     .then((response) => {
       this.notices = response.json();
+      this.noCheckNotices = this.notices.filter((notice) => {
+        return !Boolean(notice.is_checked);
+      })
       return response.json();
     })
     .catch(this.handleError);
@@ -49,6 +53,9 @@ export class NoticeService {
     .toPromise()
     .then((response) => {
       this.notices = response.json();
+      this.noCheckNotices = this.notices.filter((notice) => {
+        return !Boolean(notice.is_checked);
+      })
       return response.json();
     })
     .catch(this.handleError);
@@ -64,6 +71,9 @@ export class NoticeService {
     .toPromise()
     .then((response) => {
       this.notices = response.json();
+      this.noCheckNotices = this.notices.filter((notice) => {
+        return !Boolean(notice.is_checked);
+      })
       return response.json();
     })
     .catch(this.handleError);

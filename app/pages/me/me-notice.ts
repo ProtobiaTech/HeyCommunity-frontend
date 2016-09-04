@@ -88,9 +88,9 @@ export class MeNoticePage {
 
   //
   //
-  getImg(imgs) {
-    if (imgs) {
-      return this.helper.getImg(imgs[0].uri);
+  getImg(images) {
+    if (images && images.length) {
+      return this.helper.getImg(images[0].uri);
     } else {
       return '';
     }

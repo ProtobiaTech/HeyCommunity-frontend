@@ -61,7 +61,9 @@ public upload (url: string, files: File[]): Promise<any> {
         xhr.upload.onprogress = (event) => {
             this.progress = Math.round(event.loaded / event.total * 100);
 
-            this.progressObserver.next(this.progress);
+            if (this.progressObserver) {
+                this.progressObserver.next(this.progress);
+            }
         };
 
         xhr.open('POST', url, true);

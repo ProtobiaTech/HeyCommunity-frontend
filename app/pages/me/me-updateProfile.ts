@@ -78,13 +78,16 @@ export class MeUpdateProfilePage {
   //
   //
   uploadAvatar(event) {
+    this.common.openLoadingModal();
     let files = event.srcElement.files;
 
     this.fileUploadService.upload(this.userService.userUpdateAvatarAPI, files).then(data => {
       this.auth.reset(data);
       this.userInfo = data;
+      this.common.dismissLoadingModal();
       this.common.openToast('Update Avatar success');
     }, () => {
+      this.common.dismissLoadingModal();
       this.common.openToast('Update Avatar failed');
     });
   }

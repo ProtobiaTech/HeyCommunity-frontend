@@ -61,6 +61,12 @@
         </ion-note>
       </ion-col>
     </ion-row>
+
+    <div class="comments" [hidden]="!item.comments.length">
+        <div class="item-comment" *ngFor="let comment of item.comments; #i=index" [hidden]="i > 2">
+                <span class="author">{{ comment.author.nickname }}</span>: {{ comment.content }}
+        </div>
+    </div>
   </ion-card>
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

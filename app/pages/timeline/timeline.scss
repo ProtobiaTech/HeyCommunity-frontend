@@ -44,6 +44,62 @@
         text-overflow: hidden;
       }
     }
+
+    .comments {
+      border-top: 1px solid #ddd;
+      margin: 6px 0 4px;
+
+      .item-comment {
+        padding: 0 16px 0 0;
+        margin-left: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 30px;
+        font-size: 14px;
+        color: $textColorPrimary;
+        border-bottom: 1px solid #ddd;
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+
+        &:nth-of-type(3) {
+          border-bottom: none;
+        }
+
+        .author {
+           font-weight: bold;
+        }
+
+      }
+
+
+      iion-item {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 20px;
+        line-height: 20px;
+
+        .input-wrapper {
+        height: 20px;
+        line-height: 20px;
+
+        }
+        ion-label {
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+
+        .author {
+           font-weight: bold;
+        }
+
+        font-size: 14px;
+        color: $textColorPrimary;
+      }
+    }
   }
 }
 

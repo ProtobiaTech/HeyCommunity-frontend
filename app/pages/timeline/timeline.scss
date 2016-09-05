@@ -50,6 +50,7 @@
       margin: 6px 0 4px;
 
       .item-comment {
+        color: #666 !important;
         padding: 0 16px 0 0;
         margin-left: 16px;
         white-space: nowrap;
@@ -58,7 +59,7 @@
         line-height: 30px;
         font-size: 14px;
         color: $textColorPrimary;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #eee;
 
         &:last-of-type {
           border-bottom: none;
@@ -69,7 +70,7 @@
         }
 
         .author {
-           font-weight: bold;
+           font-weight: 500;
         }
 
       }

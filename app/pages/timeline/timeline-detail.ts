@@ -55,8 +55,12 @@ export class TimelineDetailPage {
   //
   // destroy
   destroy() {
+    this.common.openLoadingModal();
+
     this.timelineService.destroy(this.timeline)
     .then((ret) => {
+      this.common.dismissLoadingModal();
+
       let index = this.timelineService.timelines.indexOf(this.timeline);
       this.timelineService.timelines.splice(index, 1);
 
@@ -76,10 +80,12 @@ export class TimelineDetailPage {
 
   //
   // send comment handler
-  sendCommentHandler() {
+  sendCommentHandler(form) {
     if (!this.auth.isAuth) {
       this.authModal.openAuthenticateModal();
     } else {
+      this.common.openLoadingModal();
+
       let params: Object = {
         timeline_id: this.newComment.timeline_id,
         content: this.newComment.content,
@@ -88,6 +94,7 @@ export class TimelineDetailPage {
       this.timelineService.storeComment(params)
       .then((ret) => {
         this.newComment.content = '';
+        this.common.dismissLoadingModal();
 
         this.timelineService.timelines[this.timelineIndex] = ret;
         this.timeline = ret;

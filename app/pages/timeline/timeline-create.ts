@@ -2,6 +2,7 @@ import {Component, ViewChild} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 
 import {Helper} from '../../other/helper.component';
+import {Common} from '../../other/common.component';
 import {Timeline} from '../../models/timeline.model';
 import {FileUploadService} from '../../services/fileUpload.service';
 import {TimelineService} from '../../services/timeline.service';
@@ -12,6 +13,7 @@ import {TimelineService} from '../../services/timeline.service';
   providers: [
     TimelineService,
     FileUploadService,
+    Common,
   ],
 })
 export class TimelineCreatePage {
@@ -31,6 +33,7 @@ export class TimelineCreatePage {
   constructor(
     private nav: NavController,
     private helper: Helper,
+    private common: Common,
     private navParams: NavParams,
     private fileUploadService: FileUploadService,
     private timelineService: TimelineService
@@ -41,6 +44,8 @@ export class TimelineCreatePage {
   //
   // timeline create handler
   timelineCreateHandler(ngForm) {
+    this.common.openLoadingModal();
+
     let data: any = {
       content: ngForm.value.content,
       imgs: JSON.stringify(this.imgIdArr),
@@ -48,6 +53,7 @@ export class TimelineCreatePage {
 
     this.timelineService.store(data)
     .then((newTimeline: Timeline) => {
+      this.common.dismissLoadingModal();
       this.nav.pop();
     });
   }
@@ -69,6 +75,7 @@ export class TimelineCreatePage {
       this.imgs = data.imgs;
 
       for (let i = 0; i < this.imgs.length; i++) {
+        this.imgIdArr = [];     // @todo reset imgIdArr
         this.imgIdArr = this.imgIdArr.concat(this.imgs[i]['id']);
       }
       console.log(this.imgIdArr);

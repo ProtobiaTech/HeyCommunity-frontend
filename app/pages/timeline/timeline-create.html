@@ -3,7 +3,7 @@
     <ion-title>Timeline Create</ion-title>
 
     <ion-buttons end>
-      <button (click)="timelineCreateHandler(timelineCreateForm)">
+      <button (click)="timelineCreateHandler(timelineCreateForm)" [disabled]="!timelineCreateForm.valid">
         Send
       </button>
     </ion-buttons>
@@ -17,7 +17,6 @@
           <ion-textarea [(ngModel)]="newTimeline.content" name="content" rows="8" placeholder="What is new">
           </ion-textarea>
         </ion-item>
-        <input #inputImgs class="hidden " type="file" (change)="uploadImgs($event)" multiple>
     </form>
   </ion-list>
 
@@ -32,15 +31,8 @@
       <ion-icon name="mic"></ion-icon>
     </button>
   </div>
+  <input #inputImgs [hidden]="!helper.platform.is('ios')" type="file" (change)="uploadImgs($event)" multiple accept="image/*">
   <hr>
-
-  <div class="preview-imgs hide">
-    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
-    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
-    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
-    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
-    <img src="http://backend.heycommunity.local//uploads/timeline/R94N9e_11.PNG">
-  </div>
 
   <div class="preview-imgs">
     <img *ngFor="let item of imgs" src="{{ helper.getImg(item.uri) }}">

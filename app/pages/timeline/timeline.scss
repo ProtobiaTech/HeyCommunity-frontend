@@ -13,6 +13,12 @@
         font-size: 14px;
         color: #bbb;
       }
+
+      .author {
+         width: 8em;
+         display: inline-block;
+         overflow: hidden;
+      }
     }
 
     hr {
@@ -71,8 +77,10 @@
 
         .author {
            font-weight: 500;
+           width: 4em;
+           display: inline-block;
+           overflow: hidden;
         }
-
       }
 
 

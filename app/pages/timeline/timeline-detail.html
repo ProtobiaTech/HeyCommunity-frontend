@@ -12,10 +12,8 @@
 
 
 <ion-content class="timeline-detail">
-  <div padding *ngIf="!timeline.content">{{ timeline.content }}</div>
-
   <div padding class="section-comment items-comment">
-    <div class="item-comment">
+    <div class="item-comment" [hidden]="!timeline.content">
       <img class="avatar" src="http://demo.hey-community.local/assets/images/userAvatar-default.png">
       <div class="comment-content">
         <div class="header">

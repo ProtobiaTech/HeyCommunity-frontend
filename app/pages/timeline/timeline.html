@@ -28,7 +28,9 @@
         <span class="date pull-right">
           {{ item.created_at | timeago }}
         </span>
-        {{ item.author.nickname }}
+        <span class="author">
+            {{ item.author.nickname }}
+        </span>
       </h2>
       <p>{{ item.author.bio ? item.author.bio : 'no bio' }}</p>
     </ion-item>

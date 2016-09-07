@@ -29,7 +29,7 @@ export class NoticeService {
   //
   //
   getIndex(): Promise<Notice> {
-    let api: string = this.helper.getAPI('notice/index');
+    let api: string = this.helper.getAPI('notice');
 
     return this.http.get(api, this.requestOptions)
     .toPromise()

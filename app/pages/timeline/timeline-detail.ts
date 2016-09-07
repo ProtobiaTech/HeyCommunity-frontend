@@ -65,6 +65,10 @@ export class TimelineDetailPage {
       this.timelineService.timelines.splice(index, 1);
 
       this.navCtrl.pop();
+    }, (ret) => {
+      this.common.dismissLoadingModal();
+      let content = JSON.parse(ret._body);
+      this.common.openToast(content);
     });
   }
 
@@ -123,7 +127,7 @@ export class TimelineDetailPage {
       }
     }
 
-    if (this.auth.isAuth && this.auth.userInfo.id === this.timeline.user_id) {
+    if (this.auth.isAuth && (this.auth.userInfo.id === this.timeline.user_id || this.auth.userInfo.is_admin)) {
       buttons = [btnDestructive, btnCancel];
     } else {
       buttons = [btnCancel];

@@ -11,7 +11,7 @@
     <button ion-item [navPush]="meUpdateProfilePage" [navParams]="{item: 'avatar'}">
       <ion-label>Avatar</ion-label>
       <ion-avatar item-right>
-        <img src="{{ helper.getImg(auth.userInfo.avatar) }}">
+        <img src="{{ helper.getImg(auth.userInfo.avatar) }}?imageView/2/w/100">
       </ion-avatar>
     </button>
 

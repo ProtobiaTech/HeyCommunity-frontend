@@ -15,7 +15,7 @@ export class Helper {
   //
   getAPI(uri): string {
     if (this.platform.is('cordova')) {
-      return 'http://v2.hey-community.com/api/' + uri;
+      return 'http://cloud.hey-community.com/api/' + uri;
     } else {
       return '/api/' + uri;
     }
@@ -26,9 +26,9 @@ export class Helper {
   //
   getImg(uri): string {
     if (this.platform.is('cordova')) {
-      return 'http://public.hey-community.cn/' + uri + '?imageView/2/w/800';
+      return 'http://public.hey-community.cn/' + uri;
     } else {
-      return uri + '?imageView/2/w/800';
+      return uri;
     }
   }
 }

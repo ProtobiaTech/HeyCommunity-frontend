@@ -13,7 +13,7 @@
       <ion-card *ngFor="let item of myTimelines; let i = index">
         <ion-item class="header">
           <ion-avatar item-left>
-            <img class="avatar" src="{{ item.author.avatar }}">
+            <img class="avatar" src="{{ item.author.avatar }}?imageView/2/w/100">
           </ion-avatar>
           <h2>
             <span class="date pull-right">{{ item.created_at | moment: ['MM-DD HH:mm'] }}</span>
@@ -23,7 +23,7 @@
         </ion-item>
 
         <div class="" *ngIf="item.imgs">
-          <img *ngFor="let img of item.imgs" class="photo" src="{{ helper.getImg(img.uri) }}">
+          <img *ngFor="let img of item.imgs" class="photo" src="{{ helper.getImg(img.uri) }}?imageView/2/w/800">
         </div>
         <hr>
 

@@ -26,7 +26,7 @@ export class Helper {
   //
   getImg(uri): string {
     if (this.platform.is('cordova')) {
-      return 'http://v2.hey-community.com/' + uri + '?imageView/2/w/800';
+      return 'http://public.hey-community.cn/' + uri + '?imageView/2/w/800';
     } else {
       return uri + '?imageView/2/w/800';
     }

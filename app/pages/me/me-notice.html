@@ -25,7 +25,7 @@
           {{ notice.initiator.nickname }}
         </h2>
         <p>{{ getNoticeText(notice) }}</p>
-        <div [hidden]="!notice.entity.images" class="pic" item-right>
+        <div *ngIf="notice.entity.images.length > 0" class="pic" item-right>
           <img src="{{ getImg(notice.entity.images) }}?imageView/2/w/800">
         </div>
       </ion-item>

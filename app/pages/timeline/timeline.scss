@@ -63,6 +63,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
         line-height: 30px;
+        height: 30px;
         font-size: 14px;
         color: $textColorPrimary;
         border-bottom: 1px solid #eee;
@@ -75,13 +76,8 @@
           border-bottom: none;
         }
 
-        .nickname {
-          height: 30px;
-          line-height: 30px;
+        .author {
           font-weight: 500;
-          max-width: 4em;
-          display: inline-block;
-          overflow: hidden;
         }
       }
 

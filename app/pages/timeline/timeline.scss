@@ -75,11 +75,13 @@
           border-bottom: none;
         }
 
-        .author {
-           font-weight: 500;
-           width: 4em;
-           display: inline-block;
-           overflow: hidden;
+        .nickname {
+          height: 30px;
+          line-height: 30px;
+          font-weight: 500;
+          max-width: 4em;
+          display: inline-block;
+          overflow: hidden;
         }
       }
 

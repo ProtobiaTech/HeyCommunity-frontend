@@ -66,7 +66,8 @@
 
     <div (click)="gotoTimelineDetailPage(i)" class="comments" [hidden]="!item.comments.length">
         <div class="item-comment" *ngFor="let comment of item.comments; #i=index" [hidden]="i > 2">
-                <span class="author">{{ comment.author.nickname }}</span>: {{ comment.content }}
+            <span class="author-name">{{ comment.author.nickname }}</span>:
+            {{ comment.content }}
         </div>
     </div>
   </ion-card>

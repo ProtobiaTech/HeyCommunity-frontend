@@ -74,11 +74,10 @@ export class TimelineCreatePage {
     this.fileUploadService.upload(this.timelineService.timelineStoreImgAPI, files).then(data => {
       this.imgs = data.imgs;
 
+      this.imgIdArr = [];     // @todo reset imgIdArr
       for (let i = 0; i < this.imgs.length; i++) {
-        this.imgIdArr = [];     // @todo reset imgIdArr
         this.imgIdArr = this.imgIdArr.concat(this.imgs[i]['id']);
       }
-      console.log(this.imgIdArr);
     });
   }
 }

@@ -1,6 +1,6 @@
 {
-  "name": "HeyCommunity-frontend",
-  "app_id": "",
+  "name": "HeyCommunity",
+  "app_id": "7855d28c",
   "v2": true,
   "typescript": true,
   "proxies": [

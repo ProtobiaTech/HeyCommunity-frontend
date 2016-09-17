@@ -15,7 +15,7 @@ export class Helper {
   //
   getAPI(uri): string {
     if (this.platform.is('cordova')) {
-      return 'http://cloud.hey-community.com/api/' + uri;
+      return 'http://demo.hey-community.com/api/' + uri;
     } else {
       return '/api/' + uri;
     }

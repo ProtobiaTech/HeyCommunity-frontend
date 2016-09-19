@@ -15,7 +15,7 @@
   <div padding class="section-comment items-comment">
     <div class="item-comment" [hidden]="!timeline.content">
       <img class="avatar" src="{{ timeline.author.avatar }}?imageView/2/w/100">
-      <div class="comment-content">
+      <div #contentBox class="comment-content">
         <div class="header">
           <a>{{ timeline.author.nickname }}</a>
           <span>{{ timeline.created_at  | moment: ['MM-DD HH:mm'] }}</span>
@@ -29,7 +29,11 @@
       <div class="comment-content">
         <div class="header">
           <a>{{ comment.author.nickname }}</a>
-          <span>{{ comment.created_at | moment: ['MM-DD HH:mm'] }}</span>
+          <span class="pull-right">
+            <span>{{ comment.created_at | moment: ['MM-DD HH:mm'] }}</span>
+            &nbsp;
+            <button class="btn-comment-reply" small primary clear (click)="setReplyComment(comment)"><ion-icon name="undo"></ion-icon> Comment</button>
+          </span>
         </div>
         {{ comment.content }}
       </div>
@@ -42,7 +46,7 @@
   <ion-toolbar no-border-bottom>
     <form #commentForm="ngForm" (ngSubmit)="sendCommentHandler(commentForm)">
       <div class="section-comment-inputbox">
-        <ion-input [(ngModel)]="newComment.content" name="content" required ngModel (click)="inputCommentHandler()" type="text" placeholder="say something" class="input-comment"></ion-input>
+        <ion-input #inputComment [(ngModel)]="newComment.content" name="content" required ngModel (click)="inputCommentHandler()" type="text" placeholder="say something" class="input-comment"></ion-input>
         <button small class="btn-send" [disabled]="!commentForm.valid">
           Send
         </button>

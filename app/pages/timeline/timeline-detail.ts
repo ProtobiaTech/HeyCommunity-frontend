@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {NavController, ActionSheetController, NavParams} from 'ionic-angular';
+import {Component, ViewChild, Renderer, ElementRef} from '@angular/core';
+import {NavController, ActionSheetController, NavParams, Events} from 'ionic-angular';
 
 import {Auth} from '../../other/auth.component';
 import {Helper} from '../../other/helper.component';
@@ -22,6 +22,9 @@ import {MomentPipe, TimeagoPipe} from '../../other/moment.pipe';
   ]
 })
 export class TimelineDetailPage {
+  @ViewChild('inputComment') inputCommentEl;
+  @ViewChild('contentBox') contentBoxEl;
+
   timeline: Timeline;
   timelineIndex: number;
   newComment: {content?: string, timeline_id?: number} = {};
@@ -37,6 +40,9 @@ export class TimelineDetailPage {
     private auth: Auth,
     private helper: Helper,
     private actionSheetCtrl: ActionSheetController,
+    private events: Events,
+    private renderer: Renderer,
+    private elementRef: ElementRef,
     private timelineService: TimelineService
   ) {
     // this.timeline = navParams.data.timeline;
@@ -49,6 +55,18 @@ export class TimelineDetailPage {
   //
   // on init
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    // events
+    this.events.subscribe('inputComment:focus', () => {
+      this.inputCommentEl._elementRef.nativeElement.getElementsByTagName('input')[0].focus();
+    })
+
+    let theThis = this;
+    this.renderer.listen(this.contentBoxEl.nativeElement, 'click', function() {
+      theThis.inputCommentEl._elementRef.nativeElement.getElementsByTagName('input')[0].focus();
+    });
   }
 
 
@@ -104,6 +122,13 @@ export class TimelineDetailPage {
         this.timeline = ret;
       });
     }
+  }
+
+
+  //
+  //
+  setReplyComment(comment) {
+    this.events.publish('inputComment:focus');
   }
 
 

@@ -145,9 +145,19 @@
             font-size: 16px;
           }
 
-          span {
-            float: right;
-            color: #999;
+          .pull-right {
+            button {
+              height: 16px;
+              line-height: 16px;
+              padding: 0 2px;
+              margin: 0;
+              vertical-align: middle;
+
+              ion-icon {
+                height: 16px;
+                line-height: 16px;
+              }
+            }
           }
         }
       }

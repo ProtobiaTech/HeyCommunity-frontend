@@ -3,6 +3,12 @@
     <ion-title>
       Me
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only color="grey" [navPush]="MeSettingPage">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -12,7 +18,7 @@
       <ion-col></ion-col>
 
       <ion-col padding-top>
-        <img class="avatar" src="./assets/images/avatar/jack.png">
+        <img class="avatar" src="./assets/images/userAvatar-default.png">
       </ion-col>
 
       <ion-col></ion-col>
@@ -22,8 +28,8 @@
       <ion-col width-10></ion-col>
 
       <ion-col center class="text-center">
-        <div class="nickname">Rod</div>
-        <div class="bio">I'm a developer</div>
+        <div class="nickname">Hey guys</div>
+        <div class="bio">Let's login now</div>
       </ion-col>
 
       <ion-col width-10></ion-col>
@@ -38,25 +44,12 @@
     <button ion-item [navPush]="MeNoticePage">
       <ion-icon name="notifications" item-left></ion-icon>
       Notices
-      <ion-badge light item-right>0</ion-badge>
+      <ion-badge light item-right color="danger">10</ion-badge>
     </button>
 
     <button ion-item [navPush]="MeTimelinePage">
       <ion-icon name="snow" item-left></ion-icon>
-      Timeline
-      <ion-note item-right>11</ion-note>
-    </button>
-  </ion-list>
-
-
-  <ion-list>
-    <ion-list-header>
-      Settings
-    </ion-list-header>
-
-    <button ion-item [navPush]="MeSettingPage">
-      <ion-icon name="cog" item-left></ion-icon>
-      Setting
+      My Timeline
     </button>
   </ion-list>
 </ion-content>

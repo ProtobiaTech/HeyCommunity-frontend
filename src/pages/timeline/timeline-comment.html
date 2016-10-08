@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Close
+      </button>
+    </ion-buttons>
+
+    <ion-title>Timeline Comment</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        Send
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div padding style="background-color:#fff;">
+    <ion-list>
+      <form>
+          <ion-item>
+            <ion-textarea name="content" rows="3" placeholder="Say something">
+            </ion-textarea>
+          </ion-item>
+      </form>
+    </ion-list>
+  </div>
+</ion-content>

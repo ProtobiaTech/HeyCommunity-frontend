@@ -1,0 +1,39 @@
+page-timeline-create {
+  ion-content {
+      //
+      //
+      #section-textarea {
+        margin-bottom: 0;
+
+        //
+        ion-item {
+          padding-left: 0;
+        }
+
+        //
+        textarea {
+          padding-left: 16px;
+        }
+      }
+
+
+      //
+      //
+      .preview-imgs {
+        img {
+          padding-bottom: 6px;
+          padding-left: 6px;
+          display: inline-block;
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+
+      //
+      //
+      .media-toolbar {
+        margin-bottom: -7px;
+      }
+  }
+}

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Close
+      </button>
+    </ion-buttons>
+
+    <ion-title>Timeline Create</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        Send
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list id="section-textarea">
+    <form #timelineCreateForm="ngForm" novalidate>
+        <ion-item>
+          <ion-textarea name="content" rows="8" placeholder="What is new">
+          </ion-textarea>
+        </ion-item>
+    </form>
+  </ion-list>
+
+  <div class="media-toolbar">
+    <button ion-button icon-only dark outline clear (click)="selectImgs()">
+      <ion-icon name="images"></ion-icon>
+    </button>
+    <button ion-button icon-only disabled dark outline clear>
+      <ion-icon name="videocam"></ion-icon>
+    </button>
+  </div>
+
+  <input #inputImgs [hidden]="true" type="file" (change)="uploadImgs($event)" multiple accept="image/*">
+  <hr>
+
+  <div class="preview-imgs">
+    <img *ngIf="false" src="{{ '' }}?imageView/2/w/100">
+  </div>
+</ion-content>

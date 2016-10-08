@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Activity
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let activity of activities" class="activity-card">
+    <img src="{{ activity.pic }}">
+    <div class="card-title">Activity</div>
+    <div class="card-subtitle">Welcome signup activity</div>
+    <div class="card-info">11 Join / 3 Comments / 41 Follows</div>
+    <div class="card-date">2016-11-11 12:00</div>
+  </ion-card>
+</ion-content>

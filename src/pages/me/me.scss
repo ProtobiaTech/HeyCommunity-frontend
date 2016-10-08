@@ -1,0 +1,22 @@
+page-me {
+  ion-content {
+    //
+    //
+    #section-avatar {
+      background-color: #ddd;
+
+      .avatar {
+        border-radius: 50%;
+        width: 100%;
+      }
+
+      .nickname {
+        font-size: 18px;
+      }
+
+      .bio {
+        line-height: 2em;
+      }
+    }
+  }
+}

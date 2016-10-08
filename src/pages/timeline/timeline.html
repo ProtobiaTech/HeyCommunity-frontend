@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Timeline
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentTimelineCreateModal()">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let timeline of timelines" class="timeline-card">
+    <ion-item class="header">
+      <ion-avatar item-left>
+        <img class="avatar" src="{{ timeline.author?.avatar }}">
+      </ion-avatar>
+      <h2>
+        <span right class="date pull-right">
+          3 days ago
+        </span>
+        <span class="author">
+          {{ timeline.author?.nickname }}
+        </span>
+      </h2>
+      <p>{{ timeline.author?.bio }}</p>
+    </ion-item>
+
+    <div>
+      <img *ngFor="let img of timeline.imgs" src="{{ img.uri }}">
+    </div>
+    <hr>
+
+    <ion-card-content (click)="gotoTimelineDetailPage(timeline)">
+      <div class="content">{{ timeline.content }}</div>
+    </ion-card-content>
+
+    <ion-row class="footer">
+      <ion-col>
+        <button ion-button icon-only color="primary" clear small (click)="setLikeForTimeline(timeline)">
+          <ion-icon name="{{ 'heart-outline' }}"></ion-icon>
+          &nbsp;
+          <div>11 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-only color="primary" clear small (click)="gotoTimelineDetailPage(timeline)">
+          <ion-icon name="text"></ion-icon>
+          &nbsp;
+          <div>22 Comments</div>
+        </button>
+      </ion-col>
+      <ion-col center class="date">
+        <ion-note>
+          12-12 11:11:22
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+    <div (click)="gotoTimelineDetailPage(timeline)" class="comments">
+        <div class="item-comment" *ngFor="let comment of timeline.comments">
+            <span class="author">{{ comment.author?.nickname }}</span>:
+            {{ comment.content }}
+        </div>
+    </div>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

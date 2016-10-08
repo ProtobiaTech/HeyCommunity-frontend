@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar no-border-top>
+    <ion-segment>
+      <ion-segment-button value="new">
+        New
+      </ion-segment-button>
+      <ion-segment-button value="hot">
+        Hot
+      </ion-segment-button>
+      <ion-segment-button value="follow">
+        Follow
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let topic of topics">
+      <ion-avatar item-left>
+          <img src="{{ topic.author.avatar }}">
+      </ion-avatar>
+      <h2>{{ topic.author.bio }}</h2>
+      <p>{{ topic.content }}</p>
+      <p class="hide">
+        <ion-icon name="text"></ion-icon> &nbsp; 22
+        <ion-icon name="eyes"></ion-icon> &nbsp; 22
+        <span class="pull-right">12-12 12:12</span>
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

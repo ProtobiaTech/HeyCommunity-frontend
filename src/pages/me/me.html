@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Me
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid id="section-avatar">
+    <ion-row>
+      <ion-col></ion-col>
+
+      <ion-col padding-top>
+        <img class="avatar" src="./assets/images/avatar/jack.png">
+      </ion-col>
+
+      <ion-col></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-10></ion-col>
+
+      <ion-col center class="text-center">
+        <div class="nickname">Rod</div>
+        <div class="bio">I'm a developer</div>
+      </ion-col>
+
+      <ion-col width-10></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list no-border padding-top>
+    <ion-list-header>
+      Data
+    </ion-list-header>
+
+    <button ion-item [navPush]="MeNoticePage">
+      <ion-icon name="notifications" item-left></ion-icon>
+      Notices
+      <ion-badge light item-right>0</ion-badge>
+    </button>
+
+    <button ion-item [navPush]="MeTimelinePage">
+      <ion-icon name="snow" item-left></ion-icon>
+      Timeline
+      <ion-note item-right>11</ion-note>
+    </button>
+  </ion-list>
+
+
+  <ion-list>
+    <ion-list-header>
+      Settings
+    </ion-list-header>
+
+    <button ion-item [navPush]="MeSettingPage">
+      <ion-icon name="cog" item-left></ion-icon>
+      Setting
+    </button>
+  </ion-list>
+</ion-content>

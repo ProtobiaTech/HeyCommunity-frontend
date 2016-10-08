@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list padding-top>
+    <button ion-item [navPush]="MeSettingLanguagePage">
+      <ion-icon name="globe" item-left></ion-icon>
+      Language
+    </button>
+
+    <button ion-item disabled>
+      <ion-icon name="trash" item-left></ion-icon>
+      Clear Cache
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item [navPush]="MeHeyCommunityPage">
+      <ion-icon name="information-circle" item-left></ion-icon>
+      About
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item (click)="goToLogOut()">
+      <ion-icon name="log-out" item-left></ion-icon>
+      Log Out
+    </button>
+  </ion-list>
+</ion-content>

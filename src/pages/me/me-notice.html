@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Notices
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list id="section-notices">
+    <ion-item-sliding *ngFor="let notice of notices">
+      <ion-item [ngClass]="{ checked: false }">
+        <ion-avatar item-left>
+          <img src="{{ notice.initiator.avatar }}?imageView/2/w/100">
+        </ion-avatar>
+        <h2>
+          {{ notice.initiator.nickname }}
+        </h2>
+        <p>{{ 'this is notice' }}</p>
+        <div *ngIf="notice.entity?.imgs" class="pic" item-right>
+          <img *ngFor="let img of notice.entity.imgs" src="{{ img.uri }}?imageView/2/w/800">
+        </div>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button danger (click)="destroy(notice)">
+          <ion-icon name="trash"></ion-icon>
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -7,9 +7,6 @@ import { TimelineDetailPage } from '../pages/timeline/timeline-detail';
 import { TimelineCreatePage } from '../pages/timeline/timeline-create';
 import { TimelineCommentPage } from '../pages/timeline/timeline-comment';
 
-import { TopicPage } from '../pages/topic/topic';
-import { ActivityPage } from '../pages/activity/activity';
-
 import { MePage } from '../pages/me/me';
 import { MeNoticePage } from '../pages/me/me-notice';
 import { MeTimelinePage } from '../pages/me/me-timeline';
@@ -27,8 +24,6 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     TimelineDetailPage,
     TimelineCreatePage,
     TimelineCommentPage,
-    TopicPage,
-    ActivityPage,
     MePage,
     MeNoticePage,
     MeTimelinePage,
@@ -53,8 +48,6 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     TimelineDetailPage,
     TimelineCreatePage,
     TimelineCommentPage,
-    TopicPage,
-    ActivityPage,
     MePage,
     MeNoticePage,
     MeTimelinePage,

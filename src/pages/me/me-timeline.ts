@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Timeline } from '../../models/timeline';
-import { TIMELINES } from '../../mocks/timelines';
 
 
 @Component({
@@ -16,7 +15,7 @@ export class MeTimelinePage {
   //
   // constructor
   constructor(public navCtrl: NavController) {
-    this.timelines = TIMELINES;
+    this.timelines = [];
   }
 
 }

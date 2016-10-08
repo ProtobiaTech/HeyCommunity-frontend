@@ -4,7 +4,6 @@ import { NavController, Nav, ModalController } from 'ionic-angular';
 import { TimelineDetailPage } from '../../pages/timeline/timeline-detail';
 import { TimelineCreatePage } from '../../pages/timeline/timeline-create';
 import { Timeline } from '../../models/timeline';
-import { TIMELINES } from '../../mocks/timelines';
 
 
 @Component({
@@ -21,7 +20,7 @@ export class TimelinePage {
     public nav: Nav,
     public modalCtrl: ModalController
   ) {
-    this.timelines = TIMELINES;
+    this.timelines = [];
 
 
     console.log(this.timelines);

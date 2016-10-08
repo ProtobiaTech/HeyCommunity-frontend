@@ -3,7 +3,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/toPromise';
 
-import { Timeline } from '../models/timeline';
+import { Timeline } from '../models/timeline.model';
 import { Helper } from '../other/helper';
 
 

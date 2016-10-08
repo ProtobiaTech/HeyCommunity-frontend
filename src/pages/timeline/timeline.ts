@@ -3,8 +3,8 @@ import { NavController, Nav, ModalController } from 'ionic-angular';
 
 import { TimelineDetailPage } from '../../pages/timeline/timeline-detail';
 import { TimelineCreatePage } from '../../pages/timeline/timeline-create';
-import { Timeline } from '../../models/timeline';
-import { TimelineService } from '../../services/timeline';
+import { Timeline } from '../../models/timeline.model';
+import { TimelineService } from '../../services/timeline.service';
 
 
 @Component({

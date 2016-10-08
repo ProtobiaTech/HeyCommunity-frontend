@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, Nav, NavParams, ActionSheetController, ModalController } from 'ionic-angular';
 
-import { Timeline } from '../../models/timeline';
+import { Timeline } from '../../models/timeline.model';
 import { TimelineCommentPage } from '../../pages/timeline/timeline-comment';
 
 

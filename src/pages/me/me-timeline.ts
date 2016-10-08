@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Timeline } from '../../models/timeline';
+import { Timeline } from '../../models/timeline.model';
 
 
 @Component({

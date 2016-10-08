@@ -3,7 +3,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
 
-import { TimelineService } from '../services/timeline';
+import { TimelineService } from '../services/timeline.service';
 
 import { Helper } from '../other/helper';
 import { MomentPipe, TimeagoPipe } from '../other/moment.pipe';

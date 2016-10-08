@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { Notice } from '../../models/notice';
+import { Notice } from '../../models/notice.model';
 
 
 @Component({

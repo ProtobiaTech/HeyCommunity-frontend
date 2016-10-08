@@ -5,6 +5,8 @@ import {Http} from '@angular/http';
 
 @Injectable()
 export class Helper {
+  //
+  //
   constructor(
     private platform: Platform
   ) {
@@ -22,7 +24,8 @@ export class Helper {
       if (api) {
         return 'http://' + api + '/api/' + uri;
       } else {
-        return '/api/' + uri;
+        return 'http://dev.hey-community.local/api/' + uri;
+        // return '/api/' + uri;
       }
     }
   }

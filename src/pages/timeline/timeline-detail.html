@@ -30,7 +30,7 @@
         <div class="header">
           <a>{{ comment.author.nickname }}</a>
           <span class="pull-right">
-            <span>{{ comment.created_at }}</span>
+            <span *ngIf="false">{{ comment.created_at | moment: ['MM-DD HH:mm'] }}</span>
             &nbsp;
             <button ion-button class="btn-comment-reply" small primary clear (click)="presentTimelineCommentModal()"><ion-icon name="undo"></ion-icon> &nbsp; Comment</button>
           </span>

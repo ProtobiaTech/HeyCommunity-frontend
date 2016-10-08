@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
+
+import { TimelineService } from '../services/timeline';
+
+import { Helper } from '../other/helper';
+import { MomentPipe, TimeagoPipe } from '../other/moment.pipe';
 
 import { TimelinePage } from '../pages/timeline/timeline';
 import { TimelineDetailPage } from '../pages/timeline/timeline-detail';
@@ -20,6 +26,8 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 @NgModule({
   declarations: [
     MyApp,
+    MomentPipe,
+    TimeagoPipe,
     TimelinePage,
     TimelineDetailPage,
     TimelineCreatePage,
@@ -57,6 +65,10 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     TabsPage,
     TutorialPage,
   ],
-  providers: []
+  providers: [
+    Storage,
+    TimelineService,
+    Helper,
+  ],
 })
 export class AppModule {}

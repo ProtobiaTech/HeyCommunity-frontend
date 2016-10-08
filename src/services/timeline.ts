@@ -1,15 +1,14 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, Response, RequestOptions} from '@angular/http';
-import {Storage, LocalStorage} from 'ionic-angular';
+import { Injectable } from '@angular/core';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/toPromise';
 
-import {Timeline} from '../models/timeline.model';
-import {Helper} from '../other/helper.component';
+import { Timeline } from '../models/timeline';
+import { Helper } from '../other/helper';
 
 
 @Injectable()
 export class TimelineService {
-  storage = new Storage(LocalStorage);
   timelineStoreImgAPI: string = this.helper.getAPI('timeline/store-img');
   timelines: Timeline[] = [];
   CACHE_TIMELINES: string = 'cache_timelines';
@@ -17,13 +16,18 @@ export class TimelineService {
   headers: Headers;
   requestOptions: RequestOptions;
 
+
+  //
+  // constructor
   constructor(
-    private http: Http,
-    private helper: Helper
+    public http: Http,
+    public helper: Helper,
+    public storage: Storage
   ) {
     this.headers = new Headers({'X-Requested-With': 'XMLHttpRequest'});
     this.requestOptions = new RequestOptions({headers: this.headers});
   }
+
 
   //
   // get timelines
@@ -41,6 +45,9 @@ export class TimelineService {
     .toPromise()
     .then(response => {
       this.timelines = response.json();
+      console.log(this.timelines);
+      console.log(response.json());
+
       this.storageTimelines();
       return response.json();
     })

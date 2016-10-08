@@ -4,6 +4,7 @@ import { NavController, Nav, ModalController } from 'ionic-angular';
 import { TimelineDetailPage } from '../../pages/timeline/timeline-detail';
 import { TimelineCreatePage } from '../../pages/timeline/timeline-create';
 import { Timeline } from '../../models/timeline';
+import { TimelineService } from '../../services/timeline';
 
 
 @Component({
@@ -11,19 +12,21 @@ import { Timeline } from '../../models/timeline';
   templateUrl: 'timeline.html'
 })
 export class TimelinePage {
-  timelines: Timeline[];
-
   //
   // constructor
   constructor(
+    public timelineService: TimelineService,
     public navCtrl: NavController,
     public nav: Nav,
     public modalCtrl: ModalController
   ) {
-    this.timelines = [];
+  }
 
 
-    console.log(this.timelines);
+  //
+  // ion view did enter
+  ionViewDidEnter() {
+    this.timelineService.getTimelines();
   }
 
 
@@ -51,17 +54,27 @@ export class TimelinePage {
   //
   // Refresh
   doRefresh(refresher) {
-    setTimeout(() => {
+    let params: any = {
+      id: this.timelineService.timelines[0].id,
+    }
+
+    this.timelineService.refresh(params)
+    .then(timelines => {
       refresher.complete();
-    }, 1000);
+    });
   }
 
 
   //
   // Infinite
   doInfinite(infiniteScroll) {
-    setTimeout(() => {
+    let params: any = {
+      id: this.timelineService.timelines[this.timelineService.timelines.length - 1].id,
+    }
+
+    this.timelineService.infinite(params)
+    .then(timelines => {
       infiniteScroll.complete();
-    }, 1000);
+    });
   }
 }

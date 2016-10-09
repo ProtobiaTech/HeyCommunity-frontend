@@ -37,13 +37,13 @@
       Data
     </ion-list-header>
 
-    <button ion-item [navPush]="MeNoticePage">
+    <button ion-item (click)="gotoMeNoticePage()">
       <ion-icon name="notifications" item-left></ion-icon>
       Notices
       <ion-badge light item-right color="danger">10</ion-badge>
     </button>
 
-    <button ion-item [navPush]="MeTimelinePage">
+    <button ion-item (click)="gotoMeTimelinePage()">
       <ion-icon name="snow" item-left></ion-icon>
       My Timeline
     </button>

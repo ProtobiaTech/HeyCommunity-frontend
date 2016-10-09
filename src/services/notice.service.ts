@@ -3,7 +3,7 @@ import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import {Notice} from '../models/notice.model';
-import {Helper} from '../other/helper.component';
+import {Helper} from '../other/helper';
 
 
 @Injectable()

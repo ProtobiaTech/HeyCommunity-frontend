@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicModule, Nav } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
 
+import { AuthenticateService } from '../services/authenticate.service';
 import { TimelineService } from '../services/timeline.service';
+import { UserService } from '../services/user.service';
+import { NoticeService } from '../services/notice.service';
 
 import { Helper } from '../other/helper';
 import { MomentPipe, TimeagoPipe } from '../other/moment.pipe';
+
+import { AuthenticatePage } from '../pages/user/authenticate';
 
 import { TimelinePage } from '../pages/timeline/timeline';
 import { TimelineDetailPage } from '../pages/timeline/timeline-detail';
@@ -29,6 +34,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     MyApp,
     MomentPipe,
     TimeagoPipe,
+    AuthenticatePage,
     TimelinePage,
     TimelineDetailPage,
     TimelineCreatePage,
@@ -53,22 +59,18 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    AuthenticatePage,
     TimelinePage,
-    TimelineDetailPage,
-    TimelineCreatePage,
-    TimelineCommentPage,
     MePage,
-    MeNoticePage,
-    MeTimelinePage,
-    MeSettingPage,
-    MeHeyCommunityPage,
-    MeSettingLanguagePage,
     TabsPage,
     TutorialPage,
   ],
   providers: [
     Storage,
+    AuthenticateService,
     TimelineService,
+    UserService,
+    NoticeService,
     Helper,
   ],
 })

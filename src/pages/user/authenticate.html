@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="cancelModal()">Cancel</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="user">
+  <!-- log in -->
+  <div [hidden]="currentModal === 'SignUp'">
+      <div padding-bottom></div>
+      <h3 class="text-center">Log In</h3>
+
+      <form #logInForm="ngForm" (ngSubmit)="logInHandler(logInForm)">
+        <ion-list>
+          <ion-item>
+            <ion-label primary>Phone</ion-label>
+            <ion-input [(ngModel)]="logInModel.phone" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label primary>Password</ion-label>
+            <ion-input [(ngModel)]="logInModel.password" name="password" type="password" required ngModel minlength="6"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <div class="session-bottom">
+          <button ion-button dark clear small disabled type="button">forget password?</button>
+
+          <div class="pull-right">
+            <button ion-button dark clear small (click)="currentModal = 'SignUp'" type="button">Sign Up</button>
+          </div>
+        </div>
+
+        <div padding-left padding-right>
+          <button ion-button  block [disabled]="!logInForm.valid" type="submit">Log In</button>
+        </div>
+      </form>
+  </div>
+
+
+  <!-- sign up -->
+  <div [hidden]="currentModal === 'LogIn'">
+      <div padding-bottom></div>
+      <h3 class="text-center">Sign Up</h3>
+
+      <form #signUpForm="ngForm" (ngSubmit)="signUpHandler(signUpForm)">
+        <ion-list>
+          <ion-item>
+            <ion-label primary>Nickname</ion-label>
+            <ion-input [(ngModel)]="signUpModel.nickname" name="nickname" type="text" required minlength="3"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label primary>Phone</ion-label>
+            <ion-input [(ngModel)]="signUpModel.phone" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label primary>Password</ion-label>
+            <ion-input [(ngModel)]="signUpModel.password" name="password" type="text" required ngModel minlength="6"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <div class="session-bottom">
+          <button ion-button clear small type="button"></button>
+
+          <div class="pull-right">
+            <button ion-button dark clear small (click)="currentModal = 'LogIn'" type="button">Log In</button>
+          </div>
+        </div>
+
+        <div padding-left padding-right>
+          <button ion-button block [disabled]="!signUpForm.valid" type="submit">Sign Up</button>
+        </div>
+      </form>
+  </div>
+</ion-content>

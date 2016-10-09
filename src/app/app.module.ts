@@ -23,6 +23,7 @@ import { MeSettingLanguagePage } from '../pages/me/me-setting-language';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 
+
 @NgModule({
   declarations: [
     MyApp,

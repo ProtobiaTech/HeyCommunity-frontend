@@ -38,7 +38,7 @@
     </div>
     <hr>
 
-    <ion-card-content (click)="gotoTimelineDetailPage(timeline)">
+    <ion-card-content tappable (click)="gotoTimelineDetailPage(timeline)">
       <div class="content">{{ timeline.content }}</div>
     </ion-card-content>
 
@@ -64,7 +64,7 @@
       </ion-col>
     </ion-row>
 
-    <div (click)="gotoTimelineDetailPage(timeline)" class="comments">
+    <div tappable (click)="gotoTimelineDetailPage(timeline)" class="comments">
         <div *ngFor="let comment of timeline.comments; let i=index;">
           <div class="item-comment" *ngIf="i < 3">
             <span class="author">{{ comment.author?.nickname }}</span>:

@@ -15,8 +15,9 @@ export class NoticeService {
 
   userUpdateAvatarAPI: string = this.helper.getAPI('user/update-avatar');
 
+
   //
-  //
+  // constructor
   constructor(
     private http: Http,
     private helper: Helper
@@ -27,7 +28,7 @@ export class NoticeService {
 
 
   //
-  //
+  // get index
   getIndex(): Promise<Notice> {
     let api: string = this.helper.getAPI('notice');
 
@@ -45,7 +46,7 @@ export class NoticeService {
 
 
   //
-  //
+  // check
   check(params): Promise<Notice> {
     let api: string = this.helper.getAPI('notice/check');
 

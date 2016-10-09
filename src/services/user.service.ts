@@ -13,8 +13,9 @@ export class UserService {
 
   userUpdateAvatarAPI: string = this.helper.getAPI('user/update-avatar');
 
+
   //
-  //
+  // constructor
   constructor(
     private http: Http,
     private helper: Helper
@@ -25,7 +26,7 @@ export class UserService {
 
 
   //
-  //
+  // get user
   getUser(): Promise<User> {
     let api: string = this.helper.getAPI('user/my-info');
 
@@ -37,7 +38,7 @@ export class UserService {
 
 
   //
-  //
+  // update
   update(params): Promise<User> {
     let api: string = this.helper.getAPI('user/update');
 
@@ -49,7 +50,7 @@ export class UserService {
 
 
   //
-  //
+  // sign up
   signUp(params): Promise<User> {
     let api: string = this.helper.getAPI('user/sign-up');
     let data: Object = params;
@@ -62,7 +63,7 @@ export class UserService {
 
 
   //
-  //
+  // log in
   logIn(params): Promise<User> {
     let api: string = this.helper.getAPI('user/log-in');
     let data: Object = params;
@@ -75,7 +76,7 @@ export class UserService {
 
 
   //
-  //
+  // log out
   logOut(): Promise<User> {
     let api: string = this.helper.getAPI('user/log-out');
 

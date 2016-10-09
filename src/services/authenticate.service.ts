@@ -3,8 +3,6 @@ import { Http } from '@angular/http';
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import {User} from '../models/user.model';
-
 
 @Injectable()
 export class AuthenticateService {

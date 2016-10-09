@@ -5,7 +5,6 @@ export class NoticeType {
 }
 
 
-
 export const NoticeTypes = {
   10: {
     name: 'timeline_like',

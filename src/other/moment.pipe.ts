@@ -14,6 +14,7 @@ export class MomentPipe implements PipeTransform {
   }
 }
 
+
 @Pipe({
     name: 'timeago',
     pure: false,

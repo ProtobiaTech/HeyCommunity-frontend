@@ -6,15 +6,15 @@ import {Http} from '@angular/http';
 @Injectable()
 export class Helper {
   //
-  //
+  // constructor
   constructor(
-    private platform: Platform
+    public platform: Platform
   ) {
   }
 
 
   //
-  //
+  // get api
   getAPI(uri): string {
     if (this.platform.is('cordova')) {
       return 'http://demo.hey-community.com/api/' + uri;
@@ -32,7 +32,7 @@ export class Helper {
 
 
   //
-  //
+  // get img
   getImg(uri): string {
     if (uri.substring(0, 4) == 'http') {
       return uri;
@@ -47,7 +47,7 @@ export class Helper {
 
 
   //
-  //
+  // get parameter by name
   getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),

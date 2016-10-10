@@ -3,6 +3,7 @@ import { NavController, ModalController } from 'ionic-angular';
 
 import { Helper } from '../../other/helper';
 import { AuthenticateComponent } from '../../pages/component/authenticate';
+import { UtilityComponent } from '../../pages/component/utility';
 
 import { AuthenticateService } from '../../services/authenticate.service';
 import { TimelineService } from '../../services/timeline.service';
@@ -14,7 +15,7 @@ import { TimelineCreatePage } from '../../pages/timeline/timeline-create';
 
 @Component({
   selector: 'page-timeline',
-  templateUrl: 'timeline.html'
+  templateUrl: 'timeline.html',
 })
 export class TimelinePage {
   //
@@ -22,6 +23,7 @@ export class TimelinePage {
   constructor(
     public helper: Helper,
     public authComp: AuthenticateComponent,
+    public utilityComp: UtilityComponent,
     public timelineService: TimelineService,
     public userService: UserService,
     public authService: AuthenticateService,
@@ -73,12 +75,15 @@ export class TimelinePage {
   //
   // Refresh
   doRefresh(refresher) {
+    this.utilityComp.presentLoading();
+
     let params: any = {
       id: this.timelineService.timelines[0].id,
     }
 
     this.timelineService.refresh(params)
     .then(timelines => {
+      this.utilityComp.dismissLoading();
       refresher.complete();
     });
   }
@@ -87,12 +92,15 @@ export class TimelinePage {
   //
   // Infinite
   doInfinite(infiniteScroll) {
+    this.utilityComp.presentLoading();
+
     let params: any = {
       id: this.timelineService.timelines[this.timelineService.timelines.length - 1].id,
     }
 
     this.timelineService.infinite(params)
     .then(timelines => {
+      this.utilityComp.dismissLoading();
       infiniteScroll.complete();
     });
   }

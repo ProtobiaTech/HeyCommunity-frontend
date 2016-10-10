@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController, NavParams, ModalController, Loading, LoadingController, AlertController } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
 
 import { UtilityComponent } from '../../pages/component/utility';
 
@@ -9,7 +9,7 @@ import { AuthenticateService } from '../../services/authenticate.service';
 
 @Component({
   selector: 'page-authenticate',
-  templateUrl: 'authenticate.html',
+  templateUrl: 'authenticate.html'
 })
 export class AuthenticatePage {
   //
@@ -21,26 +21,15 @@ export class AuthenticatePage {
   //
   currentModal: string = 'LogIn';
 
-  //
-  loading: Loading;
-
 
   //
   // constructor
   constructor(
     public utilityComp: UtilityComponent,
-    private navController: NavController,
-    private navParams: NavParams,
-    private viewCtrl: ViewController,
-    private modalCtrl: ModalController,
-    private userService: UserService,
-    private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController,
-    private auth: AuthenticateService
+    public viewCtrl: ViewController,
+    public userService: UserService,
+    public auth: AuthenticateService
   ) {
-    if (this.navParams.get('modal')) {
-      this.currentModal = this.navParams.get('modal');
-    }
   }
 
 
@@ -60,13 +49,19 @@ export class AuthenticatePage {
     };
 
     if (ngForm.valid) {
+      this.utilityComp.presentLoading();
 
       this.userService.logIn(data)
       .then(ret => {
+        this.utilityComp.dismissLoading();
+
         this.auth.logIn(ret);
         this.viewCtrl.dismiss().then((data) => {
+          this.utilityComp.presentToast('Welcome back');
         });
       }, (data) => {
+        this.utilityComp.dismissLoading();
+        this.utilityComp.presentAlter({title: 'LogIn Failed', subTitle: data._body});
       });
     }
   }
@@ -82,13 +77,20 @@ export class AuthenticatePage {
     };
 
     if (ngForm.valid) {
+      this.utilityComp.presentLoading();
 
       this.userService.signUp(data)
       .then(ret => {
         this.auth.logIn(ret);
         this.viewCtrl.dismiss().then(() => {
+          this.utilityComp.dismissLoading();
+          this.utilityComp.presentToast('Sign up success, Welcome ' + ret.nickname);
         });
       }, (data) => {
+        this.utilityComp.dismissLoading().then(() => {
+          let body = JSON.parse(data._body);
+          this.utilityComp.presentAlter({title: 'SignUp Failed', subTitle: body[Object.keys(body)[0]]});
+        });
       });
     }
   }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Helper } from '../../other/helper';
+import { UtilityComponent } from '../../pages/component/utility';
 import { AuthenticateService } from '../../services/authenticate.service';
 import { UserService } from '../../services/user.service';
 
@@ -22,6 +23,7 @@ export class MeSettingPage {
   // constructor
   constructor(
     public helper: Helper,
+    public utilityComp: UtilityComponent,
     public navCtrl: NavController,
     public userService: UserService,
     public authService: AuthenticateService
@@ -32,8 +34,11 @@ export class MeSettingPage {
   //
   // goto log out
   gotoLogOut() {
+    this.utilityComp.presentLoading();
+
     this.userService.logOut()
     .then(ret => {
+      this.utilityComp.dismissLoading();
       this.authService.logOut();
       this.navCtrl.pop();
     });

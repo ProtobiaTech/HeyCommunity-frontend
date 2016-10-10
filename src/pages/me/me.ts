@@ -10,8 +10,6 @@ import { MeNoticePage } from '../../pages/me/me-notice';
 import { MeTimelinePage } from '../../pages/me/me-timeline';
 import { MeSettingPage } from '../../pages/me/me-setting';
 
-import { AuthenticatePage } from '../../pages/user/authenticate';
-
 
 @Component({
   selector: 'page-me',

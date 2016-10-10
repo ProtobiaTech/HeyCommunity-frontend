@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, Response, RequestOptions} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import {User} from '../models/user.model';
-import {Helper} from '../other/helper';
+import { User } from '../models/user.model';
+import { Helper } from '../other/helper';
 
 
 @Injectable()

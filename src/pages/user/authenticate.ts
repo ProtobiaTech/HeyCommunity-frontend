@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams, ModalController, Loading, LoadingController, AlertController } from 'ionic-angular';
 
+import { UtilityComponent } from '../../pages/component/utility';
+
 import { UserService} from '../../services/user.service';
 import { AuthenticateService } from '../../services/authenticate.service';
 
@@ -26,6 +28,7 @@ export class AuthenticatePage {
   //
   // constructor
   constructor(
+    public utilityComp: UtilityComponent,
     private navController: NavController,
     private navParams: NavParams,
     private viewCtrl: ViewController,

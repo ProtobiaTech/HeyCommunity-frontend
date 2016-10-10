@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { LoadingController, ModalController } from 'ionic-angular';
 
-import { AuthenticatePage } from '../../pages/user/authenticate';
-
 
 @Component({
-  selector: 'hc-common-component',
-  templateUrl: 'common-component.html'
+  selector: 'hc-utility-component',
+  templateUrl: 'utility.html'
 })
-export class CommonComponent {
+export class UtilityComponent {
 
 
   //
@@ -29,13 +27,5 @@ export class CommonComponent {
     });
     // loader.dismiss();
     loader.present();
-  }
-
-
-  //
-  // present auth modal
-  presentAuthModal() {
-    let authModal = this.modalCtrl.create(AuthenticatePage);
-    authModal.present();
   }
 }

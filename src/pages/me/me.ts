@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { Helper } from '../../other/helper';
+import { AuthenticateComponent } from '../../pages/component/authenticate';
+
 import { AuthenticateService } from '../../services/authenticate.service';
 
 import { MeNoticePage } from '../../pages/me/me-notice';
 import { MeTimelinePage } from '../../pages/me/me-timeline';
 import { MeSettingPage } from '../../pages/me/me-setting';
 
-import { CommonComponent } from '../../pages/common-component/common-component';
 import { AuthenticatePage } from '../../pages/user/authenticate';
 
 
@@ -24,9 +25,8 @@ export class MePage {
   // constructor
   constructor(
     public helper: Helper,
-    public commonComponent: CommonComponent,
+    public authComp: AuthenticateComponent,
     public navCtrl: NavController,
-    public modalCtrl: ModalController,
     public authService: AuthenticateService
   ) {
   }
@@ -38,7 +38,7 @@ export class MePage {
     if (this.authService.isAuth) {
       this.navCtrl.push(MeNoticePage);
     } else {
-      this.commonComponent.presentAuthModal();
+      this.authComp.presentAuthModal();
     }
   }
 
@@ -49,7 +49,7 @@ export class MePage {
     if (this.authService.isAuth) {
       this.navCtrl.push(MeTimelinePage);
     } else {
-      this.commonComponent.presentAuthModal();
+      this.authComp.presentAuthModal();
     }
   }
 }

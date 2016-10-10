@@ -9,7 +9,8 @@ import { UserService } from '../services/user.service';
 import { NoticeService } from '../services/notice.service';
 
 import { Helper } from '../other/helper';
-import { CommonComponent } from '../pages/common-component/common-component';
+import { AuthenticateComponent } from '../pages/component/authenticate';
+import { UtilityComponent } from '../pages/component/utility';
 import { MomentPipe, TimeagoPipe } from '../other/moment.pipe';
 
 import { AuthenticatePage } from '../pages/user/authenticate';
@@ -35,7 +36,8 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     MyApp,
     MomentPipe,
     TimeagoPipe,
-    CommonComponent,
+    AuthenticateComponent,
+    UtilityComponent,
     AuthenticatePage,
     TimelinePage,
     TimelineDetailPage,
@@ -82,7 +84,8 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     UserService,
     NoticeService,
     Helper,
-    CommonComponent,
+    AuthenticateComponent,
+    UtilityComponent,
   ],
 })
 export class AppModule {}

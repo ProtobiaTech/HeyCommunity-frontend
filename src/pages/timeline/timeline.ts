@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, Nav, ModalController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 
 import { Helper } from '../../other/helper';
+import { AuthenticateComponent } from '../../pages/component/authenticate';
+
+import { AuthenticateService } from '../../services/authenticate.service';
 import { TimelineService } from '../../services/timeline.service';
 import { UserService } from '../../services/user.service';
-import { AuthenticateService } from '../../services/authenticate.service';
 
-import { CommonComponent } from '../../pages/common-component/common-component';
 import { TimelineDetailPage } from '../../pages/timeline/timeline-detail';
 import { TimelineCreatePage } from '../../pages/timeline/timeline-create';
 
@@ -20,12 +21,11 @@ export class TimelinePage {
   // constructor
   constructor(
     public helper: Helper,
+    public authComp: AuthenticateComponent,
     public timelineService: TimelineService,
     public userService: UserService,
     public authService: AuthenticateService,
-    public commonComponent: CommonComponent,
     public navCtrl: NavController,
-    public nav: Nav,
     public modalCtrl: ModalController
   ) {
   }
@@ -48,7 +48,7 @@ export class TimelinePage {
   //
   // goto timeline detail page
   gotoTimelineDetailPage(timeline) {
-    this.nav.push(TimelineDetailPage, {timeline: timeline});
+    this.navCtrl.push(TimelineDetailPage, {timeline: timeline});
   }
 
 
@@ -57,7 +57,7 @@ export class TimelinePage {
   setLikeForTimeline(timeline) {
     if (this.authService.isAuth) {
     } else {
-      this.commonComponent.presentAuthModal();
+      this.authComp.presentAuthModal();
     }
   }
 

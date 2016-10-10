@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, Nav, NavParams, ActionSheetController, ModalController } from 'ionic-angular';
 
+import { Helper } from '../../other/helper';
+
 import { Timeline } from '../../models/timeline.model';
 import { TimelineCommentPage } from '../../pages/timeline/timeline-comment';
 
@@ -16,6 +18,7 @@ export class TimelineDetailPage {
   //
   // constructor
   constructor(
+    public helper: Helper,
     public navCtrl: NavController,
     public nav: Nav,
     public navParams: NavParams,

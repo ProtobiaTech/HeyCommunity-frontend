@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 
+import { Helper } from '../../other/helper';
 import { AuthenticateService } from '../../services/authenticate.service';
 
 import { MeNoticePage } from '../../pages/me/me-notice';
@@ -21,6 +22,7 @@ export class MePage {
   //
   // constructor
   constructor(
+    public helper: Helper,
     public navCtrl: NavController,
     public modalCtrl: ModalController,
     public authService: AuthenticateService

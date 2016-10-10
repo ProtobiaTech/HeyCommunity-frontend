@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { Notice } from '../../models/notice.model';
+import { Helper } from '../../other/helper';
 
 
 @Component({
@@ -14,7 +15,10 @@ export class MeNoticePage {
 
   //
   // constructor
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public helper: Helper,
+    public navCtrl: NavController
+  ) {
     this.notices = [];
   }
 

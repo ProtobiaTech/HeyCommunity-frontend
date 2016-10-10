@@ -14,7 +14,7 @@
 <ion-content>
   <div padding class="section-comment items-comment">
     <div class="item-comment" [hidden]="!timeline.content">
-      <img class="avatar" src="{{ timeline.author.avatar }}?imageView/2/w/100">
+      <img class="avatar" src="{{ helper.getImg(timeline.author.avatar) }}?imageView/2/w/100">
       <div #contentBox class="comment-content">
         <div class="header">
           <a>{{ timeline.author.nickname }}</a>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="item-comment" *ngFor="let comment of timeline.comments">
-      <img class="avatar" src="{{ comment.author.avatar }}?imageView/2/w/100">
+      <img class="avatar" src="{{ helper.getImg(comment.author.avatar) }}?imageView/2/w/100">
       <div class="comment-content">
         <div class="header">
           <a>{{ comment.author.nickname }}</a>

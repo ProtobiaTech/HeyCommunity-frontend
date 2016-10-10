@@ -20,7 +20,7 @@
   <ion-card *ngFor="let timeline of timelineService.timelines" class="timeline-card">
     <ion-item class="header">
       <ion-avatar item-left>
-        <img class="avatar" src="{{ timeline.author?.avatar }}">
+        <img class="avatar" src="{{ helper.getImg(timeline.author?.avatar) }}">
       </ion-avatar>
       <h2>
         <span right class="date pull-right">
@@ -34,7 +34,7 @@
     </ion-item>
 
     <div>
-      <img *ngFor="let img of timeline.imgs" src="{{ img.uri }}">
+      <img *ngFor="let img of timeline.imgs" src="{{ helper.getImg(img.uri) }}">
     </div>
     <hr>
 

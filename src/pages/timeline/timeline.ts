@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, Nav, ModalController } from 'ionic-angular';
 
+import { Helper } from '../../other/helper';
 import { Timeline } from '../../models/timeline.model';
 import { TimelineService } from '../../services/timeline.service';
 import { UserService } from '../../services/user.service';
@@ -18,6 +19,7 @@ export class TimelinePage {
   //
   // constructor
   constructor(
+    public helper: Helper,
     public timelineService: TimelineService,
     public userService: UserService,
     public authService: AuthenticateService,

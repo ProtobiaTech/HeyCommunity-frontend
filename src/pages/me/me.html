@@ -4,17 +4,17 @@
       <ion-col></ion-col>
 
       <ion-col padding-top>
-        <img *ngIf="authService.isAuth" class="avatar" src="{{ authService.userInfo?.avatar }}">
+        <img *ngIf="authService.isAuth" class="avatar" src="{{ helper.getImg(authService.userInfo?.avatar) }}">
         <img *ngIf="!authService.isAuth" class="avatar" src="./assets/images/userAvatar-default.png">
       </ion-col>
 
-      <ion-col text-right>
+      <ion-col id="section-btns" text-right>
         <ion-buttons>
-          <button class="hide" ion-button clear icon-only color="grey">
+          <button *ngIf="authService.isAuth" class="hide" ion-button clear icon-only color="grey">
             <ion-icon name="image"></ion-icon>
           </button>
 
-          <button ion-button clear icon-only color="grey" [navPush]="MeSettingPage">
+          <button *ngIf="authService.isAuth" ion-button clear icon-only color="grey" [navPush]="MeSettingPage">
             <ion-icon name="cog"></ion-icon>
           </button>
         </ion-buttons>
@@ -24,12 +24,12 @@
     <ion-row>
       <ion-col width-10></ion-col>
 
-      <ion-col *ngIf="authService.isAuth" center class="text-center">
+      <ion-col id="section-info" *ngIf="authService.isAuth" center class="text-center">
         <div class="nickname">{{ authService.userInfo?.nickname }}</div>
         <div class="bio">{{ authService.userInfo?.bio || '' }}</div>
       </ion-col>
 
-      <ion-col *ngIf="!authService.isAuth" center class="text-center">
+      <ion-col id="section-info" *ngIf="!authService.isAuth" center class="text-center">
         <div class="nickname">Hey guys</div>
         <div class="bio">Let's login now</div>
       </ion-col>

@@ -5,7 +5,7 @@
     </ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only (click)="presentTimelineCreateModal()">
+      <button ion-button icon-only color="grey" (click)="presentTimelineCreateModal()">
         <ion-icon name="camera"></ion-icon>
       </button>
     </ion-buttons>
@@ -17,7 +17,7 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-card *ngFor="let timeline of timelineService.timelines" class="timeline-card">
+  <ion-card *ngFor="let timeline of timelineService.timelines; let i=index" class="timeline-card">
     <ion-item class="header">
       <ion-avatar item-left>
         <img class="avatar" src="{{ helper.getImg(timeline.author?.avatar) }}">
@@ -38,20 +38,20 @@
     </div>
     <hr>
 
-    <ion-card-content tappable (click)="gotoTimelineDetailPage(timeline)">
+    <ion-card-content tappable (click)="gotoTimelineDetailPage(timeline, i)">
       <div class="content">{{ timeline.content }}</div>
     </ion-card-content>
 
     <ion-row class="footer">
       <ion-col>
-        <button ion-button icon-only color="primary" clear small (click)="setLikeForTimeline(timeline)">
-          <ion-icon name="{{ 'heart-outline' }}"></ion-icon>
+        <button ion-button icon-only color="grey" clear small (click)="setLikeForTimeline(timeline)">
+          <ion-icon color="danger" name="{{ timeline.is_like ? 'heart' : 'heart-outline' }}"></ion-icon>
           &nbsp;
           <div>{{ timeline.like_num }} Likes</div>
         </button>
       </ion-col>
       <ion-col>
-        <button ion-button icon-only color="primary" clear small (click)="gotoTimelineDetailPage(timeline)">
+        <button ion-button icon-only color="grey" clear small (click)="gotoTimelineDetailPage(timeline, i)">
           <ion-icon name="text"></ion-icon>
           &nbsp;
           <div>{{ timeline.comment_num }} Comments</div>

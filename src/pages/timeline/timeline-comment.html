@@ -9,7 +9,7 @@
     <ion-title>Timeline Comment</ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="dismiss()">
+      <button ion-button (click)="sendCommentHandler(commentForm)">
         Send
       </button>
     </ion-buttons>
@@ -20,9 +20,9 @@
 <ion-content>
   <div padding style="background-color:#fff;">
     <ion-list>
-      <form>
+      <form #commentForm="ngForm" (ngSubmit)="sendCommentHandler(commentForm)">
           <ion-item>
-            <ion-textarea name="content" rows="3" placeholder="Say something">
+            <ion-textarea #inputComment [(ngModel)]="newComment.content" name="content" required ngModel rows="3" placeholder="Say something">
             </ion-textarea>
           </ion-item>
       </form>

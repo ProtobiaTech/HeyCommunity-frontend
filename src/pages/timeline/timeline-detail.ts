@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, Nav, NavParams, ActionSheetController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController, ModalController } from 'ionic-angular';
 
 import { Helper } from '../../other/helper';
+import { AuthenticateComponent } from '../../pages/component/authenticate';
+
+import { AuthenticateService } from '../../services/authenticate.service';
+import { TimelineService } from '../../services/timeline.service';
 
 import { Timeline } from '../../models/timeline.model';
 import { TimelineCommentPage } from '../../pages/timeline/timeline-comment';
@@ -13,18 +17,22 @@ import { TimelineCommentPage } from '../../pages/timeline/timeline-comment';
 })
 export class TimelineDetailPage {
   timeline: Timeline;
+  timelineIndex: number;
 
 
   //
   // constructor
   constructor(
     public helper: Helper,
+    public authComp: AuthenticateComponent,
+    public authService: AuthenticateService,
+    public timelineService: TimelineService,
     public navCtrl: NavController,
-    public nav: Nav,
     public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController,
     public modalCtrl: ModalController
   ) {
+    this.timelineIndex = this.navParams.data.timelineIndex;
     this.timeline = this.navParams.data.timeline;
   }
 
@@ -65,7 +73,16 @@ export class TimelineDetailPage {
   //
   // present timeline comment modal
   presentTimelineCommentModal() {
-    let modal = this.modalCtrl.create(TimelineCommentPage);
-    modal.present();
+    if (this.authService.isAuth) {
+      let modal = this.modalCtrl.create(TimelineCommentPage, {timeline: this.timeline, timelineIndex: this.timelineIndex});
+
+      modal.onDidDismiss(data => {
+        this.timeline = this.timelineService.timelines[this.timelineIndex];
+      });
+
+      modal.present();
+    } else {
+      this.authComp.presentAuthModal();
+    }
   }
 }

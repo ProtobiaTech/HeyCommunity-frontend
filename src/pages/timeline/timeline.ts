@@ -49,8 +49,8 @@ export class TimelinePage {
 
   //
   // goto timeline detail page
-  gotoTimelineDetailPage(timeline) {
-    this.navCtrl.push(TimelineDetailPage, {timeline: timeline});
+  gotoTimelineDetailPage(timeline, index) {
+    this.navCtrl.push(TimelineDetailPage, {timeline: timeline, timelineIndex: index});
   }
 
 
@@ -58,6 +58,11 @@ export class TimelinePage {
   // set like for timeline
   setLikeForTimeline(timeline) {
     if (this.authService.isAuth) {
+      this.timelineService.setLike(timeline)
+      .then(newTimeline => {
+        timeline.is_like = newTimeline.is_like;
+        timeline.like_num = newTimeline.like_num;
+      });
     } else {
       this.authComp.presentAuthModal();
     }
@@ -67,8 +72,12 @@ export class TimelinePage {
   //
   // present timeline create modal
   presentTimelineCreateModal() {
-    let modal = this.modalCtrl.create(TimelineCreatePage);
-    modal.present();
+    if (this.authService.isAuth) {
+      let modal = this.modalCtrl.create(TimelineCreatePage);
+      modal.present();
+    } else {
+      this.authComp.presentAuthModal();
+    }
   }
 
 

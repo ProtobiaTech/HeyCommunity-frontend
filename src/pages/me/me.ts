@@ -8,6 +8,7 @@ import { MeNoticePage } from '../../pages/me/me-notice';
 import { MeTimelinePage } from '../../pages/me/me-timeline';
 import { MeSettingPage } from '../../pages/me/me-setting';
 
+import { CommonComponent } from '../../pages/common-component/common-component';
 import { AuthenticatePage } from '../../pages/user/authenticate';
 
 
@@ -23,6 +24,7 @@ export class MePage {
   // constructor
   constructor(
     public helper: Helper,
+    public commonComponent: CommonComponent,
     public navCtrl: NavController,
     public modalCtrl: ModalController,
     public authService: AuthenticateService
@@ -36,7 +38,7 @@ export class MePage {
     if (this.authService.isAuth) {
       this.navCtrl.push(MeNoticePage);
     } else {
-      this.presentAuthModal();
+      this.commonComponent.presentAuthModal();
     }
   }
 
@@ -47,15 +49,7 @@ export class MePage {
     if (this.authService.isAuth) {
       this.navCtrl.push(MeTimelinePage);
     } else {
-      this.presentAuthModal();
+      this.commonComponent.presentAuthModal();
     }
-  }
-
-
-  //
-  // open auth modal
-  presentAuthModal() {
-    let profileModal = this.modalCtrl.create(AuthenticatePage);
-    profileModal.present();
   }
 }

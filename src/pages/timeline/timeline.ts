@@ -6,6 +6,7 @@ import { TimelineService } from '../../services/timeline.service';
 import { UserService } from '../../services/user.service';
 import { AuthenticateService } from '../../services/authenticate.service';
 
+import { CommonComponent } from '../../pages/common-component/common-component';
 import { TimelineDetailPage } from '../../pages/timeline/timeline-detail';
 import { TimelineCreatePage } from '../../pages/timeline/timeline-create';
 
@@ -22,6 +23,7 @@ export class TimelinePage {
     public timelineService: TimelineService,
     public userService: UserService,
     public authService: AuthenticateService,
+    public commonComponent: CommonComponent,
     public navCtrl: NavController,
     public nav: Nav,
     public modalCtrl: ModalController
@@ -31,7 +33,7 @@ export class TimelinePage {
 
   //
   // ion view did enter
-  ionViewDidEnter() {
+  ionViewDidLoad() {
     this.timelineService.getTimelines();
 
     //
@@ -53,6 +55,10 @@ export class TimelinePage {
   //
   // set like for timeline
   setLikeForTimeline(timeline) {
+    if (this.authService.isAuth) {
+    } else {
+      this.commonComponent.presentAuthModal();
+    }
   }
 
 

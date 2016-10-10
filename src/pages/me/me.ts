@@ -15,8 +15,6 @@ import { AuthenticatePage } from '../../pages/user/authenticate';
   templateUrl: 'me.html'
 })
 export class MePage {
-  MeNoticePage = MeNoticePage;
-  MeTimelinePage = MeTimelinePage;
   MeSettingPage = MeSettingPage;
 
 
@@ -44,7 +42,11 @@ export class MePage {
   //
   // goto me-timeline page
   gotoMeTimelinePage() {
-    this.navCtrl.push(MeTimelinePage);
+    if (this.authService.isAuth) {
+      this.navCtrl.push(MeTimelinePage);
+    } else {
+      this.presentAuthModal();
+    }
   }
 
 

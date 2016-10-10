@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { AuthenticateService } from '../../services/authenticate.service';
+import { UserService } from '../../services/user.service';
+
 import { MeHeyCommunityPage } from '../../pages/me/me-heycommunity';
 import { MeSettingLanguagePage } from '../../pages/me/me-setting-language';
 
@@ -13,14 +16,24 @@ export class MeSettingPage {
   MeHeyCommunityPage = MeHeyCommunityPage;
   MeSettingLanguagePage = MeSettingLanguagePage;
 
+
   //
-  //
-  constructor(public navCtrl: NavController) {
+  // constructor
+  constructor(
+    public navCtrl: NavController,
+    public userService: UserService,
+    public authService: AuthenticateService
+  ) {
   }
 
 
   //
-  //
-  goToLogOut() {
+  // goto log out
+  gotoLogOut() {
+    this.userService.logOut()
+    .then(ret => {
+      this.authService.logOut();
+      this.navCtrl.pop();
+    });
   }
 }

@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, Nav, ModalController } from 'ionic-angular';
 
-import { TimelineDetailPage } from '../../pages/timeline/timeline-detail';
-import { TimelineCreatePage } from '../../pages/timeline/timeline-create';
 import { Timeline } from '../../models/timeline.model';
 import { TimelineService } from '../../services/timeline.service';
+import { UserService } from '../../services/user.service';
+import { AuthenticateService } from '../../services/authenticate.service';
+
+import { TimelineDetailPage } from '../../pages/timeline/timeline-detail';
+import { TimelineCreatePage } from '../../pages/timeline/timeline-create';
 
 
 @Component({
@@ -16,6 +19,8 @@ export class TimelinePage {
   // constructor
   constructor(
     public timelineService: TimelineService,
+    public userService: UserService,
+    public authService: AuthenticateService,
     public navCtrl: NavController,
     public nav: Nav,
     public modalCtrl: ModalController
@@ -27,6 +32,13 @@ export class TimelinePage {
   // ion view did enter
   ionViewDidEnter() {
     this.timelineService.getTimelines();
+
+    //
+    this.userService.getUser().then(data => {
+      this.authService.logIn(data);
+    }, data => {
+      this.authService.logOut();
+    });
   }
 
 

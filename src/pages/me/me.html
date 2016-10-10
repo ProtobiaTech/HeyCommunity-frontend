@@ -4,7 +4,8 @@
       <ion-col></ion-col>
 
       <ion-col padding-top>
-        <img class="avatar" src="./assets/images/userAvatar-default.png">
+        <img *ngIf="authService.isAuth" class="avatar" src="{{ authService.userInfo?.avatar }}">
+        <img *ngIf="!authService.isAuth" class="avatar" src="./assets/images/userAvatar-default.png">
       </ion-col>
 
       <ion-col text-right>
@@ -23,7 +24,12 @@
     <ion-row>
       <ion-col width-10></ion-col>
 
-      <ion-col center class="text-center">
+      <ion-col *ngIf="authService.isAuth" center class="text-center">
+        <div class="nickname">{{ authService.userInfo?.nickname }}</div>
+        <div class="bio">{{ authService.userInfo?.bio || '' }}</div>
+      </ion-col>
+
+      <ion-col *ngIf="!authService.isAuth" center class="text-center">
         <div class="nickname">Hey guys</div>
         <div class="bio">Let's login now</div>
       </ion-col>

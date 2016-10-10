@@ -24,8 +24,8 @@ export class Helper {
       if (api) {
         return 'http://' + api + '/api/' + uri;
       } else {
-        return 'http://dev.hey-community.local/api/' + uri;
-        // return '/api/' + uri;
+        // return 'http://dev.hey-community.local/api/' + uri;
+        return '/api/' + uri;
       }
     }
   }

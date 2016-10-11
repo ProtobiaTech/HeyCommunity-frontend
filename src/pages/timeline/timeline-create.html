@@ -9,7 +9,7 @@
     <ion-title>Timeline Create</ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="dismiss()">
+      <button ion-button (click)="timelineCreateHandler(timelineCreateForm)">
         Send
       </button>
     </ion-buttons>
@@ -19,9 +19,9 @@
 
 <ion-content>
   <ion-list id="section-textarea">
-    <form #timelineCreateForm="ngForm" novalidate>
+    <form #timelineCreateForm="ngForm" (ngSubmit)="timelineCreateHandler(timelineCreateForm)" novalidate>
         <ion-item>
-          <ion-textarea name="content" rows="8" placeholder="What is new">
+          <ion-textarea [(ngModel)]="newTimeline.content" name="content" rows="8" placeholder="What is new">
           </ion-textarea>
         </ion-item>
     </form>

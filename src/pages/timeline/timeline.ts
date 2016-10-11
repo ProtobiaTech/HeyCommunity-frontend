@@ -3,6 +3,7 @@ import { NavController, ModalController } from 'ionic-angular';
 
 import { Helper } from '../../other/helper';
 import { AuthenticateComponent } from '../../pages/component/authenticate';
+import { UtilityComponent } from '../../pages/component/utility';
 
 import { AuthenticateService } from '../../services/authenticate.service';
 import { TimelineService } from '../../services/timeline.service';
@@ -21,6 +22,7 @@ export class TimelinePage {
   // constructor
   constructor(
     public helper: Helper,
+    public utilityComp: UtilityComponent,
     public authComp: AuthenticateComponent,
     public timelineService: TimelineService,
     public userService: UserService,
@@ -72,8 +74,14 @@ export class TimelinePage {
   // present timeline create modal
   presentTimelineCreateModal() {
     if (this.authService.isAuth) {
-      let modal = this.modalCtrl.create(TimelineCreatePage);
-      modal.present();
+      let self = this;
+
+      let page = TimelineCreatePage;
+      let params = {}
+      let callback = function() {
+      }
+
+      this.utilityComp.presentModal(page, params, callback);
     } else {
       this.authComp.presentAuthModal();
     }

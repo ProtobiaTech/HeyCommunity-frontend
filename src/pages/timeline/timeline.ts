@@ -28,13 +28,14 @@ export class TimelinePage {
     public navCtrl: NavController,
     public modalCtrl: ModalController
   ) {
+    this.timelineService.getTimelinesFromStorage();
   }
 
 
   //
   // ion view did enter
   ionViewDidLoad() {
-    this.timelineService.getTimelines();
+    this.timelineService.index();
 
     //
     this.userService.getUser().then(data => {

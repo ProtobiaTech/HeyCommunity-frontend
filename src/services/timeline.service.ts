@@ -30,28 +30,12 @@ export class TimelineService {
 
 
   //
-  // get timelines
-  getTimelines(params?): Promise<Timeline[]> {
-    //
+  // get timeline from storage
+  getTimelinesFromStorage() {
     this.storage.get(this.CACHE_TIMELINES).then(value => {
       let timelines = JSON.parse(value);
       this.timelines = timelines;
     });
-
-    //
-    let api: string = this.helper.getAPI('timeline');
-
-    return this.http.get(api, this.requestOptions)
-    .toPromise()
-    .then(response => {
-      this.timelines = response.json();
-      console.log(this.timelines);
-      console.log(response.json());
-
-      this.storageTimelines();
-      return response.json();
-    })
-    .catch(this.handleError);
   }
 
 
@@ -98,6 +82,24 @@ export class TimelineService {
     return this.http.post(api, data, this.requestOptions)
     .toPromise()
     .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
+  // index
+  index(): Promise<Timeline[]> {
+    //
+    let api: string = this.helper.getAPI('timeline');
+
+    return this.http.get(api, this.requestOptions)
+    .toPromise()
+    .then(response => {
+      this.timelines = response.json();
+
+      this.storageTimelines();
+      return response.json();
+    })
     .catch(this.handleError);
   }
 

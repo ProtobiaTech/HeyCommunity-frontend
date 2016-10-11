@@ -11,6 +11,8 @@ export class UtilityComponent {
   loading: Loading;
 
 
+  //
+  // constructor
   constructor(
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
@@ -40,7 +42,7 @@ export class UtilityComponent {
 
 
   //
-  //
+  // present alter
   presentAlter(params?) {
     if (!params) {
       params = {
@@ -59,7 +61,7 @@ export class UtilityComponent {
 
 
   //
-  //
+  // present confirm
   presentConfirm(params?) {
     if (!params) {
       params = {
@@ -91,8 +93,8 @@ export class UtilityComponent {
 
 
   //
-  //
-  presentToast(message: string, duration: number = 3000, position: string = 'bottom') {
+  // present toast
+  presentToast(message: string, duration: number = 3000, position: string = 'top') {
     let toast = this.toastCtrl.create({
       message: message,
       duration: duration,
@@ -103,7 +105,7 @@ export class UtilityComponent {
 
 
   //
-  //
+  // present action sheet
   presentActionSheet(title = 'Operations', btns: Object[] = []) {
     let actionSheet = this.actionSheetCtrl.create({
       title: title,
@@ -111,4 +113,17 @@ export class UtilityComponent {
     });
     actionSheet.present();
   }
+
+
+  //
+  // present modal
+  presentModal(page, params: Object = {}, callback?) {
+    let modal = this.modalCtrl.create(page, params);
+
+    callback && modal.onDidDismiss(callback);
+
+    modal.present();
+  }
+
+
 }

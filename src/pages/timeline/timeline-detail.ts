@@ -3,6 +3,7 @@ import { NavController, NavParams, ActionSheetController, ModalController } from
 
 import { Helper } from '../../other/helper';
 import { AuthenticateComponent } from '../../pages/component/authenticate';
+import { UtilityComponent } from '../../pages/component/utility';
 
 import { AuthenticateService } from '../../services/authenticate.service';
 import { TimelineService } from '../../services/timeline.service';
@@ -24,6 +25,7 @@ export class TimelineDetailPage {
   // constructor
   constructor(
     public helper: Helper,
+    public utilityComp: UtilityComponent,
     public authComp: AuthenticateComponent,
     public authService: AuthenticateService,
     public timelineService: TimelineService,
@@ -40,33 +42,34 @@ export class TimelineDetailPage {
   //
   // present action sheet
   presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Operations',
-      buttons: [
-        {
-          text: 'Destructive',
-          role: 'destructive',
-          handler: () => {
-            console.log('Destructive clicked');
-          }
-        },
-        {
-          text: 'Report',
-          handler: () => {
-            console.log('Report clicked');
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-      ],
-   });
+    let title = 'Operations';
 
-   actionSheet.present();
+    let btnDestructive = {
+      text: 'Destructive',
+      role: 'destructive',
+      handler: () => {
+        console.log('Destructive clicked');
+      }
+    }
+
+    let buttons = [{
+      text: 'Report',
+      handler: () => {
+        console.log('Report clicked');
+      }
+    }, {
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+        console.log('Cancel clicked');
+      }
+    }];
+
+    if (this.authService.isAuth && (this.authService.userInfo.id === this.timeline.user_id || this.authService.userInfo.is_admin)) {
+      buttons.unshift(btnDestructive);
+    }
+
+    this.utilityComp.presentActionSheet(title, buttons);
   }
 
 
@@ -74,13 +77,15 @@ export class TimelineDetailPage {
   // present timeline comment modal
   presentTimelineCommentModal() {
     if (this.authService.isAuth) {
-      let modal = this.modalCtrl.create(TimelineCommentPage, {timeline: this.timeline, timelineIndex: this.timelineIndex});
+      let self = this;
 
-      modal.onDidDismiss(data => {
-        this.timeline = this.timelineService.timelines[this.timelineIndex];
-      });
+      let page = TimelineCommentPage;
+      let params = {timeline: this.timeline, timelineIndex: this.timelineIndex};
+      let callback = function() {
+        self.timeline = self.timelineService.timelines[self.timelineIndex];
+      }
 
-      modal.present();
+      this.utilityComp.presentModal(page, params, callback);
     } else {
       this.authComp.presentAuthModal();
     }

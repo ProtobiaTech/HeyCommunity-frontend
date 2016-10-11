@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, ViewController, Nav, NavParams } from 'ionic-angular';
 
 import { UtilityComponent } from '../../pages/component/utility';
@@ -16,6 +16,8 @@ import { Timeline } from '../../models/timeline.model';
   ],
 })
 export class TimelineCommentPage {
+  @ViewChild('inputComment') inputCommentEl;
+
   timeline: Timeline;
   timelineIndex: number;
   newComment: {content?: string, timeline_id?: number} = {};
@@ -32,6 +34,15 @@ export class TimelineCommentPage {
   ) {
     this.timeline = this.navParams.data.timeline;
     this.timelineIndex = this.navParams.data.timelineIndex;
+  }
+
+
+  //
+  // ionic view did enter
+  ionViewDidEnter() {
+    console.log(this.inputCommentEl);
+    console.log(this.inputCommentEl.nativeElement);
+    this.inputCommentEl.setFocus();
   }
 
 

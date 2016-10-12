@@ -10,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 
 @Component({
-  template: `<ion-nav [root]="rootPage" swipe-to-go-back="true"></ion-nav>`
+  template: `<ion-nav [root]="rootPage" swipeBackEnabled="true"></ion-nav>`
 })
 export class MyApp {
   rootPage = TabsPage;

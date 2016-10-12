@@ -7,7 +7,6 @@ import { UserService } from '../../services/user.service';
 import { AuthenticateService } from '../../services/authenticate.service';
 
 import { MeProfileUpdatePage} from '../../pages/me/me-profileUpdate';
-import { MeAvatarPage} from '../../pages/me/me-avatar';
 
 @Component({
   selector: 'page-me-profile',
@@ -15,7 +14,6 @@ import { MeAvatarPage} from '../../pages/me/me-avatar';
 })
 export class MeProfilePage {
   MeProfileUpdatePage = MeProfileUpdatePage;
-  MeAvatarPage = MeAvatarPage;
 
 
   //

@@ -5,8 +5,8 @@ import { Helper } from '../../other/helper';
 
 import { UserService } from '../../services/user.service';
 import { AuthenticateService } from '../../services/authenticate.service';
+import { User } from '../../models/user.model';
 
-import { MeAvatarPage} from '../../pages/me/me-avatar';
 
 @Component({
   selector: 'page-me-profileUpdate',
@@ -18,7 +18,7 @@ export class MeProfileUpdatePage {
   //
   item: string;
   isUpdated: string = '';
-  userInfo: Object = {};
+  userInfo: User;
 
 
   //
@@ -53,12 +53,14 @@ export class MeProfileUpdatePage {
   //
   // show action sheet
   showActionSheet() {
+    /*
     let btns = [{
       text: 'Update Avatar',
       handler: () => {
         this.selectAvatar();
       },
     }];
+    */
     // this.common.openActionSheet(null, btns);
   }
 
@@ -74,7 +76,7 @@ export class MeProfileUpdatePage {
   //
   uploadAvatar(event) {
     // this.common.openLoadingModal();
-    let files = event.srcElement.files;
+    // let files = event.srcElement.files;
 
     /*
     this.fileUploadService.upload(this.userService.userUpdateAvatarAPI, files).then(data => {

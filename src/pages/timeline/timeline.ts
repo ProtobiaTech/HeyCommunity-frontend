@@ -7,7 +7,6 @@ import { UtilityComponent } from '../../pages/component/utility';
 
 import { AuthenticateService } from '../../services/authenticate.service';
 import { TimelineService } from '../../services/timeline.service';
-import { UserService } from '../../services/user.service';
 
 import { TimelineDetailPage } from '../../pages/timeline/timeline-detail';
 import { TimelineCreatePage } from '../../pages/timeline/timeline-create';

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
 
 import { NoticeService } from '../../services/notice.service';
-import {NoticeType, NoticeTypes} from '../../models/noticeType.model';
+import { NoticeTypes } from '../../models/noticeType.model';
 
 import { Notice } from '../../models/notice.model';
 import { Helper } from '../../other/helper';

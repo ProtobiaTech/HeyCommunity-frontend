@@ -6,6 +6,7 @@ import { AuthenticateComponent } from '../../pages/component/authenticate';
 
 import { AuthenticateService } from '../../services/authenticate.service';
 
+import { MeProfilePage } from '../../pages/me/me-profile';
 import { MeNoticePage } from '../../pages/me/me-notice';
 import { MeTimelinePage } from '../../pages/me/me-timeline';
 import { MeSettingPage } from '../../pages/me/me-setting';
@@ -27,6 +28,17 @@ export class MePage {
     public navCtrl: NavController,
     public authService: AuthenticateService
   ) {
+  }
+
+
+  //
+  // goto me-notice page
+  gotoMeProfilePage() {
+    if (this.authService.isAuth) {
+      this.navCtrl.push(MeProfilePage);
+    } else {
+      this.authComp.presentAuthModal();
+    }
   }
 
 

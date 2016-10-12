@@ -4,7 +4,7 @@
       <ion-col></ion-col>
 
       <ion-col padding-top>
-        <img *ngIf="authService.isAuth" class="avatar" src="{{ helper.getImg(authService.userInfo?.avatar) }}">
+        <img tappable (click)="gotoMeProfilePage()" *ngIf="authService.isAuth" class="avatar" src="{{ helper.getImg(authService.userInfo?.avatar) }}">
         <img *ngIf="!authService.isAuth" class="avatar" src="./assets/images/userAvatar-default.png">
       </ion-col>
 
@@ -24,7 +24,7 @@
     <ion-row>
       <ion-col width-10></ion-col>
 
-      <ion-col id="section-info" *ngIf="authService.isAuth" center class="text-center">
+      <ion-col id="section-info" *ngIf="authService.isAuth" center class="text-center" tappable (click)="gotoMeProfilePage()">
         <div class="nickname">{{ authService.userInfo?.nickname }}</div>
         <div class="bio">{{ authService.userInfo?.bio || '' }}</div>
       </ion-col>

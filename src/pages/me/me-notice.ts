@@ -31,7 +31,6 @@ export class MeNoticePage {
   //
   // ionic view did enter
   ionViewDidEnter() {
-      console.log('did')
     this.noticeService.getIndex();
 
     let ids = this.getNoticesIds();

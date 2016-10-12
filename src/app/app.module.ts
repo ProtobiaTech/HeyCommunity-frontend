@@ -21,6 +21,9 @@ import { TimelineCreatePage } from '../pages/timeline/timeline-create';
 import { TimelineCommentPage } from '../pages/timeline/timeline-comment';
 
 import { MePage } from '../pages/me/me';
+import { MeProfilePage } from '../pages/me/me-profile';
+import { MeProfileUpdatePage } from '../pages/me/me-profileUpdate';
+import { MeAvatarPage } from '../pages/me/me-avatar';
 import { MeNoticePage } from '../pages/me/me-notice';
 import { MeTimelinePage } from '../pages/me/me-timeline';
 import { MeSettingPage } from '../pages/me/me-setting';
@@ -44,6 +47,9 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     TimelineCreatePage,
     TimelineCommentPage,
     MePage,
+    MeProfilePage,
+    MeProfileUpdatePage,
+    MeAvatarPage,
     MeNoticePage,
     MeTimelinePage,
     MeSettingPage,
@@ -70,6 +76,9 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     TimelineCreatePage,
     TimelineCommentPage,
     MePage,
+    MeProfilePage,
+    MeProfileUpdatePage,
+    MeAvatarPage,
     MeNoticePage,
     MeTimelinePage,
     MeSettingPage,

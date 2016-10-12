@@ -1,11 +1,11 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Notices
+      Notices ({{ noticeService.noCheckNotices.length }})
     </ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="showActionSheet()">
         <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>
@@ -13,18 +13,20 @@
 </ion-header>
 
 <ion-content>
+  <div padding [hidden]="noticeService.notices.length > 0">You did not have notices</div>
+
   <ion-list id="section-notices">
-    <ion-item-sliding *ngFor="let notice of notices">
-      <ion-item [ngClass]="{ checked: false }">
+    <ion-item-sliding #item *ngFor="let notice of noticeService.notices">
+      <ion-item [ngClass]="{ checked: notice.is_checked === 1 }">
         <ion-avatar item-left>
           <img src="{{ helper.getImg(notice.initiator.avatar) }}?imageView/2/w/100">
         </ion-avatar>
         <h2>
           {{ notice.initiator.nickname }}
         </h2>
-        <p>{{ 'this is notice' }}</p>
-        <div *ngIf="notice.entity?.imgs" class="pic" item-right>
-          <img *ngFor="let img of notice.entity.imgs" src="{{ helper.getImg(img.uri) }}?imageView/2/w/800">
+        <p>{{ getNoticeText(notice) }}</p>
+        <div *ngIf="notice.entity.images.length > 0" class="pic" item-right>
+          <img src="{{ getImg(notice.entity.images) }}?imageView/2/w/800">
         </div>
       </ion-item>
 

@@ -25,7 +25,6 @@ export class TimelinePage {
     public utilityComp: UtilityComponent,
     public authComp: AuthenticateComponent,
     public timelineService: TimelineService,
-    public userService: UserService,
     public authService: AuthenticateService,
     public navCtrl: NavController,
     public modalCtrl: ModalController
@@ -38,13 +37,6 @@ export class TimelinePage {
   // ion view did enter
   ionViewDidLoad() {
     this.timelineService.index();
-
-    //
-    this.userService.getUser().then(data => {
-      this.authService.logIn(data);
-    }, data => {
-      this.authService.logOut();
-    });
   }
 
 

@@ -6,21 +6,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content id="me" class="page-notice">
-  <ion-card *ngFor="let timeline of timelines" class="timeline-card">
+<ion-content>
+  <ion-card *ngFor="let timeline of timelines; let i=index" class="timeline-card">
     <ion-item class="header">
       <ion-avatar item-left>
         <img class="avatar" src="{{ helper.getImg(timeline.author?.avatar) }}">
       </ion-avatar>
       <h2>
         <span right class="date pull-right">
-          3 days ago
+          {{ timeline.created_at | timeago }}
         </span>
         <span class="author">
           {{ timeline.author?.nickname }}
         </span>
       </h2>
-      <p>{{ timeline.author?.bio }}</p>
+      <p>{{ timeline.author?.bio || ("I'm " + timeline.author?.nickname) }}</p>
     </ion-item>
 
     <div>
@@ -28,36 +28,38 @@
     </div>
     <hr>
 
-    <ion-card-content tappable (click)="gotoTimelineDetailPage(timeline)">
+    <ion-card-content>
       <div class="content">{{ timeline.content }}</div>
     </ion-card-content>
 
     <ion-row class="footer">
       <ion-col>
-        <button ion-button icon-only color="primary" clear small (click)="setLikeForTimeline(timeline)">
-          <ion-icon name="{{ 'heart-outline' }}"></ion-icon>
+        <button ion-button icon-only color="grey" clear small (click)="setLikeForTimeline(timeline)">
+          <ion-icon color="danger" name="{{ timeline.is_like ? 'heart' : 'heart-outline' }}"></ion-icon>
           &nbsp;
-          <div>11 Likes</div>
+          <div>{{ timeline.like_num }} Likes</div>
         </button>
       </ion-col>
       <ion-col>
-        <button ion-button icon-only color="primary" clear small (click)="gotoTimelineDetailPage(timeline)">
+        <button ion-button icon-only color="grey" clear small (click)="gotoTimelineDetailPage(timeline, i)">
           <ion-icon name="text"></ion-icon>
           &nbsp;
-          <div>22 Comments</div>
+          <div>{{ timeline.comment_num }} Comments</div>
         </button>
       </ion-col>
       <ion-col center class="date">
         <ion-note>
-          12-12 11:11:22
+          {{ timeline.created_at | moment: ['MM-DD HH:mm'] }}
         </ion-note>
       </ion-col>
     </ion-row>
 
-    <div (click)="gotoTimelineDetailPage(timeline)" class="comments">
-        <div class="item-comment" *ngFor="let comment of timeline.comments">
+    <div *ngIf="timeline.comment_num" tappable (click)="gotoTimelineDetailPage(timeline)" class="comments">
+        <div *ngFor="let comment of timeline.comments; let i=index;">
+          <div class="item-comment" *ngIf="i < 3">
             <span class="author">{{ comment.author?.nickname }}</span>:
             {{ comment.content }}
+          </div>
         </div>
     </div>
   </ion-card>

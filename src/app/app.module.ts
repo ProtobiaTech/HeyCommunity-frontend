@@ -58,6 +58,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
       tabsHideOnSubPages: true,
       tabbarPlacement: 'bottom',
       backButtonIcon: 'arrow-round-back',
+      backButtonColor: 'dark',
     })
   ],
   bootstrap: [IonicApp],

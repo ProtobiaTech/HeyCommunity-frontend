@@ -3,7 +3,7 @@
     <ion-title>Timeline Detail</ion-title>
 
     <ion-buttons end>
-      <button *ngIf="authService.isAuth" ion-button icon-only (click)="presentActionSheet()">
+      <button color="grey" *ngIf="authService.isAuth" ion-button icon-only (click)="presentActionSheet()">
         <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>
@@ -17,7 +17,7 @@
       <img class="avatar" src="{{ helper.getImg(timeline.author.avatar) }}?imageView/2/w/100">
       <div #contentBox class="comment-content">
         <div class="header">
-          <a>{{ timeline.author.nickname }}</a>
+          <a color="dark">{{ timeline.author.nickname }}</a>
           <span class="pull-right">{{ timeline.created_at | moment: ['MM-DD HH:mm'] }}</span>
         </div>
         {{ timeline.content }}
@@ -28,11 +28,11 @@
       <img class="avatar" src="{{ helper.getImg(comment.author.avatar) }}?imageView/2/w/100">
       <div class="comment-content">
         <div class="header">
-          <a>{{ comment.author.nickname }}</a>
+          <a color="dark">{{ timeline.author.nickname }}</a>
           <span class="pull-right">
-            <span clolr="grey" *ngIf="!authService.isAuth">{{ comment.created_at | moment: ['MM-DD HH:mm'] }}</span>
+            <span color="grey">{{ comment.created_at | moment: ['MM-DD HH:mm'] }}</span>
             &nbsp;
-            <button *ngIf="authService.isAuth" ion-button class="btn-comment-reply" small primary clear (click)="presentTimelineCommentModal()">
+            <button color="grey" *ngIf="false && authService.isAuth" ion-button class="btn-comment-reply" small primary clear (click)="presentTimelineCommentModal()">
                 <ion-icon name="undo"></ion-icon> &nbsp; Comment
             </button>
           </span>

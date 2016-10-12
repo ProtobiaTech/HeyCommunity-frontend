@@ -40,6 +40,27 @@ export class TimelineDetailPage {
 
 
   //
+  // destroy
+  destroy() {
+    this.utilityComp.presentLoading();
+
+    this.timelineService.destroy(this.timeline)
+    .then((ret) => {
+      this.utilityComp.dismissLoading();
+
+      let index = this.timelineService.timelines.indexOf(this.timeline);
+      this.timelineService.timelines.splice(index, 1);
+
+      this.navCtrl.pop();
+    }, (ret) => {
+      this.utilityComp.dismissLoading();
+      let content = JSON.parse(ret._body);
+      this.utilityComp.presentAlter({title: 'Alter', subTitle: content});
+    });
+  }
+
+
+  //
   // present action sheet
   presentActionSheet() {
     let title = 'Operations';
@@ -48,14 +69,15 @@ export class TimelineDetailPage {
       text: 'Destructive',
       role: 'destructive',
       handler: () => {
-        console.log('Destructive clicked');
+        let self = this;
+        self.destroy();
       }
     }
 
     let buttons = [{
       text: 'Report',
       handler: () => {
-        console.log('Report clicked');
+        this.utilityComp.presentAlter({title: 'Report', subTitle: 'Thanks for your report'});
       }
     }, {
       text: 'Cancel',

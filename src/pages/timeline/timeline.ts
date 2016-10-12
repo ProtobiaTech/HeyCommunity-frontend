@@ -74,8 +74,6 @@ export class TimelinePage {
   // present timeline create modal
   presentTimelineCreateModal() {
     if (this.authService.isAuth) {
-      let self = this;
-
       let page = TimelineCreatePage;
       let params = {}
       let callback = function() {

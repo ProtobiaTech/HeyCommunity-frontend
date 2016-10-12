@@ -39,7 +39,13 @@ export class Helper {
       if (this.platform.is('cordova')) {
         return 'http://public.hey-community.cn/' + uri;
       } else {
-        return uri;
+        let api = this.getParameterByName('api')
+
+        if (api) {
+          return 'http://' + api + '/' + uri;
+        } else {
+          return uri;
+        }
       }
     }
   }

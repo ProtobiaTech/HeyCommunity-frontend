@@ -1,3 +1,11 @@
+ion-header {
+  ion-navbar {
+    .back-button {
+      color: color($colors, grey);
+    }
+  }
+}
+
 ion-content .scroll-content {
   background-color: $background-color;
   color: $text-color;

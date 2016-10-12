@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons start>
-      <button ion-button (click)="dismiss()">
+      <button color="grey" ion-button (click)="dismiss()">
         Close
       </button>
     </ion-buttons>
@@ -9,7 +9,7 @@
     <ion-title>Timeline Create</ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="timelineCreateHandler(timelineCreateForm)">
+      <button color="grey" ion-button (click)="timelineCreateHandler(timelineCreateForm)">
         Send
       </button>
     </ion-buttons>
@@ -28,15 +28,23 @@
   </ion-list>
 
   <div class="media-toolbar">
-    <button ion-button icon-only dark outline clear (click)="selectImgs()">
+    <button color="dark" ion-button icon-only outline clear (click)="selectImgs()">
       <ion-icon name="images"></ion-icon>
     </button>
-    <button ion-button icon-only disabled dark outline clear>
+    <button color="dark" ion-button icon-only disabled outline clear>
       <ion-icon name="videocam"></ion-icon>
+    </button>
+    <button color="dark" ion-button icon-only disabled outline clear (click)="selectImgs()">
+      <ion-icon name="at"></ion-icon>
+    </button>
+    <button color="dark" ion-button icon-only disabled outline clear (click)="selectImgs()">
+      <ion-icon name="locate"></ion-icon>
     </button>
   </div>
 
-  <input #inputImgs [hidden]="true" type="file" (change)="uploadImgs($event)" multiple accept="image/*">
+  <div class="hide hidden">
+      <input #inputImgs [hidden]="true" type="file" (change)="uploadImgs($event)" multiple accept="image/*">
+  </div>
   <hr>
 
   <div class="preview-imgs">

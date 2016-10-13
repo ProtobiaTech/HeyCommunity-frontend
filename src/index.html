@@ -7,6 +7,14 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
+  <!-- web app icon -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white-translucent">
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/images/apple-touch-icon.png">
+
   <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
   <link rel="manifest" href="assets/manifest.json">
   <meta name="theme-color" content="#4e8ef7">
@@ -20,7 +28,7 @@
     }
   </script>-->
 
-  <link href="build/main.css" rel="stylesheet">
+  <link href="build/main.css?v=2.0.0-alpha.3-d1013" rel="stylesheet">
 
 </head>
 <body>
@@ -29,13 +37,31 @@
   <ion-app></ion-app>
 
   <!-- cordova.js required for cordova apps -->
-  <script src="cordova.js"></script>
+  <script src="cordova.js?v=2.0.0-alpha.3-d1013"></script>
 
   <!-- The polyfills js is generated during the build process -->
-  <script src="build/polyfills.js"></script>
+  <script src="build/polyfills.js?v=2.0.0-alpha.3-d1013"></script>
 
   <!-- The bundle js is generated during the build process -->
-  <script src="build/main.js"></script>
+  <script src="build/main.js?v=2.0.0-alpha.3-d1013"></script>
 
+
+  <div style="display:none">
+    <!-- ta -->
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=58423128" charset="UTF-8"></script>
+
+    <!-- google analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-68392745-8', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    <!-- cnzz -->
+    <script src="http://s95.cnzz.com/z_stat.php?id=1260361034&web_id=1260361034" language="JavaScript"></script>
 </body>
 </html>

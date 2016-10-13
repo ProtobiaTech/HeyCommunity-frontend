@@ -19,7 +19,7 @@
 
 <ion-content>
   <ion-list id="section-textarea">
-    <form #timelineCreateForm="ngForm" (ngSubmit)="timelineCreateHandler(timelineCreateForm)" novalidate>
+    <form #timelineCreateForm="ngForm" novalidate>
         <ion-item>
           <ion-textarea [(ngModel)]="newTimeline.content" name="content" rows="8" placeholder="What is new">
           </ion-textarea>
@@ -31,7 +31,7 @@
     <button color="dark" ion-button icon-only outline clear (click)="selectImgs()">
       <ion-icon name="images"></ion-icon>
     </button>
-    <button color="dark" ion-button icon-only disabled outline clear>
+    <button color="dark" ion-button icon-only disabled outline clear (click)="selectVideo()">
       <ion-icon name="videocam"></ion-icon>
     </button>
     <button color="dark" ion-button icon-only disabled outline clear (click)="selectImgs()">
@@ -41,13 +41,15 @@
       <ion-icon name="locate"></ion-icon>
     </button>
   </div>
-
-  <div class="hide hidden">
-      <input #inputImgs [hidden]="true" type="file" (change)="uploadImgs($event)" multiple accept="image/*">
-  </div>
+  <input #inputImgs [hidden]="!helper.platform.is('ios')" type="file" (click)="inputImgs.value = null" (change)="uploadImgs($event)" multiple accept="image/*">
+  <input #inputVideo [hidden]="!helper.platform.is('ios')" type="file" (click)="inputVideo.value = null"  (change)="uploadVideo($event)" multiple accept="video/*">
   <hr>
 
   <div class="preview-imgs">
-    <img *ngIf="false" src="{{ '' }}?imageView/2/w/100">
+    <img *ngFor="let item of imgs" src="{{ helper.getImg(item.uri) }}?imageView/2/w/100">
+  </div>
+
+  <div class="preview-video" *ngIf="video">
+    <video width="60" (click)="videoPlay($event)" poster="{{ helper.getVideo(video.poster) }}" src="{{ video.uri }}"></video>
   </div>
 </ion-content>

@@ -6,6 +6,8 @@ import { AuthenticateComponent } from '../../pages/component/authenticate';
 import { UtilityComponent } from '../../pages/component/utility';
 
 import { AuthenticateService } from '../../services/authenticate.service';
+import { UserService } from '../../services/user.service';
+import { NoticeService } from '../../services/notice.service';
 import { TimelineService } from '../../services/timeline.service';
 
 import { TimelineDetailPage } from '../../pages/timeline/timeline-detail';
@@ -24,10 +26,18 @@ export class TimelinePage {
     public utilityComp: UtilityComponent,
     public authComp: AuthenticateComponent,
     public timelineService: TimelineService,
+    public userService: UserService,
+    public noticeService: NoticeService,
     public authService: AuthenticateService,
     public navCtrl: NavController,
     public modalCtrl: ModalController
   ) {
+    console.log('Hey Timeline ~');
+
+    // get auth user
+    this.authService.getUser();
+
+    // get timelines from storage
     this.timelineService.getTimelinesFromStorage();
   }
 
@@ -35,7 +45,20 @@ export class TimelinePage {
   //
   // ion view did enter
   ionViewDidLoad() {
+    // get user
+    this.userService.getUser().then(data => {
+      this.authService.logIn(data);
+    }, data => {
+      this.authService.logOut();
+    });
+
+    // get timelines
     this.timelineService.index();
+
+    // get notices
+    if (this.authService.isAuth) {
+      this.noticeService.getIndex();
+    }
   }
 
 
@@ -87,6 +110,8 @@ export class TimelinePage {
     this.timelineService.refresh(params)
     .then(timelines => {
       refresher.complete();
+    }, ret => {
+      refresher.complete();
     });
   }
 
@@ -100,6 +125,8 @@ export class TimelinePage {
 
     this.timelineService.infinite(params)
     .then(timelines => {
+      infiniteScroll.complete();
+    }, ret => {
       infiniteScroll.complete();
     });
   }

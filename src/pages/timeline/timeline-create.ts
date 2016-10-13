@@ -1,5 +1,5 @@
 import { Component, ViewChild, Renderer } from '@angular/core';
-import { NavController, ViewController, Nav, NavParams, Events } from 'ionic-angular';
+import { NavController, ViewController, Nav, Events } from 'ionic-angular';
 
 import { Helper } from '../../other/helper';
 import { UtilityComponent } from '../../pages/component/utility';

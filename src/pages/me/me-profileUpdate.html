@@ -4,8 +4,8 @@
       Update Profile
     </ion-title>
 
-    <ion-buttons end [hidden]="item !== 'avatar' || helper.platform.is('ios')">
-      <button (click)="showActionSheet()">
+    <ion-buttons end *ngIf="false && item == 'avatar' || !helper.platform.is('ios')">
+      <button ion-button (click)="showActionSheet()">
           <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>
@@ -38,8 +38,10 @@
     </ion-item>
   </ion-list>
 
-  <div padding class="avatar" [hidden]="item !== 'avatar'">
-    <img src="{{ helper.getImg(userInfo.avatar) }}?imageView/2/w/100">
-    <input #inputAvatar [hidden]="true || !helper.platform.is('ios')" type="file" (change)="uploadAvatar($event)" accept="image/*">
+  <div padding class="avatar text-center" [hidden]="item !== 'avatar'">
+    <img style="width:200px; margin-top:60px;" src="{{ helper.getImg(userInfo.avatar) }}?imageView/2/w/200">
+    <br>
+    <br>
+    <input #inputAvatar type="file" (change)="uploadAvatar($event)" accept="image/*">
   </div>
 </ion-content>

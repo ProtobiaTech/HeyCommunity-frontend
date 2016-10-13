@@ -2,15 +2,20 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { Helper } from '../../other/helper';
+import { UtilityComponent } from '../../pages/component/utility';
 
 import { UserService } from '../../services/user.service';
 import { AuthenticateService } from '../../services/authenticate.service';
+import { FileUploadService } from '../../services/fileUpload.service';
 import { User } from '../../models/user.model';
 
 
 @Component({
   selector: 'page-me-profileUpdate',
-  templateUrl: 'me-profileUpdate.html'
+  templateUrl: 'me-profileUpdate.html',
+  providers: [
+    FileUploadService,
+  ],
 })
 export class MeProfileUpdatePage {
   @ViewChild('inputAvatar') inputAvatarEl;
@@ -25,8 +30,10 @@ export class MeProfileUpdatePage {
   //
   constructor(
     public helper: Helper,
+    public utilityComp: UtilityComponent,
     public userService: UserService,
     public authService: AuthenticateService,
+    public fileUploadService: FileUploadService,
     public navParams: NavParams,
     public navCtrl: NavController
   ) {
@@ -75,19 +82,17 @@ export class MeProfileUpdatePage {
   //
   //
   uploadAvatar(event) {
-    // this.common.openLoadingModal();
-    // let files = event.srcElement.files;
+    this.utilityComp.presentLoading();
+    let files = event.srcElement.files;
 
-    /*
     this.fileUploadService.upload(this.userService.userUpdateAvatarAPI, files).then(data => {
-      this.auth.reset(data);
+      this.authService.reset(data);
       this.userInfo = data;
-      this.common.dismissLoadingModal();
-      this.common.openToast('Update Avatar success');
+      this.utilityComp.dismissLoading();
+      this.utilityComp.presentToast('Update Avatar success');
     }, () => {
-      this.common.dismissLoadingModal();
-      this.common.openToast('Update Avatar failed');
+      this.utilityComp.dismissLoading();
+      this.utilityComp.presentToast('Update Avatar failed');
     });
-    */
   }
 }

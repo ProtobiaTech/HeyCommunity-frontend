@@ -10,8 +10,8 @@
 
       <ion-col id="section-btns" text-right>
         <ion-buttons>
-          <button *ngIf="authService.isAuth" class="hide" ion-button clear icon-only color="grey">
-            <ion-icon name="image"></ion-icon>
+          <button *ngIf="authService.isAuth" ion-button clear icon-only color="grey" (click)="gotoMeProfilePage()">
+            <ion-icon name="information-circle"></ion-icon>
           </button>
 
           <button *ngIf="authService.isAuth" ion-button clear icon-only color="grey" [navPush]="MeSettingPage">

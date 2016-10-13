@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons start>
-      <button ion-button icon-only (click)="cancelModal()">Cancel</button>
+      <button color="grey" ion-button icon-only (click)="cancelModal()">Cancel</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -26,15 +26,15 @@
         </ion-list>
 
         <div class="session-bottom">
-          <button ion-button dark clear small disabled type="button">forget password?</button>
+          <button color="grey" ion-button dark clear small disabled type="button">forget password?</button>
 
           <div class="pull-right">
-            <button ion-button dark clear small (click)="currentModal = 'SignUp'" type="button">Sign Up</button>
+            <button color="grey" ion-button dark clear small (click)="currentModal = 'SignUp'" type="button">Sign Up</button>
           </div>
         </div>
 
         <div padding-left padding-right>
-          <button ion-button  block [disabled]="!logInForm.valid" type="submit">Log In</button>
+          <button color="grey" ion-button  block [disabled]="!logInForm.valid" type="submit">Log In</button>
         </div>
       </form>
   </div>
@@ -64,15 +64,15 @@
         </ion-list>
 
         <div class="session-bottom">
-          <button ion-button clear small type="button"></button>
+          <button color="grey" ion-button clear small type="button"></button>
 
           <div class="pull-right">
-            <button ion-button dark clear small (click)="currentModal = 'LogIn'" type="button">Log In</button>
+            <button color="grey" ion-button dark clear small (click)="currentModal = 'LogIn'" type="button">Log In</button>
           </div>
         </div>
 
         <div padding-left padding-right>
-          <button ion-button block [disabled]="!signUpForm.valid" type="submit">Sign Up</button>
+          <button color="grey" ion-button block [disabled]="!signUpForm.valid" type="submit">Sign Up</button>
         </div>
       </form>
   </div>

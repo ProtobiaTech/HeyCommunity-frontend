@@ -28,21 +28,29 @@
   </ion-list>
 
   <div class="media-toolbar">
-    <button color="dark" ion-button icon-only outline clear (click)="selectImgs()">
+    <button #btnImgs color="dark" ion-button icon-only outline clear>
       <ion-icon name="images"></ion-icon>
     </button>
-    <button color="dark" ion-button icon-only disabled outline clear (click)="selectVideo()">
+    <button color="dark" ion-button icon-only disabled outline clear>
       <ion-icon name="videocam"></ion-icon>
     </button>
-    <button color="dark" ion-button icon-only disabled outline clear (click)="selectImgs()">
+    <button color="dark" ion-button icon-only disabled outline clear>
       <ion-icon name="at"></ion-icon>
     </button>
-    <button color="dark" ion-button icon-only disabled outline clear (click)="selectImgs()">
+    <button color="dark" ion-button icon-only disabled outline clear>
       <ion-icon name="locate"></ion-icon>
     </button>
   </div>
-  <input #inputImgs [hidden]="!helper.platform.is('ios')" type="file" (click)="inputImgs.value = null" (change)="uploadImgs($event)" multiple accept="image/*">
-  <input #inputVideo [hidden]="!helper.platform.is('ios')" type="file" (click)="inputVideo.value = null"  (change)="uploadVideo($event)" multiple accept="video/*">
+
+  <div class="">
+    <br>
+    <br>
+    <br>
+    <br>
+    <input #inputImgs type="file" (click)="inputImgs.value = null" (change)="uploadImgs($event)" multiple accept="image/*">
+    <input class="hide" #inputVideo type="file" (click)="inputVideo.value = null"  (change)="uploadVideo($event)" multiple accept="video/*">
+  </div>
+
   <hr>
 
   <div class="preview-imgs">

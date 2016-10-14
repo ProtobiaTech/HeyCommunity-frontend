@@ -36,6 +36,11 @@
     <div>
       <img *ngFor="let img of timeline.imgs" src="{{ helper.getImg(img.uri) }}">
     </div>
+
+    <div *ngIf="timeline.video">
+      <video width="100%" loop="false" (click)="videoPlay($event)" poster="{{ helper.getImg(timeline.poster) }}" src="{{ helper.getVideo(timeline.video) }}"></video>
+    </div>
+
     <hr>
 
     <ion-card-content>

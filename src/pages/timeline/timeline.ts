@@ -101,6 +101,17 @@ export class TimelinePage {
 
 
   //
+  //
+  videoPlay(event) {
+    if (event.srcElement.paused) {
+      event.srcElement.play();
+    } else {
+      event.srcElement.pause();
+    }
+  }
+
+
+  //
   // Refresh
   doRefresh(refresher) {
     let params: any = {

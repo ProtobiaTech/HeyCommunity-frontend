@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Events } from 'ionic-angular';
 import { NavController, ModalController } from 'ionic-angular';
 
 import { Helper } from '../../other/helper';
@@ -22,6 +23,7 @@ export class TimelinePage {
   //
   // constructor
   constructor(
+    public events: Events,
     public helper: Helper,
     public utilityComp: UtilityComponent,
     public authComp: AuthenticateComponent,
@@ -48,17 +50,15 @@ export class TimelinePage {
     // get user
     this.userService.getUser().then(data => {
       this.authService.logIn(data);
+
+      // get notice
+      this.noticeService.getIndex();
     }, data => {
       this.authService.logOut();
     });
 
     // get timelines
     this.timelineService.index();
-
-    // get notices
-    if (this.authService.isAuth) {
-      this.noticeService.getIndex();
-    }
   }
 
 

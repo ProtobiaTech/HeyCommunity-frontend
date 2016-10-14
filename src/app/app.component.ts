@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, Events } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
+
+import { NoticeService } from '../services/notice.service';
 
 import { TabsPage } from '../pages/tabs/tabs';
 // import { TutorialPage } from '../pages/tutorial/tutorial';
@@ -10,6 +12,8 @@ import { TabsPage } from '../pages/tabs/tabs';
   template: `<ion-nav [root]="rootPage" swipeBackEnabled="true"></ion-nav>`
 })
 export class MyApp {
+  noticeInterval: any;
+
   rootPage = TabsPage;
   // rootPage = TutorialPage;
 
@@ -17,6 +21,8 @@ export class MyApp {
   //
   // constructor
   constructor(
+    public events: Events,
+    public noticeService: NoticeService,
     public platform: Platform
   ) {
     platform.ready().then(() => {
@@ -26,5 +32,22 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
     });
+
+    //
+    this.events.subscribe('auth:loggedIn', () => {
+      console.log('user is logged-in');
+
+      this.noticeInterval = setInterval(() => {
+        this.noticeService.getIndex();
+      }, 15000);
+    });
+
+    //
+    this.events.subscribe('auth:loggedOut', () => {
+      console.log('user is logged-out');
+
+      clearInterval(this.noticeInterval);
+    });
+
   }
 }

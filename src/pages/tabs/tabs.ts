@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { NoticeService } from '../../services/notice.service';
+
 import { TimelinePage } from '../timeline/timeline';
 import { MePage } from '../me/me';
 
@@ -16,6 +18,8 @@ export class TabsPage {
 
   //
   // construct
-  constructor() {
+  constructor(
+    public noticeService: NoticeService
+  ) {
   }
 }

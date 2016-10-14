@@ -55,3 +55,9 @@ ion-footer {
     background-color: color($colors, grey) !important;
   }
 }
+
+.no-badge {
+  ion-badge {
+    display: none;
+  }
+}

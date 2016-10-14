@@ -5,6 +5,7 @@ import { Helper } from '../../other/helper';
 import { AuthenticateComponent } from '../../pages/component/authenticate';
 
 import { AuthenticateService } from '../../services/authenticate.service';
+import { NoticeService } from '../../services/notice.service';
 
 import { MeProfilePage } from '../../pages/me/me-profile';
 import { MeNoticePage } from '../../pages/me/me-notice';
@@ -24,9 +25,10 @@ export class MePage {
   // constructor
   constructor(
     public helper: Helper,
+    public authService: AuthenticateService,
+    public noticeService: NoticeService,
     public authComp: AuthenticateComponent,
-    public navCtrl: NavController,
-    public authService: AuthenticateService
+    public navCtrl: NavController
   ) {
   }
 

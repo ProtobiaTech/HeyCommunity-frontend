@@ -28,12 +28,17 @@
   </ion-list>
 
   <div class="media-toolbar">
-    <button #btnImgs color="dark" ion-button icon-only outline clear>
-      <ion-icon name="images"></ion-icon>
+    <button color="dark" ion-button icon-only outline clear>
+      <ion-icon name="images">
+      </ion-icon>
+      <input class="input-imgs" #inputImgs type="file" (click)="inputImgs.value = null" (change)="uploadImgs($event)" multiple accept="image/*" value="Select multiple images">
     </button>
-    <button color="dark" ion-button icon-only disabled outline clear>
+
+    <button color="dark" ion-button icon-only outline clear>
       <ion-icon name="videocam"></ion-icon>
+      <input class="input-video" #inputVideo type="file" (click)="inputVideo.value = null"  (change)="uploadVideo($event)" accept="video/*" value="Select a video">
     </button>
+
     <button color="dark" ion-button icon-only disabled outline clear>
       <ion-icon name="at"></ion-icon>
     </button>
@@ -42,16 +47,9 @@
     </button>
   </div>
 
-  <div class="">
-    <br>
-    <br>
-    <input #inputImgs type="file" (click)="inputImgs.value = null" (change)="uploadImgs($event)" multiple accept="image/*">
-    <input class="hide" #inputVideo type="file" (click)="inputVideo.value = null"  (change)="uploadVideo($event)" multiple accept="video/*">
-  </div>
-
   <hr>
 
-  <div class="preview-imgs">
+  <div class="preview-imgs" *ngIf="imgs">
     <img *ngFor="let item of imgs" src="{{ helper.getImg(item.uri) }}?imageView/2/w/100">
   </div>
 

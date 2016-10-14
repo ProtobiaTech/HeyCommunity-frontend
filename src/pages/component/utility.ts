@@ -98,6 +98,7 @@ export class UtilityComponent {
     let toast = this.toastCtrl.create({
       message: message,
       duration: duration,
+      cssClass: 'hc-toast',
       position: position,
     });
     toast.present();

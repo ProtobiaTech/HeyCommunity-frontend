@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons start>
-      <button color="grey" ion-button icon-only (click)="cancelModal()">Cancel</button>
+      <button color="grey" ion-button icon-only (click)="cancelModal()">{{ 'Cancel' | translate }}</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -10,31 +10,31 @@
   <!-- log in -->
   <div [hidden]="currentModal === 'SignUp'">
       <div padding-bottom></div>
-      <h3 class="text-center">Log In</h3>
+      <h3 class="text-center">{{ 'Log In' | translate }}</h3>
 
       <form #logInForm="ngForm" (ngSubmit)="logInHandler(logInForm)">
         <ion-list>
           <ion-item>
-            <ion-label primary>Phone</ion-label>
+            <ion-label primary>{{ 'Phone' | translate }}</ion-label>
             <ion-input [(ngModel)]="logInModel.phone" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label primary>Password</ion-label>
+            <ion-label primary>{{ 'Password' | translate }}</ion-label>
             <ion-input [(ngModel)]="logInModel.password" name="password" type="password" required ngModel minlength="6"></ion-input>
           </ion-item>
         </ion-list>
 
         <div class="session-bottom">
-          <button color="grey" ion-button dark clear small disabled type="button">forget password?</button>
+          <button color="grey" ion-button dark clear small disabled type="button">{{ 'Forget Password?' | translate }}</button>
 
           <div class="pull-right">
-            <button color="grey" ion-button dark clear small (click)="currentModal = 'SignUp'" type="button">Sign Up</button>
+            <button color="grey" ion-button dark clear small (click)="currentModal = 'SignUp'" type="button">{{ 'Sign Up' | translate }}</button>
           </div>
         </div>
 
         <div padding-left padding-right>
-          <button color="grey" ion-button  block [disabled]="!logInForm.valid" type="submit">Log In</button>
+          <button color="grey" ion-button  block [disabled]="!logInForm.valid" type="submit">{{ 'Log In' | translate }}</button>
         </div>
       </form>
   </div>
@@ -43,22 +43,22 @@
   <!-- sign up -->
   <div [hidden]="currentModal === 'LogIn'">
       <div padding-bottom></div>
-      <h3 class="text-center">Sign Up</h3>
+      <h3 class="text-center">{{ 'Sign Up' | translate }}</h3>
 
       <form #signUpForm="ngForm" (ngSubmit)="signUpHandler(signUpForm)">
         <ion-list>
           <ion-item>
-            <ion-label primary>Nickname</ion-label>
+            <ion-label primary>{{ 'Nickname' | translate }}</ion-label>
             <ion-input [(ngModel)]="signUpModel.nickname" name="nickname" type="text" required minlength="3"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label primary>Phone</ion-label>
+            <ion-label primary>{{ 'Phone' | translate }}</ion-label>
             <ion-input [(ngModel)]="signUpModel.phone" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label primary>Password</ion-label>
+            <ion-label primary>{{ 'Password' | translate }}</ion-label>
             <ion-input [(ngModel)]="signUpModel.password" name="password" type="text" required ngModel minlength="6"></ion-input>
           </ion-item>
         </ion-list>
@@ -67,12 +67,12 @@
           <button color="grey" ion-button clear small type="button"></button>
 
           <div class="pull-right">
-            <button color="grey" ion-button dark clear small (click)="currentModal = 'LogIn'" type="button">Log In</button>
+            <button color="grey" ion-button dark clear small (click)="currentModal = 'LogIn'" type="button">{{ 'Log In' | translate }}</button>
           </div>
         </div>
 
         <div padding-left padding-right>
-          <button color="grey" ion-button block [disabled]="!signUpForm.valid" type="submit">Sign Up</button>
+          <button color="grey" ion-button block [disabled]="!signUpForm.valid" type="submit">{{ 'Sign Up' | translate }}</button>
         </div>
       </form>
   </div>

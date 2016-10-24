@@ -40,18 +40,18 @@
 
   <ion-list no-border padding-top>
     <ion-list-header>
-      Data
+      {{ 'Mine' | translate }}
     </ion-list-header>
 
     <button ion-item (click)="gotoMeNoticePage()">
       <ion-icon name="notifications" item-left></ion-icon>
-      Notices
+      {{ 'Notices' | translate }}
       <ion-badge light item-right color="{{ noticeService.noCheckNotices.length ? 'danger' : 'grey' }}">{{ noticeService.noCheckNotices.length }}</ion-badge>
     </button>
 
     <button ion-item (click)="gotoMeTimelinePage()">
       <ion-icon name="snow" item-left></ion-icon>
-      My Timeline
+      {{ 'My Park Activity' | translate }}
     </button>
   </ion-list>
 </ion-content>

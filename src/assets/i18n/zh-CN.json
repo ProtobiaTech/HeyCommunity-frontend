@@ -1,0 +1,86 @@
+{
+    "Please Wait ...":                  "请等待 ...",
+    "Alert":                            "注意 ...",
+    "Confirm":                          "注意 ...",
+    "Operations":                       "操作 ...",
+    "Report":                           "报告",
+    "Thanks For Your Report":           "感谢你的举报",
+
+    "Create":                       "创建",
+    "Destory":                      "删除",
+    "Destructive":                  "删除",
+    "Cancel":                       "取消",
+    "Close":                        "关闭",
+    "Detail":                       "详情",
+
+
+
+
+
+    "Park":                         "公园",
+    "Novelty":                      "新鲜事",
+    "Likes":                        "喜爱",
+    "Comments":                     "评论",
+    "A Comment":                    "评论",
+    "Say Something ...":            "说点什么 ...",
+    "Whats New ...":                "有什么新鲜事 ...",
+    "Send":                         "发布",
+
+
+
+
+
+    "Mine":                         "我的",
+    "Notices":                      "通知",
+    "My Park Activity":             "我的公园动态",
+    "Settings":                     "设置",
+    "Language":                     "语言",
+    "Clear Cache":                  "清除缓存",
+    "About":                        "关于",
+    "Profile":                      "个人信息",
+    "Update Profile":               "更新个人信息",
+    "Avatar":                       "头像",
+    "Update Avatar":                "更新头像",
+    "ID":                           "ID",
+    "Gender":                       "性别",
+    "Male":                         "男性",
+    "Female":                       "女性",
+    "Bio":                          "个性签名",
+
+
+
+
+
+    "User":                         "用户",
+    "Sign Up":                      "注册",
+    "Log In":                       "登录",
+    "Log Out":                      "登出",
+    "Nickname":                     "昵称",
+    "Phone":                        "手机",
+    "Password":                     "密码",
+    "Forget Password?":             "忘记密码?",
+
+
+    "Welcome back":                 "欢迎回来",
+    "Log In Failed":                "登录失败",
+    "Sign Up Success, Welcome ":    "登录成功, 欢迎 ",
+    "SignUp Failed":                "注册失败",
+
+
+
+
+
+    "Me":                           "我",
+    "Check All":                    "所有标记为已读",
+    "Remove All":                   "删除所有",
+
+
+
+
+
+
+
+
+
+    "HeyCommunity":                 "HEY社区"
+}

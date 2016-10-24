@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
+import { TranslateService } from 'ng2-translate';
 
 import { NoticeService } from '../../services/notice.service';
 import { NoticeTypes } from '../../models/noticeType.model';
@@ -19,6 +20,7 @@ export class MeNoticePage {
   //
   // constructor
   constructor(
+    public translateService: TranslateService,
     public helper: Helper,
     public noticeService: NoticeService,
     public actionSheetCtrl: ActionSheetController,
@@ -117,12 +119,12 @@ export class MeNoticePage {
   // show action sheet
   showActionSheet() {
     let buttons = [{
-      text: 'Check All',
+      text: this.translateService.instant('Check All'),
       handler: () => {
         this.check(this.getNoticesIds());
       }
     }, {
-      text: 'Remove All',
+      text: this.translateService.instant('Remove All'),
       role: 'destructive',
       handler: () => {
         this.destroyAll();
@@ -130,7 +132,7 @@ export class MeNoticePage {
     }];
 
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Operations',
+      title: this.translateService.instant('Operations'),
       buttons: buttons,
     });
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
+import { TranslateService } from 'ng2-translate';
 
 import { UtilityComponent } from '../../pages/component/utility';
 
@@ -25,6 +26,7 @@ export class AuthenticatePage {
   //
   // constructor
   constructor(
+    public translateService: TranslateService,
     public utilityComp: UtilityComponent,
     public viewCtrl: ViewController,
     public userService: UserService,
@@ -57,11 +59,11 @@ export class AuthenticatePage {
 
         this.auth.logIn(ret);
         this.viewCtrl.dismiss().then((data) => {
-          this.utilityComp.presentToast('Welcome back');
+          this.utilityComp.presentToast(ret.nickname + ', ' + this.translateService.instant('Welcome back'),);
         });
       }, (data) => {
         this.utilityComp.dismissLoading();
-        this.utilityComp.presentAlter({title: 'LogIn Failed', subTitle: data._body});
+        this.utilityComp.presentAlter({title: this.translateService.instant('Log In Failed'), subTitle: data._body});
       });
     }
   }
@@ -84,12 +86,12 @@ export class AuthenticatePage {
         this.auth.logIn(ret);
         this.viewCtrl.dismiss().then(() => {
           this.utilityComp.dismissLoading();
-          this.utilityComp.presentToast('Sign up success, Welcome ' + ret.nickname);
+          this.utilityComp.presentToast(this.translateService.instant('Sign Up Success, Welcome ') + ret.nickname);
         });
       }, (data) => {
         this.utilityComp.dismissLoading().then(() => {
           let body = JSON.parse(data._body);
-          this.utilityComp.presentAlter({title: 'SignUp Failed', subTitle: body[Object.keys(body)[0]]});
+          this.utilityComp.presentAlter({title: this.translateService.instant('Sign Up Failed'), subTitle: body[Object.keys(body)[0]]});
         });
       });
     }

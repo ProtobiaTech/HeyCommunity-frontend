@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Platform, Events } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
+import { TranslateService } from 'ng2-translate';
 
 import { NoticeService } from '../services/notice.service';
 
@@ -21,6 +22,7 @@ export class MyApp {
   //
   // constructor
   constructor(
+    public translateService: TranslateService,
     public events: Events,
     public noticeService: NoticeService,
     public platform: Platform
@@ -31,6 +33,10 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+
+
+      this.translateService.setDefaultLang('zh-CN');
+      this.translateService.use('zh-CN');
     });
 
     //

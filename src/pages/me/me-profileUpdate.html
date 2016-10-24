@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Update Profile
+      {{ 'Update Profile' | translate }}
     </ion-title>
 
     <ion-buttons end *ngIf="false && item == 'avatar' || !helper.platform.is('ios')">
@@ -15,25 +15,25 @@
 <ion-content id="me" class="page-updateProfile">
   <ion-list padding-top [hidden]="item !== 'name'">
     <ion-item>
-      <ion-input [(ngModel)]="userInfo.nickname" (ngModelChange)="isUpdated = 'nickname'" name="nickname" type="text" placeholder="Nickame" required minlength="3"></ion-input>
+      <ion-input [(ngModel)]="userInfo.nickname" (ngModelChange)="isUpdated = 'nickname'" name="nickname" type="text" placeholder="{{ 'Nickame' | translate }}" required minlength="3"></ion-input>
     </ion-item>
   </ion-list>
 
   <ion-list padding-top [hidden]="item !== 'bio'">
     <ion-item>
-      <ion-textarea [(ngModel)]="userInfo.bio" (ngModelChange)="isUpdated = 'bio'" name="bio" placeholder="Bio">
+      <ion-textarea [(ngModel)]="userInfo.bio" (ngModelChange)="isUpdated = 'bio'" name="bio" placeholder="{{ 'Bio' | translate }}">
       </ion-textarea>
     </ion-item>
   </ion-list>
 
   <ion-list padding-top radio-group [(ngModel)]="userInfo.gender" (ngModelChange)="isUpdated = 'gender'" [hidden]="item !== 'gender'">
     <ion-item>
-      <ion-label>Male</ion-label>
+      <ion-label>{{ 'Male' | translate }}</ion-label>
       <ion-radio name="gender" checked="true" value="1"></ion-radio>
     </ion-item>
 
     <ion-item>
-      <ion-label>Female</ion-label>
+      <ion-label>{{ 'Female' | translate }}</ion-label>
       <ion-radio name="gender" value="2"></ion-radio>
     </ion-item>
   </ion-list>

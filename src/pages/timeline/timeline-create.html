@@ -2,15 +2,15 @@
   <ion-navbar>
     <ion-buttons start>
       <button color="grey" ion-button (click)="dismiss()">
-        Close
+        {{ 'Close' | translate }}
       </button>
     </ion-buttons>
 
-    <ion-title>Timeline Create</ion-title>
+    <ion-title>{{ 'Novelty' | translate }}</ion-title>
 
     <ion-buttons end>
       <button color="grey" ion-button (click)="timelineCreateHandler(timelineCreateForm)">
-        Send
+        {{ 'Send' | translate }}
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -21,7 +21,7 @@
   <ion-list id="section-textarea">
     <form #timelineCreateForm="ngForm" novalidate>
         <ion-item>
-          <ion-textarea [(ngModel)]="newTimeline.content" name="content" rows="8" placeholder="What is new">
+          <ion-textarea [(ngModel)]="newTimeline.content" name="content" rows="8" placeholder="{{ 'Whats New ...' | translate }}">
           </ion-textarea>
         </ion-item>
     </form>

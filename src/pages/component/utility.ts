@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalController, Loading, LoadingController, AlertController, ToastController, ActionSheetController } from 'ionic-angular';
+import { TranslateService } from 'ng2-translate';
 
 
 @Component({
@@ -14,19 +15,21 @@ export class UtilityComponent {
   //
   // constructor
   constructor(
+    public translateService: TranslateService,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
     public actionSheetCtrl: ActionSheetController,
     public loadingCtrl: LoadingController
-  ) {}
+  ) {
+  }
 
 
   //
   // present loading
   presentLoading() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
+      content: this.translateService.instant('Please Wait ...'),
       duration: 5000,
     });
 
@@ -46,7 +49,7 @@ export class UtilityComponent {
   presentAlter(params?) {
     if (!params) {
       params = {
-        title: 'Alter',
+        title: this.translateService.instant('Alter'),
         subTitle: '',
       }
     }
@@ -65,7 +68,7 @@ export class UtilityComponent {
   presentConfirm(params?) {
     if (!params) {
       params = {
-        title: 'Confirm',
+        title: this.translateService.instant('Confirm'),
         message: '',
       }
     }
@@ -107,7 +110,7 @@ export class UtilityComponent {
 
   //
   // present action sheet
-  presentActionSheet(title = 'Operations', btns: Object[] = []) {
+  presentActionSheet(title = this.translateService.instant('Operations'), btns: Object[] = []) {
     let actionSheet = this.actionSheetCtrl.create({
       title: title,
       buttons: btns,

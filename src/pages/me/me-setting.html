@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Settings
+      {{ 'Settings' | translate }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -10,26 +10,26 @@
   <ion-list padding-top>
     <button ion-item [navPush]="MeSettingLanguagePage">
       <ion-icon name="globe" item-left></ion-icon>
-      Language
+      {{ 'Language' | translate }}
     </button>
 
     <button ion-item disabled>
       <ion-icon name="trash" item-left></ion-icon>
-      Clear Cache
+      {{ 'Clear Cache' | translate }}
     </button>
   </ion-list>
 
   <ion-list>
     <button ion-item [navPush]="MeHeyCommunityPage">
       <ion-icon name="information-circle" item-left></ion-icon>
-      About
+      {{ 'About' | translate }}
     </button>
   </ion-list>
 
   <ion-list *ngIf="authService.isAuth">
     <button ion-item (click)="gotoLogOut()">
       <ion-icon name="log-out" item-left></ion-icon>
-      Log Out
+      {{ 'Log Out' | translate }}
     </button>
   </ion-list>
 </ion-content>

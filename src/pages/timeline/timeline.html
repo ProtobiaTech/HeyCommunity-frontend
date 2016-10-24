@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Timeline
+      {{ 'Park' | translate }}
     </ion-title>
 
     <ion-buttons end>
@@ -52,14 +52,14 @@
         <button ion-button icon-only color="grey" clear small (click)="setLikeForTimeline(timeline)">
           <ion-icon color="danger" name="{{ timeline.is_like ? 'heart' : 'heart-outline' }}"></ion-icon>
           &nbsp;
-          <div>{{ timeline.like_num }} Likes</div>
+          <div>{{ timeline.like_num }} {{ 'Likes' | translate }}</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-only color="grey" clear small (click)="gotoTimelineDetailPage(timeline, i)">
           <ion-icon name="text"></ion-icon>
           &nbsp;
-          <div>{{ timeline.comment_num }} Comments</div>
+          <div>{{ timeline.comment_num }} {{ 'Comments' | translate }}</div>
         </button>
       </ion-col>
       <ion-col center class="date">

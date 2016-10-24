@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Profile
+      {{ 'Profile' | translate }}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content>
   <ion-list padding-top>
     <button ion-item [navPush]="MeProfileUpdatePage" [navParams]="{item: 'avatar'}">
-      <ion-label>Avatar</ion-label>
+      <ion-label>{{ 'Avatar' | translate }}</ion-label>
       <ion-avatar item-right>
         <img src="{{ helper.getImg(authService.userInfo.avatar) }}?imageView/2/w/100">
       </ion-avatar>
@@ -23,22 +23,22 @@
     </ion-item>
 
     <button ion-item [navPush]="MeProfileUpdatePage" [navParams]="{item: 'name'}">
-      <ion-label>Name</ion-label>
+      <ion-label>{{ 'Nickname' | translate }}</ion-label>
       <ion-note item-right>
         {{ authService.userInfo.nickname }}
       </ion-note>
     </button>
 
     <button ion-item [navPush]="MeProfileUpdatePage" [navParams]="{item: 'gender'}">
-      <ion-label>Gender</ion-label>
+      <ion-label>{{ 'Gender' | translate }}</ion-label>
       <ion-note item-right>
-        <span [hidden]="authService.userInfo.gender != 1">Male</span>
-        <span [hidden]="authService.userInfo.gender != 2">Female</span>
+        <span [hidden]="authService.userInfo.gender != 1">{{ 'Male' | translate }}</span>
+        <span [hidden]="authService.userInfo.gender != 2">{{ 'Female' | translate }}</span>
       </ion-note>
     </button>
 
     <button ion-item [navPush]="MeProfileUpdatePage" [navParams]="{item: 'bio'}">
-      <ion-label>Bio</ion-label>
+      <ion-label>{{ 'Bio' | translate }}</ion-label>
       <ion-note item-right>
         {{ authService.userInfo.bio }}
       </ion-note>

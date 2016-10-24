@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController, ModalController } from 'ionic-angular';
+import { TranslateService } from 'ng2-translate';
 
 import { Helper } from '../../other/helper';
 import { AuthenticateComponent } from '../../pages/component/authenticate';
@@ -24,6 +25,7 @@ export class TimelineDetailPage {
   //
   // constructor
   constructor(
+    public translateService: TranslateService,
     public helper: Helper,
     public utilityComp: UtilityComponent,
     public authComp: AuthenticateComponent,
@@ -55,7 +57,7 @@ export class TimelineDetailPage {
     }, (ret) => {
       this.utilityComp.dismissLoading();
       let content = JSON.parse(ret._body);
-      this.utilityComp.presentAlter({title: 'Alter', subTitle: content});
+      this.utilityComp.presentAlter({title: this.translateService.instant('Alter'), subTitle: content});
     });
   }
 
@@ -63,10 +65,10 @@ export class TimelineDetailPage {
   //
   // present action sheet
   presentActionSheet() {
-    let title = 'Operations';
+    let title = this.translateService.instant('Operations');
 
     let btnDestructive = {
-      text: 'Destructive',
+      text: this.translateService.instant('Destructive'),
       role: 'destructive',
       handler: () => {
         let self = this;
@@ -75,12 +77,12 @@ export class TimelineDetailPage {
     }
 
     let buttons = [{
-      text: 'Report',
+      text: this.translateService.instant('Report'),
       handler: () => {
-        this.utilityComp.presentAlter({title: 'Report', subTitle: 'Thanks for your report'});
+        this.utilityComp.presentAlter({title: this.translateService.instant('Report'), subTitle: this.translateService.instant('Thanks For Your Report')});
       }
     }, {
-      text: 'Cancel',
+      text: this.translateService.instant('Cancel'),
       role: 'cancel',
       handler: () => {
         console.log('Cancel clicked');

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Timeline Detail</ion-title>
+    <ion-title>{{ 'Detail' | translate }}</ion-title>
 
     <ion-buttons end>
       <button color="grey" *ngIf="authService.isAuth" ion-button icon-only (click)="presentActionSheet()">
@@ -48,7 +48,7 @@
   <ion-toolbar no-border-bottom>
     <div class="section-comment-input">
       <div class="box" tappable (click)="presentTimelineCommentModal()">
-        say something
+        {{ 'Say Something ...' | translate }}
       </div>
     </div>
   </ion-toolbar>

@@ -29,6 +29,7 @@ import { MeNoticePage } from '../pages/me/me-notice';
 import { MeTimelinePage } from '../pages/me/me-timeline';
 import { MeSettingPage } from '../pages/me/me-setting';
 import { MeHeyCommunityPage } from '../pages/me/me-heycommunity';
+import { MeDebugPage } from '../pages/me/me-debug';
 import { MeSettingLanguagePage } from '../pages/me/me-setting-language';
 
 import { TabsPage } from '../pages/tabs/tabs';
@@ -59,6 +60,7 @@ export function createTranslateLoader(http: Http) {
     MeTimelinePage,
     MeSettingPage,
     MeHeyCommunityPage,
+    MeDebugPage,
     MeSettingLanguagePage,
     TabsPage,
     TutorialPage,
@@ -92,6 +94,7 @@ export function createTranslateLoader(http: Http) {
     MeTimelinePage,
     MeSettingPage,
     MeHeyCommunityPage,
+    MeDebugPage,
     MeSettingLanguagePage,
     TabsPage,
     TutorialPage,

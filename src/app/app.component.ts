@@ -39,13 +39,15 @@ export class MyApp {
       // get app language
       if (window.localStorage.hasOwnProperty(this.APP_LANGUAGE)) {
         let lang = window.localStorage.getItem(this.APP_LANGUAGE);
+        this.translateService.setDefaultLang(lang);
+        this.translateService.use(lang);
       } else {
-        let lang = window.navigator.userLanguage || window.navigator.language;
+        let lang = window.navigator.language;
         lang = /^(zh-CN)$/gi.test(lang) ? 'zh-CN' : 'en-US';
         window.localStorage.setItem(this.APP_LANGUAGE, lang);
+        this.translateService.setDefaultLang(lang);
+        this.translateService.use(lang);
       }
-      this.translateService.setDefaultLang(lang);
-      this.translateService.use(lang);
     });
 
 

@@ -35,6 +35,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 
 
+export function createTranslateLoader(http: Http) {
+    return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -68,7 +73,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     }),
     TranslateModule.forRoot({
       provide: TranslateLoader,
-      useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
+      useFactory: (createTranslateLoader),
       deps: [Http]
     }),
   ],

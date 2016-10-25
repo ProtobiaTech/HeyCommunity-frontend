@@ -63,6 +63,15 @@
     <splash src="resources/ios/splash/Default-Portrait~ipad.png" width="768" height="1024"/>
     <splash src="resources/ios/splash/Default@2x~iphone.png" width="640" height="960"/>
     <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
+    <config-file parent="NSCameraUsageDescription" target="*-Info.plist">
+      <string>Just let me use the photocamera!</string>
+    </config-file>
+    <config-file parent="NSPhotoLibraryUsageDescription" target="*-Info.plist">
+      <string>Just let me use the photoLibrary!</string>
+    </config-file>
+    <config-file parent="NSMicrophoneUsageDescription" target="*-Info.plist">
+      <string>Just let me use the microphone!</string>
+    </config-file>
   </platform>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>

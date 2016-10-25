@@ -29,9 +29,9 @@
         <div class="bio">{{ authService.userInfo?.bio || '' }}</div>
       </ion-col>
 
-      <ion-col id="section-info" *ngIf="!authService.isAuth" center class="text-center">
-        <div class="nickname">Hey guys</div>
-        <div class="bio">Let's login now</div>
+      <ion-col id="section-info" *ngIf="!authService.isAuth" center class="text-center" tappable (click)="gotoMeProfilePage()">
+        <div class="nickname">{{ 'Hey Guys' | translate }}</div>
+        <div class="bio">{{ "Let's Login Now" | translate }}</div>
       </ion-col>
 
       <ion-col width-10></ion-col>

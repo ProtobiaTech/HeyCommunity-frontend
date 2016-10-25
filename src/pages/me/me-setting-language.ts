@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate';
 
 
@@ -15,6 +15,7 @@ export class MeSettingLanguagePage {
   //
   // constructor
   constructor(
+    public events: Events,
     public translateService: TranslateService,
     public navCtrl: NavController
   ) {
@@ -25,7 +26,11 @@ export class MeSettingLanguagePage {
   //
   // change app language
   changeAppLang(lang) {
-    this.translateService.use(lang);
-    window.localStorage.setItem(this.APP_LANGUAGE, lang);
+    console.log(lang);
+    if (typeof lang === 'string') {
+      this.events.publish('app:changeLang', lang);
+      this.translateService.use(lang);
+      window.localStorage.setItem(this.APP_LANGUAGE, lang);
+    }
   }
 }

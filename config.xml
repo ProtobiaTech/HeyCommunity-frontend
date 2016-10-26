@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.heycommunity.demo" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>HeyCommunityDEMO</name>
+  <name>HeyCommunity</name>
   <description>An awesome Ionic/Cordova app.</description>
   <author email="rod@protobia.tech" href="http://www.hey-community.com/">Rod</author>
   <content src="index.html"/>

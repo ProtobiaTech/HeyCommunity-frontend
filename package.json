@@ -1,5 +1,5 @@
 {
-  "name": "HeyCommunityDEMO",
+  "name": "HeyCommunity",
   "author": "Rod",
   "homepage": "http://www.hey-community.com/",
   "private": true,
@@ -56,5 +56,5 @@
       "locator": "ios"
     }
   ],
-  "description": "this is HeyCommunityDEMO"
+  "description": "WebApp & IOS App & Android App of Community "
 }

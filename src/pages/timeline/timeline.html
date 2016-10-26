@@ -69,7 +69,7 @@
       </ion-col>
     </ion-row>
 
-    <div *ngIf="timeline.comment_num" tappable (click)="gotoTimelineDetailPage(timeline)" class="comments">
+    <div *ngIf="timeline.comment_num" class="comments">
         <div *ngFor="let comment of timeline.comments; let i=index;">
           <div class="item-comment" *ngIf="i < 3">
             <span class="author">{{ comment.author?.nickname }}</span>:

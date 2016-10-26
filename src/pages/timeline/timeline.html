@@ -38,7 +38,7 @@
     </div>
 
     <div *ngIf="timeline.video">
-      <video width="100%" loop="false" (click)="videoPlay($event)" poster="{{ helper.getImg(timeline.poster) }}" src="{{ helper.getVideo(timeline.video) }}"></video>
+      <video width="100%" preload="none" (click)="videoPlay($event)" poster="{{ helper.getImg(timeline.poster) }}" src="{{ helper.getVideo(timeline.video) }}"></video>
     </div>
 
     <hr>

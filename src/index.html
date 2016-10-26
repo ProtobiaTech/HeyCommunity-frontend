@@ -32,6 +32,36 @@
 
 </head>
 <body>
+  <div id="section-apploading">
+    <h1>HeyCommunity <sup>V2.beta</sup></h1>
+    <p>Loading ...</p>
+
+    <style>
+      #section-apploading {
+        margin-top: 200px;
+        font-family: sans-serif;
+        text-align: center;
+        color: #aaa;
+      }
+
+      #section-apploading sup {
+        font-weight: normal;
+      }
+    </style>
+    <script>
+      function appLoadingHandler(time = 10000) {
+        window.appLoadingTid = setTimeout(function() {
+          if (window.confirm("٩͡[๏̯͡๏]    May be network slowly, click the OK button to reload the app,  or just a minute")) {
+            location.reload();
+          } else {
+            appLoadingHandler(6000);
+          }
+        }, time);
+      }
+      appLoadingHandler();
+    </script>
+  </div>
+
 
   <!-- Ionic's root component and where the app will load -->
   <ion-app></ion-app>

@@ -34,7 +34,7 @@ export class Helper {
   // get img
   getVideo = this.getImg;
   getImg(uri): string {
-    if (uri.substring(0, 4) == 'http') {
+    if (uri && uri.substring(0, 4) == 'http') {
       return uri;
     } else if (this.platform.is('cordova')) {
       return 'http://public.hey-community.cn/' + uri;

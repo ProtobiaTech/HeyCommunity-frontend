@@ -8,6 +8,7 @@ import { TranslateModule, TranslateService, TranslateStaticLoader, TranslateLoad
 import { AuthenticateService } from '../services/authenticate.service';
 import { TimelineService } from '../services/timeline.service';
 import { UserService } from '../services/user.service';
+import { SystemService } from '../services/system.service';
 import { NoticeService } from '../services/notice.service';
 
 import { Helper } from '../other/helper';
@@ -102,6 +103,7 @@ export function createTranslateLoader(http: Http) {
   providers: [
     TranslateService,
     Storage,
+    SystemService,
     AuthenticateService,
     TimelineService,
     UserService,

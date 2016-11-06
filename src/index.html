@@ -59,6 +59,16 @@
         }, time);
       }
       appLoadingHandler();
+
+
+      //
+      // set title
+      (function() {
+        if (window.localStorage.hasOwnProperty('cache_system_info')) {
+          var info = JSON.parse(window.localStorage.cache_system_info);
+          window.document.title = info.community_name;
+        }
+      } ())
     </script>
   </div>
 

@@ -6,6 +6,7 @@ import { Helper } from '../../other/helper';
 import { AuthenticateComponent } from '../../pages/component/authenticate';
 import { UtilityComponent } from '../../pages/component/utility';
 
+import { SystemService } from '../../services/system.service';
 import { AuthenticateService } from '../../services/authenticate.service';
 import { UserService } from '../../services/user.service';
 import { NoticeService } from '../../services/notice.service';
@@ -28,6 +29,7 @@ export class TimelinePage {
     public utilityComp: UtilityComponent,
     public authComp: AuthenticateComponent,
     public timelineService: TimelineService,
+    public systemService: SystemService,
     public userService: UserService,
     public noticeService: NoticeService,
     public authService: AuthenticateService,
@@ -55,6 +57,11 @@ export class TimelinePage {
       this.noticeService.getIndex();
     }, data => {
       this.authService.logOut();
+    });
+
+    // get system
+    this.systemService.getInfo().then(data => {
+      this.helper.setTitle(data.community_name);
     });
 
     // get timelines

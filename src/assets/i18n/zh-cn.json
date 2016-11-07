@@ -23,6 +23,7 @@
     "Comments":                     "评论",
     "A Comment":                    "评论",
     "Say Something ...":            "说点什么 ...",
+    "Say Something To ...":         "对 {{ user }} 说点什么 ...",
     "Whats New ...":                "有什么新鲜事 ...",
     "Send":                         "发布",
 

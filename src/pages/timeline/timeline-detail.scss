@@ -46,6 +46,43 @@ page-timeline-detail {
               }
             }
           }
+
+          .footer {
+            padding-top: 8px;
+            margin-bottom: -10px;
+
+            ion-col {
+              padding-top: 0;
+              padding-bottom: 0;
+
+              button {
+                margin-top: 0;
+                margin-bottom: 0;
+              }
+            }
+
+            .btns {
+              padding-left: 0;
+
+              ion-icon:first-of-type {
+                padding-left: 0;
+              }
+            }
+
+            .date {
+              text-align: right;
+              padding-right: 0;
+
+              ion-note {
+                line-height: 27px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: hidden;
+                color: #999;
+              }
+            }
+          }
+
         }
 
         //

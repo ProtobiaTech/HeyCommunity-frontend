@@ -6,6 +6,7 @@ import { UtilityComponent } from '../../pages/component/utility';
 import { TimelineService } from '../../services/timeline.service';
 
 import { Timeline } from '../../models/timeline.model';
+import { TimelineComment } from '../../models/timelineComment.model';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class TimelineCommentPage {
 
   timeline: Timeline;
   timelineIndex: number;
+  timelineComment: TimelineComment;
   newComment: {content?: string, timeline_id?: number} = {};
 
 
@@ -34,14 +36,13 @@ export class TimelineCommentPage {
   ) {
     this.timeline = this.navParams.data.timeline;
     this.timelineIndex = this.navParams.data.timelineIndex;
+    this.timelineComment = this.navParams.data.timelineComment;
   }
 
 
   //
   // ionic view did enter
   ionViewDidEnter() {
-    console.log(this.inputCommentEl);
-    console.log(this.inputCommentEl.nativeElement);
     this.inputCommentEl.setFocus();
   }
 
@@ -53,6 +54,7 @@ export class TimelineCommentPage {
 
     let params: Object = {
       timeline_id: this.timeline.id,
+      timeline_comment_id: this.timelineComment ? this.timelineComment.id : null,
       content: this.newComment.content,
     }
 

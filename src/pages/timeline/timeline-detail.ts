@@ -99,12 +99,16 @@ export class TimelineDetailPage {
 
   //
   // present timeline comment modal
-  presentTimelineCommentModal() {
+  presentTimelineCommentModal(timelineComment?) {
     if (this.authService.isAuth) {
       let self = this;
 
       let page = TimelineCommentPage;
-      let params = {timeline: this.timeline, timelineIndex: this.timelineIndex};
+      let params = {
+        timeline: this.timeline,
+        timelineIndex: this.timelineIndex,
+        timelineComment: timelineComment
+      };
       let callback = function() {
         self.timeline = self.timelineService.timelines[self.timelineIndex];
       }

@@ -28,16 +28,39 @@
       <img class="avatar" src="{{ helper.getImg(comment.author.avatar) }}?imageView/2/w/100">
       <div class="comment-content">
         <div class="header">
-          <a color="dark">{{ timeline.author.nickname }}</a>
+          <a color="dark">{{ comment.author.nickname }}</a>
           <span class="pull-right">
-            <span color="grey">{{ comment.created_at | moment: ['MM-DD HH:mm'] }}</span>
-            &nbsp;
-            <button color="grey" *ngIf="false && authService.isAuth" ion-button class="btn-comment-reply" small primary clear (click)="presentTimelineCommentModal()">
-                <ion-icon name="undo"></ion-icon> &nbsp; Comment
+            <button color="grey" ion-button class="btn-comment-reply" small primary clear (click)="presentTimelineCommentModal(comment)">
+                <ion-icon name="undo"></ion-icon> &nbsp;
             </button>
           </span>
         </div>
+        <span *ngIf="comment.parent_id">
+          @{{ comment.parent.author.nickname }}:
+        </span>
+
         {{ comment.content }}
+
+        <!--
+        <ion-row class="footer-hide hide">
+          <ion-col class="btns">
+            <button ion-button icon-only color="grey" clear small (click)="presentTimelineCommentModal(comment)">
+              <ion-icon name="thumbs-up"></ion-icon>
+              {{ 0 }}
+            </button>
+
+            <button ion-button icon-only color="grey" clear small (click)="presentTimelineCommentModal(comment)">
+              <ion-icon name="text"></ion-icon>
+              {{ 0 }}
+            </button>
+          </ion-col>
+          <ion-col width-33 class="date">
+            <ion-note color="grey">
+              {{ comment.created_at | moment: ['MM-DD HH:mm'] }}
+            </ion-note>
+          </ion-col>
+        </ion-row>
+        -->
       </div>
     </div>
   </div>

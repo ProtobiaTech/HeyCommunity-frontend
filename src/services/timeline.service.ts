@@ -147,7 +147,11 @@ export class TimelineService {
   // store comment
   storeComment(params): Promise<Timeline> {
     let api: string = this.helper.getAPI('timeline/store-comment');
-    let data: any = {timeline_id: params.timeline_id, content: params.content};
+    let data: any = {
+      timeline_id: params.timeline_id,
+      content: params.content,
+      timeline_comment_id: params.timeline_comment_id
+    };
 
     return this.http.post(api, data, this.requestOptions)
     .toPromise()

@@ -73,6 +73,9 @@
         <div *ngFor="let comment of timeline.comments; let i=index;">
           <div class="item-comment" *ngIf="i < 3">
             <span class="author">{{ comment.author?.nickname }}</span>:
+            <span *ngIf="comment.parent_id">
+              @{{ comment.parent.author.nickname }}:
+            </span>
             {{ comment.content }}
           </div>
         </div>

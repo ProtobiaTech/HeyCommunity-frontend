@@ -38,10 +38,15 @@
     </ion-item>
   </ion-list>
 
-  <div padding class="avatar text-center" [hidden]="item !== 'avatar'">
-    <img style="width:200px; margin-top:60px;" src="{{ helper.getImg(userInfo.avatar) }}?imageView/2/w/200">
-    <br>
-    <br>
-    <input #inputAvatar type="file" (change)="uploadAvatar($event)" accept="image/*">
+  <div padding class="text-center" [hidden]="item !== 'avatar'">
+    <div class="avatar-box">
+      <div>
+        <img style="" src="{{ helper.getImg(userInfo.avatar) }}?imageView/2/w/200">
+      </div>
+      <button color="grey" ion-button block>
+        {{ 'Click On Select New Avatar' | translate }}
+        <input class="input-avatar" #inputAvatar type="file" (change)="uploadAvatar($event)" accept="image/*">
+      </button>
+    </div>
   </div>
 </ion-content>

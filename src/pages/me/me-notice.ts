@@ -97,21 +97,20 @@ export class MeNoticePage {
 
 
   //
-  // get img
-  getImg(images) {
-    if (images && images.length) {
-      return this.helper.getImg(images[0].uri);
-    } else {
-      return '';
-    }
-  }
-
-
-  //
   // get notice text
   getNoticeText(notice) {
     let type = NoticeTypes[notice.type_id];
-    return type.eventText;
+    let text = '';
+
+    if (type.name === 'timeline_like') {
+      this.translateService.get(type.eventText).subscribe((res: string) => {
+        text = res;
+      });
+    } else {
+      text = notice.entity.content;
+    }
+
+    return text;
   }
 
 

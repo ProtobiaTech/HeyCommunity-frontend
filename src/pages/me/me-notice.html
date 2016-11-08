@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>
-  <div padding [hidden]="noticeService.notices.length > 0">You did not have notices</div>
+  <div padding [hidden]="noticeService.notices.length > 0">{{ 'You Did Not Have Notices' | translate }}</div>
 
   <ion-list id="section-notices">
     <ion-item-sliding #item *ngFor="let notice of noticeService.notices">
@@ -25,8 +25,9 @@
           {{ notice.initiator.nickname }}
         </h2>
         <p>{{ getNoticeText(notice) }}</p>
-        <div *ngIf="notice.entity.images.length > 0" class="pic" item-right>
-          <img src="{{ getImg(notice.entity.images) }}?imageView/2/w/800">
+
+        <div *ngIf="notice.images?.length > 0" class="pic" item-right>
+          <img src="{{ helper.getImg(notice.images[0].uri) }}?imageView/2/w/800">
         </div>
       </ion-item>
 

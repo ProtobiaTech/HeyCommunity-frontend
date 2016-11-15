@@ -80,4 +80,30 @@ export class AuthenticateService {
 
     this.events.publish('auth:loggedOut');
   }
+
+
+  //
+  // wechat login
+  wechatLogin() {
+    this.getIsAuth().then(() => {
+      if (!this.isAuth && this.isWeChatBrowser() && this.getParameterByName('noWeChatOAuth') != 'true') {
+        window.location.assign('/api/wechat/o-auth');
+      }
+    });
+  }
+
+
+  //
+  // is wechat browser
+  isWeChatBrowser() {
+    var ua = navigator.userAgent.toLowerCase();
+    return (/micromessenger/.test(ua)) ? true : false ;
+  }
+
+
+  //
+  // get Parameter By Name
+  getParameterByName(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+  }
 }

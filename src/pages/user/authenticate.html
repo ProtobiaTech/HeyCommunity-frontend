@@ -36,6 +36,10 @@
         <div padding-left padding-right>
           <button color="grey" ion-button  block [disabled]="!logInForm.valid" type="submit">{{ 'Log In' | translate }}</button>
         </div>
+
+        <div *ngIf="auth.isWeChatBrowser()" padding-left padding-right>
+          <a href="/api/wechat/o-auth" color="light" ion-button block>{{ 'WeChat To Log In' | translate }}</a>
+        </div>
       </form>
   </div>
 
@@ -73,6 +77,10 @@
 
         <div padding-left padding-right>
           <button color="grey" ion-button block [disabled]="!signUpForm.valid" type="submit">{{ 'Sign Up' | translate }}</button>
+        </div>
+
+        <div *ngIf="auth.isWeChatBrowser()" padding-left padding-right>
+          <a href="/api/wechat/o-auth" color="light" ion-button block>{{ 'WeChat To Log In' | translate }}</a>
         </div>
       </form>
   </div>

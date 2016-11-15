@@ -39,6 +39,7 @@ export class Helper {
     if (uri && uri.substring(0, 4) == 'http') {
       return uri;
     } else if (this.platform.is('cordova')) {
+      // server host or cdn domain
       return 'http://public.hey-community.cn/' + uri;
     } else {
       let api = this.getParameterByName('api')
@@ -46,6 +47,8 @@ export class Helper {
       if (api) {
         return 'http://' + api + '/' + uri;
       } else {
+        // server host or cdn domain
+        // return 'http://public.hey-community.cn/' + uri;
         return uri;
       }
     }

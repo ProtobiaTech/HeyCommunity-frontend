@@ -7,6 +7,7 @@ import moment from 'moment';
 import 'moment/src/locale/zh-cn';
 import 'moment/src/locale/en-gb';
 
+import { AppService } from '../services/app.service';
 import { NoticeService } from '../services/notice.service';
 
 import { TabsPage } from '../pages/tabs/tabs';
@@ -14,7 +15,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 
 @Component({
-  template: `<ion-nav [root]="rootPage" swipeBackEnabled="true"></ion-nav>`
+  templateUrl: 'app.template.html'
 })
 export class MyApp {
   noticeInterval: any;
@@ -28,6 +29,7 @@ export class MyApp {
   //
   // constructor
   constructor(
+    public appService: AppService,
     public translateService: TranslateService,
     public events: Events,
     public noticeService: NoticeService,
@@ -88,6 +90,5 @@ export class MyApp {
 
       clearInterval(this.noticeInterval);
     });
-
   }
 }

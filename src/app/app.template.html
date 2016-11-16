@@ -1,0 +1,25 @@
+<!-- logged out menu -->
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{ appService.menuTitle }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="outer-content">
+    <ion-list *ngFor="let list of appService.menuPages">
+      <ion-list-header *ngIf="list.title?.length">
+        {{ list.title }}
+      </ion-list-header>
+      <button ion-item menuClose *ngFor="let p of list.pages" (click)="p.click(p.id)">
+        <ion-icon *ngIf="p.id === appService.currentPageId" color="primary" item-left [name]="p.icon"></ion-icon>
+        <ion-icon *ngIf="p.id !== appService.currentPageId" item-left [name]="p.icon"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+<!-- main navigation -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

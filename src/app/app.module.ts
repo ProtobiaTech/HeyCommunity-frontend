@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { TranslateModule, TranslateService, TranslateStaticLoader, TranslateLoader } from 'ng2-translate';
 
+import { AppService } from '../services/app.service';
 import { AuthenticateService } from '../services/authenticate.service';
 import { TimelineService } from '../services/timeline.service';
 import { UserService } from '../services/user.service';
@@ -103,6 +104,7 @@ export function createTranslateLoader(http: Http) {
   providers: [
     TranslateService,
     Storage,
+    AppService,
     SystemService,
     AuthenticateService,
     TimelineService,

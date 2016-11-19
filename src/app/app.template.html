@@ -12,9 +12,10 @@
         {{ list.title }}
       </ion-list-header>
       <button ion-item menuClose *ngFor="let p of list.pages" (click)="p.click(p.id)">
-        <ion-icon *ngIf="p.id === appService.currentPageId" color="primary" item-left [name]="p.icon"></ion-icon>
-        <ion-icon *ngIf="p.id !== appService.currentPageId" item-left [name]="p.icon"></ion-icon>
-        {{p.title}}
+        <ion-icon color="{{ p.id === appService.currentPageId ? 'dark' : 'grey'}}" item-left [name]="p.icon"></ion-icon>
+        <span color="{{ p.id === appService.currentPageId ? 'dark' : 'grey' }}">
+            {{p.title}}
+        </span>
       </button>
     </ion-list>
   </ion-content>

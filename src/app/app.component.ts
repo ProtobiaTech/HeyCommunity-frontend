@@ -52,14 +52,17 @@ export class MyApp {
 
       //
       // get app language
+      let lang = 'en-gb';
       if (window.localStorage.hasOwnProperty(this.APP_LANGUAGE)) {
-        let lang = window.localStorage.getItem(this.APP_LANGUAGE);
-        this.events.publish('app:changeLang', lang);
+        lang = window.localStorage.getItem(this.APP_LANGUAGE);
       } else {
-        let lang = window.navigator.language;
+        lang = window.navigator.language;
         lang = /^(zh-cn)$/gi.test(lang) ? 'zh-cn' : 'en-gb';
-        this.events.publish('app:changeLang', lang);
       }
+      this.translateService.setDefaultLang(lang);
+      this.translateService.getTranslation('zh-cn');
+      this.translateService.getTranslation('en-gb');
+      this.events.publish('app:changeLang', lang);
 
       this.menuCtrl.swipeEnable(false, 'main');
     });
@@ -67,10 +70,11 @@ export class MyApp {
 
     //
     // subscribe app changeLang
-    this.events.subscribe('app:changeLang', (lang) => {
+    this.events.subscribe('app:changeLang', (params) => {
+      let lang = params[0];
       window.localStorage.setItem(this.APP_LANGUAGE, lang);
-      this.translateService.setDefaultLang(lang);
       this.translateService.use(lang);
+      this.events.publish('app:changedLang', lang);
       moment.locale(lang);
     });
 

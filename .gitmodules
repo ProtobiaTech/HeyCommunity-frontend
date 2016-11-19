@@ -1,0 +1,4 @@
+[submodule "TopicModule"]
+	path = src/modules/topic
+	url = https://github.com/dev4living/HeyCommunity-fem-topic.git
+	branch = dev-master

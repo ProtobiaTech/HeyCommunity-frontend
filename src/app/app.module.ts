@@ -37,6 +37,8 @@ import { MeSettingLanguagePage } from '../pages/me/me-setting-language';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 
+import { TopicModule } from '../modules/topic/topic.module';
+
 
 export function createTranslateLoader(http: Http) {
     return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -80,6 +82,7 @@ export function createTranslateLoader(http: Http) {
       useFactory: (createTranslateLoader),
       deps: [Http]
     }),
+    TopicModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

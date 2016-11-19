@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, Events } from 'ionic-angular';
+import { Platform, Events, MenuController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { TranslateService } from 'ng2-translate';
 
@@ -33,6 +33,7 @@ export class MyApp {
     public translateService: TranslateService,
     public events: Events,
     public noticeService: NoticeService,
+    public menuCtrl: MenuController,
     public platform: Platform
   ) {
     //
@@ -59,6 +60,8 @@ export class MyApp {
         lang = /^(zh-cn)$/gi.test(lang) ? 'zh-cn' : 'en-gb';
         this.events.publish('app:changeLang', lang);
       }
+
+      this.menuCtrl.swipeEnable(false, 'main');
     });
 
 

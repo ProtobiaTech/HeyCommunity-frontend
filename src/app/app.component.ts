@@ -7,8 +7,9 @@ import moment from 'moment';
 import 'moment/src/locale/zh-cn';
 import 'moment/src/locale/en-gb';
 
-import { AppService } from '../services/app.service';
-import { NoticeService } from '../services/notice.service';
+import { AppService } from '../modules/common/services/app.service';
+import { UserService } from '../modules/user/services/user.service';
+import { NoticeService } from '../modules/user/services/notice.service';
 
 import { TabsPage } from '../pages/tabs/tabs';
 // import { TutorialPage } from '../pages/tutorial/tutorial';
@@ -29,13 +30,16 @@ export class MyApp {
   //
   // constructor
   constructor(
-    public appService: AppService,
+    public heyApp: AppService,
     public translateService: TranslateService,
     public events: Events,
+    public userService: UserService,
     public noticeService: NoticeService,
     public menuCtrl: MenuController,
     public platform: Platform
   ) {
+    console.log('Hey Community ~');
+
     //
     moment.locale('en-gb');
 
@@ -44,8 +48,6 @@ export class MyApp {
 
     //
     platform.ready().then(() => {
-      console.log('Hey Community ~');
-
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();

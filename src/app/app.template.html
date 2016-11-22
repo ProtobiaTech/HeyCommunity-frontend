@@ -2,18 +2,18 @@
 <ion-menu [content]="content" id="main">
   <ion-header>
     <ion-toolbar>
-      <ion-title>{{ appService.menuTitle | translate }}</ion-title>
+      <ion-title>{{ heyApp.menuService.menuTitle | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content class="outer-content">
-    <ion-list *ngFor="let list of appService.menuPages">
+    <ion-list *ngFor="let list of heyApp.menuService.menuPages">
       <ion-list-header *ngIf="list.title?.length">
         {{ list.title | translate }}
       </ion-list-header>
       <button ion-item menuClose *ngFor="let p of list.pages" (click)="p.click(p.id)">
-        <ion-icon color="{{ p.id === appService.currentPageId ? 'dark' : 'grey'}}" item-left [name]="p.icon"></ion-icon>
-        <span color="{{ p.id === appService.currentPageId ? 'dark' : 'grey' }}">
+        <ion-icon color="{{ p.id === heyApp.menuService.currentPageId ? 'dark' : 'grey'}}" item-left [name]="p.icon"></ion-icon>
+        <span color="{{ p.id === heyApp.menuService.currentPageId ? 'dark' : 'grey' }}">
             {{p.title | translate }}
         </span>
       </button>

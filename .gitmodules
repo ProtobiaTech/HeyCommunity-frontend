@@ -1,14 +1,14 @@
 [submodule "commonModule"]
 	path = src/modules/common
-	url = https://github.com/supgeek-rod/HeyCommunity-fem-common.git
+	url = https://github.com/dev4living/HeyCommunity-fem-common.git
 	branch = dev-master
 [submodule "userModule"]
 	path = src/modules/user
-	url = https://github.com/supgeek-rod/HeyCommunity-fem-user.git
+	url = https://github.com/dev4living/HeyCommunity-fem-user.git
 	branch = dev-master
 [submodule "timelineModule"]
 	path = src/modules/timeline
-	url = https://github.com/supgeek-rod/HeyCommunity-fem-timeline.git
+	url = https://github.com/dev4living/HeyCommunity-fem-timeline.git
 	branch = dev-master
 [submodule "TopicModule"]
 	path = src/modules/topic

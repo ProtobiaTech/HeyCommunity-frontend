@@ -33,11 +33,11 @@ import { MePage } from '../modules/user/pages/me';
       backButtonColor: 'dark',
     }, {
       links: [
-        { component: TimelinePage, name: 'park', segment: 'park' },
-        { component: TimelineDetailPage, name: 'TimelineDetail', segment: 'park/detail/:timeline/:timelineIndex' },
-        { component: TopicPage, name: 'topic', segment: 'topic' },
-        { component: TopicDetailPage, name: 'TopicDetail', segment: 'topic/detail/:topic/:topicIndex' },
-        { component: MePage, name: 'me', segment: 'me' },
+        { component: TimelinePage, name: 'park', segment: 'r/park' },
+        { component: TimelineDetailPage, name: 'TimelineDetail', segment: 'r/park/detail/:timeline/:timelineIndex' },
+        { component: TopicPage, name: 'topic', segment: 'r/topic' },
+        { component: TopicDetailPage, name: 'TopicDetail', segment: 'r/topic/detail/:topic/:topicIndex' },
+        { component: MePage, name: 'me', segment: 'r/me' },
       ],
     }),
     CommonModule,

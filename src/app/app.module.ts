@@ -10,6 +10,13 @@ import { UserModule } from '../modules/user/user.module';
 import { TimelineModule } from '../modules/timeline/timeline.module';
 import { TopicModule } from '../modules/topic/topic.module';
 
+import { TimelinePage } from '../modules/timeline/pages/timeline';
+import { TimelineDetailPage } from '../modules/timeline/pages/timeline-detail';
+
+import { TopicPage } from '../modules/topic/pages/topic';
+import { TopicDetailPage } from '../modules/topic/pages/topic-detail';
+
+import { MePage } from '../modules/user/pages/me';
 
 @NgModule({
   declarations: [
@@ -24,6 +31,14 @@ import { TopicModule } from '../modules/topic/topic.module';
       tabbarPlacement: 'bottom',
       backButtonIcon: 'arrow-round-back',
       backButtonColor: 'dark',
+    }, {
+      links: [
+        { component: TimelinePage, name: 'park', segment: 'park' },
+        { component: TimelineDetailPage, name: 'TimelineDetail', segment: 'park/detail/:timeline/:timelineIndex' },
+        { component: TopicPage, name: 'topic', segment: 'topic' },
+        { component: TopicDetailPage, name: 'TopicDetail', segment: 'topic/detail/:topic/:topicIndex' },
+        { component: MePage, name: 'me', segment: 'me' },
+      ],
     }),
     CommonModule,
     UserModule,

@@ -89,6 +89,23 @@
 
 
 
+    "Topic":                    "话题",
+    "TopicModule": {
+      "Hot":                    "最热",
+      "New":                    "最新",
+
+      "Comments":               "评论",
+      "All":                    "全部",
+      "Topic Nodes":            "话题节点",
+
+      "Title":                  "标题",
+      "Node":                   "节点",
+      "Initiate A Topic":       "发起一个话题",
+      "Here, we sincerely exchange and share":           "在这里，我们真诚地交流和分享"
+    },
+
+
+
 
 
 

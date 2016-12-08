@@ -89,6 +89,22 @@
 
 
 
+    "Topic":                    "Topic",
+    "TopicModule": {
+      "Hot":                    "Hot",
+      "New":                    "New",
+
+      "Comments":               "Comments",
+      "All":                    "All",
+      "Topic Nodes":            "Topic Nodes",
+
+      "Title":                  "Title",
+      "Node":                   "Node",
+      "Initiate A Topic":       "Initial A Topic",
+      "Here, we sincerely exchange and share":          "Here, we sincerely exchange and share"
+    },
+
+
 
 
 

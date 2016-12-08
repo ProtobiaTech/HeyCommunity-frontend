@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Platform } from 'ionic-angular';
 
 import { AppService } from '../../modules/common/services/app.service';
 import { UserService } from '../../modules/user/services/user.service';
@@ -23,6 +24,7 @@ export class TabsPage {
   //
   // construct
   constructor(
+    public platform: Platform,
     public heyApp: AppService,
     public userService: UserService,
     public noticeService: NoticeService

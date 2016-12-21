@@ -1,12 +1,12 @@
-[submodule "commonModule"]
+[submodule "CommonModule"]
 	path = src/modules/common
 	url = https://github.com/dev4living/HeyCommunity-fem-common.git
 	branch = dev-master
-[submodule "userModule"]
+[submodule "UserModule"]
 	path = src/modules/user
 	url = https://github.com/dev4living/HeyCommunity-fem-user.git
 	branch = dev-master
-[submodule "timelineModule"]
+[submodule "TimelineModule"]
 	path = src/modules/timeline
 	url = https://github.com/dev4living/HeyCommunity-fem-timeline.git
 	branch = dev-master

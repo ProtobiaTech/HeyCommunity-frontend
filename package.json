@@ -5,18 +5,19 @@
   "private": true,
   "scripts": {
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "i18n": "ng-xi18n"
   },
   "dependencies": {
     "@angular/common": "2.2.1",
     "@angular/compiler": "2.2.1",
-    "@angular/compiler-cli": "2.2.1",
+    "@angular/compiler-cli": "^2.2.1",
     "@angular/core": "2.2.1",
     "@angular/forms": "2.2.1",
     "@angular/http": "2.2.1",
     "@angular/platform-browser": "2.2.1",
     "@angular/platform-browser-dynamic": "2.2.1",
-    "@angular/platform-server": "2.2.1",
+    "@angular/platform-server": "^2.2.1",
     "@ionic/storage": "1.1.6",
     "ionic-angular": "2.0.0-rc.4",
     "ionic-native": "2.2.11",
@@ -39,16 +40,8 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
-    {
-      "platform": "android",
-      "version": "",
-      "locator": "android"
-    },
-    {
-      "platform": "ios",
-      "version": "",
-      "locator": "ios"
-    }
+    "android@6.1.0",
+    "ios@4.3.1"
   ],
   "description": "WebApp & IOS App & Android App of Community "
 }

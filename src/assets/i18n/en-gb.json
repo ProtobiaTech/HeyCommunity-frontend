@@ -1,0 +1,112 @@
+{
+    "Please Wait ...":                  "Please Wait ...",
+    "Alert":                            "Alert",
+    "Confirm":                          "Confirm",
+    "Operations":                       "Operations",
+    "Report":                           "Report",
+    "Thanks For Your Report":           "Thanks For Your Report",
+    "Waiting":                              "Waiting",
+    "Waiting For Upload Images Or Video":   "Waiting For Upload Images Or Video",
+
+    "Create":                       "Create",
+    "Destory":                      "Destory",
+    "Destructive":                  "Destructive",
+    "Cancel":                       "Cancel",
+    "Close":                        "Close",
+    "Detail":                       "Detail",
+
+
+
+
+
+    "Park":                         "Park",
+    "Novelty":                      "Novelty",
+    "Likes":                        "Likes",
+    "Comments":                     "Comments",
+    "A Comment":                    "A Comment",
+    "Say Something ...":            "Say Something ...",
+    "Say Something To ...":         "Say Something To {{ user }} ...",
+    "Whats New ...":                "Whats New ...",
+    "Send":                         "Send",
+
+
+
+
+
+    "Mine":                         "Mine",
+    "Notices":                      "Notices",
+    "My Park Activity":             "My Park Activity",
+    "Settings":                     "Settings",
+    "Language":                     "Language",
+    "Clear Cache":                  "Clear Cache",
+    "About":                        "About",
+    "Profile":                      "Profile",
+    "Update Profile":               "Update Profile",
+    "Avatar":                       "Avatar",
+    "Update Avatar":                "Update Avatar",
+    "ID":                           "ID",
+    "Gender":                       "Gender",
+    "Male":                         "Male",
+    "Female":                       "Female",
+    "Bio":                          "Bio",
+
+
+
+
+
+    "User":                         "User",
+    "Sign Up":                      "Sign Up",
+    "Log In":                       "Log In",
+    "Log Out":                      "Log Out",
+    "Nickname":                     "Nickname",
+    "Phone":                        "Phone",
+    "Password":                     "Password",
+    "Forget Password?":             "Forget Password?",
+    "WeChat To Log In":             "WeChat To Log In",
+
+
+    "Welcome back":                 "Welcome back",
+    "Log In Failed":                "Log In Failed",
+    "Sign Up Success, Welcome ":    "Sign Up Success, Welcome ",
+    "SignUp Failed":                "SignUp Failed",
+
+
+
+
+
+    "Me":                           "Me",
+    "Hey Guys":                     "Hey Guys",
+    "Let's Login Now":              "Let's Login Now",
+    "Lets Login Now":               "Let's Login Now",
+    "Check All":                    "Check All",
+    "Remove All":                   "Remove All",
+    "Click On Select New Avatar":   "Click On Select New Avatar",
+
+    "You Did Not Have Notices":     "You Did Not Have Notices",
+    "Like Your Timeline":           "Like ❤️",
+
+
+
+
+
+    "Topic":                    "Topic",
+    "TopicModule": {
+      "Hot":                    "Hot",
+      "New":                    "New",
+
+      "Comments":               "Comments",
+      "All":                    "All",
+      "Topic Nodes":            "Topic Nodes",
+
+      "Title":                  "Title",
+      "Node":                   "Node",
+      "Initiate A Topic":       "Initial A Topic",
+      "Here, we sincerely exchange and share":          "Here, we sincerely exchange and share"
+    },
+
+
+
+
+
+    "HeyCommunity":                 "HeyCommunity"
+}

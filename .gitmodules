@@ -6,6 +6,10 @@
 	path = src/modules/user
 	url = https://github.com/dev4living/HeyCommunity-fem-user.git
 	branch = dev-master
+[submodule "NoticeModule"]
+	path = src/modules/notice
+	url = https://github.com/dev4living/HeyCommunity-fem-notice.git
+	branch = dev-master
 [submodule "TimelineModule"]
 	path = src/modules/timeline
 	url = https://github.com/dev4living/HeyCommunity-fem-timeline.git

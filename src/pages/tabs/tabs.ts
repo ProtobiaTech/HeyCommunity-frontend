@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 
 import { AppService } from '../../modules/common/services/app.service';
 import { UserService } from '../../modules/user/services/user.service';
-import { NoticeService } from '../../modules/user/services/notice.service';
+import { NoticeService } from '../../modules/notice/services/notice.service';
 
 import { TimelinePage } from '../../modules/timeline/pages/timeline';
 import { TopicPage } from '../../modules/topic/pages/topic';

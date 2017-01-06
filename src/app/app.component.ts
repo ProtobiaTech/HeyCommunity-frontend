@@ -36,6 +36,14 @@ export class MyApp {
 
       // set app lang
       this.heyApp.setLang();
+
+      if (platform.is('cordova')) {
+        // lean push init
+        (window as any).LeanPush.init();
+        (window as any).LeanPush.getInstallation(() => {}, (res) => {
+          console.log('LeanPush getInstallation error: ', res);
+        })
+      }
     });
   }
 }

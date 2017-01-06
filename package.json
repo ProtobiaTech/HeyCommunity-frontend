@@ -29,7 +29,10 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "0.0.47",
-    "typescript": "2.0.9"
+    "gulp": "^3.9.1",
+    "thunks": "^4.7.5",
+    "typescript": "2.0.9",
+    "xml2js": "^0.4.17"
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
@@ -37,7 +40,8 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-leanpush"
   ],
   "cordovaPlatforms": [
     "android@6.1.0",

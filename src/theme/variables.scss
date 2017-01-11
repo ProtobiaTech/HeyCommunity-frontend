@@ -1,5 +1,7 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+
 @import "ionic.globals";
 
 
@@ -11,7 +13,9 @@
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
 $text-color:        #444;
-$background-color:  #eee;
+// $background-color:  #fdfdfd;
+
+
 
 
 // Named Color Variables
@@ -28,13 +32,34 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  grey:       #666,
-  grey-tabs:       (
-      base: #e1e1e1,
-      contrast: #666
-  ),
+  // grey:       #666,
+  // grey-tabs:       (
+  //    base: #e1e1e1,
+  //    contrast: #666
+  //),
   favorite:   #69BB7B
 );
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
 
 
 // App Theme
@@ -52,8 +77,14 @@ $colors: (
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/v2/ionicons/
 
-$ionicons-font-path: "../assets/fonts";
 @import "ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
 
 
 //

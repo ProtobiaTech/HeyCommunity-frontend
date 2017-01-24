@@ -5,8 +5,7 @@
   "private": true,
   "scripts": {
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve",
-    "i18n": "ng-xi18n"
+    "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
     "@angular/common": "2.2.1",
@@ -40,8 +39,7 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard",
-    "cordova-plugin-leanpush"
+    "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
     "android@6.1.0",

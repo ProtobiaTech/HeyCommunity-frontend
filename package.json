@@ -39,7 +39,10 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "cordova-plugin-device",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-camera",
+    "cordova-plugin-ios-microphone-permissions",
+    "jpush-phonegap-plugin"
   ],
   "cordovaPlatforms": [
     "android@6.1.0",

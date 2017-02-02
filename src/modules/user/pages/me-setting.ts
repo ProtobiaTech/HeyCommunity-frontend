@@ -53,6 +53,8 @@ export class MeSettingPage {
   //
   // clear cache
   clearCacheHandler() {
+    this.timelineService.timelines = [];
+    this.topicService.topics = [];
     this.timelineService.clearCache();
     this.topicService.clearCache();
     this.heyApp.utilityComp.presentToast(this.heyApp.translateService.instant('user.Clear the cache success'));

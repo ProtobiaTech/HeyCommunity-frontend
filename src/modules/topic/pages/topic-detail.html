@@ -1,0 +1,75 @@
+<ion-content>
+  <div id="section-topic">
+    <div padding-left padding-right>
+      <h1 class="{{ platform.is('ios') ? 'is-ios' : '' }}">{{ topic.title }}</h1>
+      <div>
+        {{ topicService.getNodeNameById(topic.topic_node_id) }} 
+        <span class="pull-right">
+          {{ topic.created_at }}
+        </span>
+      </div>
+      <div>
+        {{ topic.author.nickname }} 
+        <span class="pull-right">
+          {{ topic.thumb_up_num }} {{ 'topic.Thumb Up' | translate }}
+          &nbsp;<span class="separator">/</span>&nbsp;
+          {{ topic.thumb_down_num }} {{ 'topic.Thumb Down' | translate }}
+          &nbsp;<span class="separator">/</span>&nbsp;
+          {{ topic.view_num }} {{ 'topic.View' | translate }}
+          &nbsp;<span class="separator">/</span>&nbsp;
+          {{ topic.star_num }} {{ 'topic.Star' | translate }}
+        </span>
+      </div>
+      <hr>
+      <div>
+        <!--
+        <img class="avatar" src="{{ topic.author.avatar }}?imageView/2/w/100">
+        -->
+      </div>
+      <p [innerHtml]="topic.content | nl2br"></p>
+    </div>
+    <hr>
+  </div>
+
+  <div id="section-comments" *ngIf="topic.comments.length > 0">
+    <h2 pading-top padding-left padding-right>{{ "topic.Comments" | translate }} <small>({{ topic.comments.length }})</small></h2>
+    <div id="section-comments">
+      <hr>
+      <div class="item-comment" *ngFor="let comment of topic.comments">
+        <div padding>
+          <strong>{{ comment.author.nickname }}</strong>: <span [innerHtml]="comment.content | nl2br"></span>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons left>
+      <button color="grey" ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button color="grey" ion-button icon-only (click)="presentTopicCommentModal()">
+        <ion-icon name="text"></ion-icon>
+      </button>
+
+      <button color="grey" ion-button icon-only (click)="setThumbUp()">
+        <ion-icon name="thumbs-up"></ion-icon>
+      </button>
+
+      <button color="grey" ion-button icon-only (click)="setThumbDown()">
+        <ion-icon name="thumbs-down"></ion-icon>
+      </button>
+
+      <button color="grey" ion-button icon-only (click)="presentActionSheet()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

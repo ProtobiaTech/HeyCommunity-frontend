@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ 'timeline.Park' | translate }}
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only color="grey" (click)="presentTimelineCreateModal()">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let timeline of timelineService.timelines; let i=index" class="timeline-card">
+    <ion-item class="header">
+      <ion-avatar item-left>
+        <img class="avatar" src="{{ heyApp.helper.getImg(timeline.author?.avatar) }}?imageView/2/w/100">
+      </ion-avatar>
+      <h2>
+        <span right class="date pull-right">
+          {{ timeline.created_at | timeago }}
+        </span>
+        <span class="author">
+          {{ timeline.author?.nickname }}
+        </span>
+      </h2>
+      <p>{{ timeline.author?.bio || ("I'm " + timeline.author?.nickname) }}</p>
+    </ion-item>
+
+    <div>
+      <img *ngFor="let img of timeline.imgs" src="{{ heyApp.helper.getImg(img.uri) }}?imageView/2/w/200">
+    </div>
+
+    <div *ngIf="timeline.video">
+      <video width="100%" preload="none" (click)="videoPlay($event)" poster="{{ heyApp.helper.getImg(timeline.poster) }}" src="{{ heyApp.helper.getVideo(timeline.video) }}"></video>
+    </div>
+
+    <hr>
+
+    <ion-card-content>
+      <div class="content">{{ timeline.content }}</div>
+    </ion-card-content>
+
+    <ion-row class="footer">
+      <ion-col>
+        <button ion-button icon-only color="grey" clear small (click)="setLikeForTimeline(timeline)">
+          <ion-icon color="danger" name="{{ timeline.is_like ? 'heart' : 'heart-outline' }}"></ion-icon>
+          &nbsp;
+          <div>{{ timeline.like_num }} {{ 'timeline.Likes' | translate }}</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-only color="grey" clear small (click)="gotoTimelineDetailPage(timeline, i)">
+          <ion-icon name="text"></ion-icon>
+          &nbsp;
+          <div>{{ timeline.comment_num }} {{ 'timeline.Comments' | translate }}</div>
+        </button>
+      </ion-col>
+      <ion-col center class="date">
+        <ion-note>
+          {{ timeline.created_at | moment: ['MM-DD HH:mm'] }}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="timeline.comment_num" class="comments">
+        <div *ngFor="let comment of timeline.comments; let i=index;">
+          <div class="item-comment" *ngIf="i < 3">
+            <span class="author">{{ comment.author?.nickname }}</span>:
+            <span *ngIf="comment.parent_id">
+              @{{ comment.parent.author.nickname }}:
+            </span>
+            {{ comment.content }}
+          </div>
+        </div>
+    </div>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

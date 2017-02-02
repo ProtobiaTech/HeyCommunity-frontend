@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button color="grey" ion-button icon-only (click)="cancelModal()">{{ 'Cancel' | translate }}</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="user">
+  <!-- log in -->
+  <div [hidden]="currentModal === 'SignUp'">
+      <div padding-bottom></div>
+      <h3 class="text-center">{{ 'user.Log In' | translate }}</h3>
+
+      <form #logInForm="ngForm" (ngSubmit)="logInHandler(logInForm)">
+        <ion-list>
+          <ion-item>
+            <ion-label primary>{{ 'user.Phone' | translate }}</ion-label>
+            <ion-input [(ngModel)]="logInModel.phone" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label primary>{{ 'user.Password' | translate }}</ion-label>
+            <ion-input [(ngModel)]="logInModel.password" name="password" type="password" required ngModel minlength="6"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <div class="session-bottom">
+          <button color="grey" ion-button dark clear small disabled type="button">{{ 'user.Forget Password?' | translate }}</button>
+
+          <div class="pull-right">
+            <button color="grey" ion-button dark clear small (click)="currentModal = 'SignUp'" type="button">{{ 'user.Sign Up' | translate }}</button>
+          </div>
+        </div>
+
+        <div padding-left padding-right>
+          <button color="grey" ion-button  block [disabled]="!logInForm.valid" type="submit">{{ 'user.Log In' | translate }}</button>
+        </div>
+
+        <div *ngIf="heyApp.authService.isWeChatBrowser()" padding-left padding-right>
+          <button (click)="gotoWeChatOAuthPage()" color="light" ion-button block>{{ 'user.WeChat To Log In' | translate }}</button>
+        </div>
+      </form>
+  </div>
+
+
+  <!-- sign up -->
+  <div [hidden]="currentModal === 'LogIn'">
+      <div padding-bottom></div>
+      <h3 class="text-center">{{ 'user.Sign Up' | translate }}</h3>
+
+      <form #signUpForm="ngForm" (ngSubmit)="signUpHandler(signUpForm)">
+        <ion-list>
+          <ion-item>
+            <ion-label primary>{{ 'user.Nickname' | translate }}</ion-label>
+            <ion-input [(ngModel)]="signUpModel.nickname" name="nickname" type="text" required minlength="3"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label primary>{{ 'user.Phone' | translate }}</ion-label>
+            <ion-input [(ngModel)]="signUpModel.phone" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label primary>{{ 'user.Password' | translate }}</ion-label>
+            <ion-input [(ngModel)]="signUpModel.password" name="password" type="text" required ngModel minlength="6"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <div class="session-bottom">
+          <button color="grey" ion-button clear small type="button"></button>
+
+          <div class="pull-right">
+            <button color="grey" ion-button dark clear small (click)="currentModal = 'LogIn'" type="button">{{ 'user.Log In' | translate }}</button>
+          </div>
+        </div>
+
+        <div padding-left padding-right>
+          <button color="grey" ion-button block [disabled]="!signUpForm.valid" type="submit">{{ 'user.Sign Up' | translate }}</button>
+        </div>
+
+        <div *ngIf="heyApp.authService.isWeChatBrowser()" padding-left padding-right>
+          <button (click)="gotoWeChatOAuthPage()" color="light" ion-button block>{{ 'user.WeChat To Log In' | translate }}</button>
+        </div>
+      </form>
+  </div>
+</ion-content>

@@ -1,0 +1,51 @@
+page-me {
+  ion-toolbar {
+    position: fixed;
+
+    .toolbar-background {
+      background: transparent;
+    }
+
+    ion-buttons {
+      margin-top: 20px;
+      padding-right: 10px;
+    }
+  }
+
+
+  ion-content {
+    //
+    //
+    #section-avatar {
+      background-color: #e1e1e1;
+
+      .avatar {
+        margin-top: 60px;
+        border-radius: 50%;
+        width: 100%;
+      }
+
+      .nickname {
+        font-size: 18px;
+      }
+
+      .bio {
+        line-height: 2em;
+      }
+    }
+
+
+    //
+    //
+    #section-btns {
+      margin-top: 10px;
+    }
+
+
+    //
+    //
+    #section-info {
+      margin-bottom: 10px;
+    }
+  }
+}

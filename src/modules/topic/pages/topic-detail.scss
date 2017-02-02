@@ -1,0 +1,53 @@
+page-topic-detail {
+  ion-content {
+    #section-topic {
+      background-color: #fff;
+    }
+
+    h1.is-ios {
+      padding-top: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 3rem;
+    }
+
+    #section-comments {
+      background-color: #fff;
+
+      .item-comment {
+      }
+
+      hr {
+        margin: 0;
+      }
+    }
+  }
+
+
+  //
+  //
+  ion-footer {
+    ion-buttons {
+      button {
+        width: 3rem;
+        margin: 0 1rem !important;
+      }
+
+      &.bar-buttons-ios {
+        button {
+          margin: 0 2px;
+
+          &:first-of-type {
+            margin-left: 0;
+          }
+
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}

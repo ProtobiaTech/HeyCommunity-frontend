@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ 'user.Settings' | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list padding-top>
+    <button ion-item [navPush]="MeSettingLanguagePage">
+      <ion-icon name="globe" item-left></ion-icon>
+      {{ 'user.Language' | translate }}
+    </button>
+
+    <button ion-item (click)="clearCacheHandler()">
+      <ion-icon name="trash" item-left></ion-icon>
+      {{ 'user.Clear Cache' | translate }}
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <button ion-item [navPush]="HCAboutPage">
+      <ion-icon name="information-circle" item-left></ion-icon>
+      {{ 'user.About' | translate }}
+    </button>
+    <button ion-item [navPush]="HCGuidePage">
+      <ion-icon name="bulb" item-left></ion-icon>
+      {{ 'user.Guide' | translate }}
+    </button>
+    <button ion-item [navPush]="HCFeedbackPage">
+      <ion-icon name="paper" item-left></ion-icon>
+      {{ 'user.Feedback' | translate }}
+    </button>
+  </ion-list>
+
+  <ion-list *ngIf="heyApp.authService.isAuth">
+    <button ion-item (click)="gotoLogOut()">
+      <ion-icon name="log-out" item-left></ion-icon>
+      {{ 'user.Log Out' | translate }}
+    </button>
+  </ion-list>
+</ion-content>

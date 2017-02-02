@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button color="grey" ion-button (click)="dismiss()">
+        {{ 'Close' | translate }}
+      </button>
+    </ion-buttons>
+
+    <ion-title>{{ 'topic.Initiate A Topic' | translate }}</ion-title>
+
+    <ion-buttons end>
+      <button color="grey" ion-button (click)="topicCreateHandler(topicCreateForm)" [disabled]="topicCreateForm.invalid">
+        {{ 'Send' | translate }}
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list id="section-textarea">
+    <form #topicCreateForm="ngForm" novalidate>
+      <ion-item>
+        <ion-input required [(ngModel)]="newTopic.title" name="title" type="text" placeholder="{{ 'topic.Title' | translate }}"></ion-input>
+      </ion-item>
+      <ion-item class="item-select">
+        <ion-label>{{ 'topic.Node' | translate }}</ion-label>
+        <ion-select required [(ngModel)]="newTopic.topic_node_id" name="topic_node_id">
+          <div *ngFor="let node of topicService.nodes">
+            <ion-option value="{{ node.id }}">{{ node.name }}</ion-option>
+
+            <div *ngFor="let childNode of node.child_nodes">
+              <ion-option value="{{ childNode.id }}">{{ childNode.name }}</ion-option>
+            </div>
+          </div>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-textarea required [(ngModel)]="newTopic.content" name="content" rows="8" placeholder="{{ 'topic.Here, we sincerely exchange and share' | translate }}">
+        </ion-textarea>
+      </ion-item>
+    </form>
+  </ion-list>
+</ion-content>

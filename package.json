@@ -40,6 +40,7 @@
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
     "ionic-plugin-keyboard",
+    "cordova-plugin-badge",
     "cordova-plugin-camera",
     "cordova-plugin-ios-microphone-permissions",
     "jpush-phonegap-plugin"

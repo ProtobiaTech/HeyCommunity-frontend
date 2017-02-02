@@ -98,4 +98,5 @@
     <plugin name="cordova-plugin-ios-microphone-permissions" spec="https://github.com/supgeek-rod/cordova-plugin-ios-microphone-permissions.git">
         <variable name="MICROPHONE_USAGE_DESCRIPTION" value="This app needs microphone access" />
     </plugin>
+    <plugin name="cordova-plugin-badge" spec="~0.7.4" />
 </widget>

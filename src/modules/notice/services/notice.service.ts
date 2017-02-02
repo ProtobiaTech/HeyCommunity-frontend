@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Events } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
@@ -20,6 +21,7 @@ export class NoticeService {
   //
   // constructor
   constructor(
+    private events: Events,
     private http: Http,
     private helper: Helper
   ) {
@@ -40,6 +42,7 @@ export class NoticeService {
       this.noCheckNotices = this.notices.filter((notice) => {
         return !Boolean(notice.is_checked);
       })
+      this.events.publish('notice:getIndex', {num: this.noCheckNotices.length});
       return response.json();
     })
     .catch(this.handleError);

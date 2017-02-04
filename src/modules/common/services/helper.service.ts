@@ -2,17 +2,11 @@ import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { TranslateService } from 'ng2-translate';
 
-import { AppConfig } from '../../../app/app.config';
 import { AuthService } from './auth.service';
 
 
 @Injectable()
 export class Helper {
-  appProtocol: string = AppConfig.APP_PROTOCOL;
-  appApiDomain: string = AppConfig.APP_API_DOMAIN;
-  appAssetDomain: string = AppConfig.APP_ASSET_DOMAIN;
-  webAppCDNAssetDomain: string = AppConfig.WEBAPP_CDN_ASSET_DOMAIN;
-
   apiPath: string = '';
   assetPath: string = '';
 
@@ -30,23 +24,7 @@ export class Helper {
   //
   // get api
   getAPI(uri): string {
-    if (this.apiPath) {
-      return this.apiPath + uri
-    } else {
-      if (this.platform.is('cordova')) {
-        this.apiPath = this.appProtocol + this.appApiDomain + '/api/';
-      } else {
-        let api = this.getParameterByName('api')
-
-        if (api) {
-          this.apiPath = '//' + api + '/api/';
-        } else {
-          this.apiPath = '/api/';
-        }
-      }
-
-      return this.apiPath + uri;
-    }
+    return (window as any).API_DOMAIN + '/api/' + uri;
   }
 
 
@@ -55,26 +33,8 @@ export class Helper {
   getAssetUri(uri): string {
     if (uri && uri.substring(0, 4) == 'http') {
       return uri;
-    } else if (this.assetPath) {
-      return this.assetPath + uri;
     } else {
-      if (this.platform.is('cordova')) {
-        this.assetPath = this.appProtocol + this.appAssetDomain;
-      } else {
-        let api = this.getParameterByName('api')
-
-        if (api) {
-          this.assetPath = '//' + api;
-        } else {
-          if (this.webAppCDNAssetDomain) {
-            this.assetPath = '//' + this.webAppCDNAssetDomain;
-          } else {
-            this.assetPath = '//' + location.host;
-          }
-        }
-      }
-
-      return this.assetPath + uri;
+      return (window as any).ASSET_DOMAIN + uri;
     }
   }
 

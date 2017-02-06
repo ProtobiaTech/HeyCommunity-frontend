@@ -34,7 +34,7 @@ export class Helper {
     if (uri && uri.substring(0, 4) == 'http') {
       return uri;
     } else {
-      return (window as any).ASSET_DOMAIN + uri;
+      return (window as any).ASSET_DOMAIN + '/' + uri;
     }
   }
 

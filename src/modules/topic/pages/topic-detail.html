@@ -67,7 +67,7 @@
         <ion-icon name="thumbs-down"></ion-icon>
       </button>
 
-      <button color="grey" ion-button icon-only (click)="presentActionSheet()">
+      <button color="grey" *ngIf="heyApp.authService.isAuth" ion-button icon-only (click)="presentActionSheet()">
         <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>

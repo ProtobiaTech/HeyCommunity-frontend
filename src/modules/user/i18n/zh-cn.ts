@@ -35,6 +35,8 @@ export class ZhCn {
       "Update Profile":               "更新个人信息",
       "Avatar":                       "头像",
       "Update Avatar":                "更新头像",
+      "Update Avatar Success":        "更新头像成功",
+      "Update Avatar Failed":         "更新头像失败",
       "ID":                           "ID",
       "Gender":                       "性别",
       "Male":                         "男性",

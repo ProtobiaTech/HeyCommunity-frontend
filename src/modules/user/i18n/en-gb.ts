@@ -35,6 +35,8 @@ export class EnGb {
       "Update Profile":               "Update Profile",
       "Avatar":                       "Avatar",
       "Update Avatar":                "Update Avatar",
+      "Update Avatar Success":        "Update Avatar Success",
+      "Update Avatar Failed":         "Update Avatar Failed",
       "ID":                           "ID",
       "Gender":                       "Gender",
       "Male":                         "Male",

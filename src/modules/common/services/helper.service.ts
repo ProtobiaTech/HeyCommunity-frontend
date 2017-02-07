@@ -7,10 +7,6 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class Helper {
-  apiPath: string = '';
-  assetPath: string = '';
-
-
   //
   // constructor
   constructor(

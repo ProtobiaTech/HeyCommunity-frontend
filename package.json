@@ -43,6 +43,7 @@
     "cordova-plugin-badge",
     "cordova-plugin-camera",
     "cordova-plugin-inappbrowser",
+    "cordova-plugin-file-transfer",
     "cordova-plugin-ios-microphone-permissions",
     "jpush-phonegap-plugin"
   ],

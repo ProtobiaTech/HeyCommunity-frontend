@@ -20,7 +20,13 @@ export class Helper {
   //
   // get api
   getAPI(uri): string {
-    return (window as any).API_DOMAIN + '/api/' + uri;
+    let apiDomain = (window as any).API_DOMAIN;
+
+    if (apiDomain && apiDomain.substring(0, 4) == 'http') {
+      return apiDomain + '/api/' + uri;
+    } else {
+      return (<any> window).location.href + 'api/' + uri;
+    }
   }
 
 

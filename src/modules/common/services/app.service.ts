@@ -74,8 +74,6 @@ export class AppService {
     for (let lang in trans.langs) {
       let translations = trans.getTranslations(lang);
       this.translateService.setTranslation(lang, translations, true);
-
-      console.log(this.translateService);
     }
   }
 }

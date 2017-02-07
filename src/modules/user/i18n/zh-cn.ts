@@ -47,6 +47,7 @@ export class ZhCn {
 
       // settings
       "Guide":                        "用户指南",
+      "Terms":                        "用户协议",
       "Feedback":                     "意见反馈",
       "Clear the cache success":      "清除缓存成功",
     }

@@ -68,7 +68,9 @@
         </ion-list>
 
         <div class="session-bottom">
-          <button color="grey" ion-button clear small type="button"></button>
+          <button (click)="openTermsPage()" color="grey" ion-button clear small type="button">
+              注册即表示同意用户协议
+          </button>
 
           <div class="pull-right">
             <button color="grey" ion-button dark clear small (click)="currentModal = 'LogIn'" type="button">{{ 'user.Log In' | translate }}</button>

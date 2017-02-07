@@ -24,12 +24,16 @@
       <ion-icon name="information-circle" item-left></ion-icon>
       {{ 'user.About' | translate }}
     </button>
+    <button ion-item (click)="openTermsPage()">
+      <ion-icon name="paper" item-left></ion-icon>
+      {{ 'user.Terms' | translate }}
+    </button>
     <button ion-item [navPush]="HCGuidePage">
       <ion-icon name="bulb" item-left></ion-icon>
       {{ 'user.Guide' | translate }}
     </button>
     <button ion-item [navPush]="HCFeedbackPage">
-      <ion-icon name="paper" item-left></ion-icon>
+      <ion-icon name="paper-plane" item-left></ion-icon>
       {{ 'user.Feedback' | translate }}
     </button>
   </ion-list>

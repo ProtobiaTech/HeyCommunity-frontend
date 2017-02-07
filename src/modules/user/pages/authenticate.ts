@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
+import { InAppBrowser } from 'ionic-native';
 
 import { AppService } from '../../common/services/app.service';
 import { UserService} from '../services/user.service';
@@ -97,5 +98,17 @@ export class AuthenticatePage {
   //
   gotoWeChatOAuthPage() {
     location.assign('/api/wechat/o-auth');
+  }
+
+  //
+  // open terms page
+  openTermsPage() {
+    let url = (<any> window).API_DOMAIN + '/docs/terms.txt';
+    if (this.heyApp.platform.is('cordova')) {
+      let browser = new InAppBrowser(url, '_system');
+      browser.show();
+    } else {
+      (<any> window).open(url, '_blank');
+    }
   }
 }

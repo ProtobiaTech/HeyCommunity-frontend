@@ -47,6 +47,7 @@ export class EnGb {
 
       // settings
       "Guide":                        "Guide",
+      "Terms":                        "Terms",
       "Feedback":                     "Feedback",
       "Clear the cache success":      "Clear the cache success",
     }

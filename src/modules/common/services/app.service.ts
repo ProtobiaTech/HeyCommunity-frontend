@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Events } from 'ionic-angular';
+import { Platform, Events } from 'ionic-angular';
 
 import { TranslateService } from 'ng2-translate';
 
@@ -24,6 +24,7 @@ export class AppService {
   // constructor
   constructor(
     public events: Events,
+    public platform: Platform,
     public helper: Helper,
     public authService: AuthService,
     public menuService: MenuService,

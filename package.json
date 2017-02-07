@@ -42,6 +42,7 @@
     "ionic-plugin-keyboard",
     "cordova-plugin-badge",
     "cordova-plugin-camera",
+    "cordova-plugin-inappbrowser",
     "cordova-plugin-ios-microphone-permissions",
     "jpush-phonegap-plugin"
   ],

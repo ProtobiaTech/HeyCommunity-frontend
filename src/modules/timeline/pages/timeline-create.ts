@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
-import { ImagePicker, Transfer } from 'ionic-native';
+import { ImagePicker, Transfer, Camera } from 'ionic-native';
 
 import { Timeline } from '../models/timeline.model';
 import { TimelineImg } from '../models/timelineImg.model';
@@ -82,34 +82,57 @@ export class TimelineCreatePage {
 
 
   //
+  // upload imgs by native camera
+  uploadImgsByNativeCamera(theSourceType = 1) {
+    let options = {
+      saveToPhotoAlbum: true,
+      sourceType: theSourceType,
+    };
+    Camera.getPicture(options).then((result) => {
+      this.waiting = true;
+
+      this.uploadFileByFileTransfer(result, this.timelineService.timelineStoreImgAPI);
+    }, (err) => {
+      console.log('Camera getPictures err', err);
+    });
+  }
+
+
   //
-  uploadImgsByNative() {
-    let options = {quality: 75};
+  // upload imgs by native library
+  uploadImgsByNativeLibrary() {
+    let options = {quality: 60};
     ImagePicker.getPictures(options).then((results) => {
       this.waiting = true;
 
       for (var i = 0; i < results.length; i++) {
-        const fileTransfer = new Transfer();
-        let options: any;
-        options = {
-           fileKey: 'uploads[]',
-           fileName: results[i].replace(/^.*[\\\/]/, ''),
-           headers: {},
-        }
-
-        fileTransfer.upload(results[i], this.timelineService.timelineStoreImgAPI, options)
-        .then((ret) => {
-          this.waiting = false;
-
-          // merge imgs
-          this.mergeImgs(JSON.parse((<any> ret).response).imgs);
-        }, (err) => {
-          this.waiting = false;
-        })
+        this.uploadFileByFileTransfer(results[i], this.timelineService.timelineStoreImgAPI);
       }
     }, (err) => {
       console.log('ImagePIcker getPictures err', err);
     });
+  }
+
+  //
+  // upload imgs by file transfer
+  uploadFileByFileTransfer(file, api) {
+    const fileTransfer = new Transfer();
+    let options: any;
+    options = {
+       fileKey: 'uploads[]',
+       fileName: file.replace(/^.*[\\\/]/, ''),
+       headers: {},
+    }
+
+    fileTransfer.upload(file, api, options)
+    .then((ret) => {
+      this.waiting = false;
+
+      // merge imgs
+      this.mergeImgs(JSON.parse((<any> ret).response).imgs);
+    }, (err) => {
+      this.waiting = false;
+    })
   }
 
 

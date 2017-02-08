@@ -85,8 +85,11 @@ export class TimelineCreatePage {
   // upload imgs by native camera
   uploadImgsByNativeCamera(theSourceType = 1) {
     let options = {
+      quality: 60,
       saveToPhotoAlbum: true,
       sourceType: theSourceType,
+      targetWidth: 1200,
+      targetHeight: 1600,
     };
     Camera.getPicture(options).then((result) => {
       this.waiting = true;
@@ -101,7 +104,11 @@ export class TimelineCreatePage {
   //
   // upload imgs by native library
   uploadImgsByNativeLibrary() {
-    let options = {quality: 60};
+    let options = {
+      quality: 60,
+      width: 1200,
+      height: 1600,
+    };
     ImagePicker.getPictures(options).then((results) => {
       this.waiting = true;
 

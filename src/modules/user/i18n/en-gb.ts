@@ -15,6 +15,7 @@ export class EnGb {
       "Log In Failed":                "Log In Failed",
       "Sign Up Success, Welcome ":    "Sign Up Success, Welcome ",
       "SignUp Failed":                "SignUp Failed",
+      "Agree User Agreement":         "I agree to the User Agreement",
 
       "Me":                           "Me",
       "Hey Guys":                     "Hey Guys",

@@ -87,7 +87,6 @@ export class TimelineCreatePage {
     let options = {quality: 75};
     ImagePicker.getPictures(options).then((results) => {
       this.waiting = true;
-      let retImgs = [];
 
       for (var i = 0; i < results.length; i++) {
         const fileTransfer = new Transfer();

@@ -80,10 +80,10 @@ export class MeProfileUpdatePage {
       this.heyApp.authService.reset(data);
       this.userInfo = data;
       this.heyApp.utilityComp.dismissLoading();
-      this.heyApp.utilityComp.presentToast('user.Update Avatar Success');
+      this.heyApp.utilityComp.presentToast(this.heyApp.translateService.instant('user.Update Avatar Success'));
     }, () => {
       this.heyApp.utilityComp.dismissLoading();
-      this.heyApp.utilityComp.presentToast('user.Update Avatar Failed');
+      this.heyApp.utilityComp.presentToast(this.heyApp.translateService.instant('user.Update Avatar Failed'));
     });
   }
 }

@@ -15,6 +15,7 @@ export class ZhCn {
       "Log In Failed":                "登录失败",
       "Sign Up Success, Welcome ":    "登录成功, 欢迎 ",
       "SignUp Failed":                "注册失败",
+      "Agree User Agreement":         "注册即表示同意用户协议",
 
       "Me":                           "我",
       "Hey Guys":                     "Hey 朋友",

@@ -33,8 +33,13 @@
       <p>{{ timeline.author?.bio || ("I'm " + timeline.author?.nickname) }}</p>
     </ion-item>
 
-    <div>
-      <img *ngFor="let img of timeline.imgs" src="{{ heyApp.helper.getImg(img.uri) }}?imageView/2/w/800">
+    <div *ngIf="timeline.imgs.length === 1">
+      <img src="{{ heyApp.helper.getImg(timeline.imgs[0].uri) }}?imageView/2/w/800">
+    </div>
+
+    <div class="img-muilt" [ngClass]="{'img-odd': (timeline.imgs.length % 2)}" *ngIf="timeline.imgs.length > 1">
+      <div *ngFor="let img of timeline.imgs; let i = index" [ngStyle]="{'background-image': 'url(' + heyApp.helper.getImg(img.uri) + ')'}"></div>
+      <span class="clear-float"></span>
     </div>
 
     <div *ngIf="timeline.video">

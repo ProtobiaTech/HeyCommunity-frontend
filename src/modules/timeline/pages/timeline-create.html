@@ -28,7 +28,7 @@
   </ion-list>
 
   <div class="media-toolbar">
-    <button *ngIf="heyApp.platform.is('cordova') && !waiting" (click)="uploadImgsByNativeCamera();" color="dark" ion-button icon-only outline clear>
+    <button *ngIf="heyApp.platform.is('cordova') && !waiting" (press)="uploadImgsByNativeCamera('library');" (click)="uploadImgsByNativeCamera('camera');" color="dark" ion-button icon-only outline clear>
       <ion-icon name="camera"></ion-icon>
     </button>
 

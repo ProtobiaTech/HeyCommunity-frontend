@@ -83,17 +83,26 @@ export class TimelineCreatePage {
 
   //
   // upload imgs by native camera
-  uploadImgsByNativeCamera(theSourceType = 1) {
+  uploadImgsByNativeCamera(type) {
     let options = {
       quality: 60,
       saveToPhotoAlbum: true,
-      sourceType: theSourceType,
+      sourceType: 1,
+      mediaType: 0,
       targetWidth: 1200,
       targetHeight: 1600,
     };
+    if (type === 'library') {
+      options.quality = 100;
+      options.saveToPhotoAlbum = false;
+      options.sourceType = 0;
+      options.mediaType = 2;
+    }
+
     Camera.getPicture(options).then((result) => {
       this.waiting = true;
 
+      console.log('the file', result);
       this.uploadFileByFileTransfer(result, this.timelineService.timelineStoreImgAPI);
     }, (err) => {
       console.log('Camera getPictures err', err);
@@ -105,7 +114,6 @@ export class TimelineCreatePage {
   // upload imgs by native library
   uploadImgsByNativeLibrary() {
     let options = {
-      quality: 60,
       width: 1200,
       height: 1600,
     };

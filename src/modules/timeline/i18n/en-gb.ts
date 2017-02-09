@@ -16,6 +16,10 @@ export class EnGb {
       //
       // me-timeline page
       "My Park":                            "My Park",
+
+
+      // create
+      "Please share something that makes sense":        "Please share something that makes sense",
     },
   }
 }

@@ -16,6 +16,10 @@ export class ZhCn {
       //
       // me-timeline page
       "My Park":                            "我的公园",
+
+
+      // create
+      "Please share something that makes sense":        "请分享有意义的内容",
     },
   }
 }

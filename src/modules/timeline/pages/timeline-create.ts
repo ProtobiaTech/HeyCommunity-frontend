@@ -45,27 +45,37 @@ export class TimelineCreatePage {
   //
   // timeline create handler
   timelineCreateHandler(ngForm) {
-    if (this.waiting) {
+    console.log(this.imgIdArr, ngForm.value.content, this.video);
+    if (this.imgIdArr.length || ngForm.value.content || this.video) {
+      if (this.waiting) {
+        let params = {
+          title: this.heyApp.translateService.instant('Waiting'),
+          subTitle: this.heyApp.translateService.instant('Waiting For Upload Images Or Video'),
+        }
+
+        this.heyApp.utilityComp.presentAlter(params);
+      } else {
+        this.heyApp.utilityComp.presentLoading();
+
+        let data: any = {
+          content: ngForm.value.content,
+          imgs: JSON.stringify(this.imgIdArr),
+          video: this.video ? this.video.id : null,
+        };
+
+        this.timelineService.store(data)
+        .then((newTimeline: Timeline) => {
+          this.heyApp.utilityComp.dismissLoading();
+          this.dismiss();
+        });
+      }
+    } else {
       let params = {
-        title: this.heyApp.translateService.instant('Waiting'),
-        subTitle: this.heyApp.translateService.instant('Waiting For Upload Images Or Video'),
+        title: this.heyApp.translateService.instant('Alert'),
+        subTitle: this.heyApp.translateService.instant('timeline.Please share something that makes sense'),
       }
 
       this.heyApp.utilityComp.presentAlter(params);
-    } else {
-      this.heyApp.utilityComp.presentLoading();
-
-      let data: any = {
-        content: ngForm.value.content,
-        imgs: JSON.stringify(this.imgIdArr),
-        video: this.video ? this.video.id : null,
-      };
-
-      this.timelineService.store(data)
-      .then((newTimeline: Timeline) => {
-        this.heyApp.utilityComp.dismissLoading();
-        this.dismiss();
-      });
     }
   }
 

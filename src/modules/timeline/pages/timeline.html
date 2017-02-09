@@ -49,7 +49,7 @@
     <hr>
 
     <ion-card-content>
-      <div class="content">{{ timeline.content }}</div>
+      <div class="content" [innerHtml]="timeline.content | nl2br"></div>
     </ion-card-content>
 
     <ion-row class="footer">

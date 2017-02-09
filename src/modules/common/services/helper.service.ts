@@ -33,11 +33,7 @@ export class Helper {
   //
   // get asset url
   getAssetUri(uri): string {
-    if (uri && uri.substring(0, 4) == 'http') {
-      return uri;
-    } else {
-      return (window as any).ASSET_DOMAIN + '/' + uri;
-    }
+    return uri;
   }
 
 

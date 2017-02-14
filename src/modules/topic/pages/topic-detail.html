@@ -26,7 +26,7 @@
         <img class="avatar" src="{{ topic.author.avatar }}?imageView/2/w/100">
         -->
       </div>
-      <p [innerHtml]="topic.content | nl2br"></p>
+      <p class="content" [innerHtml]="topic.content | nl2br"></p>
     </div>
     <hr>
   </div>
@@ -36,7 +36,7 @@
     <div id="section-comments">
       <hr>
       <div class="item-comment" *ngFor="let comment of topic.comments">
-        <div padding>
+        <div padding class="content">
           <strong>{{ comment.author.nickname }}</strong>: <span [innerHtml]="comment.content | nl2br"></span>
         </div>
         <hr>

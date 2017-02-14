@@ -13,6 +13,13 @@ page-topic-detail {
       margin-top: 3rem;
     }
 
+    #section-topic {
+      .content {
+        font-size: 1.7rem;
+        line-height: 2.4rem;
+      }
+    }
+
     #section-comments {
       background-color: #fff;
 
@@ -21,6 +28,10 @@ page-topic-detail {
 
       hr {
         margin: 0;
+      }
+
+      .content {
+        font-size: 1.6rem;
       }
     }
   }

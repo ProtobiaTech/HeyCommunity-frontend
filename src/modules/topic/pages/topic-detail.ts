@@ -89,7 +89,11 @@ export class TopicDetailPage {
   //
   setStar() {
     if (this.heyApp.authService.authOrLogin()) {
-      this.topicService.setStar(this.topic.id).then((topic) => {
+      let params = {
+        id: this.topic.id,
+        value: !this.topic.is_star,
+      };
+      this.topicService.setStar(params).then((topic) => {
         this.topic = topic;
         this.topicService.topics[this.topicIndex] = topic;
       });

@@ -29,5 +29,6 @@ export class EnGb {
     "Thanks For Your Report":           "Thanks For Your Report",
     "Waiting":                              "Waiting",
     "Waiting For Upload Images Or Video":   "Waiting For Upload Images Or Video",
+    "Successful operation":                 "Successful operation",
   }
 }

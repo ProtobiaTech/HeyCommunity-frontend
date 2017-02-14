@@ -29,5 +29,6 @@ export class ZhCn {
     "Thanks For Your Report":           "感谢你的举报",
     "Waiting":                              "等待",
     "Waiting For Upload Images Or Video":   "请等待图片或视频上传",
+    "Successful operation":                 "操作成功",
   }
 }

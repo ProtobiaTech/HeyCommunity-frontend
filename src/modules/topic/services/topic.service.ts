@@ -168,9 +168,9 @@ export class TopicService {
 
   //
   // set thumb up
-  setStar(id): Promise<Topic> {
+  setStar(params): Promise<Topic> {
     let api: string = this.helper.getAPI('topic/set-star');
-    let data: Object = {id: id};
+    let data: Object = params;
 
     return this.http.post(api, data, this.requestOptions)
     .toPromise()

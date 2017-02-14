@@ -61,10 +61,16 @@
 
       <button color="grey" ion-button icon-only (click)="setThumbUp()">
         <ion-icon name="thumbs-up"></ion-icon>
+        <sup *ngIf="topic.thumb_up_num">{{ topic.thumb_up_num }}</sup>
       </button>
 
       <button color="grey" ion-button icon-only (click)="setThumbDown()">
         <ion-icon name="thumbs-down"></ion-icon>
+        <sup *ngIf="topic.thumb_down_num">{{ topic.thumb_down_num }}</sup>
+      </button>
+
+      <button color="grey" ion-button icon-only (click)="setStar()">
+        <ion-icon name="{{ topic.is_star ? 'star' : 'star-outline' }}"></ion-icon>
       </button>
 
       <button color="grey" *ngIf="heyApp.authService.isAuth" ion-button icon-only (click)="presentActionSheet()">

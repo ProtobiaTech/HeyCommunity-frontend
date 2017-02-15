@@ -95,7 +95,7 @@
         <ion-icon name="{{ topic.is_star ? 'star' : 'star-outline' }}"></ion-icon>
       </button>
 
-      <button color="grey" *ngIf="heyApp.authService.isAuth" ion-button icon-only (click)="presentActionSheet()">
+      <button color="grey" ion-button icon-only (click)="presentActionSheet()">
         <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>

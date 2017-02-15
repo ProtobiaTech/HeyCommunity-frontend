@@ -7,19 +7,18 @@ page-timeline-detail {
       color: $text-color;
 
       //
-      .avatar {
-        position: absolute;
-        border-radius: 50%;
-        background-color: #ddd;
-        width: 30px;
-        height: 30px;
-      }
-
-      //
       .item-comment {
+        //
+        .avatar {
+          position: absolute;
+          border-radius: 50%;
+          background-color: #ddd;
+          width: 36px;
+          height: 36px;
+        }
 
         .comment-content {
-          margin-left: 40px;
+          margin-left: 46px;
           margin-bottom: 16px;
           border-bottom: 1px solid #fff;
           padding-bottom: 16px;
@@ -44,6 +43,14 @@ page-timeline-detail {
                   line-height: 16px;
                 }
               }
+            }
+
+            .line-1 {
+              line-height: 18px;
+            }
+
+            .line-2 {
+              margin-bottom: 4px;
             }
           }
 

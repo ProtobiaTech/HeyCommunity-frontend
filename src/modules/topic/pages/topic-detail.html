@@ -33,16 +33,38 @@
 
   <div id="section-comments" *ngIf="topic.comments.length > 0">
     <h2 pading-top padding-left padding-right>{{ "topic.Comments" | translate }} <small>({{ topic.comments.length }})</small></h2>
-    <div id="section-comments">
-      <hr>
-      <div class="item-comment" *ngFor="let comment of topic.comments">
-        <div padding class="content">
-          <strong>{{ comment.author.nickname }}</strong>: <span [innerHtml]="comment.content | nl2br"></span>
+    <hr>
+
+    <div padding-left padding-right class="item-comment" *ngFor="let comment of topic.comments">
+      <img class="avatar" src="{{ heyApp.helper.getImg(comment.author.avatar) }}?imageView/2/w/100">
+      <div class="comment-content">
+        <div class="header">
+          <div class="line-1">
+            <a color="dark">{{ comment.author.nickname }}</a>
+            <span class="pull-right">
+              {{ comment.created_at | timeago }}
+            </span>
+          </div>
+          <div class="line-2">
+            <span>{{ comment.created_at | moment: ['YYYY-MM-DD HH:mm'] }}</span>
+            <span class="pull-right">
+              <button color="grey" ion-button class="btn-comment-reply" small primary clear (click)="presentTopicCommentModal(comment)">
+                  <ion-icon name="undo"></ion-icon> &nbsp;
+              </button>
+            </span>
+          </div>
         </div>
-        <hr>
+        <div>
+          <span *ngIf="comment.parent">
+            @{{ comment.parent.author.nickname }}:
+          </span>
+
+          {{ comment.content }}
+        </div>
       </div>
     </div>
   </div>
+
 </ion-content>
 
 

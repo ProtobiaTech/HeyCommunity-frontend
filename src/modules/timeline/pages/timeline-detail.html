@@ -28,39 +28,28 @@
       <img class="avatar" src="{{ heyApp.helper.getImg(comment.author.avatar) }}?imageView/2/w/100">
       <div class="comment-content">
         <div class="header">
-          <a color="dark">{{ comment.author.nickname }}</a>
-          <span class="pull-right">
-            <button color="grey" ion-button class="btn-comment-reply" small primary clear (click)="presentTimelineCommentModal(comment)">
-                <ion-icon name="undo"></ion-icon> &nbsp;
-            </button>
-          </span>
+          <div class="line-1">
+            <a color="dark">{{ comment.author.nickname }}</a>
+            <span class="pull-right">
+              {{ comment.created_at | timeago }}
+            </span>
+          </div>
+          <div class="line-2">
+            <span>{{ comment.created_at | moment: ['YYYY-MM-DD HH:mm'] }}</span>
+            <span class="pull-right">
+              <button color="grey" ion-button class="btn-comment-reply" small primary clear (click)="presentTimelineCommentModal(comment)">
+                  <ion-icon name="undo"></ion-icon> &nbsp;
+              </button>
+            </span>
+          </div>
         </div>
         <span *ngIf="comment.parent_id">
           @{{ comment.parent.author.nickname }}:
         </span>
 
-        {{ comment.content }}
-
-        <!--
-        <ion-row class="footer-hide hide">
-          <ion-col class="btns">
-            <button ion-button icon-only color="grey" clear small (click)="presentTimelineCommentModal(comment)">
-              <ion-icon name="thumbs-up"></ion-icon>
-              {{ 0 }}
-            </button>
-
-            <button ion-button icon-only color="grey" clear small (click)="presentTimelineCommentModal(comment)">
-              <ion-icon name="text"></ion-icon>
-              {{ 0 }}
-            </button>
-          </ion-col>
-          <ion-col width-33 class="date">
-            <ion-note color="grey">
-              {{ comment.created_at | moment: ['MM-DD HH:mm'] }}
-            </ion-note>
-          </ion-col>
-        </ion-row>
-        -->
+        <div>
+          {{ comment.content }}
+        </div>
       </div>
     </div>
   </div>

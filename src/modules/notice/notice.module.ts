@@ -54,6 +54,16 @@ export class NoticeModule {
       let jPush = (<any> window).plugins.jPushPlugin;
       jPush.init();
 
+      this.heyApp.authService.getUser().then((userInfo) => {
+        if (userInfo) {
+          jPush.setAlias('u' + userInfo.id);
+        }
+      });
+
+      jPush.getRegistrationID(function(data) {
+        console.log("JPushPlugin:registrationID is " + data)
+      });
+
       let theThis = this;
       (<any> document).addEventListener('jpush.receiveNotification', function(event) {
         console.log('Receive Notificaiton', JSON.stringify(event));

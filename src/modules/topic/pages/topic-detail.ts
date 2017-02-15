@@ -36,7 +36,11 @@ export class TopicDetailPage {
 
   //
   // ion view did enter
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    this.topicService.show(this.topic.id).then((ret) => {
+      this.topic = ret;
+      this.topicService.topics[this.topicIndex] = ret;
+    });
   }
 
 

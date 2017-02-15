@@ -27,8 +27,6 @@
         <ion-label>{{ 'topic.Node' | translate }}</ion-label>
         <ion-select required [(ngModel)]="newTopic.topic_node_id" name="topic_node_id">
           <div *ngFor="let node of topicService.nodes">
-            <ion-option value="{{ node.id }}">{{ node.name }}</ion-option>
-
             <div *ngFor="let childNode of node.child_nodes">
               <ion-option value="{{ childNode.id }}">{{ childNode.name }}</ion-option>
             </div>

@@ -56,7 +56,7 @@ export class TopicPage {
         let pages = {
           title: node.name,
           pages: [
-            {icon: 'bookmark', id: node.id, title: node.name, click: (id) => {let self = this; self.updateTopicByNode(id);}}
+            // {icon: 'bookmark', id: node.id, title: node.name, click: (id) => {let self = this; self.updateTopicByNode(id);}}
           ]
         }
 

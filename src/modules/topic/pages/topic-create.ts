@@ -23,6 +23,7 @@ export class TopicCreatePage {
     public viewCtrl: ViewController,
     public navCtrl: NavController
   ) {
+    this.newTopic.topic_node_id = this.topicService.nodeId;
   }
 
 

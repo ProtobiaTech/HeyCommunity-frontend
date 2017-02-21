@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.heycommunity.v3" version="3.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HeyCommunity</name>
+    <name>HeyCommunityV3</name>
     <description>WebApp / IOS App / Android App of Community</description>
     <author email="supgeek.rod@gmail.com" href="http://www.hey-community.com/">Rod</author>
     <content src="index.html" />

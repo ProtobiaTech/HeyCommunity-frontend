@@ -15,23 +15,6 @@ ion-footer {
   color: $text-color;
 }
 
-//
-@media (max-width: 800px)  and (min-width: 769px) {
-  ion-tab, ion-tabs .tabbar, ion-tabs .ion-page {
-    left: 50% !important;
-    max-width: 768px !important;
-    margin-left: -384px !important;
-  }
-}
-
-@media (min-width: 801px) {
-  ion-tab, ion-tabs .tabbar, ion-tabs .ion-page {
-    left: 50% !important;
-    max-width: 500px !important;
-    margin-left: -250px !important;
-  }
-}
-
 
 
 //

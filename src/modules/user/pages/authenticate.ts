@@ -15,10 +15,13 @@ export class AuthenticatePage {
   logInModel: {phone?: number, password?: string} = {};
 
   //
-  signUpModel: {nickname?: string, phone?: number, password?: string} = {};
+  signUpModel: {nickname?: string, phone?: number, verificationCode?: number, password?: string} = {};
 
   //
   currentModal: string = 'LogIn';
+
+  getVerificationCodeBtnText: string;
+  getVerificationCodeBtnDisabled: boolean = false;
 
 
   //
@@ -28,6 +31,7 @@ export class AuthenticatePage {
     public userService: UserService,
     public viewCtrl: ViewController,
   ) {
+    this.getVerificationCodeBtnText = this.heyApp.translateService.instant('user.Get Verification Code');
   }
 
 
@@ -91,6 +95,28 @@ export class AuthenticatePage {
         });
       });
     }
+  }
+
+
+  //
+  //
+  getVerificationCode(p) {
+    this.getVerificationCodeBtnText = '2s';
+    this.getVerificationCodeBtnDisabled = true;
+
+    this.userService.getVerificationCode({phone: this.signUpModel.phone});
+
+    let verificationCodeInterval = setInterval(() => {
+      let t = this.getVerificationCodeBtnText.substr(0, this.getVerificationCodeBtnText.indexOf('s'));
+
+      if (parseInt(t) > 1) {
+        this.getVerificationCodeBtnText = parseInt(t) - 1 + 's';
+      } else {
+        clearInterval(verificationCodeInterval);
+        this.getVerificationCodeBtnDisabled = false;
+        this.getVerificationCodeBtnText = this.heyApp.translateService.instant('user.Get Verification Code');
+      }
+    }, 1000);
   }
 
 

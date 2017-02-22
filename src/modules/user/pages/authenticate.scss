@@ -12,5 +12,12 @@
     .session-bottom {
       margin-bottom: 10px;
     }
+
+    .btn-getcode {
+      position: absolute;
+      right: 10px;
+      margin-top: 10px;
+      z-index: 1;
+    }
   }
 }

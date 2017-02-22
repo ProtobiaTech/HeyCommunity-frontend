@@ -7,6 +7,8 @@ export class ZhCn {
       "Log Out":                      "登出",
       "Nickname":                     "昵称",
       "Phone":                        "手机",
+      "Verification Code":            "验证码",
+      "Get Verification Code":        "获取验证码",
       "Password":                     "密码",
       "Forget Password?":             "忘记密码?",
       "WeChat To Log In":             "微信登录",

@@ -58,7 +58,13 @@
 
           <ion-item>
             <ion-label primary>{{ 'user.Phone' | translate }}</ion-label>
-            <ion-input [(ngModel)]="signUpModel.phone" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
+            <ion-input [(ngModel)]="signUpModel.phone" #phoneInput="ngModel" name="phone" type="number" required ngModel pattern="[0-9]{11}"></ion-input>
+          </ion-item>
+
+          <button (click)="getVerificationCode(signUpForm)" [disabled]="getVerificationCodeBtnDisabled || !phoneInput.valid" class="btn-getcode" color="light" ion-button small type="button">{{ getVerificationCodeBtnText }}</button>
+          <ion-item>
+            <ion-label primary>{{ 'user.Verification Code' | translate }}</ion-label>
+            <ion-input [(ngModel)]="signUpModel.verificationCode" name="verificationCode" type="number" required ngModel pattern="[0-9]{6}"></ion-input>
           </ion-item>
 
           <ion-item>

@@ -68,6 +68,19 @@ export class UserService {
 
 
   //
+  // get verification code
+  getVerificationCode(params) {
+    let api: string = this.helper.getAPI('user/get-verification-code');
+    let data: Object = params;
+
+    return this.http.post(api, data, this.requestOptions)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
   // log in
   logIn(params): Promise<User> {
     let api: string = this.helper.getAPI('user/log-in');

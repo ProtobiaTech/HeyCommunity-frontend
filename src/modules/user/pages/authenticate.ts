@@ -20,6 +20,12 @@ export class AuthenticatePage {
   //
   currentModal: string = 'LogIn';
 
+  //
+  WeChatPlugin: any;
+
+  //
+  hasWeChatApp: boolean = false;
+
 
   //
   // constructor
@@ -28,6 +34,10 @@ export class AuthenticatePage {
     public userService: UserService,
     public viewCtrl: ViewController,
   ) {
+    this.WeChatPlugin = (<any> window).Wechat;
+    this.WeChatPlugin.isInstalled(() => {
+      this.hasWeChatApp = true;
+    })
   }
 
 
@@ -51,10 +61,10 @@ export class AuthenticatePage {
 
       this.userService.logIn(data)
       .then(ret => {
-        this.heyApp.utilityComp.dismissLoading();
 
         this.heyApp.authService.logIn(ret);
-        this.viewCtrl.dismiss().then((data) => {
+        this.viewCtrl.dismiss().then(() => {
+          this.heyApp.utilityComp.dismissLoading();
           this.heyApp.utilityComp.presentToast(ret.nickname + ', ' + this.heyApp.translateService.instant('user.Welcome back'),);
         });
       }, (data) => {
@@ -95,9 +105,40 @@ export class AuthenticatePage {
 
 
   //
-  //
+  // goto wechat oauth page
   gotoWeChatOAuthPage() {
     location.assign('/api/wechat/o-auth');
+  }
+
+
+  //
+  // login with wechat app
+  loginWithWeChatApp() {
+    this.heyApp.utilityComp.presentLoading();
+
+    let scope = "snsapi_userinfo";
+    let state = "_" + (+new Date());
+
+    this.WeChatPlugin.auth(scope, state, (response) => {
+
+        this.userService.logInWithWechat(response).then((ret) => {
+          this.heyApp.authService.logIn(ret);
+
+          this.viewCtrl.dismiss().then(() => {
+            this.heyApp.utilityComp.dismissLoading();
+            this.heyApp.utilityComp.presentToast(ret.nickname + ', ' + this.heyApp.translateService.instant('user.Welcome back'),);
+          });
+        }, (data) => {
+          this.viewCtrl.dismiss().then(() => {
+            this.heyApp.utilityComp.dismissLoading();
+            this.heyApp.utilityComp.presentAlter({title: this.heyApp.translateService.instant('user.Log In Failed'), subTitle: data._body});
+          });
+        });
+    }, function (reason) {
+        this.viewCtrl.dismiss().then(() => {
+          this.heyApp.utilityComp.presentAlter({title: this.heyApp.translateService.instant('user.Log In Failed'), subTitle: reason});
+        });
+    });
   }
 
   //

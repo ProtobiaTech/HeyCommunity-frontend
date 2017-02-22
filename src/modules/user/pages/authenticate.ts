@@ -40,10 +40,12 @@ export class AuthenticatePage {
   ) {
     this.getVerificationCodeBtnText = this.heyApp.translateService.instant('user.Get Verification Code');
 
-    this.WeChatPlugin = (<any> window).Wechat;
-    this.WeChatPlugin.isInstalled(() => {
-      this.hasWeChatApp = true;
-    })
+    if (this.heyApp.platform.is('cordova')) {
+      this.WeChatPlugin = (<any> window).Wechat;
+      this.WeChatPlugin.isInstalled(() => {
+        this.hasWeChatApp = true;
+      });
+    }
   }
 
 
@@ -87,6 +89,7 @@ export class AuthenticatePage {
     let data: Object = {
       nickname: this.signUpModel.nickname,
       phone: this.signUpModel.phone,
+      code: this.signUpModel.verificationCode,
       password: this.signUpModel.password,
     };
 
@@ -112,23 +115,25 @@ export class AuthenticatePage {
 
   //
   // get verification code
-  getVerificationCode(p) {
-    this.getVerificationCodeBtnText = '2s';
-    this.getVerificationCodeBtnDisabled = true;
+  getVerificationCode() {
+    this.userService.getVerificationCode({phone: this.signUpModel.phone}).then((res) => {
+      this.getVerificationCodeBtnText = '60s';
+      this.getVerificationCodeBtnDisabled = true;
 
-    this.userService.getVerificationCode({phone: this.signUpModel.phone});
+      let verificationCodeInterval = setInterval(() => {
+        let t = this.getVerificationCodeBtnText.substr(0, this.getVerificationCodeBtnText.indexOf('s'));
 
-    let verificationCodeInterval = setInterval(() => {
-      let t = this.getVerificationCodeBtnText.substr(0, this.getVerificationCodeBtnText.indexOf('s'));
-
-      if (parseInt(t) > 1) {
-        this.getVerificationCodeBtnText = parseInt(t) - 1 + 's';
-      } else {
-        clearInterval(verificationCodeInterval);
-        this.getVerificationCodeBtnDisabled = false;
-        this.getVerificationCodeBtnText = this.heyApp.translateService.instant('user.Get Verification Code');
-      }
-    }, 1000);
+        if (parseInt(t) > 1) {
+          this.getVerificationCodeBtnText = parseInt(t) - 1 + 's';
+        } else {
+          clearInterval(verificationCodeInterval);
+          this.getVerificationCodeBtnDisabled = false;
+          this.getVerificationCodeBtnText = this.heyApp.translateService.instant('user.Get Verification Code');
+        }
+      }, 1000);
+    }, (res) => {
+      this.heyApp.utilityComp.presentAlter({title: this.heyApp.translateService.instant('Alert'), subTitle: res._body});
+    });
   }
 
 

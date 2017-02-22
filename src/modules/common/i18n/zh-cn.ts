@@ -22,9 +22,9 @@ export class ZhCn {
     //
     //
     "Please Wait ...":                  "请等待 ...",
-    "Alert":                            "注意 ...",
-    "Confirm":                          "注意 ...",
-    "Operations":                       "操作 ...",
+    "Alert":                            "注意",
+    "Confirm":                          "注意",
+    "Operations":                       "操作",
     "Report":                           "报告",
     "Thanks For Your Report":           "感谢你的举报",
     "Waiting":                              "等待",

@@ -40,6 +40,10 @@
         <div *ngIf="heyApp.authService.isWeChatBrowser()" padding-left padding-right>
           <button (click)="gotoWeChatOAuthPage()" color="light" ion-button block>{{ 'user.WeChat To Log In' | translate }}</button>
         </div>
+
+        <div *ngIf="hasWeChatApp" padding-left padding-right>
+          <button (click)="loginWithWeChatApp()" color="light" ion-button block>{{ 'user.WeChat To Log In' | translate }}</button>
+        </div>
       </form>
   </div>
 
@@ -89,6 +93,10 @@
 
         <div *ngIf="heyApp.authService.isWeChatBrowser()" padding-left padding-right>
           <button (click)="gotoWeChatOAuthPage()" color="light" ion-button block>{{ 'user.WeChat To Log In' | translate }}</button>
+        </div>
+
+        <div *ngIf="hasWeChatApp" padding-left padding-right>
+          <button (click)="loginWithWeChatApp()" color="light" ion-button block>{{ 'user.WeChat To Log In' | translate }}</button>
         </div>
       </form>
   </div>

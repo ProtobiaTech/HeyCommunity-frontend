@@ -96,6 +96,21 @@ export class UserService {
 
 
   //
+  // log in with wechat
+  logInWithWechat(params): Promise<User> {
+    let api: string = this.helper.getAPI('user/log-in-with-wechat');
+    let data: Object = params;
+
+    console.log(api, data);
+
+    return this.http.post(api, data, this.requestOptions)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
   // log out
   logOut(): Promise<User> {
     let api: string = this.helper.getAPI('user/log-out');

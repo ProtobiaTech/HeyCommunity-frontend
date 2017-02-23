@@ -1,4 +1,4 @@
-HeyCommunity V2
+HeyCommunity V3
 =======================
 
 [HeyCommunity](https://github.com/dev4living/HeyCommunity) is an open source social software for iOS / Android / Windows Phone and other mobile phone operating system

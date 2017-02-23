@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'timeline.Detail' | translate }}</ion-title>
+
+    <ion-buttons end>
+      <button color="grey" ion-button icon-only (click)="presentActionSheet()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div padding class="section-comment items-comment">
+    <div class="item-comment" [hidden]="!timeline.content">
+      <img class="avatar" src="{{ heyApp.helper.getImg(timeline.author.avatar) }}?imageView/2/w/100">
+      <div #contentBox class="comment-content">
+        <div class="header">
+          <a color="dark">{{ timeline.author.nickname }}</a>
+          <span class="pull-right">{{ timeline.created_at | moment: ['MM-DD HH:mm'] }}</span>
+        </div>
+        {{ timeline.content }}
+      </div>
+    </div>
+
+    <div class="item-comment" *ngFor="let comment of timeline.comments">
+      <img class="avatar" src="{{ heyApp.helper.getImg(comment.author.avatar) }}?imageView/2/w/100">
+      <div class="comment-content">
+        <div class="header">
+          <div class="line-1">
+            <a color="dark">{{ comment.author.nickname }}</a>
+            <span class="pull-right">
+              {{ comment.created_at | timeago }}
+            </span>
+          </div>
+          <div class="line-2">
+            <span>{{ comment.created_at | moment: ['YYYY-MM-DD HH:mm'] }}</span>
+            <span class="pull-right">
+              <button color="grey" ion-button class="btn-comment-reply" small primary clear (click)="presentTimelineCommentModal(comment)">
+                  <ion-icon name="undo"></ion-icon> &nbsp;
+              </button>
+            </span>
+          </div>
+        </div>
+        <span *ngIf="comment.parent_id">
+          @{{ comment.parent.author.nickname }}:
+        </span>
+
+        <div>
+          {{ comment.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar no-border-bottom>
+    <div class="section-comment-input">
+      <div class="box" tappable (click)="presentTimelineCommentModal()">
+        {{ 'timeline.Say Something ...' | translate }}
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

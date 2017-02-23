@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ 'user.Update Profile' | translate }}
+    </ion-title>
+
+    <ion-buttons end *ngIf="false && item == 'avatar' || !heyApp.helper.platform.is('ios')">
+      <button ion-button (click)="showActionSheet()">
+          <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content id="me" class="page-updateProfile">
+  <ion-list padding-top [hidden]="item !== 'name'">
+    <ion-item>
+      <ion-input [(ngModel)]="userInfo.nickname" (ngModelChange)="isUpdated = 'nickname'" name="nickname" type="text" placeholder="{{ 'user.Nickame' | translate }}" required minlength="3"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list padding-top [hidden]="item !== 'bio'">
+    <ion-item>
+      <ion-textarea [(ngModel)]="userInfo.bio" (ngModelChange)="isUpdated = 'bio'" name="bio" placeholder="{{ 'user.Bio' | translate }}">
+      </ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-list padding-top radio-group [(ngModel)]="userInfo.gender" (ngModelChange)="isUpdated = 'gender'" [hidden]="item !== 'gender'">
+    <ion-item>
+      <ion-label>{{ 'user.Male' | translate }}</ion-label>
+      <ion-radio name="gender" checked="true" value="1"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{ 'user.Female' | translate }}</ion-label>
+      <ion-radio name="gender" value="2"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <div padding class="text-center" [hidden]="item !== 'avatar'">
+    <div class="avatar-box">
+      <div>
+        <img style="" src="{{ heyApp.helper.getImg(userInfo.avatar) }}?imageView/2/w/400">
+      </div>
+      <button color="grey" ion-button block>
+        {{ 'user.Click On Select New Avatar' | translate }}
+        <input class="input-avatar" #inputAvatar type="file" (change)="uploadAvatar($event)" accept="image/*">
+      </button>
+    </div>
+  </div>
+</ion-content>

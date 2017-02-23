@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      {{ 'topic.My Topic' | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="list-topic">
+    <ion-item class="item-topic" *ngFor="let topic of topics; let i = index" tappable (click)="gotoTopicDetailPage(topic, i)">
+      <ion-avatar item-left>
+          <img src="{{ heyApp.helper.getImg(topic.author?.avatar) }}?imageView/2/w/100">
+      </ion-avatar>
+      <h2>{{ topic.title }}</h2>
+
+      <p class="content">{{ topic.content }}</p>
+
+      <p class="info">
+        {{ topic.created_at | timeago }}
+        <span class="pull-right">
+          {{ topic.thumb_up_num }} {{ 'topic.Thumb Up' | translate }}
+          &nbsp;<span class="separator">/</span>&nbsp;
+          {{ topic.comment_num }} {{ 'topic.Comment' | translate }}
+          &nbsp;<span class="separator">/</span>&nbsp;
+          {{ topic.view_num }} {{ 'topic.View' | translate }}
+        </span>
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,23 @@
+page-my-topic {
+  ion-content {
+    .item-topic {
+      p.content {
+        white-space: normal;
+        max-height: 3.6rem;
+        line-height: 1.8rem;
+      }
+
+      p.info {
+        margin-top: 0.6rem;
+
+        .pull-right {
+          // color: #ccc;
+
+          .separator {
+            color: #eee;
+          }
+        }
+      }
+    }
+  }
+}

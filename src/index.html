@@ -25,9 +25,14 @@
 
   <link href="build/main.css" rel="stylesheet">
 
+  <script>
+    // if window.API_DOMAIN is empty, will use window.location.href (only webapp mode)
+    // window.API_DOMAIN is required in app mode
+    // window.API_DOMAIN     =   null;
+    window.API_DOMAIN     =   'http://demo.hey-community.com';
+  </script>
 </head>
 <body>
-
   <!-- Ionic's root component and where the app will load -->
   <ion-app></ion-app>
 
@@ -36,6 +41,5 @@
 
   <!-- The bundle js is generated during the build process -->
   <script src="build/main.js"></script>
-
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.heycommunity.demo" version="3.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HeyCommunity</name>
+<widget id="com.heycommunity.v3" version="3.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>HeyCommunityV3</name>
     <description>WebApp / IOS App / Android App of Community</description>
     <author email="supgeek.rod@gmail.com" href="http://www.hey-community.com/">Rod</author>
     <content src="index.html" />
@@ -87,15 +87,28 @@
     <plugin name="cordova-plugin-statusbar" spec="2.2.1" />
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
-    <icon src="resources/android/icon/drawable-xhdpi-icon.png" />
-    <plugin name="jpush-phonegap-plugin" spec="~3.0.3">
-        <variable name="APP_KEY" value="15ce67a0b12d32625fda399c" />
-    </plugin>
     <plugin name="cordova-plugin-camera" spec="~2.3.1">
         <variable name="CAMERA_USAGE_DESCRIPTION" value="This app needs camera access" />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="This app needs photo library access" />
     </plugin>
     <plugin name="cordova-plugin-ios-microphone-permissions" spec="https://github.com/supgeek-rod/cordova-plugin-ios-microphone-permissions.git">
         <variable name="MICROPHONE_USAGE_DESCRIPTION" value="This app needs microphone access" />
+    </plugin>
+    <plugin name="cordova-plugin-badge" spec="~0.7.4" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
+    <plugin name="cordova-plugin-file-transfer" spec="~1.6.1" />
+    <plugin name="com.synconset.imagepicker" spec="https://github.com/Telerik-Verified-Plugins/ImagePicker" />
+    <plugin name="jpush-phonegap-plugin" spec="~3.0.3">
+        <variable name="APP_KEY" value="836338d89b6fb9dfd11140a8" />
+    </plugin>
+    <plugin name="cordova-plugin-crosswalk-webview" spec="~2.3.0">
+        <variable name="XWALK_VERSION" value="23+" />
+        <variable name="XWALK_LITEVERSION" value="xwalk_core_library_canary:17+" />
+        <variable name="XWALK_COMMANDLINE" value="--disable-pull-to-refresh-effect" />
+        <variable name="XWALK_MODE" value="embedded" />
+        <variable name="XWALK_MULTIPLEAPK" value="true" />
+    </plugin>
+    <plugin name="cordova-plugin-wechat" spec="~1.4.0">
+        <variable name="WECHATAPPID" value="wx984e306ab0a8e762" />
     </plugin>
 </widget>

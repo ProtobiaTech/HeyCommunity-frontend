@@ -1,0 +1,12 @@
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.vscode/
+npm-debug.log*
+.idea/
+.sass-cache/

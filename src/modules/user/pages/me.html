@@ -1,0 +1,87 @@
+<ion-header class="hide">
+  <ion-navbar>
+    <ion-title>
+      {{ 'user.Me' | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-toolbar>
+      <ion-buttons end>
+        <button ion-button clear icon-only color="{{ noticeService.noCheckNotices.length ? 'danger' : 'dark' }}" (click)="gotoMeNoticePage()">
+          <ion-icon name="notifications"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+
+  <ion-grid id="section-avatar">
+
+    <ion-row>
+      <ion-col></ion-col>
+
+      <ion-col padding-top>
+        <img tappable (click)="gotoMeProfilePage()" *ngIf="heyApp.authService.isAuth" class="avatar" src="{{ heyApp.helper.getImg(heyApp.authService.userInfo?.avatar) }}?imageView/2/w/400">
+        <img *ngIf="!heyApp.authService.isAuth" class="avatar" src="./assets/images/userAvatar-default.png">
+      </ion-col>
+
+      <ion-col id="section-btns" text-right>
+        <!--
+        <ion-buttons>
+          <button ion-button clear icon-only color="{{ noticeService.noCheckNotices.length ? 'danger' : 'grey' }}" (click)="gotoMeNoticePage()">
+            <ion-icon name="notifications"></ion-icon>
+          </button>
+        </ion-buttons>
+        -->
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-10></ion-col>
+
+      <ion-col id="section-info" *ngIf="heyApp.authService.isAuth" center class="text-center" tappable (click)="gotoMeProfilePage()">
+        <div class="nickname">{{ heyApp.authService.userInfo?.nickname }}</div>
+        <div class="bio">{{ heyApp.authService.userInfo?.bio || '' }}</div>
+      </ion-col>
+
+      <ion-col id="section-info" *ngIf="!heyApp.authService.isAuth" center class="text-center" tappable (click)="gotoMeProfilePage()">
+        <div class="nickname">{{ 'user.Hey Guys' | translate }}</div>
+        <div class="bio">{{ "user.Let's Login Now" | translate }}</div>
+      </ion-col>
+
+      <ion-col width-10></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-list-header>
+      {{ 'user.Mine' | translate }}
+    </ion-list-header>
+
+    <button ion-item (click)="gotoMeProfilePage()">
+      <ion-icon name="person" item-left></ion-icon>
+      {{ 'user.My Profile' | translate }}
+    </button>
+
+    <button ion-item (click)="gotoMyTimelinePage()">
+      <ion-icon name="flower" item-left></ion-icon>
+      {{ 'timeline.My Park' | translate }}
+    </button>
+
+    <button ion-item (click)="gotoMyTopicPage()">
+      <ion-icon name="quote" item-left></ion-icon>
+      {{ 'topic.My Topic' | translate }}
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      {{ 'user.Setting' | translate }}
+    </ion-list-header>
+
+    <button ion-item [navPush]="MeSettingPage">
+      <ion-icon name="cog" item-left></ion-icon>
+      {{ 'user.Settings' | translate }}
+    </button>
+  </ion-list>
+</ion-content>

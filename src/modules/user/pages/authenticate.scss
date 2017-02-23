@@ -1,0 +1,23 @@
+//
+// user
+// ----------------------------------------
+.user {
+  form {
+    margin-top: 14px;
+
+    ion-list {
+      margin-bottom: 0;
+    }
+
+    .session-bottom {
+      margin-bottom: 10px;
+    }
+
+    .btn-getcode {
+      position: absolute;
+      right: 10px;
+      margin-top: 10px;
+      z-index: 1;
+    }
+  }
+}

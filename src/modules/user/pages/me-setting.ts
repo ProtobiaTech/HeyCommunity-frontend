@@ -65,7 +65,7 @@ export class MeSettingPage {
   //
   // open terms page
   openTermsPage() {
-    let url = (<any> window).API_DOMAIN + '/docs/terms.txt';
+    let url = (<any> window).API_DOMAIN + '/docs/terms.html';
     if (this.heyApp.platform.is('cordova')) {
       let browser = new InAppBrowser(url, '_system');
       browser.show();

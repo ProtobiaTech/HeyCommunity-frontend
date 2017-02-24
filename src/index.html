@@ -26,10 +26,13 @@
   <link href="build/main.css" rel="stylesheet">
 
   <script>
-    // if window.API_DOMAIN is empty, will use window.location.href (only webapp mode)
-    // window.API_DOMAIN is required in app mode
-    // window.API_DOMAIN     =   null;
-    window.API_DOMAIN     =   'http://demo.hey-community.com';
+    /**
+     * if window.API_DOMAIN is empty, will use window.location.href (only webapp mode)
+     * if you want to use the ionic proxy, please set window.API_DOMAIN to be empty, and then configure the ionic.config.json file, and then run `$ ionic server`
+     *
+     * window.API_DOMAIN is required in app mode (!important)
+     */
+    // window.API_DOMAIN     =   'http://demo.hey-community.com';
   </script>
 </head>
 <body>

@@ -111,4 +111,5 @@
     <plugin name="cordova-plugin-wechat" spec="~1.4.0">
         <variable name="WECHATAPPID" value="wx984e306ab0a8e762" />
     </plugin>
+    <plugin name="cordova-sqlite-storage" spec="~2.0.3" />
 </widget>

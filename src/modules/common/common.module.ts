@@ -33,7 +33,7 @@ import { UtilityComponent } from './pages/utilityComponent';
   entryComponents: [
   ],
   providers: [
-    Storage,
+    // Storage,
     Helper,
     AppService,
     AuthService,

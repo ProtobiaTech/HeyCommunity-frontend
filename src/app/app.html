@@ -12,8 +12,8 @@
         {{ list.title | translate }}
       </ion-list-header>
       <button ion-item menuClose *ngFor="let p of list.pages" (click)="p.click(p.id)">
-        <ion-icon color="{{ p.id === heyApp.menuService.currentPageId ? 'primary' : 'dark'}}" item-left [name]="p.icon"></ion-icon>
-        <span color="{{ p.id === heyApp.menuService.currentPageId ? 'primary' : 'dark' }}">
+        <ion-icon item-left [name]="p.icon"></ion-icon>
+        <span>
             {{p.title | translate }}
         </span>
       </button>

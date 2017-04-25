@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { Badge } from '@ionic-native/badge';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Transfer } from '@ionic-native/transfer';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { CommonModule } from '../modules/common/common.module';
 import { UserModule } from '../modules/user/user.module';
@@ -45,6 +47,13 @@ import { TabsPage } from '../pages/tabs/tabs';
     MyApp,
     TabsPage
   ],
-  providers: [StatusBar, SplashScreen, Badge, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    StatusBar,
+    SplashScreen,
+    Badge,
+    Transfer,
+    InAppBrowser,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+  ]
 })
 export class AppModule {}

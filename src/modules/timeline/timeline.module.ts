@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '../common/common.module';
 
+import { Camera } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
+
 import { AppService } from '../common/services/app.service';
 import { TimelineService } from './services/timeline.service';
 import { TimelineTranslations } from './i18n/timeline-translations';
@@ -32,6 +35,8 @@ import { TimelineCommentPage } from './pages/timeline-comment';
   ],
   providers: [
     TimelineService,
+    Camera,
+    ImagePicker,
   ],
   exports: [
   ],

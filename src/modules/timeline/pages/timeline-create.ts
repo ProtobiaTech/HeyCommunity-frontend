@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController } from 'ionic-angular';
-import { ImagePicker, Transfer, Camera } from 'ionic-native';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Transfer } from '@ionic-native/transfer';
+import { Camera } from '@ionic-native/camera';
 
 import { Timeline } from '../models/timeline.model';
 import { TimelineImg } from '../models/timelineImg.model';
@@ -34,6 +36,9 @@ export class TimelineCreatePage {
   //
   // constructor
   constructor(
+    public camera: Camera,
+    public imagePicker: ImagePicker,
+    public transfer: Transfer,
     public heyApp: AppService,
     public timelineService: TimelineService,
     public navCtrl: NavController,
@@ -109,7 +114,7 @@ export class TimelineCreatePage {
       options.mediaType = 2;
     }
 
-    Camera.getPicture(options).then((result) => {
+    this.camera.getPicture(options).then((result) => {
       this.waiting = true;
 
       console.log('the file', result);
@@ -127,7 +132,7 @@ export class TimelineCreatePage {
       width: 1200,
       height: 1600,
     };
-    ImagePicker.getPictures(options).then((results) => {
+    this.imagePicker.getPictures(options).then((results) => {
       this.waiting = true;
 
       for (var i = 0; i < results.length; i++) {
@@ -141,7 +146,7 @@ export class TimelineCreatePage {
   //
   // upload imgs by file transfer
   uploadFileByFileTransfer(file, api) {
-    const fileTransfer = new Transfer();
+    const fileTransfer = this.transfer.create();
     let options: any;
     options = {
        fileKey: 'uploads[]',

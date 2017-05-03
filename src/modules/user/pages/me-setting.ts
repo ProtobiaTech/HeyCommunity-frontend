@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { InAppBrowser } from 'ionic-native';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { AppService } from '../../common/services/app.service';
 import { UserService } from '../services/user.service';
@@ -28,6 +28,7 @@ export class MeSettingPage {
   //
   // constructor
   constructor(
+    public iab: InAppBrowser,
     public heyApp: AppService,
     public timelineService: TimelineService,
     public topicService: TopicService,
@@ -67,7 +68,7 @@ export class MeSettingPage {
   openTermsPage() {
     let url = (<any> window).API_DOMAIN + '/docs/terms.html';
     if (this.heyApp.platform.is('cordova')) {
-      let browser = new InAppBrowser(url, '_system');
+      let browser = this.iab.create(url, '_system');
       browser.show();
     } else {
       (<any> window).open(url, '_blank');

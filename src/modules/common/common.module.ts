@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { Storage } from '@ionic/storage';
 import { IonicModule, Events } from 'ionic-angular';
 import { TranslateModule, TranslateService, TranslateLoader } from 'ng2-translate';
 
@@ -33,7 +32,6 @@ import { UtilityComponent } from './pages/utilityComponent';
   entryComponents: [
   ],
   providers: [
-    Storage,
     Helper,
     AppService,
     AuthService,

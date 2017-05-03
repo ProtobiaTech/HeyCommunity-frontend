@@ -1,6 +1,15 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
+
+import { Badge } from '@ionic-native/badge';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { Transfer } from '@ionic-native/transfer';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { CommonModule } from '../modules/common/common.module';
 import { UserModule } from '../modules/user/user.module';
@@ -17,14 +26,16 @@ import { TabsPage } from '../pages/tabs/tabs';
     TabsPage
   ],
   imports: [
+    BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       tabsHideOnSubPages: true,
       tabbarPlacement: 'bottom',
       backButtonIcon: 'arrow-round-back',
       backButtonColor: 'dark',
-    }, {
     }),
+    IonicStorageModule.forRoot(),
     CommonModule,
     UserModule,
     NoticeModule,
@@ -36,6 +47,13 @@ import { TabsPage } from '../pages/tabs/tabs';
     MyApp,
     TabsPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    StatusBar,
+    SplashScreen,
+    Badge,
+    Transfer,
+    InAppBrowser,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+  ]
 })
 export class AppModule {}

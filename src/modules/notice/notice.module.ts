@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Platform, Events } from 'ionic-angular';
-import { Badge } from 'ionic-native';
+import { Badge } from '@ionic-native/badge';
 import { CommonModule } from '../common/common.module';
 
 import { AppService } from '../common/services/app.service';
@@ -29,6 +29,7 @@ import { MeNoticePage } from './pages/me-notice';
 export class NoticeModule {
   constructor(
     public platform: Platform,
+    public badge: Badge,
     public events: Events,
     public heyApp: AppService,
     public noticeService: NoticeService,
@@ -98,7 +99,7 @@ export class NoticeModule {
     // subscribe notice get index
     this.events.subscribe('notice:getIndex', (params) => {
       if (this.platform.is('cordova')) {
-        Badge.set(params.num);
+        this.badge.set(params.num);
       }
     });
   }

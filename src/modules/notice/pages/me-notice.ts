@@ -31,6 +31,7 @@ export class MeNoticePage {
   //
   // ionic view did enter
   ionViewDidEnter() {
+    /*
     this.noticeService.getIndex();
 
     let ids = this.getNoticesIds();
@@ -39,6 +40,7 @@ export class MeNoticePage {
         this.check(ids);
       }, 3000);
     }
+    */
   }
 
 

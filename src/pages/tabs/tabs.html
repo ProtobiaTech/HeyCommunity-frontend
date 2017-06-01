@@ -1,6 +1,6 @@
 <ion-tabs tabsLayout="{{ platform.is('ios') ? 'icon-top' : 'icon-left' }}" color="grey-tabs" [ngClass]="{'no-badge': !noticeService.noCheckNotices.length }">
-  <ion-tab tabUrlPath="firend" [root]="firendTabRoot" tabIcon="home"></ion-tab>
+  <ion-tab tabUrlPath="home" [root]="timelineTabRoot" tabIcon="home"></ion-tab>
   <ion-tab tabUrlPath="firend" [root]="firendTabRoot" tabIcon="people"></ion-tab>
-  <ion-tab tabUrlPath="firend" [root]="firendTabRoot" tabIcon="paper-plane" tabBadge="1" tabBadgeStyle="danger"></ion-tab>
-  <ion-tab tabUrlPath="firend" [root]="firendTabRoot" tabIcon="person"></ion-tab>
+  <ion-tab tabUrlPath="notification" [root]="meNoticeTabRoot" tabIcon="paper-plane" tabBadge="1" tabBadgeStyle="danger"></ion-tab>
+  <ion-tab tabUrlPath="me" [root]="meTabRoot" tabIcon="person"></ion-tab>
 </ion-tabs>

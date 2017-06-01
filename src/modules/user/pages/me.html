@@ -1,87 +1,68 @@
-<ion-header class="hide">
+<ion-header>
   <ion-navbar>
     <ion-title>
-      {{ 'user.Me' | translate }}
+      主页
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <ion-toolbar>
-      <ion-buttons end>
-        <button ion-button clear icon-only color="{{ noticeService.noCheckNotices.length ? 'danger' : 'dark' }}" (click)="gotoMeNoticePage()">
-          <ion-icon name="notifications"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-toolbar>
+  <div padding class="section-userinfo">
+    <div class="pic">
+      <img class="avatar" src="assets/images/userAvatar-default.png">
+    </div>
+    <div class="info">
+      <div class="nickname">李亚州</div>
+      <div class="uid">U1234</div>
+    </div>
+    <button class="btn-setting" ion-button color="grey" clear>个人设置 &nbsp;&nbsp; <ion-icon name="arrow-forward"></ion-icon></button>
+  </div>
 
-  <ion-grid id="section-avatar">
+  <div class="section-segment">
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="kittens">
+        我的
+      </ion-segment-button>
+      <ion-segment-button value="puppies">
+        已关注
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
+  <ion-grid class="collect-cards">
     <ion-row>
-      <ion-col></ion-col>
-
-      <ion-col padding-top>
-        <img tappable (click)="gotoMeProfilePage()" *ngIf="heyApp.authService.isAuth" class="avatar" src="{{ heyApp.helper.getImg(heyApp.authService.userInfo?.avatar) }}?imageView/2/w/400">
-        <img *ngIf="!heyApp.authService.isAuth" class="avatar" src="./assets/images/userAvatar-default.png">
+      <ion-col col-6>
+        <ion-card class="collect-card">
+          <img src="assets/images/moment-1.jpg">
+          <ion-card-content>
+            <p>日常</p>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
 
-      <ion-col id="section-btns" text-right>
-        <!--
-        <ion-buttons>
-          <button ion-button clear icon-only color="{{ noticeService.noCheckNotices.length ? 'danger' : 'grey' }}" (click)="gotoMeNoticePage()">
-            <ion-icon name="notifications"></ion-icon>
-          </button>
-        </ion-buttons>
-        -->
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col width-10></ion-col>
-
-      <ion-col id="section-info" *ngIf="heyApp.authService.isAuth" center class="text-center" tappable (click)="gotoMeProfilePage()">
-        <div class="nickname">{{ heyApp.authService.userInfo?.nickname }}</div>
-        <div class="bio">{{ heyApp.authService.userInfo?.bio || '' }}</div>
+      <ion-col col-6>
+        <ion-card class="collect-card">
+          <img src="assets/images/moment-1.jpg">
+          <ion-card-content>
+            <p>同行</p>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
 
-      <ion-col id="section-info" *ngIf="!heyApp.authService.isAuth" center class="text-center" tappable (click)="gotoMeProfilePage()">
-        <div class="nickname">{{ 'user.Hey Guys' | translate }}</div>
-        <div class="bio">{{ "user.Let's Login Now" | translate }}</div>
+      <ion-col col-6>
+        <ion-card class="collect-card">
+          <img src="assets/images/moment-1.jpg">
+          <ion-card-content>
+            <p>同行</p>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
-
-      <ion-col width-10></ion-col>
     </ion-row>
   </ion-grid>
-
-  <ion-list>
-    <ion-list-header>
-      {{ 'user.Mine' | translate }}
-    </ion-list-header>
-
-    <button ion-item (click)="gotoMeProfilePage()">
-      <ion-icon name="person" item-left></ion-icon>
-      {{ 'user.My Profile' | translate }}
-    </button>
-
-    <button ion-item (click)="gotoMyTimelinePage()">
-      <ion-icon name="flower" item-left></ion-icon>
-      {{ 'timeline.My Park' | translate }}
-    </button>
-
-    <button ion-item (click)="gotoMyTopicPage()">
-      <ion-icon name="quote" item-left></ion-icon>
-      {{ 'topic.My Topic' | translate }}
-    </button>
-  </ion-list>
-
-  <ion-list>
-    <ion-list-header>
-      {{ 'user.Setting' | translate }}
-    </ion-list-header>
-
-    <button ion-item [navPush]="MeSettingPage">
-      <ion-icon name="cog" item-left></ion-icon>
-      {{ 'user.Settings' | translate }}
-    </button>
-  </ion-list>
 </ion-content>

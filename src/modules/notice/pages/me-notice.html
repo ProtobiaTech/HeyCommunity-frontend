@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      {{ 'notice.Notices' | translate }} ({{ noticeService.noCheckNotices.length }})
+      通知
     </ion-title>
 
     <ion-buttons end>
@@ -13,9 +13,84 @@
 </ion-header>
 
 <ion-content>
+  <!--
   <div padding [hidden]="noticeService.notices.length > 0">{{ 'notice.You Did Not Have Notices' | translate }}</div>
+  -->
 
   <ion-list id="section-notices">
+    <ion-item-sliding #item>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="assets/images/userAvatar-default.png">
+        </ion-avatar>
+        <h2>
+          Rod
+        </h2>
+        <p>通知内容</p>
+
+        <div class="pic" item-right>
+          <img src="assets/images/moment-1.jpg">
+        </div>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button danger (click)="destroy(notice)">
+          <ion-icon name="trash"></ion-icon>
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding #item>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="assets/images/userAvatar-default.png">
+        </ion-avatar>
+        <h2>
+          Rod
+        </h2>
+        <p>通知内容</p>
+
+        <div class="pic" item-right>
+          <img src="assets/images/moment-1.jpg">
+        </div>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button danger (click)="destroy(notice)">
+          <ion-icon name="trash"></ion-icon>
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding #item>
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="assets/images/userAvatar-default.png">
+        </ion-avatar>
+        <h2>
+          Rod
+        </h2>
+        <p>通知内容</p>
+
+        <div class="pic" item-right>
+          <img src="assets/images/moment-1.jpg">
+        </div>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button danger (click)="destroy(notice)">
+          <ion-icon name="trash"></ion-icon>
+          Remove
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+
+
+
     <ion-item-sliding #item *ngFor="let notice of noticeService.notices">
       <ion-item [ngClass]="{ checked: notice.is_checked === 1 }">
         <ion-avatar item-left>

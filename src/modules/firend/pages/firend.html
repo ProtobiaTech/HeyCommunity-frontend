@@ -5,7 +5,7 @@
     </ion-title>
 
     <ion-buttons end>
-      <button ion-button icon-only (click)="presentTimelineCreateModal()">
+      <button ion-button icon-only (click)="gotoFirendPage()">
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
@@ -14,7 +14,7 @@
 
 <ion-content>
   <div padding>
-    <button small ion-button color="light">
+    <button small ion-button color="light" (click)="gotoFirendPage()">
       <ion-icon name="person-add"></ion-icon>
       &nbsp;&nbsp;
       添加好友

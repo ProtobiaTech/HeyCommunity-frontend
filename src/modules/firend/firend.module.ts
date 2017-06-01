@@ -5,7 +5,7 @@ import { CommonModule } from '../common/common.module';
 import { AppService } from '../common/services/app.service';
 
 import { FirendPage } from './pages/firend';
-
+import { FirendAddPage } from './pages/firend-add';
 
 
 @NgModule({
@@ -14,9 +14,11 @@ import { FirendPage } from './pages/firend';
   ],
   declarations: [
     FirendPage,
+    FirendAddPage,
   ],
   entryComponents: [
     FirendPage,
+    FirendAddPage,
   ],
   providers: [
   ],

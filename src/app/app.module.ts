@@ -17,6 +17,7 @@ import { NoticeModule } from '../modules/notice/notice.module';
 import { TimelineModule } from '../modules/timeline/timeline.module';
 import { TopicModule } from '../modules/topic/topic.module';
 import { FirendModule } from '../modules/firend/firend.module';
+import { CollectModule } from '../modules/collect/collect.module';
 import { LoginModule } from '../modules/login/login.module';
 
 import { TabsPage } from '../pages/tabs/tabs';
@@ -44,6 +45,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     TimelineModule,
     TopicModule,
     FirendModule,
+    CollectModule,
     LoginModule,
   ],
   bootstrap: [IonicApp],

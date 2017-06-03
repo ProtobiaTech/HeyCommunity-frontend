@@ -1,0 +1,74 @@
+<ion-header class="">
+  <ion-navbar>
+    <ion-title>
+      收藏集
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="gotoCollectEditPage()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <img src="/assets/images/moment-1.jpg">
+  <div class="text-center">
+    <div padding class="pull-right">
+      <ion-avatar (click)="gotoCollectMemberPage()">
+        <img style="width:20px;" src="assets/images/userAvatar-default.png">
+      </ion-avatar>
+    </div>
+
+    <span class="nickname">李亚洲</span>
+    <h2 class="collect-name">汽车</h2>
+    <span class="description">买不起,还看不起吗</span>
+    <div class="footer">
+      <span>关注 15</span>
+      <span>收藏 100</span>
+      <span>封闭</span>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div>
+    <ion-card style="margin:0; padding:0; width:100%;">
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="assets/images/userAvatar-default.png">
+        </ion-avatar>
+        <h2>Marty McFly</h2>
+        <p>November 5, 1955</p>
+      </ion-item>
+
+      <img src="assets/images/moment-1.jpg">
+
+      <ion-card-content>
+        <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="thumbs-up"></ion-icon>
+            <div>12 Likes</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="text"></ion-icon>
+            <div>4 Comments</div>
+          </button>
+        </ion-col>
+        <ion-col center text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+</ion-content>

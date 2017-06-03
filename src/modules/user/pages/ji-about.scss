@@ -1,0 +1,35 @@
+ji-about {
+    ion-content {
+
+        .jijia-info {
+            text-align: center;
+            margin: 20px auto 40px;
+
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+
+        ion-list.list.list-ios {
+            margin: 0 20px;
+
+            ion-item {
+                border-bottom: 0.55px solid #c8c7cc;
+
+                &:first-child{
+                    border-top: none;
+                }
+
+                .item-inner {
+                    border: none;
+                }
+            }
+        }
+    }
+}

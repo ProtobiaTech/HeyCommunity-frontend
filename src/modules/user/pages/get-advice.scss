@@ -1,0 +1,26 @@
+get-advice {
+    ion-content {
+        .advice-main {
+            margin: 20px 20px;
+
+            ion-input, ion-textarea {
+                padding-left: 6px;
+                border: 0.55px solid #c8c7cc;
+            }
+
+            ion-input {
+                margin-bottom: 10px;
+            }
+
+            ion-textarea {
+                height: 100px;
+            }
+        }
+
+        .advice-submit {
+            display: block;
+            margin: 0 auto;
+            padding: 0 2em;
+        }
+    }
+}

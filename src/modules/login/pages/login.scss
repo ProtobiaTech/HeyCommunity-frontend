@@ -24,6 +24,7 @@ login {
         .login-code {
             position: relative;
             height: 42px;
+
             button {
                 position: absolute;
                 right: 0;
@@ -48,41 +49,41 @@ login {
             left: 0;
             right: 0;
             bottom: 0;
+
             .login-block {
                 width: 100%;
                 padding: 0 12px;
                 margin-top: 20px;
             }
+
             ion-card-content {
                 padding-top: 26px;
                 padding-bottom: 26px;
+
                 ion-input {
                     border-bottom: .55px solid #c8c7cc;
+
                     &:first-child {
                         margin-bottom: 10px;
                     }
-                }
-                
+                }     
             }
+
             .login-control {
                 position: absolute;
                 bottom: 50px;
                 left: 0; 
                 right: 0;
+
                 button {
                     background: none;
                     color: #fff;
                 }
+
                 ion-col:last-child button {
                     float: right;
-                }
-                
+                }     
             }
         }
-        
-        
-    
     }
-
-
 }

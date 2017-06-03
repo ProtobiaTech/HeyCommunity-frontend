@@ -12,6 +12,8 @@ import { MeSettingPage } from './me-setting';
 
 import { SearchPage } from '../../common/pages/search';
 
+import { UserSetPage } from './user-set';
+
 
 @Component({
   selector: 'page-me',
@@ -39,6 +41,12 @@ export class MePage {
     }
   }
 
+
+  //
+  //
+  goUserSet() {
+    this.navCtrl.push(UserSetPage)
+  }
 
   //
   // goto me-notice page

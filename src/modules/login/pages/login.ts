@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { AppService } from '../../common/services/app.service';
-// import { LoginPage } from './login';
 import { TabsPage } from '../../../pages/tabs/tabs';
 
 @Component({
@@ -10,6 +9,23 @@ import { TabsPage } from '../../../pages/tabs/tabs';
   templateUrl: 'login.html'
 })
 export class LoginPage {
+
+  //
+  ifFirst: boolean = true;
+
+  //
+  ifLogin: boolean = false;
+
+  //
+  ifRegister: boolean = false;
+
+  //
+  ifLoginByCode:boolean = false;
+
+  //
+  ifRegisterEnd:boolean = false;
+
+
   //
   // constructor
   constructor(
@@ -18,22 +34,23 @@ export class LoginPage {
   ) {
   }
 
-  ifFirst = true;
-  ifLogin = false;
-  ifRegister = false; 
-  LoginByCode = false;
-  ifRegisterEnd = false;
 
   //
   //
   loginByCode() {
-    this.LoginByCode = true;
+    this.ifLoginByCode = true;
   }
 
+
+  //
+  //
   loginByPsd() {
-      this.LoginByCode = false;
+      this.ifLoginByCode = false;
   }
 
+
+  //
+  //
   goRegisterend() {
     this.ifRegisterEnd = true;
     this.ifLogin = false;
@@ -41,21 +58,33 @@ export class LoginPage {
     this.ifRegister = false;
   }
 
+
+  //
+  //
   registerEnd() {
       console.log('注册完成！');
       this.navCtrl.push(TabsPage);
   }
 
+
+  //
+  //
   goTabPage() {
       this.navCtrl.push(TabsPage);
   }
 
+
+  //
+  //
   goLogin() {
       this.ifLogin = true;
       this.ifFirst = false;
       this.ifRegister = false;
   }
 
+
+  //
+  //
   goRegister() {
       this.ifLogin = false;
       this.ifFirst = false;

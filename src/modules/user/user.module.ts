@@ -20,6 +20,9 @@ import { HCDebugPage } from './pages/hc-debug';
 
 import { AuthenticatePage } from './pages/authenticate';
 
+import { UserSetPage } from './pages/user-set';
+import { JiAboutPage } from './pages/ji-about';
+import { GetAdvicePage } from './pages/get-advice';
 
 
 @NgModule({
@@ -37,6 +40,9 @@ import { AuthenticatePage } from './pages/authenticate';
     HCDebugPage,
     MeSettingLanguagePage,
     AuthenticatePage,
+    UserSetPage,
+    JiAboutPage,
+    GetAdvicePage,
   ],
   entryComponents: [
     MePage,
@@ -49,6 +55,9 @@ import { AuthenticatePage } from './pages/authenticate';
     HCDebugPage,
     MeSettingLanguagePage,
     AuthenticatePage,
+    UserSetPage,
+    JiAboutPage,
+    GetAdvicePage,
   ],
   providers: [
     UserService,

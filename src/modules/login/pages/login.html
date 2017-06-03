@@ -1,5 +1,4 @@
 <div class="splash">
-    <!--<button (click)="goTabPage()">go tab</button>-->
     <ng-template [ngIf]="ifFirst">
         <h1 class="logo">
             <img src="assets/images/logo.png" alt="logo" />
@@ -20,33 +19,29 @@
             <ion-card>
                 <ion-card-content>
                     <ion-input type="tel" placeholder="手机号"></ion-input>
-                    <ion-input type="password" placeholder="密码" *ngIf="!LoginByCode"></ion-input>
-                    <div class="login-code" *ngIf="LoginByCode">
+                    <ion-input type="password" placeholder="密码" *ngIf="!ifLoginByCode"></ion-input>
+                    <div class="login-code" *ngIf="ifLoginByCode">
                         <ion-input type="text" placeholder="输入验证码"></ion-input>
                         <button ion-button color="default">获取验证码</button>
-                    </div>
-                    
+                    </div>   
                 </ion-card-content>
             </ion-card>
+
             <div class="login-block">
                 <button ion-button block color="default" class="login-btn" (click)="goTabPage()">登录</button>
             </div>
 
             <ion-row class="login-control">
                 <ion-col col-6>
-                    <button *ngIf="!LoginByCode" (click)="loginByCode()">短信验证码登陆</button>
-                    <button *ngIf="LoginByCode" (click)="loginByPsd()">密码登陆</button>
+                    <button *ngIf="!ifLoginByCode" (click)="loginByCode()">短信验证码登陆</button>
+                    <button *ngIf="ifLoginByCode" (click)="loginByPsd()">密码登陆</button>
                 </ion-col>
                 <ion-col col-6>
                     <button (click)="goRegister()">没有集+账号？ 注册</button>
                 </ion-col>
             </ion-row>
-        </div>
-            
-        
+        </div> 
     </ng-template>
-
-
 
     <ng-template [ngIf]="ifRegister">
         <div class="login-main">
@@ -57,9 +52,9 @@
                         <ion-input type="text" placeholder="输入验证码"></ion-input>
                         <button ion-button color="default">获取验证码</button>
                     </div>
-                    
                 </ion-card-content>
             </ion-card>
+
             <div class="login-block">
                 <button ion-button block color="default" class="login-btn" (click)="goRegisterend()">注册 </button>
             </div>
@@ -67,11 +62,8 @@
             <p class="register-tips" (click)="goLogin()">
                 已有集+账号？ 登陆
             </p>
-        </div>
-            
-        
+        </div>  
     </ng-template>
-
 
      <ng-template [ngIf]="ifRegisterEnd">
         <div class="login-main">
@@ -81,16 +73,10 @@
                     <ion-input type="text" placeholder="密码"></ion-input>
                 </ion-card-content>
             </ion-card>
+
             <div class="login-block">
                 <button ion-button block color="default" class="login-btn" (click)="registerEnd()">完成</button>
             </div>
         </div>
-            
-        
     </ng-template>
-        
-        
-
-    
-
 </div>

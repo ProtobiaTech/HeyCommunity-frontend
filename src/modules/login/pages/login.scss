@@ -1,0 +1,88 @@
+login {
+    .splash {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        background: url('http://www.xiangbodao.com/wp-content/uploads/2016/02/%E5%9C%BA%E6%99%AF%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E5%8C%97%E4%BA%AC.jpg') no-repeat center top/cover;  
+        
+        h1.logo {
+            width: 180px;
+            height: 96px;
+            margin: 100px auto;
+        }
+
+        .btn-group {
+            position: absolute;
+            left: 15px;
+            bottom: 20px;
+            right: 15px;
+        }
+
+        .login-code {
+            position: relative;
+            height: 42px;
+            button {
+                position: absolute;
+                right: 0;
+                top: 3px;
+                margin: 0;
+                height: 32px;
+                padding: 0 .4em;
+                font-size: 1.2rem;
+            }
+        }
+
+        // register 
+        .register-tips {
+            text-align: center;
+            color: #fff;
+        }
+
+        // login
+        .login-main {
+            position: absolute;
+            top: 30%;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            .login-block {
+                width: 100%;
+                padding: 0 12px;
+                margin-top: 20px;
+            }
+            ion-card-content {
+                padding-top: 26px;
+                padding-bottom: 26px;
+                ion-input {
+                    border-bottom: .55px solid #c8c7cc;
+                    &:first-child {
+                        margin-bottom: 10px;
+                    }
+                }
+                
+            }
+            .login-control {
+                position: absolute;
+                bottom: 50px;
+                left: 0; 
+                right: 0;
+                button {
+                    background: none;
+                    color: #fff;
+                }
+                ion-col:last-child button {
+                    float: right;
+                }
+                
+            }
+        }
+        
+        
+    
+    }
+
+
+}

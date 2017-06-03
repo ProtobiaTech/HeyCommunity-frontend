@@ -1,8 +1,6 @@
 {
   "name": "HeyCommunity",
   "app_id": "95e8d391",
-  "v2": true,
-  "typescript": true,
   "proxies": [
     {
       "path": "/api",
@@ -12,5 +10,6 @@
       "path": "/uploads",
       "proxyUrl": "http://demo.hey-community.com/uploads"
     }
-  ]
+  ],
+  "type": "ionic-angular"
 }

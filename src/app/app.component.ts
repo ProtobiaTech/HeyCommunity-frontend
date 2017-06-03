@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppService } from '../modules/common/services/app.service';
 
 import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../modules/login/pages/login';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 })
 export class MyApp {
   //
-  rootPage = TabsPage;
+  rootPage = LoginPage;
 
   //
   noticeInterval: any;

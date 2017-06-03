@@ -14,6 +14,7 @@ import { FileUploadService } from './services/fileUpload.service';
 import { CommonTranslations } from './i18n/common-translations';
 
 import { UtilityComponent } from './pages/utilityComponent';
+import { SearchPage } from './pages/search';
 
 
 @NgModule({
@@ -28,8 +29,10 @@ import { UtilityComponent } from './pages/utilityComponent';
     TimeagoPipe,
     Nl2brPipe,
     UtilityComponent,
+    SearchPage,
   ],
   entryComponents: [
+    SearchPage,
   ],
   providers: [
     Helper,

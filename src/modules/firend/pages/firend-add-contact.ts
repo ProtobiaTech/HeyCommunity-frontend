@@ -3,15 +3,14 @@ import { NavController } from 'ionic-angular';
 
 import { AppService } from '../../common/services/app.service';
 
-import { FirendAddPage } from './firend-add';
-import { MePage } from '../../user/pages/me';
+import { FirendAddApplyPage } from './firend-add-apply';
 
 
 @Component({
-  selector: 'page-firend',
-  templateUrl: 'firend.html'
+  selector: 'page-firend-add-contact',
+  templateUrl: 'firend-add-contact.html'
 })
-export class FirendPage {
+export class FirendAddContactPage {
   //
   // constructor
   constructor(
@@ -22,13 +21,7 @@ export class FirendPage {
 
   //
   //
-  gotoFirendPage() {
-    this.navCtrl.push(FirendAddPage);
-  }
-
-  //
-  //
-  gotoUserHomePage() {
-    this.navCtrl.push(MePage);
+  gotoFirendAddApplyPage() {
+    this.navCtrl.push(FirendAddApplyPage);
   }
 }

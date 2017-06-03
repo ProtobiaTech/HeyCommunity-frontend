@@ -10,6 +10,8 @@ import { MyTimelinePage } from '../../timeline/pages/my-timeline';
 import { MyTopicPage } from '../../topic/pages/my-topic';
 import { MeSettingPage } from './me-setting';
 
+import { SearchPage } from '../../common/pages/search';
+
 
 @Component({
   selector: 'page-me',
@@ -62,5 +64,12 @@ export class MePage {
     if (this.heyApp.authService.authOrLogin()) {
       this.navCtrl.push(MyTopicPage);
     }
+  }
+
+
+  //
+  //
+  gotoSearchPage() {
+    this.navCtrl.push(SearchPage);
   }
 }

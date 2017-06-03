@@ -1,0 +1,37 @@
+<ion-header class="">
+  <ion-navbar>
+    <ion-title>
+      管理收藏集
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="gotoCollectEditPage()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <img src="/assets/images/moment-1.jpg">
+
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" placeholder="名称"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="介绍"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>公开范围</ion-label>
+      <ion-select [(ngModel)]="gaming">
+        <ion-option value="1">私密</ion-option>
+        <ion-option value="2">封闭</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

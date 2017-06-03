@@ -10,6 +10,7 @@ import { MyTimelinePage } from '../../timeline/pages/my-timeline';
 import { MyTopicPage } from '../../topic/pages/my-topic';
 import { MeSettingPage } from './me-setting';
 
+import { CollectPage } from '../../collect/pages/collect';
 import { SearchPage } from '../../common/pages/search';
 
 
@@ -64,6 +65,13 @@ export class MePage {
     if (this.heyApp.authService.authOrLogin()) {
       this.navCtrl.push(MyTopicPage);
     }
+  }
+
+
+  //
+  //
+  gotoCollectPage() {
+    this.navCtrl.push(CollectPage);
   }
 
 

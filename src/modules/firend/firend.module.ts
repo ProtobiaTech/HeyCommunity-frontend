@@ -6,6 +6,8 @@ import { AppService } from '../common/services/app.service';
 
 import { FirendPage } from './pages/firend';
 import { FirendAddPage } from './pages/firend-add';
+import { FirendAddApplyPage } from './pages/firend-add-apply';
+import { FirendAddContactPage } from './pages/firend-add-contact';
 
 
 @NgModule({
@@ -15,10 +17,14 @@ import { FirendAddPage } from './pages/firend-add';
   declarations: [
     FirendPage,
     FirendAddPage,
+    FirendAddApplyPage,
+    FirendAddContactPage,
   ],
   entryComponents: [
     FirendPage,
     FirendAddPage,
+    FirendAddApplyPage,
+    FirendAddContactPage,
   ],
   providers: [
   ],

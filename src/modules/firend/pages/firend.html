@@ -23,12 +23,32 @@
 
   <ion-item-group>
     <ion-item-divider color="light">A</ion-item-divider>
-    <ion-item>Angola</ion-item>
-    <ion-item>Argentina</ion-item>
+    <ion-item (click)="gotoUserHomePage()">
+      <ion-avatar item-left>
+        <img src="assets/images/userAvatar-default.png">
+      </ion-avatar>
+      <h2>Angola</h2>
+    </ion-item>
+    <ion-item (click)="gotoUserHomePage()">
+      <ion-avatar item-left>
+        <img src="assets/images/userAvatar-default.png">
+      </ion-avatar>
+      <h2>Argentina</h2>
+    </ion-item>
   </ion-item-group>
   <ion-item-group>
     <ion-item-divider color="light">B</ion-item-divider>
-    <ion-item>Big</ion-item>
-    <ion-item>Bang</ion-item>
+    <ion-item (click)="gotoUserHomePage()">
+      <ion-avatar item-left>
+        <img src="assets/images/userAvatar-default.png">
+      </ion-avatar>
+      <h2>Big</h2>
+    </ion-item>
+    <ion-item (click)="gotoUserHomePage()">
+      <ion-avatar item-left>
+        <img src="assets/images/userAvatar-default.png">
+      </ion-avatar>
+      <h2>Bang</h2>
+    </ion-item>
   </ion-item-group>
 </ion-content>

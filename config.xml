@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="home.loverose.vip" version="3.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.heycommunity.loverose" version="3.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>hIRoSE嗨喽</name>
   <description>Hi Rose</description>
   <author email="supgeek.rod@gmail.com" href="http://www.hey-community.com/">Rod</author>

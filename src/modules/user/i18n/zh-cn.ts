@@ -28,7 +28,7 @@ export class ZhCn {
       "Like Your Timeline":           "喜欢 ❤️",
 
       "Mine":                         "我的",
-      "My Park Activity":             "我的公园动态",
+      "My Park Activity":             "我的嗨喽动态",
       "Settings":                     "设置",
       "Setting":                      "设置",
       "Language":                     "语言",
@@ -48,7 +48,7 @@ export class ZhCn {
 
       // me
       "My Profile":                   "我的资料",
-      "My Park":                      "我的公园",
+      "My Park":                      "我的嗨喽",
 
       // settings
       "Guide":                        "用户指南",

@@ -24,7 +24,7 @@
         <ion-input required [(ngModel)]="newTopic.title" name="title" type="text" placeholder="{{ 'topic.Title' | translate }}"></ion-input>
       </ion-item>
       <ion-item class="item-select">
-        <ion-label>{{ 'topic.Node' | translate }}</ion-label>
+        <ion-label>{{ 'Topic' | translate }}</ion-label>
         <ion-select required [(ngModel)]="newTopic.topic_node_id" name="topic_node_id">
           <div *ngFor="let node of topicService.nodes">
             <div *ngFor="let childNode of node.child_nodes">

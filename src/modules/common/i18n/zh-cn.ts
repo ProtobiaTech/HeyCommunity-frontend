@@ -4,7 +4,7 @@ export class ZhCn {
     //
     "HeyCommunity":                 "HEY社区",
     "Topic":                        "话题",
-    "Park":                         "公园",
+    "Park":                         "嗨喽",
     "Me":                           "我",
 
 

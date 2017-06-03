@@ -1,7 +1,7 @@
 export class ZhCn {
   static translations = {
     "timeline": {
-      "Park":                         "公园",
+      "Park":                         "嗨喽",
       "Novelty":                      "新鲜事",
       "Likes":                        "喜爱",
       "Comments":                     "评论",
@@ -15,7 +15,7 @@ export class ZhCn {
 
       //
       // me-timeline page
-      "My Park":                            "我的公园",
+      "My Park":                            "我的嗨喽",
 
 
       // create

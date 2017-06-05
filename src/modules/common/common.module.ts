@@ -14,6 +14,7 @@ import { FileUploadService } from './services/fileUpload.service';
 import { CommonTranslations } from './i18n/common-translations';
 
 import { UtilityComponent } from './pages/utilityComponent';
+import { FirstPage } from './pages/first';
 import { SearchPage } from './pages/search';
 
 
@@ -29,9 +30,11 @@ import { SearchPage } from './pages/search';
     TimeagoPipe,
     Nl2brPipe,
     UtilityComponent,
+    FirstPage,
     SearchPage,
   ],
   entryComponents: [
+    FirstPage,
     SearchPage,
   ],
   providers: [

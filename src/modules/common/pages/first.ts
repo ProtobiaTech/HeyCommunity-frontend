@@ -4,12 +4,12 @@ import { NavController } from 'ionic-angular';
 import { AppService } from '../../common/services/app.service';
 import { TabsPage } from '../../../pages/tabs/tabs';
 
-@Component({
-  selector: 'login',
-  templateUrl: 'login.html'
-})
-export class LoginPage {
 
+@Component({
+  selector: 'first',
+  templateUrl: 'first.html'
+})
+export class FirstPage {
   //
   ifFirst: boolean = true;
 

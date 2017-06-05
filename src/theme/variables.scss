@@ -27,7 +27,7 @@ $text-color:        #444;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #387ef5,
+  primary:    #2D4486,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
@@ -88,5 +88,10 @@ $colors: (
 
 
 //
-// 
+//
 @import "global.hc";
+
+
+//
+// override
+@import "override.jiplus";

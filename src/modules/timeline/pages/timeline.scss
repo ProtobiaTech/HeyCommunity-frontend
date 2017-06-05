@@ -1,12 +1,30 @@
 page-timeline {
   ion-content {
+    .bar-create {
+      ion-item {
+        background-color: #fff;
+      }
+
+      .btn-camera {
+        background-color: #ddd;
+        border-radius: 50%;
+        width: 2em;;
+        height: 2em;
+        text-align: center;
+
+        ion-icon{
+          padding-top: 0.25em;
+        }
+      }
+    }
+
     .timeline-card {
-      background-color: #f9f9f9;
+      background-color: #fff;
       margin: 0 0 12px 0;
       width: 100%;
 
       .header {
-        background-color: #f0f0f0;
+        background-color: #fff;
 
         .date {
           font-size: 14px;
@@ -18,6 +36,10 @@ page-timeline {
            overflow: hidden;
            width: 8em;
         }
+      }
+
+      .img {
+        padding-bottom: 10px;
       }
 
       .img-muilt {
@@ -58,6 +80,12 @@ page-timeline {
         margin: 0;
       }
 
+      .card-content {
+        background-color: #fff;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
       .content {
         color: $text-color;
         word-break: break-all;
@@ -84,6 +112,10 @@ page-timeline {
           button {
             margin-top: 0;
             margin-bottom: 0;
+
+            ion-icon {
+              font-size: 1.8em;
+            }
           }
         }
 

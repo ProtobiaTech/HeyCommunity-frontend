@@ -6,6 +6,7 @@ import { TimelineService } from '../services/timeline.service';
 
 import { TimelineDetailPage } from './timeline-detail';
 import { TimelineCreatePage } from './timeline-create';
+import { SearchPage } from '../../common/pages/search';
 
 
 @Component({
@@ -110,5 +111,12 @@ export class TimelinePage {
     }, ret => {
       infiniteScroll.complete();
     });
+  }
+
+
+  //
+  //
+  gotoSearchPage() {
+    this.navCtrl.push(SearchPage);
   }
 }

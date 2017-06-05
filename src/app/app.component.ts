@@ -14,7 +14,8 @@ import { FirstPage } from '../modules/common/pages/first';
 })
 export class MyApp {
   //
-  rootPage = FirstPage;
+  // rootPage = FirstPage;
+  rootPage = TabsPage;
 
   //
   noticeInterval: any;

@@ -99,7 +99,7 @@
   <plugin name="cordova-plugin-file-transfer" spec="~1.6.1"/>
   <plugin name="com.synconset.imagepicker" spec="https://github.com/Telerik-Verified-Plugins/ImagePicker"/>
   <plugin name="jpush-phonegap-plugin" spec="~3.0.3">
-    <variable name="APP_KEY" value="836338d89b6fb9dfd11140a8"/>
+    <variable name="APP_KEY" value="ccabb698e6d5fe13f6d2aba7"/>
   </plugin>
   <plugin name="cordova-plugin-crosswalk-webview" spec="~2.3.0">
     <variable name="XWALK_VERSION" value="23+"/>
@@ -109,7 +109,7 @@
     <variable name="XWALK_MULTIPLEAPK" value="true"/>
   </plugin>
   <plugin name="cordova-plugin-wechat" spec="~1.4.0">
-    <variable name="WECHATAPPID" value="wx984e306ab0a8e762"/>
+    <variable name="WECHATAPPID" value="wxa4d674dbde71108f"/>
   </plugin>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
 </widget>

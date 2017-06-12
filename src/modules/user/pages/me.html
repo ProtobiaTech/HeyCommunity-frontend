@@ -21,7 +21,7 @@
       <div class="nickname">李亚州</div>
       <div class="uid">U1234</div>
     </div>
-    <button class="btn-setting" ion-button color="grey" clear (click)="goUserSet()">个人设置 &nbsp;&nbsp; <ion-icon name="arrow-forward"></ion-icon></button>
+    <button class="btn-setting" ion-button color="grey" style="color:#888;" clear (click)="goUserSet()">个人设置 &nbsp;&nbsp; <ion-icon name="ios-arrow-forward"></ion-icon></button>
   </div>
 
   <div class="section-segment">
@@ -40,9 +40,10 @@
       <ion-col col-6>
         <ion-card class="collect-card" (click)="gotoCollectPage()">
           <img src="assets/images/moment-1.jpg">
-          <ion-card-content>
-            <p>日常</p>
-            <div>
+          <img class="avatar" src="assets/images/people-1.jpeg">
+          <ion-card-content class="info">
+            <p class="name">日常</p>
+            <div class="footer">
                 <div class="pull-right">封闭</div>
                 55 位关注者
             </div>
@@ -53,9 +54,10 @@
       <ion-col col-6>
         <ion-card class="collect-card" (click)="gotoCollectPage()">
           <img src="assets/images/moment-1.jpg">
-          <ion-card-content>
-            <p>同行</p>
-            <div>
+          <img class="avatar" src="assets/images/people-2.jpeg">
+          <ion-card-content class="info">
+            <p class="name">同行</p>
+            <div class="footer">
                 <div class="pull-right">封闭</div>
                 55 位关注者
             </div>
@@ -66,12 +68,22 @@
       <ion-col col-6>
         <ion-card class="collect-card" (click)="gotoCollectPage()">
           <img src="assets/images/moment-1.jpg">
-          <ion-card-content>
-            <p>同行</p>
-            <div>
+          <img class="avatar" src="assets/images/people-3.jpeg">
+          <ion-card-content class="info">
+            <p class="name">狗子</p>
+            <div class="footer">
                 <div class="pull-right">封闭</div>
                 55 位关注者
             </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-6>
+        <ion-card class="collect-card collect-card-add-button">
+          <img src="assets/images/moment-1.jpg">
+          <ion-card-content class="info">
+            <ion-icon name="add-circle"></ion-icon>
           </ion-card-content>
         </ion-card>
       </ion-col>

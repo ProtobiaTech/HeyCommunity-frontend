@@ -1,0 +1,24 @@
+page-firend-add {
+  ion-content {
+    #section-add-types {
+      .fa {
+        border-radius: 50%;
+        padding: 1rem;
+        margin-right: 20px;
+        color: #fff;
+      }
+
+      .fa-wechat {
+        background-color: #30A20D;
+      }
+
+      .fa-qq {
+        background-color: #3382F9;
+      }
+
+      .fa-address-book {
+        background-color: #404040;
+      }
+    }
+  }
+}

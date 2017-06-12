@@ -13,12 +13,12 @@
 </ion-header>
 
 <ion-content>
-    <div class="user-pic">
+    <div class="user-pic" padding-bottom>
         <img src="http://img5.imgtn.bdimg.com/it/u=785610095,2402278722&fm=23&gp=0.jpg" alt="">
         <p>更换头像</p>
     </div>
 
-    <ion-list>
+    <ion-list margin-top>
         <ion-item>
             <ion-icon name="leaf" item-left></ion-icon>
             <ion-input type="text" placeholder="姓名"></ion-input>
@@ -32,6 +32,9 @@
             <ion-icon name="person" item-left></ion-icon>
             <ion-input type="text" placeholder="用户名"></ion-input>
         </ion-item>
+    </ion-list>
+
+    <ion-list>
         <ion-item (click)="gotoGetAdvice()">
             <ion-icon name="list-box" item-left></ion-icon>
             意见反馈

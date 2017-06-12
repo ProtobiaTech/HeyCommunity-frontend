@@ -1,6 +1,7 @@
 user-set {
     ion-content {
         .user-pic {
+            background-color: #fff;
             text-align: center;
 
             img {
@@ -15,31 +16,37 @@ user-set {
             }
         }
 
-        ion-list.list-ios {
-            margin: 0 10px;
-            
-            ion-item.item-block {
-                &:first-child{
-                    border-top: none;
-                }
+        ion-list {
+            ion-item {
+                background-color: #fff !important;
+            }
 
-                &:last-child {
-                    border: none;
-                }
+            &.list-ios {
+                margin: 0 10px;
 
-                & {
-                    border-bottom: 0.55px solid #c8c7cc;
-                }
-
-                div.item-inner {
-                    border-bottom: none;
-
-                    button.sex-button {
-                        border: 1px solid #000;
-                        padding: 0 1em;
+                ion-item.item-block {
+                    &:first-child{
+                        border-top: none;
                     }
-                }
-            }  
+
+                    &:last-child {
+                        border: none;
+                    }
+
+                    & {
+                        border-bottom: 0.55px solid #c8c7cc;
+                    }
+
+                    div.item-inner {
+                        border-bottom: none;
+
+                        button.sex-button {
+                            border: 1px solid #000;
+                            padding: 0 1em;
+                        }
+                    }
+                }  
+            }
         }
     }
 }

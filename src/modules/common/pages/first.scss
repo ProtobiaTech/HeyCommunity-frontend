@@ -1,4 +1,8 @@
 first {
+    ion-card {
+        background-color: #fff !important;
+    }
+
     .splash {
         position: absolute;
         left: 0;
@@ -7,7 +11,7 @@ first {
         bottom: 0;
         z-index: 0;
         background: url('http://www.xiangbodao.com/wp-content/uploads/2016/02/%E5%9C%BA%E6%99%AF%E8%8B%B9%E6%9E%9C%E6%89%8B%E6%9C%BA%E5%8C%97%E4%BA%AC.jpg') no-repeat center top/cover;  
-        
+
         h1.logo {
             width: 180px;
             height: 96px;
@@ -36,7 +40,7 @@ first {
             }
         }
 
-        // register 
+        // register
         .register-tips {
             text-align: center;
             color: #fff;
@@ -66,7 +70,7 @@ first {
                     &:first-child {
                         margin-bottom: 10px;
                     }
-                }     
+                }
             }
 
             .login-control {
@@ -82,7 +86,7 @@ first {
 
                 ion-col:last-child button {
                     float: right;
-                }     
+                }
             }
         }
     }

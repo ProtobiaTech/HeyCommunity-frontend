@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar>
-    <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+    <ion-searchbar (ionInput)="goSearch($event)"></ion-searchbar>
 
     <ion-buttons end>
-      <button ion-button icon-only (click)="gotoFirendPage()">
+      <button ion-button icon-only (click)="goSearch($event)">
         <ion-icon name="search"></ion-icon>
       </button>
     </ion-buttons>
@@ -11,4 +11,19 @@
 </ion-header>
 
 <ion-content>
+  <ion-item-group>
+    <ion-item-divider color="light">联系人</ion-item-divider>
+    <ion-item (click)="gotoUserHomePage()">
+      <ion-avatar item-left>
+        <img src="assets/images/userAvatar-default.png">
+      </ion-avatar>
+      <h2>Angola</h2>
+    </ion-item>
+    <ion-item (click)="gotoUserHomePage()">
+      <ion-avatar item-left>
+        <img src="assets/images/userAvatar-default.png">
+      </ion-avatar>
+      <h2>Argentina</h2>
+    </ion-item>
+  </ion-item-group>
 </ion-content>

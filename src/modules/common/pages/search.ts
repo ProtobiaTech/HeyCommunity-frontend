@@ -16,4 +16,10 @@ export class SearchPage {
     public navCtrl: NavController
   ) {
   }
+
+
+  //
+  //
+  goSearch(event) {
+  }
 }

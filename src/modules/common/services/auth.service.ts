@@ -20,6 +20,7 @@ export class AuthService {
     public events: Events,
     public storage: Storage
   ) {
+    this.getIsAuth();
   }
 
 

@@ -14,8 +14,8 @@ import { FirstPage } from '../modules/common/pages/first';
 })
 export class MyApp {
   //
-  // rootPage = FirstPage;
-  rootPage = TabsPage;
+  // rootPage = TabsPage;
+  rootPage: any;
 
   //
   noticeInterval: any;
@@ -29,6 +29,12 @@ export class MyApp {
     public platform: Platform
   ) {
     console.log('Hey Community V3');
+
+    if (this.heyApp.authService.getIsAuth()) {
+      this.rootPage = TabsPage;
+    } else {
+      this.rootPage = FirstPage;
+    }
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

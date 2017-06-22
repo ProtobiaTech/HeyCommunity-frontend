@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,15 +27,20 @@ export class MyApp {
     public menuCtrl: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
+    public storage: Storage,
     public platform: Platform
   ) {
     console.log('Hey Community V3');
 
-    if (this.heyApp.authService.getIsAuth()) {
-      this.rootPage = TabsPage;
-    } else {
-      this.rootPage = FirstPage;
-    }
+    this.storage.get('is_auth').then(value => {
+      let isAuth = value ? true : false;
+
+      if (isAuth) {
+        this.rootPage = TabsPage;
+      } else {
+        this.rootPage = FirstPage;
+      }
+    });
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

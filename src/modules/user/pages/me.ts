@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { AppService } from '../../common/services/app.service';
 import { NoticeService } from '../../notice/services/notice.service';
+import { CollectService } from '../../collect/services/collect.service';
 
 import { MeProfilePage } from './me-profile';
 import { MeNoticePage } from '../../notice/pages/me-notice';
@@ -23,14 +24,24 @@ import { UserSetPage } from './user-set';
 export class MePage {
   MeSettingPage = MeSettingPage;
 
+  collectType: number = 1;
 
   //
   // constructor
   constructor(
     public heyApp: AppService,
     public noticeService: NoticeService,
+    public collectService: CollectService,
     public navCtrl: NavController
   ) {
+  }
+
+
+  //
+  // ion view did enter
+  ionViewDidEnter() {
+    this.collectService.getMyCollects();
+    this.collectService.getMyFollowCollects();
   }
 
 

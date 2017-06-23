@@ -18,62 +18,34 @@
       <img class="avatar" src="assets/images/userAvatar-default.png">
     </div>
     <div class="info">
-      <div class="nickname">李亚州</div>
-      <div class="uid">U1234</div>
+      <div class="nickname">{{ heyApp.authService.userInfo.nickname }}</div>
+      <div class="uid">U{{ heyApp.authService.userInfo.id }}</div>
     </div>
     <button class="btn-setting" ion-button color="grey" style="color:#888;" clear (click)="goUserSet()">个人设置 &nbsp;&nbsp; <ion-icon name="ios-arrow-forward"></ion-icon></button>
   </div>
 
   <div class="section-segment">
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="kittens">
+    <ion-segment [(ngModel)]="collectType">
+      <ion-segment-button value="1">
         我的
       </ion-segment-button>
-      <ion-segment-button value="puppies">
+      <ion-segment-button value="2">
         已关注
       </ion-segment-button>
     </ion-segment>
   </div>
 
-  <ion-grid class="collect-cards">
-    <ion-row>
-      <ion-col col-6>
+  <ion-grid class="collect-cards" [ngSwitch]="collectType">
+    <ion-row *ngSwitchCase="'1'">
+      <ion-col col-6 *ngFor="let collect of collectService.myCollects; let i=index">
         <ion-card class="collect-card" (click)="gotoCollectPage()">
           <img src="assets/images/moment-1.jpg">
-          <img class="avatar" src="assets/images/people-1.jpeg">
+          <img class="avatar" src="{{ collect.author.avatar }}">
           <ion-card-content class="info">
-            <p class="name">日常</p>
+            <p class="name">{{ collect.name }}</p>
             <div class="footer">
-                <div class="pull-right">封闭</div>
-                55 位关注者
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-      <ion-col col-6>
-        <ion-card class="collect-card" (click)="gotoCollectPage()">
-          <img src="assets/images/moment-1.jpg">
-          <img class="avatar" src="assets/images/people-2.jpeg">
-          <ion-card-content class="info">
-            <p class="name">同行</p>
-            <div class="footer">
-                <div class="pull-right">封闭</div>
-                55 位关注者
-            </div>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-      <ion-col col-6>
-        <ion-card class="collect-card" (click)="gotoCollectPage()">
-          <img src="assets/images/moment-1.jpg">
-          <img class="avatar" src="assets/images/people-3.jpeg">
-          <ion-card-content class="info">
-            <p class="name">狗子</p>
-            <div class="footer">
-                <div class="pull-right">封闭</div>
-                55 位关注者
+                <div class="pull-right">{{ collect.type_id }}</div>
+                {{ collect.follow_num }} 位关注者
             </div>
           </ion-card-content>
         </ion-card>
@@ -84,6 +56,22 @@
           <img src="assets/images/moment-1.jpg">
           <ion-card-content class="info">
             <ion-icon name="add-circle"></ion-icon>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngSwitchCase="'2'">
+      <ion-col col-6 *ngFor="let collect of collectService.myFollowCollects; let i=index">
+        <ion-card class="collect-card" (click)="gotoCollectPage()">
+          <img src="assets/images/moment-1.jpg">
+          <img class="avatar" src="assets/images/people-1.jpeg">
+          <ion-card-content class="info">
+            <p class="name">日常</p>
+            <div class="footer">
+                <div class="pull-right">封闭</div>
+                55 位关注者
+            </div>
           </ion-card-content>
         </ion-card>
       </ion-col>

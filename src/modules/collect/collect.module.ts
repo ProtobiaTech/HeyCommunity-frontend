@@ -3,6 +3,7 @@ import { Platform, Events, ModalController } from 'ionic-angular';
 import { CommonModule } from '../common/common.module';
 
 import { AppService } from '../common/services/app.service';
+import { CollectService } from './services/collect.service';
 
 import { CollectPage } from './pages/collect';
 import { CollectMemberPage } from './pages/collect-member';
@@ -24,6 +25,7 @@ import { CollectEditPage } from './pages/collect-edit';
     CollectEditPage,
   ],
   providers: [
+    CollectService,
   ],
   exports: [
   ],

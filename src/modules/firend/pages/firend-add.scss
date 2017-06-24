@@ -10,6 +10,22 @@ page-firend-add {
     }
   }
   ion-content {
+    ion-searchbar{
+      .searchbar-input-container{
+        padding: 10px 0;
+        .searchbar-search-icon{
+          margin-top: 12px;
+        }
+        .searchbar-input {
+          border-radius: 0;
+        }
+      }
+    }
+    ion-item {
+      .massage {
+        color: #b2b2b2;
+      }
+    }
     #section-add-types {
       .fa {
         border-radius: 50%;

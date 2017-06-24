@@ -20,7 +20,13 @@ user-set {
             ion-item {
                 background-color: #fff !important;
             }
-
+          .tip {
+            text-align: center;
+            padding: 0 5px;
+            font-size: 10px;
+            color: #dddddd;
+            background-color: #fff !important;
+          }
             &.list-ios {
                 margin: 0 10px;
 
@@ -45,7 +51,7 @@ user-set {
                             padding: 0 1em;
                         }
                     }
-                }  
+                }
             }
         }
     }

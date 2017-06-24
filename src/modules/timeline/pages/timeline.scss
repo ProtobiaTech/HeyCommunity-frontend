@@ -3,6 +3,11 @@ page-timeline {
     .bar-create {
       ion-item {
         background-color: #fff;
+        ion-avatar img{
+          margin-top: 4px;
+          width: 30px;
+          height: 30px;
+        }
       }
 
       .btn-camera {

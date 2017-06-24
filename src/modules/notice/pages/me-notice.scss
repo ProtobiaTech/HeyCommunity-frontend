@@ -1,7 +1,8 @@
 page-me-notice {
   ion-content {
-    //
-    //
+    .scroll-content {
+      background-color: white;
+    }
     #section-notices {
       ion-item {
         &.checked {
@@ -18,6 +19,12 @@ page-me-notice {
           img {
             vertical-align: middle;
           }
+        }
+      }
+      .read {
+        background-color: white;
+        ion-item {
+          background-color: white;
         }
       }
     }

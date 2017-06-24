@@ -5,6 +5,9 @@
     </ion-title>
 
     <ion-buttons end>
+      <button ion-button clear>
+        邀请
+      </button>
       <button ion-button icon-only (click)="gotoCollectEditPage()">
         <ion-icon name="more"></ion-icon>
       </button>
@@ -99,19 +102,31 @@
       </div>
     </ion-card>
 
+    <ion-list padding-top class="bar-create">
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="assets/images/userAvatar-default.png">
+        </ion-avatar>
+        <h2>珍藏这一刻 ...</h2>
+        <div class="btn-camera" item-right (click)="gotCreatPage()">
+          <ion-icon name="camera"></ion-icon>
+        </div>
+      </ion-item>
+    </ion-list>
 
-    <ion-card style="margin:0; padding:0; width:100%;">
+    <ion-card style="margin:0; padding:0; width:100%;" class="bar-create">
       <ion-item>
         <ion-avatar item-left>
           <img src="assets/images/userAvatar-default.png">
         </ion-avatar>
         <h2>Marty McFly</h2>
         <p>November 5, 1955</p>
+        <ion-icon name="arrow-dropdown" item-right></ion-icon>
       </ion-item>
 
       <img src="assets/images/moment-1.jpg">
 
-      <ion-card-content>
+      <ion-card-content class="content">
         <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
       </ion-card-content>
 

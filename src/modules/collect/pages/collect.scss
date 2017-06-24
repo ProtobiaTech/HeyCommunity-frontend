@@ -1,5 +1,26 @@
 page-collect {
   ion-content {
+    .bar-create {
+      ion-item {
+        background-color: #fff;
+      }
+      .content {
+        margin-top: -100px;
+        background-color:#000000;
+        background-color:rgba(0,0,0,0.5);
+      }
+      .btn-camera {
+        background-color: #ddd;
+        border-radius: 50%;
+        width: 2em;;
+        height: 2em;
+        text-align: center;
+
+        ion-icon {
+          padding-top: 0.25em;
+        }
+      }
+    }
     #section-collect-info {
       background-color: #fff;
       position: relative;

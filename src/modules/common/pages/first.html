@@ -6,10 +6,10 @@
 
         <ion-row class="btn-group">
             <ion-col col-6>
-                <button ion-button block color="default" (click)="goRegister()">注册</button>
+                <button ion-button class="btn-login" block color="default" (click)="goRegister()">注册</button>
             </ion-col>
             <ion-col col-6>
-                <button ion-button block color="light" (click)="goLogin()">登录</button>
+                <button ion-button class="btn-login" block color="light" (click)="goLogin()">登录</button>
             </ion-col>
         </ion-row>
     </ng-template>
@@ -23,7 +23,7 @@
                     <div class="login-code" *ngIf="ifLoginByCode">
                         <ion-input type="text" placeholder="输入验证码"></ion-input>
                         <button ion-button color="default">获取验证码</button>
-                    </div>   
+                    </div>
                 </ion-card-content>
             </ion-card>
 
@@ -40,7 +40,7 @@
                     <button (click)="goRegister()">没有集+账号？ 注册</button>
                 </ion-col>
             </ion-row>
-        </div> 
+        </div>
     </ng-template>
 
     <ng-template [ngIf]="ifRegister">
@@ -62,7 +62,7 @@
             <p class="register-tips" (click)="goLogin()">
                 已有集+账号？ 登陆
             </p>
-        </div>  
+        </div>
     </ng-template>
 
      <ng-template [ngIf]="ifRegisterEnd">

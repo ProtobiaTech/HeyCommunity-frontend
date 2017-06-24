@@ -1,7 +1,16 @@
 page-timeline-create {
-  ion-content {
-    //
-    //
+    ion-content {
+      .scroll-content {
+        background-color: white !important;
+      }
+      ion-list {
+        ion-item {
+          background-color: white !important;
+        }
+        .select {
+          margin-left: 40px;
+        }
+      }
     #section-textarea {
       margin-bottom: 0;
 

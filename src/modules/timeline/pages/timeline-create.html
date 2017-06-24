@@ -2,11 +2,11 @@
   <ion-navbar>
     <ion-buttons start>
       <button color="grey" ion-button (click)="dismiss()">
-        {{ 'Close' | translate }}
+        {{ translate }}
       </button>
     </ion-buttons>
 
-    <ion-title>{{ 'timeline.Novelty' | translate }}</ion-title>
+    <!--<ion-title>{{ 'timeline.Novelty' | translate }}</ion-title>-->
 
     <ion-buttons end>
       <button color="grey" ion-button (click)="timelineCreateHandler(timelineCreateForm)">
@@ -18,6 +18,22 @@
 
 
 <ion-content>
+  <ion-item (click)="gotoUserHomePage()">
+    <ion-avatar item-left>
+      <img src="assets/images/people-1.jpeg">
+    </ion-avatar>
+    <h2>Angola</h2>
+  </ion-item>
+  <ion-item class="collect-select">
+    <ion-select>
+      <ion-option value="nes">NES</ion-option>
+      <ion-option value="n64">Nintendo64</ion-option>
+      <ion-option value="ps">PlayStation</ion-option>
+      <ion-option value="genesis">Sega Genesis</ion-option>
+      <ion-option value="saturn">Sega Saturn</ion-option>
+      <ion-option value="snes">SNES</ion-option>
+    </ion-select>
+  </ion-item>
   <ion-list id="section-textarea">
     <form #timelineCreateForm="ngForm" novalidate>
         <ion-item>
@@ -27,45 +43,37 @@
     </form>
   </ion-list>
 
-  <div class="media-toolbar">
-    <button *ngIf="heyApp.platform.is('cordova') && !waiting" (press)="uploadImgsByNativeCamera('library');" (click)="uploadImgsByNativeCamera('camera');" color="dark" ion-button icon-only outline clear>
-      <ion-icon name="camera"></ion-icon>
-    </button>
+ <div class="media-toolbar">
+      <button *ngIf="heyApp.platform.is('cordova') && !waiting" (press)="uploadImgsByNativeCamera('library');" (click)="uploadImgsByNativeCamera('camera');" color="dark" ion-button icon-only outline clear>
+        <ion-icon name="camera"></ion-icon>
+      </button>
 
-    <button *ngIf="heyApp.platform.is('cordova') && !waiting" (click)="uploadImgsByNativeLibrary();" color="dark" ion-button icon-only outline clear>
-      <ion-icon name="images"></ion-icon>
-    </button>
+      <button *ngIf="heyApp.platform.is('cordova') && !waiting" (click)="uploadImgsByNativeLibrary();" color="dark" ion-button icon-only outline clear>
+        <ion-icon name="images"></ion-icon>
+      </button>
 
-    <button *ngIf="!heyApp.platform.is('cordova') && !waiting" color="dark" ion-button icon-only outline clear>
-      <ion-icon name="images">
-      </ion-icon>
-      <input class="input-imgs" #inputImgs type="file" (click)="inputImgs.value = null" (change)="uploadImgs($event)" multiple accept="image/*" value="Select multiple images">
-    </button>
+      <button *ngIf="!heyApp.platform.is('cordova') && !waiting" color="dark" ion-button icon-only outline clear>
+        <ion-icon name="images">
+        </ion-icon>
+        <input class="input-imgs" #inputImgs type="file" (click)="inputImgs.value = null" (change)="uploadImgs($event)" multiple accept="image/*" value="Select multiple images">
+      </button>
 
-    <button *ngIf="!waiting" color="dark" ion-button icon-only outline clear>
-      <ion-icon name="videocam"></ion-icon>
-      <input class="input-video" #inputVideo type="file" (click)="inputVideo.value = null"  (change)="uploadVideo($event)" accept="video/*" value="Select a video">
-    </button>
-
-    <button *ngIf="waiting" color="dark" ion-button icon-only disabled outline clear>
+      <button *ngIf="waiting" color="dark" ion-button icon-only disabled outline clear>
         <ion-spinner style="margin:0 0.5em 0 0.7em;"></ion-spinner>
-    </button>
+      </button>
 
-    <button color="dark" ion-button icon-only disabled outline clear>
-      <ion-icon name="at"></ion-icon>
-    </button>
-    <button color="dark" ion-button icon-only disabled outline clear>
-      <ion-icon name="locate"></ion-icon>
-    </button>
-  </div>
+      <button color="dark" ion-button icon-only disabled outline clear>
+        <ion-icon name="locate"></ion-icon>
+      </button>
+    </div>
 
-  <hr>
+    <hr>
 
-  <div class="preview-imgs" *ngIf="imgs">
-    <img *ngFor="let item of imgs" src="{{ heyApp.helper.getImg(item.uri) }}?imageView/2/w/100">
-  </div>
+    <div class="preview-imgs" *ngIf="imgs">
+      <img *ngFor="let item of imgs" src="{{ heyApp.helper.getImg(item.uri) }}?imageView/2/w/100">
+    </div>
 
-  <div class="preview-video" *ngIf="video">
-    <video width="60" preload="none" (click)="videoPlay($event)" poster="{{ heyApp.helper.getVideo(video.poster) }}" src="{{ video.uri }}"></video>
-  </div>
+    <div class="preview-video" *ngIf="video">
+      <video width="60" preload="none" (click)="videoPlay($event)" poster="{{ heyApp.helper.getVideo(video.poster) }}" src="{{ video.uri }}"></video>
+    </div>
 </ion-content>

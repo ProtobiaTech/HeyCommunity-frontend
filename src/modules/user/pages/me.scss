@@ -41,6 +41,14 @@ page-me {
     //
     .section-segment {
       background-color: #fff;
+      .segment-button {
+        color: #000;
+      }
+      .segment-activated {
+        font-weight: bold;
+        font-size: 1.4rem;
+        color: #2D4486;
+      }
     }
 
     //

@@ -1,4 +1,14 @@
 page-firend-add {
+  ion-header {
+    ion-navbar {
+      ion-title {
+        padding: 0 40px 1px !important;
+        .toolbar-title {
+          text-align: left !important;
+        }
+      }
+    }
+  }
   ion-content {
     #section-add-types {
       .fa {

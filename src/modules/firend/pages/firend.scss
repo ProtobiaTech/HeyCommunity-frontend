@@ -1,0 +1,21 @@
+page-firend {
+  ion-content {
+      .add-firend {
+        background-color: #fff;
+        margin: 0;
+        padding: 0 !important;
+        ion-item {
+          background-color: #fff;
+          .item-inner {
+            border: none !important;
+            ion-label {
+              ion-badge {
+                margin-left: 5px;
+                background-color: red;
+              }
+            }
+          }
+        }
+      }
+  }
+}

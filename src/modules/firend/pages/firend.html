@@ -13,12 +13,13 @@
 </ion-header>
 
 <ion-content>
-  <div padding class="hide">
-    <button small ion-button color="light" (click)="gotoFirendPage()">
-      <ion-icon name="person-add"></ion-icon>
-      &nbsp;&nbsp;
-      添加好友
-    </button>
+  <div padding class="add-firend">
+    <ion-item (click)="gotoFirendPage()">
+      <ion-avatar item-left>
+        <img src="assets/images/people-1.jpeg">
+      </ion-avatar>
+      添加好友<ion-badge color="red">+3</ion-badge>
+    </ion-item>
   </div>
 
   <ion-item-group>

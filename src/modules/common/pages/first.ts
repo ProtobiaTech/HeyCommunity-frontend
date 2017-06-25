@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { AppService } from '../../common/services/app.service';
+import { UserService } from '../../user/services/user.service';
 import { TabsPage } from '../../../pages/tabs/tabs';
 
 
@@ -30,6 +31,7 @@ export class FirstPage {
   // constructor
   constructor(
     public heyApp: AppService,
+    public userService: UserService,
     public navCtrl: NavController
   ) {
   }
@@ -70,7 +72,10 @@ export class FirstPage {
   //
   //
   goTabPage() {
-      this.navCtrl.push(TabsPage);
+      this.userService.logInByTest().then((userInfo) => {
+        this.heyApp.authService.logIn(userInfo);
+        this.navCtrl.push(TabsPage);
+      });
   }
 
 

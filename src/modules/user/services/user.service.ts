@@ -96,6 +96,18 @@ export class UserService {
 
 
   //
+  // log in by test
+  logInByTest(): Promise<User> {
+    let api: string = this.helper.getAPI('user/log-in-by-test');
+
+    return this.http.get(api, this.requestOptions)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
   // log in with wechat
   logInWithWechat(params): Promise<User> {
     let api: string = this.helper.getAPI('user/log-in-with-wechat');

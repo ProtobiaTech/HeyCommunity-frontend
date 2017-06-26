@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
-    <ion-buttons start>
+    <ion-buttons left>
       <button color="grey" ion-button (click)="dismiss()">
-        {{ translate }}
+        <ion-icon name="arrow-round-back"></ion-icon>
       </button>
     </ion-buttons>
 
@@ -18,13 +18,15 @@
 
 
 <ion-content>
-  <ion-item (click)="gotoUserHomePage()">
+  <ion-item>
     <ion-avatar item-left>
-      <img src="assets/images/people-1.jpeg">
+      <img src="{{ heyApp.authService.userInfo.avatar }}">
     </ion-avatar>
-    <h2>Angola</h2>
+    <h2>{{ heyApp.authService.userInfo.nickname }}</h2>
   </ion-item>
-  <ion-item class="collect-select">
+
+  <!--
+  <ion-item class="collect-select" class="hidden">
     <ion-select>
       <ion-option value="nes">NES</ion-option>
       <ion-option value="n64">Nintendo64</ion-option>
@@ -34,10 +36,12 @@
       <ion-option value="snes">SNES</ion-option>
     </ion-select>
   </ion-item>
+  -->
+
   <ion-list id="section-textarea">
     <form #timelineCreateForm="ngForm" novalidate>
         <ion-item>
-          <ion-textarea [(ngModel)]="newTimeline.content" name="content" rows="8" placeholder="{{ 'timeline.Whats New ...' | translate }}">
+          <ion-textarea [(ngModel)]="newTimeline.content" name="content" rows="18" placeholder="{{ '珍藏这一刻 ...' }}">
           </ion-textarea>
         </ion-item>
     </form>
@@ -66,8 +70,6 @@
         <ion-icon name="locate"></ion-icon>
       </button>
     </div>
-
-    <hr>
 
     <div class="preview-imgs" *ngIf="imgs">
       <img *ngFor="let item of imgs" src="{{ heyApp.helper.getImg(item.uri) }}?imageView/2/w/100">

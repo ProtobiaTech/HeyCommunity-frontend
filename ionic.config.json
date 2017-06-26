@@ -4,11 +4,11 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://demo.hey-community.com/api"
+      "proxyUrl": "http://jiplus.testing.protobia.net/api"
     },
     {
       "path": "/uploads",
-      "proxyUrl": "http://demo.hey-community.com/uploads"
+      "proxyUrl": "http://jiplus.testing.protobia.net/uploads"
     }
   ],
   "type": "ionic-angular"

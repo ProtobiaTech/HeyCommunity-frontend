@@ -19,7 +19,7 @@
   <img src="/assets/images/moment-1.jpg">
   <div padding-bottom margin-bottom id="section-collect-info" class="text-center">
     <div padding class="avatar">
-      <img src="assets/images/userAvatar-default.png">
+      <img src="{{ collect.author.avatar }}">
     </div>
 
     <div padding class="avatars">
@@ -32,13 +32,13 @@
       </ion-avatar>
     </div>
 
-    <div class="nickname">李亚洲</div>
-    <h2 class="collect-name">汽车</h2>
-    <span class="description">买不起,还看不起吗</span>
+    <div class="nickname">{{ collect.author.nickname }}</div>
+    <h2 class="collect-name">{{ collect.name }}</h2>
+    <span class="description">{{ collect.description }}</span>
     <div class="footer">
-      <span>关注 15</span>
+      <span>关注 {{ collect.follow_num }}</span>
       <strong>|</strong>
-      <span>收藏 100</span>
+      <span>收藏 {{ collect.follow_num }}</span>
       <strong>|</strong>
       <span>封闭</span>
     </div>

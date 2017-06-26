@@ -89,8 +89,8 @@ export class MePage {
 
   //
   //
-  gotoCollectPage() {
-    this.navCtrl.push(CollectPage);
+  gotoCollectPage(collect) {
+    this.navCtrl.push(CollectPage, {collect: collect});
   }
 
 

@@ -77,12 +77,18 @@ page-me {
         margin: 0;
         width: 100%;
 
+        .collect-avatar {
+          min-height: 60px;
+          background-color: #ddd;
+        }
+
         .avatar {
           position: absolute;
           bottom: 70px;
           left: 16px;
           width: 20%;
           border-radius: 50%;
+          background-color: #eee;
         }
 
         .info {

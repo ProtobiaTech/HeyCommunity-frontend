@@ -28,10 +28,10 @@ export class CollectService {
 
 
   //
-  // get my collects
-  getMyCollects(): Promise<Collect[]> {
+  // get user collects
+  getUserCollects(userId = null): Promise<Collect[]> {
     //
-    let api: string = this.helper.getAPI('collect/my-collects');
+    let api: string = this.helper.getAPI('collect/user-collects');
 
     return this.http.get(api, this.requestOptions)
     .toPromise()
@@ -46,10 +46,10 @@ export class CollectService {
 
 
   //
-  // get my follow collects
-  getMyFollowCollects(): Promise<Collect[]> {
+  // get user follow collects
+  getUserFollowCollects(userId = null): Promise<Collect[]> {
     //
-    let api: string = this.helper.getAPI('collect/my-follow-collects');
+    let api: string = this.helper.getAPI('collect/user-follow-collects');
 
     return this.http.get(api, this.requestOptions)
     .toPromise()

@@ -18,8 +18,8 @@ import { UserSetPage } from './user-set';
 
 
 @Component({
-  selector: 'page-me',
-  templateUrl: 'me.html'
+  selector: 'page-user',
+  templateUrl: 'user.html'
 })
 export class UserPage {
   MeSettingPage = MeSettingPage;
@@ -40,8 +40,8 @@ export class UserPage {
   //
   // ion view did enter
   ionViewDidEnter() {
-    this.collectService.getMyCollects();
-    this.collectService.getMyFollowCollects();
+    this.collectService.getUserCollects();
+    this.collectService.getUserFollowCollects();
   }
 
 

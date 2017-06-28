@@ -7,6 +7,7 @@ import { UserService } from './services/user.service';
 import { UserTranslations } from './i18n/user-translations';
 
 import { MePage } from './pages/me';
+import { UserPage } from './pages/user';
 import { MeProfilePage } from './pages/me-profile';
 import { MeProfileUpdatePage } from './pages/me-profileUpdate';
 
@@ -31,6 +32,7 @@ import { GetAdvicePage } from './pages/get-advice';
   ],
   declarations: [
     MePage,
+    UserPage,
     MeProfilePage,
     MeProfileUpdatePage,
     MeSettingPage,
@@ -46,6 +48,7 @@ import { GetAdvicePage } from './pages/get-advice';
   ],
   entryComponents: [
     MePage,
+    UserPage,
     MeProfilePage,
     MeProfileUpdatePage,
     MeSettingPage,

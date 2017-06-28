@@ -16,7 +16,7 @@
 </ion-header>
 
 <ion-content>
-  <img src="/assets/images/moment-1.jpg">
+  <img src="{{ collect.avatar }}">
   <div padding-bottom margin-bottom id="section-collect-info" class="text-center">
     <div padding class="avatar">
       <img src="{{ collect.author.avatar }}">
@@ -38,7 +38,7 @@
     <div class="footer">
       <span>关注 {{ collect.follow_num }}</span>
       <strong>|</strong>
-      <span>收藏 {{ collect.follow_num }}</span>
+      <span>收藏 {{ collect.collect_num }}</span>
       <strong>|</strong>
       <span>封闭</span>
     </div>

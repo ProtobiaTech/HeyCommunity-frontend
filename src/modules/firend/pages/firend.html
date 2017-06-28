@@ -24,28 +24,23 @@
 
   <ion-item-group>
     <ion-item-divider color="light">A</ion-item-divider>
-    <ion-item (click)="gotoUserHomePage()">
+    <ion-item (click)="gotoUserHomePage(user.id)" *ngFor="let user of firendService.firends; let i=index">
       <ion-avatar item-left>
-        <img src="assets/images/people-1.jpeg">
+        <img src="{{ user.avatar }}">
       </ion-avatar>
-      <h2>Angola</h2>
-    </ion-item>
-    <ion-item (click)="gotoUserHomePage()">
-      <ion-avatar item-left>
-        <img src="assets/images/people-2.jpeg">
-      </ion-avatar>
-      <h2>Argentina</h2>
+      <h2>{{ user.nickname }}</h2>
     </ion-item>
   </ion-item-group>
+
   <ion-item-group>
     <ion-item-divider color="light">B</ion-item-divider>
-    <ion-item (click)="gotoUserHomePage()">
+    <ion-item (click)="gotoUserHomePage(2)">
       <ion-avatar item-left>
         <img src="assets/images/people-3.jpeg">
       </ion-avatar>
       <h2>Big</h2>
     </ion-item>
-    <ion-item (click)="gotoUserHomePage()">
+    <ion-item (click)="gotoUserHomePage(3)">
       <ion-avatar item-left>
         <img src="assets/images/people-4.jpeg">
       </ion-avatar>

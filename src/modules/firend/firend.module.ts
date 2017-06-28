@@ -3,6 +3,7 @@ import { Platform, Events, ModalController } from 'ionic-angular';
 import { CommonModule } from '../common/common.module';
 
 import { AppService } from '../common/services/app.service';
+import { FirendService } from './services/firend.service';
 
 import { FirendPage } from './pages/firend';
 import { FirendAddPage } from './pages/firend-add';
@@ -27,6 +28,7 @@ import { FirendAddContactPage } from './pages/firend-add-contact';
     FirendAddContactPage,
   ],
   providers: [
+    FirendService,
   ],
   exports: [
   ],

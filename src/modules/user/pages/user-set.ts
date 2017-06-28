@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { User } from '../models/user.model';
+
 import { AppService } from '../../common/services/app.service';
 import { UserService } from '../services/user.service';
 
+import { FirstPage } from '../../common/pages/first';
 import { JiAboutPage } from './ji-about';
 import { GetAdvicePage } from './get-advice';
 
@@ -13,6 +16,8 @@ import { GetAdvicePage } from './get-advice';
   templateUrl: 'user-set.html'
 })
 export class UserSetPage {
+  userInfo: User;
+  usernameDisabled: boolean = false;
 
 
   //
@@ -22,6 +27,14 @@ export class UserSetPage {
     public userService: UserService,
     public navCtrl: NavController
   ) {
+    this.userInfo = this.heyApp.authService.userInfo;
+    this.usernameDisabled = this.userInfo.username.length ? true : false;
+  }
+
+
+  //
+  //
+  ionViewDidEnter() {
   }
 
 
@@ -48,7 +61,24 @@ export class UserSetPage {
     .then(ret => {
       this.heyApp.utilityComp.dismissLoading();
       this.heyApp.authService.logOut();
-      this.navCtrl.pop();
+      this.navCtrl.push(FirstPage);
     });
+  }
+
+
+  //
+  //
+  setGender(value: number) {
+    this.userInfo.gender = value;
+  }
+
+
+  //
+  //
+  update() {
+    this.userService.update(this.userInfo)
+    .then(() => {
+      this.navCtrl.pop();
+    })
   }
 }

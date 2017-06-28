@@ -5,7 +5,7 @@
         </ion-title>
 
         <ion-buttons end>
-            <button ion-button>
+            <button ion-button (click)="update()">
                 完成
             </button>
         </ion-buttons>
@@ -14,23 +14,25 @@
 
 <ion-content>
     <div class="user-pic" padding-bottom>
-        <img src="http://img5.imgtn.bdimg.com/it/u=785610095,2402278722&fm=23&gp=0.jpg" alt="">
+        <img src="{{ heyApp.authService.userInfo.avatar }}" alt="">
         <p>更换头像</p>
     </div>
 
     <ion-list margin-top>
         <ion-item>
             <ion-icon name="contact" item-left></ion-icon>
-            <ion-input type="text" placeholder="姓名"></ion-input>
+            <ion-input type="text" placeholder="姓名" [(ngModel)]="userInfo.nickname"></ion-input>
         </ion-item>
         <ion-item>
             <ion-icon name="contacts" item-left></ion-icon>
-          <button ion-button color="dark" outline class="sex-button">男</button>
-          <button ion-button color="dark" outline class="sex-button">女</button>
+            <button *ngIf="userInfo.gender == 1" ion-button color="dark" (click)="setGender(1)" class="sex-button">男</button>
+            <button *ngIf="userInfo.gender != 1" outline ion-button color="dark" (click)="setGender(1)" class="sex-button">男</button>
+            <button *ngIf="userInfo.gender == 2" ion-button color="dark" (click)="setGender(2)" class="sex-button">女</button>
+            <button *ngIf="userInfo.gender != 2" outline ion-button color="dark" (click)="setGender(2)" class="sex-button">女</button>
         </ion-item>
         <ion-item>
             <ion-icon name="person" item-left></ion-icon>
-            <ion-input type="text" placeholder="用户名"></ion-input>
+            <ion-input type="text" placeholder="用户名" [(ngModel)]="userInfo.username" [disabled]="usernameDisabled"></ion-input>
         </ion-item>
         <ion-item class="tip">
           其他用户可以根据用户名找到您，只能设置一次

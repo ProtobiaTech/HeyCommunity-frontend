@@ -29,6 +29,6 @@ export class FirendPage {
   //
   //
   gotoUserHomePage() {
-    this.navCtrl.push(UserPage);
+    this.navCtrl.push(UserPage, {userId: 1});
   }
 }

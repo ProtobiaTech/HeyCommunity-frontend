@@ -6,6 +6,7 @@ import { AppService } from '../common/services/app.service';
 import { UserService } from './services/user.service';
 import { UserTranslations } from './i18n/user-translations';
 
+import { MePage } from './pages/me';
 import { UserPage } from './pages/user';
 import { MeProfilePage } from './pages/me-profile';
 import { MeProfileUpdatePage } from './pages/me-profileUpdate';
@@ -30,6 +31,7 @@ import { GetAdvicePage } from './pages/get-advice';
     CommonModule,
   ],
   declarations: [
+    MePage,
     UserPage,
     MeProfilePage,
     MeProfileUpdatePage,
@@ -45,6 +47,7 @@ import { GetAdvicePage } from './pages/get-advice';
     GetAdvicePage,
   ],
   entryComponents: [
+    MePage,
     UserPage,
     MeProfilePage,
     MeProfileUpdatePage,

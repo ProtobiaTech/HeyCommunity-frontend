@@ -6,7 +6,7 @@ import { UserService } from '../../modules/user/services/user.service';
 import { NoticeService } from '../../modules/notice/services/notice.service';
 
 import { TimelinePage } from '../../modules/timeline/pages/timeline';
-import { UserPage } from '../../modules/user/pages/user';
+import { MePage } from '../../modules/user/pages/me';
 import { MeNoticePage } from '../../modules/notice/pages/me-notice';
 import { FirendPage } from '../../modules/firend/pages/firend';
 
@@ -18,7 +18,7 @@ export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   timelineTabRoot: any = TimelinePage;
-  meTabRoot: any = UserPage;
+  meTabRoot: any = MePage;
   meNoticeTabRoot: any = MeNoticePage;
 
   firendTabRoot: any = FirendPage;

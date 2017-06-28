@@ -12,6 +12,7 @@ export class CollectService {
   headers: Headers;
   requestOptions: RequestOptions;
 
+  userCollects: Collect[] = [];
   myCollects: Collect[] = [];
   myFollowCollects: Collect[] = [];
 
@@ -31,6 +32,24 @@ export class CollectService {
   // get user collects
   getUserCollects(userId = null): Promise<Collect[]> {
     //
+    let api: string = this.helper.getAPI('collect/user-collects/?' + 'user_id=' + userId);
+
+    return this.http.get(api, this.requestOptions)
+    .toPromise()
+    .then(response => {
+      let data = response.json();
+      this.userCollects = data.data;
+
+      return data.data;
+    })
+    .catch(this.handleError);
+  }
+
+
+  //
+  // get my collects
+  getMyCollects(): Promise<Collect[]> {
+    //
     let api: string = this.helper.getAPI('collect/user-collects');
 
     return this.http.get(api, this.requestOptions)
@@ -47,7 +66,7 @@ export class CollectService {
 
   //
   // get user follow collects
-  getUserFollowCollects(userId = null): Promise<Collect[]> {
+  getMyFollowCollects(): Promise<Collect[]> {
     //
     let api: string = this.helper.getAPI('collect/user-follow-collects');
 

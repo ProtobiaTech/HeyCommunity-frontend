@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 import { AppService } from '../../common/services/app.service';
 import { NoticeService } from '../../notice/services/notice.service';
@@ -18,13 +18,12 @@ import { UserSetPage } from './user-set';
 
 
 @Component({
-  selector: 'page-user',
-  templateUrl: 'user.html'
+  selector: 'page-me',
+  templateUrl: 'me.html'
 })
-export class UserPage {
+export class MePage {
   MeSettingPage = MeSettingPage;
 
-  userId: number;
   collectType: number = 1;
 
   //
@@ -33,17 +32,16 @@ export class UserPage {
     public heyApp: AppService,
     public noticeService: NoticeService,
     public collectService: CollectService,
-    public navParams: NavParams,
     public navCtrl: NavController
   ) {
-    this.userId = this.navParams.data.userId;
   }
 
 
   //
   // ion view did enter
-  ionViewDidEnter() {
-    this.collectService.getUserCollects();
+  ionViewDidLoad() {
+    this.collectService.getMyCollects();
+    this.collectService.getMyFollowCollects();
   }
 
 

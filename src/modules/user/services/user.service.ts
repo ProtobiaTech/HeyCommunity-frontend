@@ -43,6 +43,18 @@ export class UserService {
 
 
   //
+  // get user info by id
+  getUserInfoById(id): Promise<User> {
+    let api: string = this.helper.getAPI('user/get-user-info-by-id?id=' + id);
+
+    return this.http.get(api, this.requestOptions)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
   // update
   update(params): Promise<User> {
     let api: string = this.helper.getAPI('user/update');

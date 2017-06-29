@@ -24,11 +24,7 @@
 
     <div padding class="avatars">
       <ion-avatar (click)="gotoCollectMemberPage()">
-        <img src="assets/images/people-1.jpeg">
-        <img src="assets/images/people-2.jpeg">
-        <img src="assets/images/people-3.jpeg">
-        <img src="assets/images/people-3.jpeg">
-        <img src="assets/images/people-4.jpeg">
+        <img *ngFor="let user of collect.follow_users; let i=index" src="{{ user.avatar }}">
       </ion-avatar>
     </div>
 
@@ -45,7 +41,19 @@
   </div>
 
   <div>
-    <ion-card *ngFor="let timeline of timelineService.timelines; let i=index" class="timeline-card">
+    <ion-list padding-top class="bar-create">
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="assets/images/userAvatar-default.png">
+        </ion-avatar>
+        <h2>珍藏这一刻 ...</h2>
+        <div class="btn-camera" item-right (click)="gotCreatPage()">
+          <ion-icon name="camera"></ion-icon>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <ion-card *ngFor="let timeline of collect.timelines; let i=index" class="timeline-card">
       <ion-item class="header">
         <ion-avatar item-left>
           <img class="avatar" src="{{ heyApp.helper.getImg(timeline.author?.avatar) }}?imageView/2/w/100">
@@ -100,55 +108,6 @@
             </div>
           </div>
       </div>
-    </ion-card>
-
-    <ion-list padding-top class="bar-create">
-      <ion-item>
-        <ion-avatar item-left>
-          <img src="assets/images/userAvatar-default.png">
-        </ion-avatar>
-        <h2>珍藏这一刻 ...</h2>
-        <div class="btn-camera" item-right (click)="gotCreatPage()">
-          <ion-icon name="camera"></ion-icon>
-        </div>
-      </ion-item>
-    </ion-list>
-
-    <ion-card style="margin:0; padding:0; width:100%;" class="bar-create">
-      <ion-item>
-        <ion-avatar item-left>
-          <img src="assets/images/userAvatar-default.png">
-        </ion-avatar>
-        <h2>Marty McFly</h2>
-        <p>November 5, 1955</p>
-        <ion-icon name="arrow-dropdown" item-right></ion-icon>
-      </ion-item>
-
-      <img src="assets/images/moment-1.jpg">
-
-      <ion-card-content class="content">
-        <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
-      </ion-card-content>
-
-      <ion-row>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="thumbs-up"></ion-icon>
-            <div>12 Likes</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small>
-            <ion-icon name="text"></ion-icon>
-            <div>4 Comments</div>
-          </button>
-        </ion-col>
-        <ion-col center text-center>
-          <ion-note>
-            11h ago
-          </ion-note>
-        </ion-col>
-      </ion-row>
     </ion-card>
   </div>
 </ion-content>

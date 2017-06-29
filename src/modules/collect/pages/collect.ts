@@ -4,7 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Collect } from '../models/collect.model';
 
 import { AppService } from '../../common/services/app.service';
-import { TimelineService } from '../../timeline/services/timeline.service';
+import { CollectService } from '..//services/collect.service';
 
 import { CollectEditPage } from '../../collect/pages/collect-edit';
 import { CollectMemberPage } from '../../collect/pages/collect-member';
@@ -20,21 +20,22 @@ export class CollectPage {
   //
   // constructor
   constructor(
-    public timelineService: TimelineService,
+    public collectService: CollectService,
     public heyApp: AppService,
     public navParams: NavParams,
     public navCtrl: NavController
   ) {
     this.collect = this.navParams.data.collect;
-    console.log(this.collect);
   }
 
 
   //
   // ion view did enter
   ionViewDidEnter() {
-    // get timelines
-    this.timelineService.index();
+    this.collectService.getShow(this.collect.id)
+    .then((res) => {
+      this.collect = res;
+    });
   }
 
 
@@ -48,6 +49,6 @@ export class CollectPage {
   //
   //
   gotoCollectMemberPage() {
-    this.navCtrl.push(CollectMemberPage);
+    this.navCtrl.push(CollectMemberPage, {collect: this.collect});
   }
 }

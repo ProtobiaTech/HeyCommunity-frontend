@@ -47,6 +47,23 @@ export class CollectService {
 
 
   //
+  // get show
+  getShow(id): Promise<Collect> {
+    //
+    let api: string = this.helper.getAPI('collect/show/?id=' + id);
+
+    return this.http.get(api, this.requestOptions)
+    .toPromise()
+    .then(response => {
+      let data = response.json();
+
+      return data.data;
+    })
+    .catch(this.handleError);
+  }
+
+
+  //
   // get my collects
   getMyCollects(): Promise<Collect[]> {
     //
@@ -78,6 +95,44 @@ export class CollectService {
 
       return data.data;
     })
+    .catch(this.handleError);
+  }
+
+
+  //
+  // store
+  store(params): Promise<Collect> {
+    let api: string = this.helper.getAPI('collect/store');
+
+    return this.http.post(api, params, this.requestOptions)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
+  // update
+  update(params): Promise<Collect> {
+    let api: string = this.helper.getAPI('collect/update');
+    let data: any = {content: params.content};
+
+    return this.http.post(api, data, this.requestOptions)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+  }
+
+
+  //
+  // destroy
+  destroy(params): Promise<Collect> {
+    let api: string = this.helper.getAPI('collect/destroy');
+    let data: any = {id: params.id};
+
+    return this.http.post(api, data, this.requestOptions)
+    .toPromise()
+    .then(response => response.json())
     .catch(this.handleError);
   }
 

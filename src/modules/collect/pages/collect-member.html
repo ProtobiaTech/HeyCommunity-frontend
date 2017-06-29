@@ -19,23 +19,8 @@
     }
   </style>
   <div padding>
-    <ion-avatar>
-      <img style="width:30px;" src="assets/images/userAvatar-default.png">
-    </ion-avatar>
-    <ion-avatar>
-      <img style="width:30px;" src="assets/images/userAvatar-default.png">
-    </ion-avatar>
-    <ion-avatar>
-      <img style="width:30px;" src="assets/images/userAvatar-default.png">
-    </ion-avatar>
-    <ion-avatar>
-      <img style="width:30px;" src="assets/images/userAvatar-default.png">
-    </ion-avatar>
-    <ion-avatar>
-      <img style="width:30px;" src="assets/images/userAvatar-default.png">
-    </ion-avatar>
-    <ion-avatar>
-      <img style="width:30px;" src="assets/images/userAvatar-default.png">
+    <ion-avatar *ngFor="let user of collect.follow_users; let i=index">
+      <img style="width:30px;" src="{{ user.avatar }}">
     </ion-avatar>
   </div>
 </ion-content>

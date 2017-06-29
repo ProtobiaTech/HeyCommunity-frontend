@@ -8,6 +8,7 @@ import { CollectService } from './services/collect.service';
 import { CollectPage } from './pages/collect';
 import { CollectMemberPage } from './pages/collect-member';
 import { CollectEditPage } from './pages/collect-edit';
+import { CollectCreatePage } from './pages/collect-create';
 
 
 @NgModule({
@@ -18,11 +19,13 @@ import { CollectEditPage } from './pages/collect-edit';
     CollectPage,
     CollectMemberPage,
     CollectEditPage,
+    CollectCreatePage,
   ],
   entryComponents: [
     CollectPage,
     CollectMemberPage,
     CollectEditPage,
+    CollectCreatePage,
   ],
   providers: [
     CollectService,

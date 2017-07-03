@@ -42,7 +42,7 @@ export class CollectPage {
   //
   //
   gotoCollectEditPage() {
-    this.navCtrl.push(CollectEditPage);
+    this.navCtrl.push(CollectEditPage, {collect: this.collect});
   }
 
 

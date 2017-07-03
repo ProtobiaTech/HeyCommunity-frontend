@@ -4,11 +4,15 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://jiplus.testing.protobia.net/api"
+      "proxyUrl": "http://localhost:2000/api"
     },
     {
       "path": "/uploads",
-      "proxyUrl": "http://jiplus.testing.protobia.net/uploads"
+      "proxyUrl": "http://localhost:2000/uploads"
+    },
+    {
+      "path": "/assets",
+      "proxyUrl": "http://localhost:2000/assets"
     }
   ],
   "type": "ionic-angular"

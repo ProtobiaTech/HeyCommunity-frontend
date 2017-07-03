@@ -115,7 +115,7 @@ export class CollectService {
   // update
   update(params): Promise<Collect> {
     let api: string = this.helper.getAPI('collect/update');
-    let data: any = {content: params.content};
+    let data: any = params;
 
     return this.http.post(api, data, this.requestOptions)
     .toPromise()

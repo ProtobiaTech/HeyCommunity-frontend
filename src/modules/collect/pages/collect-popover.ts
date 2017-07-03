@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, PopoverController, NavParams, ViewController } from 'ionic-angular';
 
 import { Collect } from '../models/collect.model';
 
 import { AppService } from '../../common/services/app.service';
 import { CollectService } from '..//services/collect.service';
 
+import { CollectEditPage } from '../../collect/pages/collect-edit';
+
 
 @Component({
-  selector: 'page-collect-edit',
-  templateUrl: 'collect-edit.html'
+  selector: 'page-collect-popover',
+  templateUrl: 'collect-popover.html'
 })
-export class CollectEditPage {
+export class CollectPopoverPage {
   collect: Collect;
 
   //
@@ -19,6 +21,7 @@ export class CollectEditPage {
   constructor(
     public collectService: CollectService,
     public heyApp: AppService,
+    public popoverCtrl: PopoverController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     public navCtrl: NavController
@@ -29,17 +32,21 @@ export class CollectEditPage {
 
   //
   //
-  updateHandle() {
-    this.collectService.update(this.collect)
+  destoryHandle() {
+    this.viewCtrl.dismiss();
+    /*
+    this.collectService.destroy(this.collect)
     .then(() => {
-      this.navCtrl.pop();
+      this.viewCtrl.dismiss();
     });
+    */
   }
 
 
   //
-  // dismiss
-  dismiss() {
+  //
+  gotoCollectEditPage() {
     this.viewCtrl.dismiss();
+    this.navCtrl.push(CollectEditPage, {collect: this.collect});
   }
 }

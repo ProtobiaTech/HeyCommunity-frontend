@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, PopoverController, NavParams } from 'ionic-angular';
 
 import { Collect } from '../models/collect.model';
 
@@ -8,6 +8,7 @@ import { CollectService } from '..//services/collect.service';
 
 import { CollectEditPage } from '../../collect/pages/collect-edit';
 import { CollectMemberPage } from '../../collect/pages/collect-member';
+import { CollectPopoverPage } from '../../collect/pages/collect-popover';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class CollectPage {
     public collectService: CollectService,
     public heyApp: AppService,
     public navParams: NavParams,
+    public popoverCtrl: PopoverController,
     public navCtrl: NavController
   ) {
     this.collect = this.navParams.data.collect;
@@ -35,6 +37,16 @@ export class CollectPage {
     this.collectService.getShow(this.collect.id)
     .then((res) => {
       this.collect = res;
+    });
+  }
+
+
+  //
+  //
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(CollectPopoverPage, {collect: this.collect});
+    popover.present({
+      ev: myEvent
     });
   }
 

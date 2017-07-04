@@ -17,10 +17,10 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-list padding-top class="bar-create">
+  <ion-list padding-top class="bar-create" *ngIf="heyApp.authService.isAuth">
     <ion-item (click)="presentTimelineCreateModal()">
       <ion-avatar item-left>
-        <img src="assets/images/userAvatar-default.png">
+        <img src="{{ heyApp.authService.userInfo.avatar }}">
       </ion-avatar>
       <h2>珍藏这一刻 ...</h2>
       <div class="btn-camera" item-right>
@@ -67,7 +67,7 @@
         <button ion-button icon-only color="grey" clear small (click)="setLikeForTimeline(timeline)">
           <ion-icon color="danger" name="{{ timeline.is_like ? 'heart' : 'heart-outline' }}"></ion-icon>
         </button>
-        <button ion-button icon-only color="grey" clear small>
+        <button ion-button icon-only color="grey" clear small (click)="gotoTimelineDetailPage(timeline, i)">
           <ion-icon name="text"></ion-icon>
         </button>
       </ion-col>

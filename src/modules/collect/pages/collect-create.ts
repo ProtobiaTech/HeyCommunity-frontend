@@ -10,7 +10,7 @@ import { CollectService } from '../services/collect.service';
   templateUrl: 'collect-create.html'
 })
 export class CollectCreatePage {
-  newCollect: {name?: string, description?: string, type_id?: number} = {};
+  newCollect: {name?: string, description?: string, type_id?: number} = {type_id: 1};
 
   //
   // constructor
@@ -24,11 +24,13 @@ export class CollectCreatePage {
 
   //
   //
-  createHandle() {
-    this.collectService.store(this.newCollect)
-    .then(() => {
-      this.collectService.getMyCollects();
-      this.navCtrl.pop();
-    });
+  createHandle(ngForm) {
+    if (ngForm.valid) {
+      this.collectService.store(this.newCollect)
+      .then(() => {
+        this.collectService.getMyCollects();
+        this.navCtrl.pop();
+      });
+    }
   }
 }

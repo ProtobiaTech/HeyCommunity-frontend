@@ -5,7 +5,7 @@
     </ion-title>
 
     <ion-buttons end>
-      <button ion-button clear (click)="createHandle()">
+      <button ion-button clear (click)="createHandle(theForm)" [disabled]="!theForm.valid">
         创建
       </button>
     </ion-buttons>
@@ -15,23 +15,25 @@
 <ion-content>
   <img src="/assets/images/collectAvatar-default.jpg">
 
-  <ion-list>
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="newCollect.name" placeholder="名称"></ion-input>
-    </ion-item>
+  <form #theForm="ngForm" (ngSubmit)="createHandle(theForm)">
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" name="name" [(ngModel)]="newCollect.name" required placeholder="名称"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="newCollect.description" placeholder="介绍"></ion-input>
-    </ion-item>
-  </ion-list>
+      <ion-item>
+        <ion-input type="text" name="description" [(ngModel)]="newCollect.description" required placeholder="介绍"></ion-input>
+      </ion-item>
+    </ion-list>
 
-  <ion-list>
-    <ion-item>
-      <ion-label>公开范围</ion-label>
-      <ion-select [(ngModel)]="newCollect.type_id">
-        <ion-option value="1">封闭</ion-option>
-        <ion-option value="2">私密</ion-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+      <ion-item>
+        <ion-label>公开范围</ion-label>
+        <ion-select [(ngModel)]="newCollect.type_id" name="type_id" required>
+          <ion-option value="1">封闭</ion-option>
+          <ion-option value="2">私密</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>

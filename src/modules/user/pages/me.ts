@@ -37,6 +37,18 @@ export class MePage {
 
 
   //
+  // Refresh
+  doRefresh(refresher) {
+    this.collectService.getMyCollects();
+    this.collectService.getMyFollowCollects();
+
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
+
+
+  //
   //
   goUserSet() {
     this.navCtrl.push(UserSetPage)

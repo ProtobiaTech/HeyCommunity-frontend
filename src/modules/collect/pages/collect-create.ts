@@ -27,6 +27,7 @@ export class CollectCreatePage {
   createHandle() {
     this.collectService.store(this.newCollect)
     .then(() => {
+      this.collectService.getMyCollects();
       this.navCtrl.pop();
     });
   }

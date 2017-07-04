@@ -9,6 +9,7 @@ import { CollectService } from '..//services/collect.service';
 import { CollectEditPage } from '../../collect/pages/collect-edit';
 import { CollectMemberPage } from '../../collect/pages/collect-member';
 import { CollectPopoverPage } from '../../collect/pages/collect-popover';
+import { TimelineCreatePage } from '../../timeline/pages/timeline-create';
 
 
 @Component({
@@ -48,6 +49,18 @@ export class CollectPage {
     popover.present({
       ev: myEvent
     });
+  }
+
+
+  //
+  // present timeline create modal
+  presentTimelineCreateModal() {
+    let page = TimelineCreatePage;
+    let params = {}
+    let callback = function() {
+    }
+
+    this.heyApp.utilityComp.presentModal(page, params, callback);
   }
 
 

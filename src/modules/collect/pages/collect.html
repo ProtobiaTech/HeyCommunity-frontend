@@ -36,18 +36,18 @@
       <strong>|</strong>
       <span>收藏 {{ collect.collect_num }}</span>
       <strong>|</strong>
-      <span>封闭</span>
+      <span>{{ collect.type_name }}</span>
     </div>
   </div>
 
   <div>
-    <ion-list padding-top class="bar-create">
-      <ion-item>
+    <ion-list padding-top class="bar-create" *ngIf="collect.author.id === heyApp.authService.userInfo.id">
+      <ion-item (click)="presentTimelineCreateModal()">
         <ion-avatar item-left>
-          <img src="assets/images/userAvatar-default.png">
+          <img src="{{ collect.author.avatar }}">
         </ion-avatar>
         <h2>珍藏这一刻 ...</h2>
-        <div class="btn-camera" item-right (click)="gotCreatPage()">
+        <div class="btn-camera" item-right>
           <ion-icon name="camera"></ion-icon>
         </div>
       </ion-item>
